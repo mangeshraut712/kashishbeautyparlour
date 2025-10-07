@@ -27,9 +27,9 @@ export default function Header() {
         {/* Top bar with contact info */}
         <div className="hidden md:flex items-center justify-between py-2 border-b border-gray-200 text-sm">
           <div className="flex items-center gap-4 text-gray-600">
-            <a href={`tel:${BUSINESS_INFO.contact.phone}`} className="flex items-center gap-2 hover:text-primary transition">
+            <a href={`tel:+917276784825`} className="flex items-center gap-2 hover:text-primary transition">
               <Phone className="w-4 h-4" />
-              {BUSINESS_INFO.contact.phone}
+              +91 72767 84825
             </a>
             <span>|</span>
             <span>{BUSINESS_INFO.hours.weekdays}</span>

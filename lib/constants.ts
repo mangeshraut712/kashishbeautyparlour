@@ -4,7 +4,7 @@ export const BUSINESS_INFO = {
   description: 'Professional Beauty Parlours And Training Center',
   
   contact: {
-    phone: '+917276784825', // Replace with actual number
+    phone: '7276784825', // Replace with actual number
     whatsapp: '+917276784825', // Replace with actual number
     email: 'info@kashishbeautyparlour.com',
   },
