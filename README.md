@@ -20,7 +20,7 @@ Modern, fast, and SEO-optimized website built with Next.js 14 and TypeScript.
 ## 📁 Project Structure
 
 ```
-website/
+kashishbeautyparlour/
 ├── app/                    # Next.js 14 App Router
 │   ├── layout.tsx         # Root layout
 │   ├── page.tsx           # Homepage
@@ -50,7 +50,7 @@ website/
 1. **Clone the repository**
 ```bash
 git clone https://github.com/mangeshraut712/kashishbeautyparlour.git
-cd kashishbeautyparlour/website
+cd kashishbeautyparlour
 ```
 
 2. **Install dependencies**
@@ -60,7 +60,7 @@ npm install
 
 3. **Set up environment variables**
 ```bash
-cp .env.local.example .env.local
+cp .env.example .env.local
 ```
 
 Edit `.env.local` and add your actual:
