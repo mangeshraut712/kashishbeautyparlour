@@ -166,7 +166,7 @@ Remember, photos capture emotions more than trends. Let your natural glow shine 
     id: 4,
     title: 'The Ultimate Guide to Lip Care',
     excerpt: 'Transform dry, chapped lips into soft, kissable perfection. Complete guide from exfoliation to hydration for beautiful lips.',
-    image: 'https://images.unsplash.com/photo-1584302179602-e4f64d5cfb20?w=800&h=500&fit=crop',
+    image: 'https://images.unsplash.com/photo-1596463036319-331c911f44fb?w=800&h=500&fit=crop',
     category: 'Skincare',
     author: 'Sarah Johnson',
     date: '2024-12-08',

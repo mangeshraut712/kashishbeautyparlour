@@ -48,7 +48,7 @@ const blogPosts = [
     id: 4,
     title: 'The Ultimate Guide to Lip Care',
     excerpt: 'Transform dry, chapped lips into soft, kissable perfection. Complete guide from exfoliation to hydration for beautiful lips.',
-    image: 'https://images.unsplash.com/photo-1584302179602-e4f64d5cfb20?w=800&h=500&fit=crop',
+    image: 'https://images.unsplash.com/photo-1596463036319-331c911f44fb?w=800&h=500&fit=crop',
     category: 'Skincare',
     author: 'Sarah Johnson',
     date: '2024-12-08',
@@ -87,20 +87,10 @@ const blogPosts = [
     image: 'https://images.unsplash.com/photo-1487412947147-5cebf100ffc2?w=800&h=500&fit=crop',
     category: 'Bridal',
     author: 'Kashish Team',
-    date: '2024-01-15',
+    date: '2024-12-01',
     readTime: '5 min read',
     tags: ['bridal makeup', 'trends', '2024'],
-  },
-  {
-    id: 8,
-    title: 'Holiday Makeup Looks for Special Occasions',
-    excerpt: 'Create stunning makeup looks for the holiday season with professional tips and timeless techniques.',
-    image: 'https://images.unsplash.com/photo-1522338242992-e1e70 decoración?w=800&h=500&fit=crop',
-    category: 'Makeup',
-    author: 'Sarah Johnson',
-    date: '2024-11-28',
-    readTime: '7 min read',
-    tags: ['holiday makeup', 'special occasions', 'festive looks'],
+    content: 'Discover the latest bridal makeup trends that are expected to dominate 2024 weddings. From natural glows to bold features.\n\n### Current Trends:\n\n- **Natural Glow**: Dewy skin look with minimal makeup\n- **Bold Eyes**: Smoky eyes or winged eyeliner for drama\n- **Nude Lips**: Soft, natural lip colors\n- **Glitter Accents**: Subtle shimmer for special touches\n- **Strong Brows**: Well-defined, groomed eyebrows\n\nChoose makeup that flatters your skin tone and personality.'
   }
 ]
 
