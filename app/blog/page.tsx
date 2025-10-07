@@ -41,18 +41,7 @@ const blogPostsData = [
     tags: ['holiday makeup', 'timeless beauty', 'celebration looks'],
     content: 'Holiday makeup should capture the joy of the season while looking effortlessly beautiful. Forget flashy trends and focus on what truly makes photos memorable.\n\n### Essential Rules\n\n- **Keep Makeup Natural**: Focus on enhancing natural beauty rather than creating art\n- **Prioritize Skin Health**: Hydrated skin photographs beautifully\n- **Color Coordination**: Lipstick should complement your outfit and occasion\n- ** appropriate Definition**: Eyes and brows should frame your face elegantly\n- **Comfort Over Trend**: Wear makeup you can enjoy all day/night long\n\nRemember, photos capture emotions more than trends. Let your natural glow shine through!'
   },
-  {
-    id: 4,
-    title: 'The Ultimate Guide to Lip Care',
-    excerpt: 'Transform dry, chapped lips into soft, kissable perfection. Complete guide from exfoliation to hydration for beautiful lips.',
-    image: 'https://images.unsplash.com/photo-1596463036319-331c911f44fb?w=800&h=500&fit=crop',
-    category: 'Skincare',
-    author: 'Sarah Johnson',
-    date: '2024-12-08',
-    readTime: '5 min read',
-    tags: ['lip care', 'exfoliation', 'hydration'],
-    content: 'Beautiful lips start with proper care. Kissable, smooth lips require regular attention throughout the year, but especially during harsh seasons.\n\n### Weekly Routine\n\n- **Exfoliate**: 2-3 times per week with gentle sugar-based scrubs\n- **Moisturize**: Daily application of nourishing balms\n- **Hydrate**: Drink plenty of water from within\n- **Protect**: Use SPF-protected products during sun exposure\n\n### Essential Ingredients\n\nLook for products containing:\n- Shea butter and cocoa butter\n- Vitamin E and hyaluronic acid\n- Natural oils like jojoba and argan\n- Beeswax for barrier protection\n\nConsistent care leads to naturally soft, healthy lips.'
-  },
+
   {
     id: 5,
     title: 'Understanding Your Skin Type and Its Care',

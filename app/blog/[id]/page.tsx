@@ -162,66 +162,7 @@ For perfect holiday makeup that lasts the entire celebration:
 
 Remember, photos capture emotions more than trends. Let your natural glow shine through while looking beautifully presentable.`
   },
-  {
-    id: 4,
-    title: 'The Ultimate Guide to Lip Care',
-    excerpt: 'Transform dry, chapped lips into soft, kissable perfection. Complete guide from exfoliation to hydration for beautiful lips.',
-    image: 'https://images.unsplash.com/photo-1596463036319-331c911f44fb?w=800&h=500&fit=crop',
-    category: 'Skincare',
-    author: 'Sarah Johnson',
-    date: '2024-12-08',
-    readTime: '5 min read',
-    tags: ['lip care', 'exfoliation', 'hydration'],
-    content: `Beautiful lips start with proper care. Kissable, smooth lips require regular attention throughout the year, but especially during harsh seasons when dryness and chapping become problematic.
 
-## Weekly Routine
-
-### Exfoliate (2-3 times/week)
-Gentle sugar-based scrubs remove dry skin and promote cell turnover. Avoid over-exfoliation which can cause irritation.
-
-### Moisturize Daily
-Nourishing balms and butters keep lips soft and supple. Apply regularly, especially before sleep and after meals.
-
-### Hydrate from Within
-Drink plenty of water for overall skin health, which includes lip hydration and softness.
-
-### Protect from Sun
-Use SPF-protected products during sun exposure to prevent premature aging and dryness.
-
-## Essential Ingredients
-
-Look for products containing:
-- **Shea Butter**: Intense moisture and healing properties
-- **Cocoa Butter**: Nourishing with chocolate-like aroma
-- **Vitamin E**: Antioxidant protection and healing
-- **Hyaluronic Acid**: Hydration and plumping effects
-- **Natural Oils**: Jojoba, argan, coconut for gentle nourishment
-- **Beeswax**: Creates protective barrier
-
-## Common Issues Solutions
-
-### Dry Lips
-Apply thick balms regularly and avoid licking which worsens dryness.
-
-### Chapped Corners
-Use targeted treatments with vitamin supplements and proper oral hygiene care.
-
-### Pigmentation
-Gentle exfoliation and sun protection fade dark spots gradually.
-
-### Allergic Reactions
-Patch test new products and avoid fragrances that may cause irritation.
-
-## Professional Treatments
-
-For severely dry or damaged lips, professional treatments at beauty parlours can provide:
-- Intensive hydrating masks
-- Gentle chemical exfoliation
-- Nourishing treatments
-- Long-term maintenance plans
-
-Consistent care leads to naturally soft, healthy lips that complement any makeup look.`
-  },
   {
     id: 5,
     title: 'Understanding Your Skin Type and Its Care',
