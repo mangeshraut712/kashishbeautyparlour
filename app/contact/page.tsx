@@ -220,10 +220,19 @@ export default function ContactPage() {
                 </div>
               </div>
 
-              {/* Map Placeholder */}
+              {/* Embedded Google Map */}
               <div className="mt-8">
-                <div className="bg-gray-200 rounded-lg h-64 flex items-center justify-center">
-                  <p className="text-gray-500">Google Maps will be embedded here</p>
+                <div className="rounded-lg overflow-hidden border">
+                  <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3781.5!2d73.7644!3d18.6298!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTjCsDM3JzQ3LjMiTiA3M8KwNDUnNTEuOCJF!5e0!3m2!1sen!2sin!4v1234567890"
+                    width="100%"
+                    height="400"
+                    style={{ border: 0 }}
+                    allowFullScreen
+                    loading="lazy"
+                    referrerPolicy="no-referrer-when-downgrade"
+                    title="Kashish Beauty Parlour Location"
+                  ></iframe>
                 </div>
               </div>
 
