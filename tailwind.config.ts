@@ -1,6 +1,9 @@
 import type { Config } from 'tailwindcss'
 
 const config: Config = {
+  // ensure custom classes like `border-border` are always generated
+  safelist: ['border-border'],
+
   content: [
     './pages/**/*.{js,ts,jsx,tsx,mdx}',
     './components/**/*.{js,ts,jsx,tsx,mdx}',
@@ -18,6 +21,12 @@ const config: Config = {
         muted: '#F8F9FA',
         border: '#E5E7EB',
       },
+
+      // expose a named border color so `border-border` exists
+      borderColor: (theme) => ({
+        DEFAULT: theme('colors.border') ?? '#E5E7EB',
+        border: theme('colors.border') ?? '#E5E7EB',
+      }),
 
       fontFamily: {
         heading: ['Playfair Display', 'serif'],
