@@ -88,7 +88,7 @@ export default function Testimonials() {
         {/* Google Reviews Link */}
         <div className="text-center mt-12">
           <a
-            href={`https://search.google.com/local/writereview?placeid=YOUR_PLACE_ID`}
+                href="https://www.google.com/maps/place/Kashish+Beauty+Parlour+And+Training+Center/@18.6139308,73.7686134,21z/data=!4m6!3m5!1s0x3bc2b991efb060f3:0x43b57b6b4ece4560!8m2!3d18.6140134!4d73.7685068!16s%2Fg%2F11f66rbt37?hl=en-US&entry=ttu&g_ep=EgoyMDI1MTAwMS4wIKXMDSoASAFQAw%3D%3D"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 text-primary hover:underline font-semibold"
