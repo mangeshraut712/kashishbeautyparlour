@@ -3,46 +3,50 @@
 import type { Metadata } from 'next'
 import { MapPin, Phone, Mail, Clock, Send, User, MessageSquare } from 'lucide-react'
 import { BUSINESS_INFO } from '@/lib/constants'
-import { useState } from 'react';
+import { useState } from 'react'
+
+function ContactForm() {
+  const [form, setForm] = useState({ name: '', email: '', phone: '', message: '' })
+  const [status, setStatus] = useState<'idle' | 'sending' | 'success' | 'error'>('idle')
+
+  async function handleSubmit(e: React.FormEvent) {
+    e.preventDefault()
+    setStatus('sending')
+    try {
+      const res = await fetch('/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(form),
+      })
+      if (res.ok) {
+        setStatus('success')
+        setForm({ name: '', email: '', phone: '', message: '' })
+      } else {
+        setStatus('error')
+      }
+    } catch (err) {
+      setStatus('error')
+    }
+  }
+
+  return (
+    <form onSubmit={handleSubmit} className="max-w-xl mx-auto space-y-4">
+      <input required value={form.name} onChange={e => setForm({ ...form, name: e.target.value })} placeholder="Name" className="w-full px-4 py-2 rounded-lg border" />
+      <input required type="email" value={form.email} onChange={e => setForm({ ...form, email: e.target.value })} placeholder="Email" className="w-full px-4 py-2 rounded-lg border" />
+      <input value={form.phone} onChange={e => setForm({ ...form, phone: e.target.value })} placeholder="Phone (optional)" className="w-full px-4 py-2 rounded-lg border" />
+      <textarea required value={form.message} onChange={e => setForm({ ...form, message: e.target.value })} placeholder="Message" className="w-full px-4 py-2 rounded-lg border h-32" />
+      <div className="flex items-center gap-3">
+        <button type="submit" className="px-6 py-2 bg-primary text-white rounded-full" disabled={status === 'sending'}>
+          {status === 'sending' ? 'Sending…' : 'Send Message'}
+        </button>
+        {status === 'success' && <span className="text-green-600">Sent — we will contact you soon.</span>}
+        {status === 'error' && <span className="text-red-600">Error sending. Try again.</span>}
+      </div>
+    </form>
+  )
+}
 
 export default function ContactPage() {
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
-
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    setIsSubmitting(true);
-    setSubmitStatus('idle');
-
-    try {
-      const formData = new FormData(e.currentTarget);
-      const data = {
-        firstName: formData.get('firstName'),
-        lastName: formData.get('lastName'),
-        phone: formData.get('phone'),
-        email: formData.get('email'),
-        service: formData.get('service'),
-        date: formData.get('preferredDate'),
-        message: formData.get('message'),
-      };
-
-      // For now, we'll just log the data to the console.
-      // Replace this with your preferred form handling logic (e.g., sending an email).
-      console.log('Form data:', data);
-
-      // Simulate a network request
-      await new Promise(resolve => setTimeout(resolve, 1000));
-
-      setSubmitStatus('success');
-      (e.target as HTMLFormElement).reset();
-
-    } catch (error) {
-      setSubmitStatus('error');
-      console.error('Network error:', error);
-    } finally {
-      setIsSubmitting(false);
-    }
-  };
 
   return (
     <div className="min-h-screen">
@@ -68,142 +72,7 @@ export default function ContactPage() {
               <h2 className="text-3xl font-heading font-bold text-gray-900 mb-6">
                 Book Your Appointment
               </h2>
-              <form onSubmit={handleSubmit} className="space-y-6">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">
-                      First Name *
-                    </label>
-                    <div className="relative">
-                      <User className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400" />
-                      <input
-                        type="text"
-                        name="firstName"
-                        required
-                        className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent"
-                        placeholder="Enter your first name"
-                      />
-                    </div>
-                  </div>
-                  <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">
-                      Last Name
-                    </label>
-                    <div className="relative">
-                      <User className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400" />
-                      <input
-                        type="text"
-                        name="lastName"
-                        className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent"
-                        placeholder="Enter your last name"
-                      />
-                    </div>
-                  </div>
-                </div>
-
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
-                    Phone Number *
-                  </label>
-                  <div className="relative">
-                    <Phone className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400" />
-                    <input
-                      type="tel"
-                      name="phone"
-                      required
-                      className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent"
-                      placeholder="Enter your phone number"
-                    />
-                  </div>
-                </div>
-
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
-                    Email Address
-                  </label>
-                  <div className="relative">
-                    <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400" />
-                    <input
-                      type="email"
-                      name="email"
-                      className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent"
-                      placeholder="Enter your email"
-                    />
-                  </div>
-                </div>
-
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
-                    Service Required *
-                  </label>
-                  <select
-                    name="service"
-                    required
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent"
-                  >
-                    <option value="">Select a service</option>
-                    <option value="bridal-makeup">Bridal Makeup</option>
-                    <option value="party-makeup">Party Makeup</option>
-                    <option value="hair-styling">Hair Styling</option>
-                    <option value="facial">Facial Treatment</option>
-                    <option value="nail-art">Manicure & Pedicure</option>
-                    <option value="spa">Spa & Massage</option>
-                    <option value="training">Beauty Training</option>
-                  </select>
-                </div>
-
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
-                    Preferred Date
-                  </label>
-                  <input
-                    type="date"
-                    name="preferredDate"
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent"
-                  />
-                </div>
-
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
-                    Message
-                  </label>
-                  <div className="relative">
-                    <MessageSquare className="absolute left-3 top-3 w-5 h-5 text-gray-400" />
-                    <textarea
-                      rows={4}
-                      name="message"
-                      className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent"
-                      placeholder="Tell us about your requirements..."
-                    ></textarea>
-                  </div>
-                </div>
-
-                <button
-                  type="submit"
-                  disabled={isSubmitting}
-                  className="w-full bg-primary hover:bg-primary/90 text-white font-semibold py-4 px-6 rounded-lg transition transform hover:scale-105 flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
-                >
-                  <Send className="w-5 h-5" />
-                  {isSubmitting ? 'Sending...' : 'Send Message'}
-                </button>
-
-                {/* Submit Status */}
-                {submitStatus === 'success' && (
-                  <div className="mt-4 p-4 bg-green-50 border border-green-200 rounded-lg">
-                    <p className="text-green-800 font-medium">
-                      ✅ Thank you! Your message has been sent successfully. We'll get back to you soon.
-                    </p>
-                  </div>
-                )}
-
-                {submitStatus === 'error' && (
-                  <div className="mt-4 p-4 bg-red-50 border border-red-200 rounded-lg">
-                    <p className="text-red-800 font-medium">
-                      ❌ Sorry, there was an error sending your message. Please try again or contact us directly.
-                    </p>
-                  </div>
-                )}
-              </form>
+              <ContactForm />
             </div>
 
             {/* Contact Information */}
