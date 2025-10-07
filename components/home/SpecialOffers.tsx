@@ -1,29 +1,13 @@
 import Link from 'next/link'
 import { Gift, Percent, Tag } from 'lucide-react'
+import { specialOffers } from '@/lib/data/specialOffers'
 
-const offers = [
-  {
-    icon: Gift,
-    title: 'First Time Special',
-    discount: '20% OFF',
-    description: 'Get 20% discount on your first visit',
-    color: 'from-purple-500 to-pink-500',
-  },
-  {
-    icon: Percent,
-    title: 'Bridal Package',
-    discount: 'Save ₹5000',
-    description: 'Complete bridal package with pre-bridal treatments',
-    color: 'from-primary to-yellow-500',
-  },
-  {
-    icon: Tag,
-    title: 'Refer & Earn',
-    discount: '₹500 Credit',
-    description: 'Refer a friend and both get ₹500 discount',
-    color: 'from-green-500 to-teal-500',
-  },
-]
+// Icon mapping for dynamic icon rendering
+const iconMap = {
+  Gift,
+  Percent,
+  Tag,
+}
 
 export default function SpecialOffers() {
   return (
@@ -50,8 +34,8 @@ export default function SpecialOffers() {
 
         {/* Offers Grid */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
-          {offers.map((offer, index) => {
-            const Icon = offer.icon
+          {specialOffers.map((offer, index) => {
+            const Icon = iconMap[offer.icon as keyof typeof iconMap]
             return (
               <div
                 key={index}
