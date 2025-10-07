@@ -4,18 +4,23 @@ import { db, firebaseAdmin } from '@/lib/firebaseAdmin'
 export async function POST(req: Request) {
   try {
     const body = await req.json()
-    const { name, email, phone, message } = body ?? {}
+    const { firstName, lastName, phone, email, service, date, message, source, status } = body ?? {}
 
-    if (!name || !email || !message) {
-      return NextResponse.json({ error: 'name, email and message are required' }, { status: 400 })
+    if (!firstName || !phone || !service || !message) {
+      return NextResponse.json({ error: 'firstName, phone, service and message are required' }, { status: 400 })
     }
 
     const docRef = await db.collection('contacts').add({
-      name: String(name),
-      email: String(email),
-      phone: phone ? String(phone) : null,
+      firstName: String(firstName),
+      lastName: lastName ? String(lastName) : '',
+      phone: String(phone),
+      email: email ? String(email) : '',
+      service: String(service),
+      preferredDate: date ? String(date) : null,
       message: String(message),
-      createdAt: firebaseAdmin.firestore.FieldValue.serverTimestamp(),
+      source: String(source) || 'website',
+      status: String(status) || 'new',
+      submittedAt: firebaseAdmin.firestore.FieldValue.serverTimestamp(),
     })
 
     return NextResponse.json({ ok: true, id: docRef.id }, { status: 201 })
