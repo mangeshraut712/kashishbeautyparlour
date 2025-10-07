@@ -309,25 +309,53 @@ export default function ContactPage() {
                     href={BUSINESS_INFO.social.instagram}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="bg-primary/10 w-12 h-12 rounded-lg flex items-center justify-center hover:bg-primary hover:text-white transition"
+                    className="bg-primary/10 w-12 h-12 rounded-lg flex items-center justify-center hover:bg-primary transition group"
+                    aria-label="Instagram"
                   >
-                    Instagram
+                    <svg
+                      className="w-6 h-6 text-gray-600 group-hover:text-white transition"
+                      fill="currentColor"
+                      viewBox="0 0 24 24"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path d="M12.017 0C8.396 0 7.917.016 6.656.09 5.393.164 4.542.416 3.767.79c-.77.378-1.424.912-2.084 1.578C.72 3.892.18 5.412.1 7.198c-.074 1.261-.09 1.74-.09 5.362 0 3.62.016 4.1.09 5.36.076 1.262.356 2.114.73 2.89.378.77.912 1.42 1.578 2.086.664.664 2.18 1.204 3.708 1.284 1.26.076 1.74.092 5.36.092 3.62 0 4.1-.016 5.36-.092 1.262-.076 2.114-.356 2.89-.73.77-.378 1.42-.912 2.086-1.578.664-.664 1.204-2.18 1.284-3.708.076-1.26.092-1.74.092-5.36 0-3.62-.016-4.1-.092-5.36-.076-1.262-.356-2.114-.73-2.89-.378-.77-.912-1.42-1.578-2.086C18.11.912 16.59.372 15.124.1 13.864.016 13.385 0 9.763 0H12.017zM8.9 2.04c3.51 0 3.bc.017 4.51.077 1.26.064 2.08.356 2.58.594.608.29 1.04.64 1.496 1.096.456.456.806.888 1.096 1.496.238.5.53 1.32.594 2.58.06 1.1.077 1.51.077 4.51s-.017 3.41-.077 4.51c-.064 1.26-.356 2.08-.594 2.58-.29.608-.64 1.04-1.096 1.496-.456.456-.888.806-1.496 1.096-.5.238-1.32.53-2.58.594-1.1.06-1.51.077-4.51.077s-3.41-.017-4.51-.077c-1.26-.064-2.08-.356-2.58-.594-.608-.29-1.04-.64-1.496-1.096C2.22 19.07 1.87 18.64 1.582 18.03c-.238-.5-.53-1.32-.594-2.58C.927 14.25.91 13.85.91 10.83s.017-3.41.077-4.51c.064-1.26.356-2.08.594-2.58.29-.608.64-1.04 1.096-1.496.456-.456.888-.806 1.496-1.096.5-.238 1.32-.53 2.58-.594C5.39.057 5.79.04 8.9.04zm7.03 2.04c-.728 0-1.32.592-1.32 1.32s.592 1.32 1.32 1.32 1.32-.592 1.32-1.32-.592-1.32-1.32-1.32zm3.86 3.86c-.144.144-.336.216-.536.216-.2 0-.392-.072-.536-.216-.288-.288-.288-.756 0-1.044.144-.144.336-.216.536-.216.2 0 .392.072.536.216.288.288.288.756 0 1.044z"/>
+                    </svg>
                   </a>
                   <a
                     href={BUSINESS_INFO.social.facebook}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="bg-primary/10 w-12 h-12 rounded-lg flex items-center justify-center hover:bg-primary hover:text-white transition"
+                    className="bg-primary/10 w-12 h-12 rounded-lg flex items-center justify-center hover:bg-primary transition group"
+                    aria-label="Facebook"
                   >
-                    Facebook
+                    <svg
+                      className="w-6 h-6 text-gray-600 group-hover:text-white transition"
+                      fill="currentColor"
+                      viewBox="0 0 24 24"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                    </svg>
                   </a>
                   <a
-                    href={BUSINESS_INFO.social.justdial}
+                    href="https://www.justdial.com/Pune/Kashish-Beauty-Parlours-And-Training-Center-Near-Devika-Pure-Veg-Behind-Maharaja-Hotel-Thergaon/020PXX20-XX20-160108112320-V8L2_BZDET"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="bg-primary/10 w-12 h-12 rounded-lg flex items-center justify-center hover:bg-primary hover:text-white transition"
+                    className="bg-primary/10 w-12 h-12 rounded-lg flex items-center justify-center hover:bg-primary transition group"
+                    aria-label="JustDial"
                   >
-                    JustDial
+                    <svg
+                      className="w-6 h-6 text-gray-600 group-hover:text-white transition"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                      xmlns="http://www.w3.org/2000/svg"
+                      strokeWidth="2"
+                    >
+                      <rect x="2" y="3" width="20" height="14" rx="2" ry="2"/>
+                      <line x1="8" y1="21" x2="16" y2="21"/>
+                      <line x1="12" y1="17" x2="12" y2="21"/>
+                    </svg>
                   </a>
                 </div>
               </div>
