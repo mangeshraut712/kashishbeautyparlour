@@ -47,13 +47,20 @@ export default function Header() {
         {/* Main navigation */}
         <nav className="flex items-center justify-between py-4">
           {/* Logo */}
-          <Link href="/" className="flex flex-col">
-            <span className="text-2xl md:text-3xl font-heading font-bold text-primary">
-              Kashish
-            </span>
-            <span className="text-xs md:text-sm text-gray-600 -mt-1">
-              Beauty Parlour
-            </span>
+          <Link href="/" className="flex items-center gap-3">
+            <img
+              src="/logo.png"
+              alt="Kashish Beauty Parlour Logo"
+              className="h-12 w-auto"
+            />
+            <div className="flex flex-col">
+              <span className="text-2xl md:text-3xl font-heading font-bold text-primary">
+                Kashish
+              </span>
+              <span className="text-xs md:text-sm text-gray-600 -mt-1">
+                Beauty Parlour
+              </span>
+            </div>
           </Link>
 
           {/* Desktop Navigation */}
