@@ -1,14 +1,8 @@
 'use client'
 
-import type { Metadata } from 'next'
 import Link from 'next/link'
 import { Calendar, User, ArrowRight, Tag } from 'lucide-react'
 import { useState } from 'react'
-
-export const metadata: Metadata = {
-  title: 'Beauty Blog | Kashish Beauty Parlour',
-  description: 'Read our beauty tips, trends, and expert advice on makeup, skincare, hair care, and beauty services at Kashish Beauty Parlour.',
-}
 
 const blogPostsData = [
   {
