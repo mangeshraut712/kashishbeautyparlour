@@ -1,72 +1,99 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
-import { Award, Clock, IndianRupee, BookOpen, Users, Trophy } from 'lucide-react'
+import { GraduationCap, Clock, Users, Award, CheckCircle } from 'lucide-react'
 
 export const metadata: Metadata = {
-  title: 'Beauty Training Courses | Kashish Beauty Parlour',
-  description: 'Professional beauty training courses in Pune. Learn bridal makeup, hair styling, skin care, and more. Get certified and start your career in beauty industry.',
+  title: 'Beauty Training | Kashish Beauty Parlour',
+  description: 'Professional beauty training courses at Kashish Beauty Parlour. Learn makeup artistry, hair styling, and beauty services with certified trainers.',
 }
 
 const courses = [
   {
-    id: 1,
-    title: 'Professional Makeup Artist Course',
+    id: 'makeup-artist',
+    title: 'Professional Makeup Artist',
     duration: '3 Months',
-    fee: '₹35,000',
-    description: 'Complete makeup training including bridal, party, HD, and airbrush makeup techniques.',
-    topics: [
-      'Basic to advanced makeup techniques',
-      'Bridal makeup specialization',
-      'HD & Airbrush makeup',
-      'Color theory and face shapes',
-      'Product knowledge',
-      'Client handling',
+    price: '₹25,000',
+    schedule: 'Weekdays & Weekends',
+    description: 'Complete makeup course covering all aspects from basics to advanced techniques.',
+    features: [
+      'Basic makeup techniques',
+      'Advanced makeup application',
+      'Bridal makeup mastery',
+      'Product knowledge training',
+      'Professional tools & equipment',
+      'Hands-on practice sessions',
     ],
   },
   {
-    id: 2,
-    title: 'Hair Styling & Treatment Course',
+    id: 'hair-stylist',
+    title: 'Professional Hair Styling',
     duration: '2 Months',
-    fee: '₹28,000',
+    price: '₹15,000',
+    schedule: 'Weekdays & Weekends',
     description: 'Learn professional hair cutting, styling, coloring, and treatment techniques.',
-    topics: [
-      'Hair cutting techniques',
-      'Hair styling and updos',
-      'Hair coloring and highlights',
-      'Keratin and other treatments',
-      'Hair spa procedures',
-      'Bridal hairstyling',
+    features: [
+      'Hair cutting & styling basics',
+      'Advanced styling techniques',
+      'Hair coloring & highlighting',
+      'Chemical treatments',
+      'Hair care & treatment',
+      'Professional tools usage',
     ],
   },
   {
-    id: 3,
-    title: 'Skin Care & Facial Course',
+    id: 'beauty-therapist',
+    title: 'Beauty Therapy Course',
+    duration: '4 Months',
+    price: '₹35,000',
+    schedule: 'Weekdays',
+    description: 'Comprehensive beauty therapy training covering facials, massages, and body treatments.',
+    features: [
+      'Facial & skin treatments',
+      'Body massage techniques',
+      'Nail care & pedicure',
+      'Waxing & threading',
+      'Chemical peels & exfoliation',
+      'Spa treatments & aromatherapy',
+    ],
+  },
+  {
+    id: 'nail-technician',
+    title: 'Nail Technician Course',
     duration: '1.5 Months',
-    fee: '₹22,000',
-    description: 'Master various facial techniques, skin analysis, and treatment procedures.',
-    topics: [
-      'Skin analysis and types',
-      'Various facial techniques',
-      'Anti-aging treatments',
-      'Acne and pigmentation care',
-      'Massage techniques',
-      'Product formulations',
+    price: '₹12,000',
+    schedule: 'Weekends',
+    description: 'Master nail art, extensions, and professional nail care services.',
+    features: [
+      'Nail anatomy & health',
+      'Nail art techniques',
+      'Gel polish application',
+      'Nail extensions',
+      'French & American manicure',
+      'Client consultation',
     ],
   },
+]
+
+const benefits = [
   {
-    id: 4,
-    title: 'Complete Beauty Course',
-    duration: '6 Months',
-    fee: '₹65,000',
-    description: 'Comprehensive training covering all aspects of beauty services - makeup, hair, skin, and nails.',
-    topics: [
-      'All makeup techniques',
-      'Hair cutting, styling & treatments',
-      'Facial and skin care',
-      'Manicure, pedicure, nail art',
-      'Spa and massage',
-      'Business management',
-    ],
+    icon: Award,
+    title: 'Certified Training',
+    description: 'Get certified with recognized beauty qualifications',
+  },
+  {
+    icon: Users,
+    title: 'Small Batch Size',
+    description: 'Personalized attention with small batches of students',
+  },
+  {
+    icon: Clock,
+    title: 'Flexible Schedule',
+    description: 'Weekend and weekday batches available',
+  },
+  {
+    icon: CheckCircle,
+    title: 'Job Assistance',
+    description: 'Career guidance and placement assistance provided',
   },
 ]
 
@@ -78,70 +105,52 @@ export default function TrainingPage() {
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center">
             <h1 className="text-4xl md:text-5xl font-heading font-bold text-gray-900 mb-6">
-              Professional Beauty Training Center
+              Beauty Training Center
             </h1>
-            <p className="text-lg text-gray-600 mb-8">
-              Learn from certified professionals and start your rewarding career in the beauty industry
+            <p className="text-lg text-gray-600">
+              Learn professional beauty skills from certified experts and build your career in the beauty industry
             </p>
-            <div className="flex flex-wrap justify-center gap-8">
-              <div className="text-center">
-                <div className="text-3xl font-bold text-primary">500+</div>
-                <div className="text-gray-600">Students Trained</div>
-              </div>
-              <div className="text-center">
-                <div className="text-3xl font-bold text-primary">10+</div>
-                <div className="text-gray-600">Years Experience</div>
-              </div>
-              <div className="text-center">
-                <div className="text-3xl font-bold text-primary">100%</div>
-                <div className="text-gray-600">Certified</div>
-              </div>
-            </div>
           </div>
         </div>
       </section>
 
-      {/* Why Choose Us */}
+      {/* Why Choose Our Training */}
       <section className="py-20 bg-white">
         <div className="container mx-auto px-4">
           <div className="text-center max-w-3xl mx-auto mb-16">
             <h2 className="text-3xl md:text-4xl font-heading font-bold text-gray-900 mb-4">
-              Why Learn With Us?
+              Why Choose Our Training?
             </h2>
             <p className="text-gray-600 text-lg">
-              Get industry-ready skills with hands-on training and certified courses
+              Get trained by industry professionals with practical experience and theoretical knowledge
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="text-center p-6">
-              <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
-                <Award className="w-8 h-8 text-primary" />
-              </div>
-              <h3 className="text-xl font-heading font-bold mb-2">Certified Training</h3>
-              <p className="text-gray-600">Get recognized certification upon course completion</p>
-            </div>
-
-            <div className="text-center p-6">
-              <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
-                <Users className="w-8 h-8 text-primary" />
-              </div>
-              <h3 className="text-xl font-heading font-bold mb-2">Small Batches</h3>
-              <p className="text-gray-600">Limited students per batch for personalized attention</p>
-            </div>
-
-            <div className="text-center p-6">
-              <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
-                <Trophy className="w-8 h-8 text-primary" />
-              </div>
-              <h3 className="text-xl font-heading font-bold mb-2">Hands-on Practice</h3>
-              <p className="text-gray-600">Learn by doing with real clients and live sessions</p>
-            </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {benefits.map((benefit, index) => {
+              const Icon = benefit.icon
+              return (
+                <div
+                  key={index}
+                  className="text-center p-6 rounded-xl hover:bg-gray-50 transition"
+                >
+                  <div className="w-16 h-16 bg-primary/10 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                    <Icon className="w-8 h-8 text-primary" />
+                  </div>
+                  <h3 className="text-xl font-heading font-bold text-gray-900 mb-2">
+                    {benefit.title}
+                  </h3>
+                  <p className="text-gray-600">
+                    {benefit.description}
+                  </p>
+                </div>
+              )
+            })}
           </div>
         </div>
       </section>
 
-      {/* Courses */}
+      {/* Courses Section */}
       <section className="py-20 bg-gray-50">
         <div className="container mx-auto px-4">
           <div className="text-center max-w-3xl mx-auto mb-16">
@@ -149,135 +158,121 @@ export default function TrainingPage() {
               Our Training Courses
             </h2>
             <p className="text-gray-600 text-lg">
-              Choose from our range of professional beauty courses
+              Choose from our comprehensive beauty training programs designed for aspiring professionals
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {courses.map((course) => (
               <div
                 key={course.id}
-                className="bg-white rounded-2xl shadow-lg hover:shadow-xl transition p-8"
+                className="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition group"
               >
-                <h3 className="text-2xl font-heading font-bold text-gray-900 mb-4">
-                  {course.title}
-                </h3>
-                <p className="text-gray-600 mb-6">{course.description}</p>
-
-                <div className="flex items-center gap-6 mb-6 pb-6 border-b border-gray-200">
-                  <div className="flex items-center gap-2">
-                    <Clock className="w-5 h-5 text-primary" />
-                    <span className="font-semibold">{course.duration}</span>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <IndianRupee className="w-5 h-5 text-primary" />
-                    <span className="font-semibold">{course.fee}</span>
+                {/* Header */}
+                <div className="bg-primary text-white p-6">
+                  <h3 className="text-xl font-heading font-bold mb-2">
+                    {course.title}
+                  </h3>
+                  <div className="flex items-center gap-4 text-sm">
+                    <div className="flex items-center gap-2">
+                      <Clock className="w-4 h-4" />
+                      {course.duration}
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <Users className="w-4 h-4" />
+                      {course.schedule}
+                    </div>
                   </div>
                 </div>
 
-                <div className="mb-6">
-                  <h4 className="font-semibold text-gray-900 mb-3 flex items-center gap-2">
-                    <BookOpen className="w-5 h-5 text-primary" />
-                    What You'll Learn:
-                  </h4>
-                  <ul className="space-y-2">
-                    {course.topics.map((topic, index) => (
-                      <li key={index} className="flex items-start gap-2 text-gray-600">
-                        <span className="text-primary mt-1">✓</span>
-                        {topic}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
+                {/* Content */}
+                <div className="p-6">
+                  <div className="flex items-center justify-between mb-4">
+                    <div className="text-primary font-bold text-2xl">
+                      {course.price}
+                    </div>
+                    <GraduationCap className="w-8 h-8 text-primary" />
+                  </div>
 
-                <Link
-                  href="/contact#booking"
-                  className="block w-full text-center bg-primary hover:bg-primary/90 text-white px-6 py-3 rounded-full font-semibold transition"
-                >
-                  Enroll Now
-                </Link>
+                  <p className="text-gray-600 mb-6">
+                    {course.description}
+                  </p>
+
+                  {/* Features */}
+                  <div className="mb-6">
+                    <h4 className="font-semibold text-gray-900 mb-3">What You'll Learn:</h4>
+                    <ul className="space-y-2">
+                      {course.features.map((feature, index) => (
+                        <li key={index} className="flex items-center gap-2">
+                          <CheckCircle className="w-4 h-4 text-green-500 flex-shrink-0" />
+                          <span className="text-gray-600 text-sm">{feature}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+
+                  <Link
+                    href="/contact#booking"
+                    className="w-full bg-primary hover:bg-primary/90 text-white py-3 rounded-xl font-semibold transition flex items-center justify-center"
+                  >
+                    Enroll Now
+                  </Link>
+                </div>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Admission Process */}
-      <section className="py-20 bg-white">
-        <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto">
-            <h2 className="text-3xl md:text-4xl font-heading font-bold text-gray-900 mb-12 text-center">
-              Admission Process
-            </h2>
-
-            <div className="space-y-6">
-              <div className="flex gap-4">
-                <div className="flex-shrink-0 w-10 h-10 bg-primary rounded-full flex items-center justify-center text-white font-bold">
-                  1
-                </div>
-                <div>
-                  <h3 className="text-xl font-semibold text-gray-900 mb-2">Inquiry & Counseling</h3>
-                  <p className="text-gray-600">
-                    Contact us or visit our center to learn about courses and career opportunities
-                  </p>
-                </div>
-              </div>
-
-              <div className="flex gap-4">
-                <div className="flex-shrink-0 w-10 h-10 bg-primary rounded-full flex items-center justify-center text-white font-bold">
-                  2
-                </div>
-                <div>
-                  <h3 className="text-xl font-semibold text-gray-900 mb-2">Registration</h3>
-                  <p className="text-gray-600">
-                    Fill out the admission form and submit required documents
-                  </p>
-                </div>
-              </div>
-
-              <div className="flex gap-4">
-                <div className="flex-shrink-0 w-10 h-10 bg-primary rounded-full flex items-center justify-center text-white font-bold">
-                  3
-                </div>
-                <div>
-                  <h3 className="text-xl font-semibold text-gray-900 mb-2">Fee Payment</h3>
-                  <p className="text-gray-600">
-                    Pay course fees (installment options available)
-                  </p>
-                </div>
-              </div>
-
-              <div className="flex gap-4">
-                <div className="flex-shrink-0 w-10 h-10 bg-primary rounded-full flex items-center justify-center text-white font-bold">
-                  4
-                </div>
-                <div>
-                  <h3 className="text-xl font-semibold text-gray-900 mb-2">Start Learning</h3>
-                  <p className="text-gray-600">
-                    Begin your journey with scheduled classes and hands-on training
-                  </p>
-                </div>
-              </div>
-            </div>
+      {/* Call to Action */}
+      <section className="py-20 bg-gradient-to-br from-primary to-accent text-white">
+        <div className="container mx-auto px-4 text-center">
+          <h2 className="text-3xl md:text-4xl font-heading font-bold mb-6">
+            Start Your Beautiful Career Journey
+          </h2>
+          <p className="text-lg mb-8 max-w-2xl mx-auto opacity-90">
+            Join thousands of successful beauty professionals who started their career with our training
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Link
+              href="/contact#booking"
+              className="inline-flex items-center justify-center px-8 py-4 bg-white text-primary hover:bg-gray-100 rounded-full font-semibold transition transform hover:scale-105"
+            >
+              Enroll in Course
+            </Link>
+            <Link
+              href="/contact"
+              className="inline-flex items-center justify-center px-8 py-4 border-2 border-white text-white hover:bg-white hover:text-primary rounded-full font-semibold transition transform hover:scale-105"
+            >
+              Get More Information
+            </Link>
           </div>
         </div>
       </section>
 
-      {/* CTA */}
-      <section className="py-20 bg-gradient-to-br from-primary to-accent text-white">
+      {/* Contact Info */}
+      <section className="py-16 bg-white">
         <div className="container mx-auto px-4 text-center">
-          <h2 className="text-3xl md:text-4xl font-heading font-bold mb-6">
-            Start Your Beauty Career Today
+          <h2 className="text-3xl font-heading font-bold text-gray-900 mb-6">
+            Ready to Begin Your Training?
           </h2>
-          <p className="text-lg mb-8 max-w-2xl mx-auto opacity-90">
-            Join hundreds of successful students who started their journey with us
+          <p className="text-gray-600 mb-8">
+            Contact us today to learn more about our courses and admission process
           </p>
-          <Link
-            href="/contact#booking"
-            className="inline-flex items-center justify-center px-8 py-4 bg-white text-primary hover:bg-gray-100 rounded-full font-semibold transition transform hover:scale-105"
-          >
-            Enroll Now
-          </Link>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <a
+              href="tel:+919876543210"
+              className="inline-flex items-center justify-center px-6 py-3 bg-primary text-white rounded-full font-medium hover:bg-primary/90 transition"
+            >
+              Call Now
+            </a>
+            <Link
+              href="/contact"
+              className="inline-flex items-center justify-center px-6 py-3 border border-primary text-primary hover:bg-primary hover:text-white rounded-full font-medium transition"
+            >
+              Send Message
+            </Link>
+          </div>
         </div>
       </section>
     </div>

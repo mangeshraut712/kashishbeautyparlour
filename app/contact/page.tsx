@@ -1,104 +1,213 @@
-'use client'
-
 import type { Metadata } from 'next'
-import { MapPin, Phone, Mail, Clock, Send } from 'lucide-react'
+import { MapPin, Phone, Mail, Clock, Send, User, MessageSquare } from 'lucide-react'
 import { BUSINESS_INFO } from '@/lib/constants'
-import { useState } from 'react'
+
+export const metadata: Metadata = {
+  title: 'Contact Us | Kashish Beauty Parlour',
+  description: 'Get in touch with Kashish Beauty Parlour for appointments, inquiries, and consultations. Located in Pune, Maharashtra.',
+}
 
 export default function ContactPage() {
-  const [formData, setFormData] = useState({
-    name: '',
-    phone: '',
-    email: '',
-    service: '',
-    date: '',
-    time: '',
-    message: '',
-  })
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault()
-    
-    // Create WhatsApp message
-    const message = `
-🌸 *New Appointment Request* 🌸
-
-📛 Name: ${formData.name}
-📱 Phone: ${formData.phone}
-📧 Email: ${formData.email}
-💅 Service: ${formData.service}
-📅 Date: ${formData.date}
-⏰ Time: ${formData.time}
-💬 Message: ${formData.message || 'N/A'}
-    `.trim()
-
-    const whatsappUrl = `https://wa.me/${BUSINESS_INFO.contact.whatsapp}?text=${encodeURIComponent(message)}`
-    window.open(whatsappUrl, '_blank')
-  }
-
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
       <section className="bg-gradient-to-br from-pink-50 to-purple-50 py-20">
         <div className="container mx-auto px-4">
-          <div className="max-w-3xl mx-auto text-center">
+          <div className="max-w-4xl mx-auto text-center">
             <h1 className="text-4xl md:text-5xl font-heading font-bold text-gray-900 mb-6">
-              Get in Touch
+              Contact Us
             </h1>
             <p className="text-lg text-gray-600">
-              Book your appointment or reach out to us for any queries
+              Get in touch for appointments, consultations, or any beauty-related queries
             </p>
           </div>
         </div>
       </section>
 
-      {/* Contact Section */}
       <section className="py-20 bg-white">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+            {/* Contact Form */}
+            <div>
+              <h2 className="text-3xl font-heading font-bold text-gray-900 mb-6">
+                Book Your Appointment
+              </h2>
+              <form className="space-y-6">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-2">
+                      First Name *
+                    </label>
+                    <div className="relative">
+                      <User className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400" />
+                      <input
+                        type="text"
+                        required
+                        className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent"
+                        placeholder="Enter your first name"
+                      />
+                    </div>
+                  </div>
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-2">
+                      Last Name
+                    </label>
+                    <div className="relative">
+                      <User className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400" />
+                      <input
+                        type="text"
+                        className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent"
+                        placeholder="Enter your last name"
+                      />
+                    </div>
+                  </div>
+                </div>
+
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                    Phone Number *
+                  </label>
+                  <div className="relative">
+                    <Phone className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400" />
+                    <input
+                      type="tel"
+                      required
+                      className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent"
+                      placeholder="Enter your phone number"
+                    />
+                  </div>
+                </div>
+
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                    Email Address
+                  </label>
+                  <div className="relative">
+                    <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400" />
+                    <input
+                      type="email"
+                      className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent"
+                      placeholder="Enter your email"
+                    />
+                  </div>
+                </div>
+
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                    Service Required *
+                  </label>
+                  <select
+                    required
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent"
+                  >
+                    <option value="">Select a service</option>
+                    <option value="bridal-makeup">Bridal Makeup</option>
+                    <option value="party-makeup">Party Makeup</option>
+                    <option value="hair-styling">Hair Styling</option>
+                    <option value="facial">Facial Treatment</option>
+                    <option value="nail-art">Manicure & Pedicure</option>
+                    <option value="spa">Spa & Massage</option>
+                    <option value="training">Beauty Training</option>
+                  </select>
+                </div>
+
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                    Preferred Date
+                  </label>
+                  <input
+                    type="date"
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent"
+                  />
+                </div>
+
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                    Message
+                  </label>
+                  <div className="relative">
+                    <MessageSquare className="absolute left-3 top-3 w-5 h-5 text-gray-400" />
+                    <textarea
+                      rows={4}
+                      className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent"
+                      placeholder="Tell us about your requirements..."
+                    ></textarea>
+                  </div>
+                </div>
+
+                <button
+                  type="submit"
+                  className="w-full bg-primary hover:bg-primary/90 text-white font-semibold py-4 px-6 rounded-lg transition transform hover:scale-105 flex items-center justify-center gap-2"
+                >
+                  <Send className="w-5 h-5" />
+                  Send Message
+                </button>
+              </form>
+            </div>
+
             {/* Contact Information */}
             <div>
-              <h2 className="text-3xl font-heading font-bold text-gray-900 mb-8">
-                Contact Information
+              <h2 className="text-3xl font-heading font-bold text-gray-900 mb-6">
+                Get In Touch
               </h2>
 
-              <div className="space-y-6">
-                <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center flex-shrink-0">
+              <div className="space-y-8">
+                {/* Address */}
+                <div className="flex gap-4">
+                  <div className="bg-primary/10 w-12 h-12 rounded-lg flex items-center justify-center flex-shrink-0">
                     <MapPin className="w-6 h-6 text-primary" />
                   </div>
                   <div>
                     <h3 className="font-semibold text-gray-900 mb-1">Address</h3>
-                    <p className="text-gray-600">{BUSINESS_INFO.address.full}</p>
+                    <p className="text-gray-600">
+                      {BUSINESS_INFO.address.full}
+                    </p>
+                    <a
+                      href={BUSINESS_INFO.maps.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-primary hover:underline text-sm"
+                    >
+                      View on Google Maps
+                    </a>
                   </div>
                 </div>
 
-                <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center flex-shrink-0">
+                {/* Phone */}
+                <div className="flex gap-4">
+                  <div className="bg-primary/10 w-12 h-12 rounded-lg flex items-center justify-center flex-shrink-0">
                     <Phone className="w-6 h-6 text-primary" />
                   </div>
                   <div>
                     <h3 className="font-semibold text-gray-900 mb-1">Phone</h3>
-                    <a href={`tel:${BUSINESS_INFO.contact.phone}`} className="text-gray-600 hover:text-primary">
+                    <a
+                      href={`tel:${BUSINESS_INFO.contact.phone}`}
+                      className="text-gray-600 hover:text-primary transition"
+                    >
                       {BUSINESS_INFO.contact.phone}
                     </a>
                   </div>
                 </div>
 
-                <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center flex-shrink-0">
+                {/* Email */}
+                <div className="flex gap-4">
+                  <div className="bg-primary/10 w-12 h-12 rounded-lg flex items-center justify-center flex-shrink-0">
                     <Mail className="w-6 h-6 text-primary" />
                   </div>
                   <div>
                     <h3 className="font-semibold text-gray-900 mb-1">Email</h3>
-                    <a href={`mailto:${BUSINESS_INFO.contact.email}`} className="text-gray-600 hover:text-primary">
+                    <a
+                      href={`mailto:${BUSINESS_INFO.contact.email}`}
+                      className="text-gray-600 hover:text-primary transition"
+                    >
                       {BUSINESS_INFO.contact.email}
                     </a>
                   </div>
                 </div>
 
-                <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center flex-shrink-0">
+                {/* Hours */}
+                <div className="flex gap-4">
+                  <div className="bg-primary/10 w-12 h-12 rounded-lg flex items-center justify-center flex-shrink-0">
                     <Clock className="w-6 h-6 text-primary" />
                   </div>
                   <div>
@@ -111,145 +220,42 @@ export default function ContactPage() {
                 </div>
               </div>
 
-              {/* Map */}
-              <div className="mt-8 rounded-2xl overflow-hidden shadow-lg">
-                <iframe
-                  src={BUSINESS_INFO.maps.embed}
-                  width="100%"
-                  height="300"
-                  style={{ border: 0 }}
-                  allowFullScreen
-                  loading="lazy"
-                  referrerPolicy="no-referrer-when-downgrade"
-                  title="Kashish Beauty Parlour Location"
-                ></iframe>
+              {/* Map Placeholder */}
+              <div className="mt-8">
+                <div className="bg-gray-200 rounded-lg h-64 flex items-center justify-center">
+                  <p className="text-gray-500">Google Maps will be embedded here</p>
+                </div>
               </div>
-            </div>
 
-            {/* Booking Form */}
-            <div id="booking">
-              <div className="bg-gradient-to-br from-pink-50 to-purple-50 p-8 rounded-2xl">
-                <h2 className="text-3xl font-heading font-bold text-gray-900 mb-6">
-                  Book an Appointment
-                </h2>
-
-                <form onSubmit={handleSubmit} className="space-y-4">
-                  <div>
-                    <label className="block text-gray-700 font-medium mb-2">
-                      Your Name *
-                    </label>
-                    <input
-                      type="text"
-                      required
-                      value={formData.name}
-                      onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                      className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition"
-                      placeholder="Enter your name"
-                    />
-                  </div>
-
-                  <div>
-                    <label className="block text-gray-700 font-medium mb-2">
-                      Phone Number *
-                    </label>
-                    <input
-                      type="tel"
-                      required
-                      value={formData.phone}
-                      onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                      className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition"
-                      placeholder="Enter your phone number"
-                    />
-                  </div>
-
-                  <div>
-                    <label className="block text-gray-700 font-medium mb-2">
-                      Email
-                    </label>
-                    <input
-                      type="email"
-                      value={formData.email}
-                      onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                      className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition"
-                      placeholder="Enter your email"
-                    />
-                  </div>
-
-                  <div>
-                    <label className="block text-gray-700 font-medium mb-2">
-                      Service *
-                    </label>
-                    <select
-                      required
-                      value={formData.service}
-                      onChange={(e) => setFormData({ ...formData, service: e.target.value })}
-                      className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition"
-                    >
-                      <option value="">Select a service</option>
-                      <option value="Bridal Makeup">Bridal Makeup</option>
-                      <option value="Party Makeup">Party Makeup</option>
-                      <option value="Hair Styling">Hair Styling</option>
-                      <option value="Hair Coloring">Hair Coloring</option>
-                      <option value="Facial Treatment">Facial Treatment</option>
-                      <option value="Manicure & Pedicure">Manicure & Pedicure</option>
-                      <option value="Spa & Massage">Spa & Massage</option>
-                      <option value="Other">Other</option>
-                    </select>
-                  </div>
-
-                  <div className="grid grid-cols-2 gap-4">
-                    <div>
-                      <label className="block text-gray-700 font-medium mb-2">
-                        Preferred Date *
-                      </label>
-                      <input
-                        type="date"
-                        required
-                        value={formData.date}
-                        onChange={(e) => setFormData({ ...formData, date: e.target.value })}
-                        className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition"
-                      />
-                    </div>
-
-                    <div>
-                      <label className="block text-gray-700 font-medium mb-2">
-                        Preferred Time *
-                      </label>
-                      <input
-                        type="time"
-                        required
-                        value={formData.time}
-                        onChange={(e) => setFormData({ ...formData, time: e.target.value })}
-                        className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition"
-                      />
-                    </div>
-                  </div>
-
-                  <div>
-                    <label className="block text-gray-700 font-medium mb-2">
-                      Additional Message
-                    </label>
-                    <textarea
-                      rows={4}
-                      value={formData.message}
-                      onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                      className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition resize-none"
-                      placeholder="Any special requests or queries?"
-                    />
-                  </div>
-
-                  <button
-                    type="submit"
-                    className="w-full bg-primary hover:bg-primary/90 text-white px-6 py-4 rounded-lg font-semibold transition transform hover:scale-105 flex items-center justify-center gap-2"
+              {/* Social Media */}
+              <div className="mt-8">
+                <h3 className="font-semibold text-gray-900 mb-4">Follow Us</h3>
+                <div className="flex gap-4">
+                  <a
+                    href={BUSINESS_INFO.social.instagram}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="bg-primary/10 w-12 h-12 rounded-lg flex items-center justify-center hover:bg-primary hover:text-white transition"
                   >
-                    <Send className="w-5 h-5" />
-                    Book via WhatsApp
-                  </button>
-
-                  <p className="text-sm text-gray-600 text-center">
-                    Your appointment details will be sent via WhatsApp for confirmation
-                  </p>
-                </form>
+                    Instagram
+                  </a>
+                  <a
+                    href={BUSINESS_INFO.social.facebook}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="bg-primary/10 w-12 h-12 rounded-lg flex items-center justify-center hover:bg-primary hover:text-white transition"
+                  >
+                    Facebook
+                  </a>
+                  <a
+                    href={BUSINESS_INFO.social.justdial}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="bg-primary/10 w-12 h-12 rounded-lg flex items-center justify-center hover:bg-primary hover:text-white transition"
+                  >
+                    JustDial
+                  </a>
+                </div>
               </div>
             </div>
           </div>

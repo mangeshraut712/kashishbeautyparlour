@@ -1,68 +1,77 @@
 import type { Metadata } from 'next'
+import { Image as ImageIcon } from 'lucide-react'
 
 export const metadata: Metadata = {
   title: 'Gallery | Kashish Beauty Parlour',
-  description: 'View our portfolio of beautiful transformations - bridal makeup, hair styling, facials, and more beauty services in Pune.',
+  description: 'Browse our portfolio of beauty transformations, bridal makeovers, hair styling, and beauty services at Kashish Beauty Parlour.',
 }
+
+const galleryCategories = [
+  'All',
+  'Bridal',
+  'Makeup',
+  'Hair',
+  'Facial',
+  'Nails',
+  'Spa',
+]
 
 const galleryImages = [
   {
     id: 1,
-    category: 'Bridal Makeup',
-    image: 'https://images.unsplash.com/photo-1487412947147-5cebf100ffc2?w=800',
-    title: 'Traditional Bridal Look',
+    src: 'https://images.unsplash.com/photo-1516975080664-ed2fc6a32937?w=600&h=600&fit=crop',
+    alt: 'Bridal Makeup',
+    category: 'Bridal',
   },
   {
     id: 2,
-    category: 'Bridal Makeup',
-    image: 'https://images.unsplash.com/photo-1595476108010-b4d1f102b1b1?w=800',
-    title: 'HD Bridal Makeup',
+    src: 'https://images.unsplash.com/photo-1562322140-8baeececf3df?w=600&h=600&fit=crop',
+    alt: 'Hair Styling',
+    category: 'Hair',
   },
   {
     id: 3,
-    category: 'Hair Styling',
-    image: 'https://images.unsplash.com/photo-1522337660859-02fbefca4702?w=800',
-    title: 'Hair Color Transformation',
+    src: 'https://images.unsplash.com/photo-1604654894610-df63bc536371?w=600&h=600&fit=crop',
+    alt: 'Manicure & Pedicure',
+    category: 'Nails',
   },
   {
     id: 4,
-    category: 'Party Makeup',
-    image: 'https://images.unsplash.com/photo-1516975080664-ed2fc6a32937?w=800',
-    title: 'Glamorous Party Look',
+    src: 'https://images.unsplash.com/photo-1487412947147-5cebf100ffc2?w=600&h=600&fit=crop',
+    alt: 'Party Makeup',
+    category: 'Makeup',
   },
   {
     id: 5,
-    category: 'Hair Styling',
-    image: 'https://images.unsplash.com/photo-1562322140-8baeececf3df?w=800',
-    title: 'Braided Hairstyle',
+    src: 'https://images.unsplash.com/photo-1544161515-4ab6ce6db874?w=600&h=600&fit=crop',
+    alt: 'Spa Treatment',
+    category: 'Spa',
   },
   {
     id: 6,
-    category: 'Bridal Makeup',
-    image: 'https://images.unsplash.com/photo-1519699047748-de8e457a634e?w=800',
-    title: 'Modern Bridal Look',
+    src: 'https://images.unsplash.com/photo-1522337660859-02fbefca4702?w=600&h=600&fit=crop',
+    alt: 'Hair Treatment',
+    category: 'Hair',
   },
   {
     id: 7,
-    category: 'Nail Art',
-    image: 'https://images.unsplash.com/photo-1604654894610-df63bc536371?w=800',
-    title: 'Creative Nail Art',
+    src: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=600&h=600&fit=crop',
+    alt: 'Makeup Look',
+    category: 'Makeup',
   },
   {
     id: 8,
-    category: 'Party Makeup',
-    image: 'https://images.unsplash.com/photo-1512496015851-a90fb38ba796?w=800',
-    title: 'Elegant Evening Makeup',
+    src: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=600&h=600&fit=crop',
+    alt: 'Beauty Consultation',
+    category: 'Makeup',
   },
   {
     id: 9,
-    category: 'Hair Styling',
-    image: 'https://images.unsplash.com/photo-1580618672591-eb180b1a973f?w=800',
-    title: 'Hair Spa Treatment',
+    src: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=600&h=600&fit=crop',
+    alt: 'Facial Treatment',
+    category: 'Facial',
   },
 ]
-
-const categories = ['All', 'Bridal Makeup', 'Hair Styling', 'Party Makeup', 'Nail Art']
 
 export default function GalleryPage() {
   return (
@@ -70,12 +79,12 @@ export default function GalleryPage() {
       {/* Hero Section */}
       <section className="bg-gradient-to-br from-pink-50 to-purple-50 py-20">
         <div className="container mx-auto px-4">
-          <div className="max-w-3xl mx-auto text-center">
+          <div className="max-w-4xl mx-auto text-center">
             <h1 className="text-4xl md:text-5xl font-heading font-bold text-gray-900 mb-6">
-              Our Work Gallery
+              Our Gallery
             </h1>
             <p className="text-lg text-gray-600">
-              Explore our portfolio of beautiful transformations and see the difference professional care makes
+              Explore our portfolio of stunning beauty transformations and professional services
             </p>
           </div>
         </div>
@@ -86,10 +95,10 @@ export default function GalleryPage() {
         <div className="container mx-auto px-4">
           {/* Category Filter */}
           <div className="flex flex-wrap justify-center gap-4 mb-12">
-            {categories.map((category) => (
+            {galleryCategories.map((category) => (
               <button
                 key={category}
-                className={`px-6 py-2 rounded-full font-medium transition ${
+                className={`px-6 py-3 rounded-full font-medium transition ${
                   category === 'All'
                     ? 'bg-primary text-white'
                     : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
@@ -101,56 +110,54 @@ export default function GalleryPage() {
           </div>
 
           {/* Gallery Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {galleryImages.map((item) => (
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {galleryImages.map((image) => (
               <div
-                key={item.id}
-                className="group relative overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 cursor-pointer"
+                key={image.id}
+                className="group relative overflow-hidden rounded-2xl shadow-lg cursor-pointer"
               >
-                <div className="aspect-square overflow-hidden">
-                  <img
-                    src={item.image}
-                    alt={item.title}
-                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                  />
+                <img
+                  src={image.src}
+                  alt={image.alt}
+                  className="w-full h-80 object-cover transition-transform duration-300 group-hover:scale-110"
+                />
+                <div className="absolute inset-0 bg-black bg-opacity-40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                  <div className="text-center text-white">
+                    <ImageIcon className="w-12 h-12 mx-auto mb-2" />
+                    <p className="text-sm font-medium">{image.category}</p>
+                  </div>
                 </div>
-                
-                {/* Overlay */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
-                  <span className="text-primary text-sm font-semibold mb-1">
-                    {item.category}
-                  </span>
-                  <h3 className="text-white text-xl font-heading font-bold">
-                    {item.title}
-                  </h3>
+                <div className="absolute top-4 right-4 bg-primary text-white px-3 py-1 rounded-full text-sm font-semibold">
+                  {image.category}
                 </div>
               </div>
             ))}
           </div>
 
-          {/* Note */}
-          <div className="mt-12 text-center">
-            <p className="text-gray-600 italic">
-              Note: These are sample images. Replace with actual before/after photos of your work.
-            </p>
+          {/* Load More Button */}
+          <div className="text-center mt-12">
+            <button className="inline-flex items-center justify-center px-8 py-4 bg-primary hover:bg-primary/90 text-white font-semibold rounded-full transition transform hover:scale-105">
+              <ImageIcon className="w-5 h-5 mr-2" />
+              Load More Images
+            </button>
           </div>
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="py-20 bg-gradient-to-br from-gray-900 to-gray-800 text-white">
+      {/* CTA */}
+      <section className="py-20 bg-gradient-to-br from-primary to-accent text-white">
         <div className="container mx-auto px-4 text-center">
           <h2 className="text-3xl md:text-4xl font-heading font-bold mb-6">
-            Ready for Your Transformation?
+            Ready for Your Beauty Transformation?
           </h2>
-          <p className="text-gray-300 text-lg mb-8 max-w-2xl mx-auto">
-            Book an appointment and let us bring out your natural beauty
+          <p className="text-lg mb-8 max-w-2xl mx-auto opacity-90">
+            Book your appointment and see your own beautiful transformation added to our gallery
           </p>
           <a
             href="/contact#booking"
-            className="inline-flex items-center justify-center px-8 py-4 bg-primary hover:bg-primary/90 text-white rounded-full font-semibold transition transform hover:scale-105"
+            className="inline-flex items-center justify-center px-8 py-4 bg-white text-primary hover:bg-gray-100 rounded-full font-semibold transition transform hover:scale-105"
           >
-            Book Appointment Now
+            Book Your Appointment
           </a>
         </div>
       </section>

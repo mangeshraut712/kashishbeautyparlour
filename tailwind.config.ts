@@ -6,6 +6,7 @@ const config: Config = {
     './components/**/*.{js,ts,jsx,tsx,mdx}',
     './app/**/*.{js,ts,jsx,tsx,mdx}',
   ],
+
   theme: {
     extend: {
       colors: {
@@ -15,7 +16,9 @@ const config: Config = {
         background: '#FFFFFF',
         text: '#2C3E50',
         muted: '#F8F9FA',
+        border: '#E5E7EB',
       },
+
       fontFamily: {
         heading: ['Playfair Display', 'serif'],
         body: ['Inter', 'sans-serif'],
