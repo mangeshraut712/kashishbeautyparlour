@@ -1,14 +1,18 @@
+'use client';
+
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import { Clock, Star } from 'lucide-react'
+import { useState } from 'react'
 import { services, serviceCategories } from '@/lib/data/services'
 
-export const metadata: Metadata = {
-  title: 'Our Services | Kashish Beauty Parlour',
-  description: 'Explore our complete range of professional beauty services including bridal makeup, hair styling, facials, spa treatments, and beauty training.',
-}
-
 export default function ServicesPage() {
+  const [selectedCategory, setSelectedCategory] = useState('All')
+
+  const filteredServices = selectedCategory === 'All'
+    ? services
+    : services.filter(service => service.category === selectedCategory)
+
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
@@ -33,8 +37,9 @@ export default function ServicesPage() {
             {serviceCategories.map((category) => (
               <button
                 key={category}
+                onClick={() => setSelectedCategory(category)}
                 className={`px-6 py-3 rounded-full font-medium transition ${
-                  category === 'All'
+                  selectedCategory === category
                     ? 'bg-primary text-white'
                     : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
                 }`}
@@ -46,7 +51,7 @@ export default function ServicesPage() {
 
           {/* Services Grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {services.map((service) => (
+            {filteredServices.map((service) => (
               <div
                 key={service.id}
                 id={service.id}

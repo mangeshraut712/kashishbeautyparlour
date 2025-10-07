@@ -1,13 +1,16 @@
+'use client';
+
 import type { Metadata } from 'next'
 import { Image as ImageIcon } from 'lucide-react'
+import { useState } from 'react'
 import { galleryCategories, galleryImages } from '@/lib/data/gallery'
 
-export const metadata: Metadata = {
-  title: 'Gallery | Kashish Beauty Parlour',
-  description: 'Browse our portfolio of beauty transformations, bridal makeovers, hair styling, and beauty services at Kashish Beauty Parlour.',
-}
-
 export default function GalleryPage() {
+  const [selectedCategory, setSelectedCategory] = useState('All')
+
+  const filteredImages = selectedCategory === 'All'
+    ? galleryImages
+    : galleryImages.filter(image => image.category === selectedCategory)
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
@@ -32,8 +35,9 @@ export default function GalleryPage() {
             {galleryCategories.map((category) => (
               <button
                 key={category}
+                onClick={() => setSelectedCategory(category)}
                 className={`px-6 py-3 rounded-full font-medium transition ${
-                  category === 'All'
+                  selectedCategory === category
                     ? 'bg-primary text-white'
                     : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
                 }`}
@@ -45,7 +49,7 @@ export default function GalleryPage() {
 
           {/* Gallery Grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {galleryImages.map((image) => (
+            {filteredImages.map((image) => (
               <div
                 key={image.id}
                 className="group relative overflow-hidden rounded-2xl shadow-lg cursor-pointer"
