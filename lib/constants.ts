@@ -4,18 +4,18 @@ export const BUSINESS_INFO = {
   description: 'Professional Beauty Parlours And Training Center',
   
   contact: {
-    phone: '+919876543210', // Replace with actual number
-    whatsapp: '919876543210', // Replace with actual number
+    phone: '+917276784825', // Replace with actual number
+    whatsapp: '+917276784825', // Replace with actual number
     email: 'info@kashishbeautyparlour.com',
   },
   
   address: {
-    line1: 'Shop No 5, Nisarg Raj Society',
-    line2: 'Dange Chowk Rd, behind Maharajah Hotel',
+    line1: 'Shop No. 5, Nisarg Raj Society',
+    line2: 'Dange Chowk Rd, near Vaishnavi Maharaja Hotel',
     city: 'Pune',
     state: 'Maharashtra',
     pincode: '411033',
-    full: 'Shop No 5, Nisarg Raj Society, Dange Chowk Rd, behind Maharajah Hotel, Pune, Maharashtra 411033',
+    full: 'Shop No. 5, Nisarg Raj Society, 1st floor, Dange Chowk Rd, near Vaishnavi Maharaja Hotel, Jai Hind nagar, Thergaon, Pimpri-Chinchwad, Pune, Maharashtra 411033, India',
   },
   
   hours: {
