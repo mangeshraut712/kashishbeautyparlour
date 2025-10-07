@@ -1,13 +1,16 @@
+'use client'
+
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import { Calendar, User, ArrowRight, Tag } from 'lucide-react'
+import { useState } from 'react'
 
 export const metadata: Metadata = {
   title: 'Beauty Blog | Kashish Beauty Parlour',
   description: 'Read our beauty tips, trends, and expert advice on makeup, skincare, hair care, and beauty services at Kashish Beauty Parlour.',
 }
 
-const blogPosts = [
+const blogPostsData = [
   {
     id: 1,
     title: 'How to Choose the Right Foundation for Your Skin Type',
@@ -105,6 +108,12 @@ const categories = [
 ]
 
 export default function BlogPage() {
+  const [selectedCategory, setSelectedCategory] = useState('All')
+
+  const filteredPosts = selectedCategory === 'All'
+    ? blogPostsData
+    : blogPostsData.filter(post => post.category === selectedCategory)
+
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
@@ -128,8 +137,9 @@ export default function BlogPage() {
             {categories.map((category) => (
               <button
                 key={category}
+                onClick={() => setSelectedCategory(category)}
                 className={`px-6 py-2 rounded-full font-medium transition ${
-                  category === 'All'
+                  category === selectedCategory
                     ? 'bg-primary text-white'
                     : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
                 }`}
@@ -145,7 +155,7 @@ export default function BlogPage() {
       <section className="py-20 bg-white">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {blogPosts.map((post) => (
+            {filteredPosts.map((post) => (
               <article
                 key={post.id}
                 className="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition group"
