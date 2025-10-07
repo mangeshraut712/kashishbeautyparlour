@@ -3,10 +3,19 @@ import { db } from '@/lib/firebase';
 
 export async function POST(request: NextRequest) {
   try {
+    // Log environment variables (only in development)
+    if (process.env.NODE_ENV === 'development') {
+      console.log('Firebase env check:', {
+        hasServiceAccountKey: !!process.env.FIREBASE_SERVICE_ACCOUNT_KEY,
+        projectId: process.env.FIREBASE_PROJECT_ID,
+      });
+    }
+
     const { firstName, lastName, phone, email, service, date, message } = await request.json();
 
     // Validate required fields
     if (!firstName || !phone || !service) {
+      console.log('Missing required fields:', { firstName, phone, service });
       return NextResponse.json(
         { error: 'Missing required fields' },
         { status: 400 }
@@ -27,8 +36,12 @@ export async function POST(request: NextRequest) {
       source: 'website_contact_form'
     };
 
+    console.log('Attempting to save contact data:', contactData);
+
     // Add to Firestore
     const docRef = await db.collection('contacts').add(contactData);
+
+    console.log('Contact form submitted successfully, docId:', docRef.id);
 
     return NextResponse.json({
       success: true,
@@ -40,7 +53,7 @@ export async function POST(request: NextRequest) {
     console.error('Contact form error:', error);
 
     return NextResponse.json(
-      { error: 'Failed to submit contact form' },
+      { error: 'Failed to submit contact form', details: error instanceof Error ? error.message : 'Unknown error' },
       { status: 500 }
     );
   }

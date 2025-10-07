@@ -1,14 +1,8 @@
+'use client';
+
 import type { Metadata } from 'next'
 import { MapPin, Phone, Mail, Clock, Send, User, MessageSquare } from 'lucide-react'
 import { BUSINESS_INFO } from '@/lib/constants'
-
-export const metadata: Metadata = {
-  title: 'Contact Us | Kashish Beauty Parlour',
-  description: 'Get in touch with Kashish Beauty Parlour for appointments, inquiries, and consultations. Located in Pune, Maharashtra.',
-}
-
-'use client';
-
 import { useState } from 'react';
 
 export default function ContactPage() {
