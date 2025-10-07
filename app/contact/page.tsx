@@ -26,23 +26,16 @@ export default function ContactPage() {
         message: formData.get('message'),
       };
 
-      const response = await fetch('/api/contact', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(data),
-      });
+      // For now, we'll just log the data to the console.
+      // Replace this with your preferred form handling logic (e.g., sending an email).
+      console.log('Form data:', data);
 
-      const result = await response.json();
+      // Simulate a network request
+      await new Promise(resolve => setTimeout(resolve, 1000));
 
-      if (response.ok) {
-        setSubmitStatus('success');
-        (e.target as HTMLFormElement).reset();
-      } else {
-        setSubmitStatus('error');
-        console.error('Submission error:', result.error);
-      }
+      setSubmitStatus('success');
+      (e.target as HTMLFormElement).reset();
+
     } catch (error) {
       setSubmitStatus('error');
       console.error('Network error:', error);

@@ -47,7 +47,7 @@ export default function FeaturedServices() {
                   {service.name}
                 </h3>
                 <p className="text-gray-600 text-sm mb-4 line-clamp-2">
-                  {service.shortDescription}
+                  {service.description}
                 </p>
 
                 <div className="flex items-center justify-between">

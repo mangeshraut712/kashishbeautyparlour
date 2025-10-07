@@ -1,128 +1,141 @@
-export interface Service {
-  id: string
-  category: string
-  name: string
-  shortDescription: string
-  description: string
-  price: string
-  duration: string
-  image: string
-  features?: string[]
-}
-
-export const services: Service[] = [
-  {
-    id: 'bridal-makeup',
-    category: 'Bridal',
-    name: 'Bridal Makeup',
-    shortDescription: 'Look stunning on your special day',
-    description: 'Complete bridal makeup package including pre-bridal treatments, trial makeup, and wedding day makeup with hairstyling. We use premium HD makeup products for a flawless, long-lasting look.',
-    price: 'Starting from ₹15,000',
-    duration: '3-4 hours',
-    image: 'https://images.unsplash.com/photo-1487412947147-5cebf100ffc2?w=800',
-    features: [
-      'Pre-bridal consultation',
-      'Trial makeup session',
-      'HD makeup application',
-      'Professional hairstyling',
-      'Draping assistance',
-      'Touch-up kit provided',
-    ],
-  },
-  {
-    id: 'party-makeup',
-    category: 'Makeup',
-    name: 'Party & Event Makeup',
-    shortDescription: 'Perfect look for any occasion',
-    description: 'Professional makeup for parties, events, and special occasions. Customized to match your outfit and the event theme.',
-    price: 'Starting from ₹2,500',
-    duration: '1-2 hours',
-    image: 'https://images.unsplash.com/photo-1516975080664-ed2fc6a32937?w=800',
-    features: [
-      'Skin preparation',
-      'HD makeup',
-      'Eye makeup & lashes',
-      'Contouring & highlighting',
-      'Suitable for all occasions',
-    ],
-  },
-  {
-    id: 'hair-styling',
-    category: 'Hair',
-    name: 'Hair Styling & Treatment',
-    shortDescription: 'Transform your hair',
-    description: 'Professional hair services including cuts, styling, coloring, treatments, and more. We use premium products for healthy, beautiful hair.',
-    price: 'Starting from ₹500',
-    duration: '1-3 hours',
-    image: 'https://images.unsplash.com/photo-1522337660859-02fbefca4702?w=800',
-    features: [
-      'Hair consultation',
-      'Cuts & styling',
-      'Hair coloring & highlights',
-      'Keratin treatment',
-      'Hair spa',
-    ],
-  },
-  {
-    id: 'facial-treatment',
-    category: 'Skin Care',
-    name: 'Facial Treatments',
-    shortDescription: 'Radiant, glowing skin',
-    description: 'Multiple facial options including gold, diamond, fruit, and specialized facials for different skin types and concerns.',
-    price: 'Starting from ₹800',
-    duration: '45-90 minutes',
-    image: 'https://images.unsplash.com/photo-1516975080664-ed2fc6a32937?w=800',
-    features: [
-      'Skin analysis',
-      'Deep cleansing',
-      'Exfoliation',
-      'Face massage',
-      'Mask application',
-      'Moisturizing',
-    ],
-  },
-  {
-    id: 'nail-art',
-    category: 'Nails',
-    name: 'Manicure & Pedicure',
-    shortDescription: 'Beautiful hands and feet',
-    description: 'Complete nail care services including manicure, pedicure, nail art, gel nails, and nail extensions.',
-    price: 'Starting from ₹500',
-    duration: '45-90 minutes',
-    image: 'https://images.unsplash.com/photo-1604654894610-df63bc536371?w=800',
-    features: [
-      'Nail shaping & filing',
-      'Cuticle care',
-      'Hand/foot massage',
-      'Polish application',
-      'Nail art designs',
-    ],
-  },
-  {
-    id: 'spa-services',
-    category: 'Spa',
-    name: 'Spa & Massage',
-    shortDescription: 'Relax and rejuvenate',
-    description: 'Luxurious spa treatments including body massage, body scrubs, and relaxation therapies.',
-    price: 'Starting from ₹1,200',
-    duration: '60-90 minutes',
-    image: 'https://images.unsplash.com/photo-1544161515-4ab6ce6db874?w=800',
-    features: [
-      'Full body massage',
-      'Aromatherapy',
-      'Body scrub',
-      'Relaxation techniques',
-      'Stress relief',
-    ],
-  },
-]
-
 export const serviceCategories = [
   'All',
   'Bridal',
   'Makeup',
   'Hair',
-  'Skin Care',
+  'Facial',
   'Nails',
   'Spa',
+]
+
+export const services = [
+  {
+    id: 'bridal-makeup',
+    name: 'Bridal Makeup',
+    category: 'Bridal',
+    description: 'Complete bridal makeup package for your special day.',
+    price: '₹15,000',
+    duration: '3-4 hours',
+    image: 'https://images.unsplash.com/photo-1516975080664-ed2fc6a32937?w=600&h=600&fit=crop',
+    features: [
+      'Pre-bridal consultation',
+      'Trial makeup session',
+      'HD makeup',
+      'Hairstyling',
+      'Draping assistance',
+      'Touch-up kit'
+    ]
+  },
+  {
+    id: 'hair-styling',
+    name: 'Hair Styling',
+    category: 'Hair',
+    description: 'Professional hair styling for any occasion.',
+    price: '₹1,500',
+    duration: '1-2 hours',
+    image: 'https://images.unsplash.com/photo-1562322140-8baeececf3df?w=600&h=600&fit=crop',
+    features: [
+      'Hair wash and conditioning',
+      'Blow dry and styling',
+      'Use of professional products'
+    ]
+  },
+  {
+    id: 'manicure-pedicure',
+    name: 'Manicure & Pedicure',
+    category: 'Nails',
+    description: 'Pamper your hands and feet with our relaxing manicure and pedicure services.',
+    price: '₹1,000',
+    duration: '1.5 hours',
+    image: 'https://images.unsplash.com/photo-1604654894610-df63bc536371?w=600&h=600&fit=crop',
+    features: [
+      'Nail shaping and cuticle care',
+      'Exfoliation and massage',
+      'Choice of nail polish'
+    ]
+  },
+  {
+    id: 'party-makeup',
+    name: 'Party Makeup',
+    category: 'Makeup',
+    description: 'Get ready for any party or event with our professional makeup services.',
+    price: '₹3,500',
+    duration: '1.5-2 hours',
+    image: 'https://images.unsplash.com/photo-1487412947147-5cebf100ffc2?w=600&h=600&fit=crop',
+    features: [
+      'Consultation and skin prep',
+      'Full makeup application',
+      'False lashes included'
+    ]
+  },
+  {
+    id: 'spa-treatment',
+    name: 'Spa Treatment',
+    category: 'Spa',
+    description: 'Relax and rejuvenate with our luxurious spa treatments.',
+    price: '₹2,500',
+    duration: '1.5 hours',
+    image: 'https://images.unsplash.com/photo-1544161515-4ab6ce6db874?w=600&h=600&fit=crop',
+    features: [
+      'Full body massage',
+      'Aromatherapy',
+      'Hot towel treatment'
+    ]
+  },
+  {
+    id: 'hair-treatment',
+    name: 'Hair Treatment',
+    category: 'Hair',
+    description: 'Nourish and revitalize your hair with our special treatments.',
+    price: '₹2,000',
+    duration: '1-1.5 hours',
+    image: 'https://images.unsplash.com/photo-1522337660859-02fbefca4702?w=600&h=600&fit=crop',
+    features: [
+      'Deep conditioning treatment',
+      'Scalp massage',
+      'Hair spa'
+    ]
+  },
+  {
+    id: 'makeup-look',
+    name: 'Makeup Look',
+    category: 'Makeup',
+    description: 'Get a stunning makeup look for any occasion.',
+    price: '₹2,500',
+    duration: '1-1.5 hours',
+    image: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=600&h=600&fit=crop',
+    features: [
+      'Consultation and skin prep',
+      'Full makeup application',
+      'Choice of lip color'
+    ]
+  },
+  {
+    id: 'beauty-consultation',
+    name: 'Beauty Consultation',
+    category: 'Makeup',
+    description: 'Get expert advice on your beauty routine and product selection.',
+    price: '₹500',
+    duration: '30 minutes',
+    image: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=600&h=600&fit=crop',
+    features: [
+      'Skin analysis',
+      'Product recommendations',
+      'Personalized beauty plan'
+    ]
+  },
+  {
+    id: 'facial-treatment',
+    name: 'Facial Treatment',
+    category: 'Facial',
+    description: 'Rejuvenate your skin with our customized facial treatments.',
+    price: '₹1,800',
+    duration: '1 hour',
+    image: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=600&h=600&fit=crop',
+    features: [
+      'Cleansing and exfoliation',
+      'Face massage and mask',
+      'Serum and moisturizer application'
+    ]
+  }
 ]

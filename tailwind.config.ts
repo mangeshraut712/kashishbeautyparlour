@@ -22,11 +22,10 @@ const config: Config = {
         border: '#E5E7EB',
       },
 
-      // expose a named border color so `border-border` exists
-      borderColor: (theme) => ({
-        DEFAULT: theme('colors.border') ?? '#E5E7EB',
-        border: theme('colors.border') ?? '#E5E7EB',
-      }),
+      borderColor: {
+        DEFAULT: '#E5E7EB',
+        border: '#E5E7EB',
+      },
 
       fontFamily: {
         heading: ['Playfair Display', 'serif'],
