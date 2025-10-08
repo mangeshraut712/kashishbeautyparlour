@@ -393,5 +393,17 @@ export const services = [
     duration: '1 hour',
     image: 'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=600&h=600&fit=crop',
     features: ['Standard facial', 'Skin cleansing', 'Moisturizing treatment']
+  },
+
+  // Additional Services
+  {
+    id: 'ear-lobe-repairing-piercing',
+    name: 'Ear Lobe Repairing & Ear Piercing',
+    category: 'Additional',
+    description: 'Safe cosmetic ear services',
+    price: 'On request',
+    duration: '30-45 minutes',
+    image: '/images/ear services.png',
+    features: ['Safe ear piercing', 'Lobe repairing', 'Professional sterilization', 'Sterling silver jewelry']
   }
 ]
