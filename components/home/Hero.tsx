@@ -13,7 +13,9 @@ import { Sparkles, Award, Users } from 'lucide-react'
 import { heroStats, floatingCards, heroContent } from '@/lib/data/home'
 
 // Map of icon names to JSX elements for rendering in floating cards
-const iconMap: Record<string, JSX.Element> = {
+import { ReactElement } from 'react'
+
+const iconMap: Record<string, ReactElement> = {
   Sparkles: <Sparkles className="w-4 h-4" />,
   Award: <Award className="w-6 h-6 text-primary" />,
   Users: <Users className="w-6 h-6 text-accent" />,
