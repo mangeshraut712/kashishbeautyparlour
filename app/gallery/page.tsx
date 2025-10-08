@@ -94,7 +94,7 @@ export default function GalleryPage() {
                   className="w-full h-80 object-cover transition-transform duration-300 group-hover:scale-110"
                 />
                 <div className="absolute inset-0 bg-black bg-opacity-40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                  <div className="text-center text-white">
+                  <div className="text-center text-white px-4">
                     <ImageIcon className="w-12 h-12 mx-auto mb-2" />
                     <p className="text-sm font-medium">Click to view</p>
                   </div>
@@ -172,7 +172,7 @@ export default function GalleryPage() {
           {filteredImages.length > 1 && (
             <button
               onClick={prevImage}
-              className="absolute left-4 top-1/2 -translate-y-1/2 z-60 text-white hover:text-gray-300 transition bg-black bg-opacity-50 rounded-full p-3 hover:bg-opacity-75"
+              className="absolute left-4 top-1/2 -translate-y-1/2 z-60 text-white hover:text-gray-300 transition bg-black bg-opacity-50 rounded-full p-4 hover:bg-opacity-75 touch-manipulation"
               aria-label="Previous image"
             >
               <ChevronLeft className="w-6 h-6" />
@@ -183,7 +183,7 @@ export default function GalleryPage() {
           {filteredImages.length > 1 && (
             <button
               onClick={nextImage}
-              className="absolute right-4 top-1/2 -translate-y-1/2 z-60 text-white hover:text-gray-300 transition bg-black bg-opacity-50 rounded-full p-3 hover:bg-opacity-75"
+              className="absolute right-4 top-1/2 -translate-y-1/2 z-60 text-white hover:text-gray-300 transition bg-black bg-opacity-50 rounded-full p-4 hover:bg-opacity-75 touch-manipulation"
               aria-label="Next image"
             >
               <ChevronRight className="w-6 h-6" />
@@ -191,21 +191,21 @@ export default function GalleryPage() {
           )}
 
           {/* Image Container */}
-          <div className="relative max-w-5xl max-h-full p-4">
+          <div className="relative max-w-5xl max-h-full p-4 sm:p-6 md:p-8">
             <img
               src={filteredImages[selectedImageIndex].src}
               alt={filteredImages[selectedImageIndex].alt}
-              className="max-w-full max-h-full object-contain"
+              className="max-w-full max-h-[80vh] sm:max-h-[85vh] object-contain rounded-lg"
             />
 
             {/* Image Info */}
-            <div className="absolute bottom-4 left-4 bg-black bg-opacity-50 text-white px-4 py-2 rounded-lg">
-              <div className="text-sm">{filteredImages[selectedImageIndex].alt}</div>
+            <div className="absolute bottom-4 left-4 bg-black bg-opacity-70 text-white px-3 py-2 sm:px-4 sm:py-2 rounded-lg">
+              <div className="text-xs sm:text-sm font-medium">{filteredImages[selectedImageIndex].alt}</div>
               <div className="text-xs text-gray-300 mt-1">{filteredImages[selectedImageIndex].category}</div>
             </div>
 
             {/* Image Counter */}
-            <div className="absolute bottom-4 right-4 bg-black bg-opacity-50 text-white px-4 py-2 rounded-lg">
+            <div className="absolute bottom-4 right-4 bg-black bg-opacity-70 text-white px-3 py-2 sm:px-4 sm:py-2 rounded-lg text-xs sm:text-sm font-medium">
               {selectedImageIndex + 1} / {filteredImages.length}
             </div>
           </div>
