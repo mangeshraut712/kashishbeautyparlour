@@ -84,7 +84,7 @@ export default function Testimonials() {
             </p>
 
             <a
-              href="https://www.google.com/search?q=kashish+beauty+parlour+thergaon+pune&rlz=1C1SQJL_enIN974IN974&oq=kashish+beauty+parlour+thergaon+pune&aqs=chrome..69i57j0i22i30j0i13i30.1717j0j1&sourceid=chrome&ie=UTF-8"
+              href="https://www.google.com/maps/place/Kashish+Beauty+Parlour+And+Training+Center/@18.6142502,73.7660255,17z/data=!4m18!1m9!3m8!1s0x3bc2b991efb060f3:0x43b57b6b4ece4560!2sKashish+Beauty+Parlour+And+Training+Center!8m2!3d18.6142502!4d73.7686004!9m1!1b1!16s%2Fg%2F11f66rbt37!3m7!1s0x3bc2b991efb060f3:0x43b57b6b4ece4560!8m2!3d18.6142502!4d73.7686004!9m1!1b1!16s%2Fg%2F11f66rbt37?entry=ttu&g_ep=EgoyMDI1MTAwNC4wIKXMDSoASAFQAw%3D%3D"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center justify-center px-6 py-3 bg-red-500 hover:bg-red-600 text-white font-semibold rounded-full transition transform hover:scale-105"
