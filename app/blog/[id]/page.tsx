@@ -4,9 +4,9 @@ import { ArrowLeft, Calendar, User, Clock, Tag } from 'lucide-react'
 import Image from 'next/image'
 
 interface PageProps {
-  params: {
+  params: Promise<{
     id: string
-  }
+  }>
 }
 
 const blogPosts = [
@@ -331,7 +331,8 @@ Choose makeup that flatters your skin tone and personality while ensuring comfor
 ]
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
-  const post = blogPosts.find(p => p.id === parseInt(params.id))
+  const resolvedParams = await params
+  const post = blogPosts.find(p => p.id === parseInt(resolvedParams.id))
 
   if (!post) {
     return {
@@ -355,8 +356,9 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   }
 }
 
-export default function BlogPost({ params }: PageProps) {
-  const post = blogPosts.find(p => p.id === parseInt(params.id))
+export default async function BlogPost({ params }: PageProps) {
+  const resolvedParams = await params
+  const post = blogPosts.find(p => p.id === parseInt(resolvedParams.id))
 
   if (!post) {
     return (
