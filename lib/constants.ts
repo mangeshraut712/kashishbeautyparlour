@@ -6,7 +6,7 @@ export const BUSINESS_INFO = {
   contact: {
     phone: '7276784825', // Replace with actual number
     whatsapp: '+917276784825', // Replace with actual number
-    email: 'info@kashishbeautyparlour.com',
+    email: 'kashishparlour15@gmail.com',
   },
   
   address: {
