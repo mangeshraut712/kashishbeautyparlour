@@ -70,18 +70,7 @@ export const blogPostsData = [
     tags: ['eyebrows', 'trends', 'styling'],
     content: 'Eyebrows frame the face and are crucial for facial expressions. Current trends offer options from bold statements to natural enhancement.\n\n### Popular Trends\n\n- **Structured Brows**: Precise, architectural shapes\n- **Natural Arc**: Soft, eyebrow-like contours\n- **Powdered Look**: Filled brows for bold appearance\n- **Bold and Thick**: Statement-making arches\n- **Minimal and Thin**: Subtle, thin lines\n\n### Professional Tips\n\n- **Consultation**: Professional shape assessment\n- **Threading**: Precise hair removal technique\n- **Handmade Products**: Natural waxes and oils\n- **Maintenance**: Weekly shaping sessions\n\nAt Kashish, we use the latest techniques to achieve your perfect eyebrow shape and style.'
   },
-  {
-    id: 7,
-    title: 'Bridal Makeup Trends 2024: What\'s In and What\'s Out',
-    excerpt: 'Discover the latest bridal makeup trends that are expected to dominate 2024 weddings. From natural glows to bold features.',
-    image: 'https://images.unsplash.com/photo-1487412947147-5cebf100ffc2?w=800&h=500&fit=crop',
-    category: 'Makeup',
-    author: 'Kashish Team',
-    date: '2024-12-01',
-    readTime: '5 min read',
-    tags: ['bridal makeup', 'trends', '2024'],
-    content: 'Discover the latest bridal makeup trends that are expected to dominate 2024 weddings. From natural glows to bold features.\n\n### Current Trends:\n\n- **Natural Glow**: Dewy skin look with minimal makeup\n- **Bold Eyes**: Smoky eyes or winged eyeliner for drama\n- **Nude Lips**: Soft, natural lip colors\n- **Glitter Accents**: Subtle shimmer for special touches\n- **Strong Brows**: Well-defined, groomed eyebrows\n\nChoose makeup that flatters your skin tone and personality.'
-  },
+
   {
     id: 8,
     title: 'Ultimate Guide to Healthy Hair Care: Seasonal Tips',
