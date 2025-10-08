@@ -15,19 +15,30 @@ export default function TrainingPage() {
       <section className="pt-16 pb-12 bg-gradient-to-br from-pink-50 to-purple-50">
         <div className="container mx-auto px-4">
           <div className="text-center max-w-4xl mx-auto">
-            <h1 className="text-3xl md:text-4xl font-heading font-bold text-gray-900 mb-6">
+            <h1 className="text-3xl md:text-5xl font-heading font-bold text-gray-900 mb-6">
               Training at Kashish Beauty Parlour
             </h1>
-            <p className="text-gray-600 text-lg">
-              Professional beauty training programs for aspiring professionals with expert mentorship and practical experience.
+            <p className="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto">
+              Transform your passion into a successful beauty career with expert mentorship, professional equipment, and industry-recognized certifications.
             </p>
           </div>
         </div>
       </section>
 
-      {/* Courses Section */}
+      {/* Training Courses Section */}
       <section className="py-20 bg-gray-50">
         <div className="container mx-auto px-4">
+          <div className="text-center max-w-3xl mx-auto mb-16">
+            <h2 className="text-3xl md:text-4xl font-heading font-bold text-gray-900 mb-4">
+              🌸 Our Training Courses
+            </h2>
+            <p className="text-gray-600 text-lg">
+              Choose from our comprehensive beauty training programs designed for aspiring professionals.
+            </p>
+            <p className="text-primary font-semibold text-lg mt-2">
+              Institution: Kashish Beauty Parlour & Training Center
+            </p>
+          </div>
 
           {courses.map((course) => (
             <div
