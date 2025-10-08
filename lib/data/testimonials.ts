@@ -57,5 +57,36 @@ export const testimonials: Testimonial[] = [
     rating: 5,
     text: 'Amazing hair coloring service! The colorist understood exactly what I wanted and the results exceeded my expectations. The highlights look natural and the color has stayed vibrant for months. Highly recommend their hair services!',
   },
+  {
+    id: 7,
+    name: 'Pooja Singh',
+    service: 'Nail Art & Manicure',
+    image: '/images/testimonials/pooja-singh.jpg',
+    rating: 5,
+    text: 'The nail art and manicure services are exceptional! The technicians are incredibly skilled with intricate designs and perfect shapes. My nails look salon-perfect and last longer than any other salon I\'ve tried. The cleanliness and hygiene standards are also top-notch!',
+  },
+  {
+    id: 8,
+    name: 'Divya Nair',
+    service: 'Threading & Eyebrow Shaping',
+    image: '/images/testimonials/divya-nair.jpg',
+    rating: 5,
+    text: 'Professional threading service that is precise and painless! The shape they gave my eyebrows perfectly complements my face structure. I no longer need to fill them in much, and the service is quick and affordable. Highly skilled technicians with a gentle touch!',
+  },
+  {
+    id: 9,
+    name: 'Sakshi Mehta',
+    service: 'Body Waxing & Depilation',
+    image: '/images/testimonials/sakshi-mehta.jpg',
+    rating: 5,
+    text: 'The waxing services are amazing - clean, professional, and almost painless with their expertise! They use the best wax quality and the room is always hygienic. Results last weeks and my skin stays smooth. They cater to different skin sensitivities perfectly!',
+  },
+  {
+    id: 10,
+    name: 'Riya Kapoor',
+    service: 'Henna/Mehndi Design',
+    image: '/images/testimonials/riya-kapoor.jpg',
+    rating: 5,
+    text: 'Beautiful and intricate henna designs that turned my bridal hand into a work of art! The mehndi artist is incredibly talented with traditional motifs and the henna paste quality is excellent. The cone prepared fresh and the stain was dark and long-lasting. Perfect for my wedding!',
+  },
 ]
-
