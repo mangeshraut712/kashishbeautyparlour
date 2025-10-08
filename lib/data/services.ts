@@ -395,6 +395,18 @@ export const services = [
     features: ['Standard facial', 'Skin cleansing', 'Moisturizing treatment']
   },
 
+  // Manicure & Pedicure Combos
+  {
+    id: 'manicure-pedicure-hairspa',
+    name: 'Manicure + Pedicure + Hair Spa',
+    category: 'Nails',
+    description: 'Hands, feet & hair care combo',
+    price: '₹1,199',
+    duration: '2 hours',
+    image: 'https://images.unsplash.com/photo-1604654894610-df63bc536371?w=600&h=600&fit=crop',
+    features: ['Professional manicure', 'Complete pedicure', 'Nourishing hair spa']
+  },
+
   // Additional Services
   {
     id: 'ear-lobe-repairing-piercing',
