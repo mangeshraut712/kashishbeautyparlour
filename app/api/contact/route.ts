@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server'
-import { db, firebaseAdmin } from '@/lib/firebaseAdmin'
+// Temporarily disabled Firebase until environment variables are set in Vercel
+// import { db, firebaseAdmin } from '@/lib/firebaseAdmin'
 
 export async function POST(req: Request) {
   try {
@@ -10,6 +11,8 @@ export async function POST(req: Request) {
       return NextResponse.json({ error: 'firstName, phone, service and message are required' }, { status: 400 })
     }
 
+    // Temporarily disabled - will be re-enabled after Firebase environment variables are configured
+    /*
     const docRef = await db.collection('contacts').add({
       firstName: String(firstName),
       lastName: lastName ? String(lastName) : '',
@@ -24,6 +27,11 @@ export async function POST(req: Request) {
     })
 
     return NextResponse.json({ ok: true, id: docRef.id }, { status: 201 })
+    */
+
+    // Temporary response until Firebase is re-enabled
+    return NextResponse.json({ ok: true, message: 'Contact form temporarily disabled - will be enabled after deployment' }, { status: 201 })
+
   } catch (err) {
     console.error('Error saving contact:', err)
     return NextResponse.json({ error: 'internal_server_error' }, { status: 500 })
