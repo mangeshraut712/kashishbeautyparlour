@@ -1,20 +1,33 @@
 import admin from 'firebase-admin'
+import * as fs from 'fs'
+import * as path from 'path'
 
 /**
  * Server-only Firebase Admin initializer (singleton).
- * Expects FIREBASE_SERVICE_ACCOUNT_KEY (JSON string) and FIREBASE_PROJECT_ID in env.
+ * Reads service account key from JSON file.
  */
 if (!admin.apps.length) {
-  const key = process.env.FIREBASE_SERVICE_ACCOUNT_KEY
-  if (!key) {
-    // When running locally without env, make error explicit
-    throw new Error('FIREBASE_SERVICE_ACCOUNT_KEY is not set. Add it to .env.local')
+  try {
+    // Try to load from environment variable first (for production)
+    let serviceAccount: admin.ServiceAccount
+
+    if (process.env.FIREBASE_SERVICE_ACCOUNT_KEY) {
+      serviceAccount = JSON.parse(process.env.FIREBASE_SERVICE_ACCOUNT_KEY)
+    } else {
+      // Fallback to JSON file (for local development)
+      const keyPath = path.join(process.cwd(), 'kashishbeautyparlour-d4956-firebase-adminsdk-fbsvc-e25e646aa8.json')
+      const keyFile = fs.readFileSync(keyPath, 'utf8')
+      serviceAccount = JSON.parse(keyFile)
+    }
+
+    admin.initializeApp({
+      credential: admin.credential.cert(serviceAccount),
+      projectId: (serviceAccount as any).project_id || serviceAccount.projectId,
+    })
+  } catch (error) {
+    console.error('Firebase initialization error:', error)
+    throw new Error('Failed to initialize Firebase Admin SDK')
   }
-  const serviceAccount = JSON.parse(key)
-  admin.initializeApp({
-    credential: admin.credential.cert(serviceAccount as admin.ServiceAccount),
-    projectId: process.env.FIREBASE_PROJECT_ID,
-  })
 }
 
 const db = admin.firestore()
