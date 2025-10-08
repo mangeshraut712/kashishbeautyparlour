@@ -71,14 +71,6 @@ export default function GalleryPage() {
               </div>
             ))}
           </div>
-
-          {/* Load More Button */}
-          <div className="text-center mt-12">
-            <button className="inline-flex items-center justify-center px-8 py-4 bg-primary hover:bg-primary/90 text-white font-semibold rounded-full transition transform hover:scale-105">
-              <ImageIcon className="w-5 h-5 mr-2" />
-              Load More Images
-            </button>
-          </div>
         </div>
       </section>
 
