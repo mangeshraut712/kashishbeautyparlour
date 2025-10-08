@@ -27,9 +27,9 @@ export default function AboutPage() {
       {/* Our Story */}
       <section className="py-20 bg-white">
         <div className="container mx-auto px-4">
-          <div className="grid grid-cols-1 xl:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
             {/* Text Content - Left Side */}
-            <div className="xl:col-span-2">
+            <div className="lg:col-span-1">
               <h2 className="text-3xl md:text-4xl font-heading font-bold text-gray-900 mb-6">
                 Our Story
               </h2>
@@ -67,7 +67,7 @@ export default function AboutPage() {
             </div>
 
             {/* Images - Right Side */}
-            <div className="xl:col-span-1 space-y-6">
+            <div className="lg:col-span-1 space-y-6">
               {/* Top Image */}
               <div className="relative">
                 <img
