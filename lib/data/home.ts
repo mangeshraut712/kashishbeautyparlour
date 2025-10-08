@@ -23,15 +23,15 @@ export const heroContent = {
 
 export const heroStats = [
   {
-    value: '50+',
+    value: '100+',
     label: 'Services'
   },
   {
-    value: '500+',
+    value: '10000+',
     label: 'Happy Customers'
   },
   {
-    value: '5',
+    value: '10+',
     label: 'Years Experience'
   }
 ]
