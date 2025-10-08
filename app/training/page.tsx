@@ -66,72 +66,190 @@ export default function TrainingPage() {
         <div className="container mx-auto px-4">
           <div className="text-center max-w-3xl mx-auto mb-16">
             <h2 className="text-3xl md:text-4xl font-heading font-bold text-gray-900 mb-4">
-              Our Training Courses
+              🌸 Our Training Courses
             </h2>
             <p className="text-gray-600 text-lg">
-              Choose from our comprehensive beauty training programs designed for aspiring professionals
+              Choose from our comprehensive beauty training programs designed for aspiring professionals.
+            </p>
+            <p className="text-primary font-semibold text-lg mt-2">
+              Institution: Kashish Beauty Parlour & Training Center
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {courses.map((course) => (
-              <div
-                key={course.id}
-                className="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition group"
-              >
-                {/* Header */}
-                <div className="bg-primary text-white p-6">
-                  <h3 className="text-xl font-heading font-bold mb-2">
-                    {course.title}
-                  </h3>
-                  <div className="flex items-center gap-4 text-sm">
-                    <div className="flex items-center gap-2">
-                      <Clock className="w-4 h-4" />
-                      {course.duration}
+          {courses.map((course) => (
+            <div
+              key={course.id}
+              className="max-w-6xl mx-auto bg-white rounded-2xl overflow-hidden shadow-lg"
+            >
+              {/* Header */}
+              <div className="bg-gradient-to-r from-pink-500 to-purple-600 text-white p-8">
+                <h3 className="text-3xl font-heading font-bold mb-4">
+                  💄 {course.title}
+                </h3>
+                <div className="flex flex-wrap items-center gap-6 text-sm">
+                  <div className="flex items-center gap-2">
+                    <Clock className="w-5 h-5" />
+                    Duration: {course.duration}
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <Users className="w-5 h-5" />
+                    Timings: {course.schedule}
+                  </div>
+                  <div className="bg-white/20 px-4 py-2 rounded-full font-semibold">
+                    Fees: {course.price}
+                  </div>
+                </div>
+              </div>
+
+              {/* Course Description */}
+              <div className="p-8">
+                <p className="text-gray-600 text-lg mb-8">
+                  {course.description}
+                </p>
+
+                {/* Basic Syllabus */}
+                <div className="mb-8">
+                  <h4 className="text-2xl font-semibold text-gray-900 mb-4">🩷 Basic Syllabus</h4>
+                  <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+                    {course.basicSyllabus.map((item, index) => (
+                      <div key={index} className="flex items-center gap-2 bg-pink-50 p-3 rounded-lg">
+                        <CheckCircle className="w-4 h-4 text-green-500 flex-shrink-0" />
+                        <span className="text-gray-700 font-medium">{item}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Advanced Syllabus */}
+                <div className="mb-8">
+                  <h4 className="text-2xl font-semibold text-gray-900 mb-4">💋 Advanced Syllabus</h4>
+
+                  {/* Makeup Module */}
+                  <div className="mb-6">
+                    <h5 className="text-xl font-semibold text-purple-700 mb-3">Makeup Module</h5>
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
+                      {course.advancedSyllabus.makeupModule.map((item, index) => (
+                        <div key={index} className="flex items-center gap-2 bg-purple-50 p-2 rounded">
+                          <div className="w-2 h-2 bg-purple-500 rounded-full"></div>
+                          <span className="text-gray-700 text-sm">{item}</span>
+                        </div>
+                      ))}
                     </div>
-                    <div className="flex items-center gap-2">
-                      <Users className="w-4 h-4" />
-                      {course.schedule}
+                  </div>
+
+                  {/* Hair Module */}
+                  <div className="mb-6">
+                    <h5 className="text-xl font-semibold text-blue-700 mb-3">Hair Module</h5>
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
+                      {course.advancedSyllabus.hairModule.map((item, index) => (
+                        <div key={index} className="flex items-center gap-2 bg-blue-50 p-2 rounded">
+                          <div className="w-2 h-2 bg-blue-500 rounded-full"></div>
+                          <span className="text-gray-700 text-sm">{item}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* Skin Module */}
+                  <div>
+                    <h5 className="text-xl font-semibold text-green-700 mb-3">Skin Module</h5>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                      {course.advancedSyllabus.skinModule.map((item, index) => (
+                        <div key={index} className="flex items-center gap-2 bg-green-50 p-2 rounded">
+                          <div className="w-2 h-2 bg-green-500 rounded-full"></div>
+                          <span className="text-gray-700 text-sm">{item}</span>
+                        </div>
+                      ))}
                     </div>
                   </div>
                 </div>
 
-                {/* Content */}
-                <div className="p-6">
-                  <div className="flex items-center justify-between mb-4">
-                    <div className="text-primary font-bold text-2xl">
-                      {course.price}
+                {/* Demo Sessions */}
+                <div className="mb-8">
+                  <h4 className="text-2xl font-semibold text-gray-900 mb-4">💕 Demo Sessions Included</h4>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    {course.demoSessions.map((item, index) => (
+                      <div key={index} className="flex items-center gap-2 bg-yellow-50 p-3 rounded-lg">
+                        <span className="text-2xl">💄</span>
+                        <span className="text-gray-700 font-medium">{item}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Course Duration & Details */}
+                <div className="mb-8">
+                  <h4 className="text-2xl font-semibold text-gray-900 mb-4">🕓 Course Duration & Details</h4>
+                  <div className="bg-gray-50 p-6 rounded-lg">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                      <div>
+                        <strong>Duration:</strong> {course.duration}
+                      </div>
+                      <div>
+                        <strong>Timings:</strong> {course.schedule}
+                      </div>
+                      <div>
+                        <strong>Fees:</strong> {course.price}
+                      </div>
+                      <div>
+                        <strong>Topics Covered:</strong> Basic + Advanced Syllabus
+                      </div>
+                      <div className="md:col-span-2">
+                        <strong>Certification:</strong> ISO-Certified Certificate on Completion
+                      </div>
                     </div>
-                    <GraduationCap className="w-8 h-8 text-primary" />
                   </div>
+                </div>
 
-                  <p className="text-gray-600 mb-6">
-                    {course.description}
-                  </p>
-
-                  {/* Features */}
-                  <div className="mb-6">
-                    <h4 className="font-semibold text-gray-900 mb-3">What You'll Learn:</h4>
-                    <ul className="space-y-2">
-                      {course.features.map((feature, index) => (
-                        <li key={index} className="flex items-center gap-2">
-                          <CheckCircle className="w-4 h-4 text-green-500 flex-shrink-0" />
-                          <span className="text-gray-600 text-sm">{feature}</span>
-                        </li>
-                      ))}
-                    </ul>
+                {/* Documents Required */}
+                <div className="mb-8">
+                  <h4 className="text-2xl font-semibold text-gray-900 mb-4">📋 Documents Required</h4>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    {course.documentsRequired.map((doc, index) => (
+                      <div key={index} className="flex items-center gap-2 bg-blue-50 p-3 rounded-lg">
+                        <Award className="w-4 h-4 text-blue-500 flex-shrink-0" />
+                        <span className="text-gray-700 font-medium">{doc}</span>
+                      </div>
+                    ))}
                   </div>
+                </div>
 
+                {/* Payment Options */}
+                <div className="mb-8">
+                  <h4 className="text-2xl font-semibold text-gray-900 mb-4">💳 Payment Options</h4>
+                  <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+                    {course.paymentOptions.map((option, index) => (
+                      <div key={index} className="text-center bg-green-50 p-4 rounded-lg">
+                        <div className="text-2xl mb-2">💰</div>
+                        <span className="text-gray-700 font-medium">{option}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Why Choose Us */}
+                <div className="mb-8">
+                  <h4 className="text-2xl font-semibold text-gray-900 mb-4">✨ Why Choose Us</h4>
+                  <div className="bg-gradient-to-r from-pink-50 to-purple-50 p-6 rounded-lg">
+                    <p className="text-gray-700 text-lg">
+                      At Kashish Beauty Parlour & Training Center, we combine expert mentorship, updated beauty techniques, and professional tools to prepare students for successful salon and freelance careers in the beauty industry.
+                    </p>
+                  </div>
+                </div>
+
+                {/* Enroll Button */}
+                <div className="text-center">
                   <Link
                     href="/contact#booking"
-                    className="w-full bg-primary hover:bg-primary/90 text-white py-3 rounded-xl font-semibold transition flex items-center justify-center"
+                    className="inline-flex items-center justify-center px-12 py-4 bg-gradient-to-r from-pink-500 to-purple-600 hover:from-pink-600 hover:to-purple-700 text-white font-semibold rounded-2xl transition transform hover:scale-105 shadow-lg"
                   >
-                    Enroll Now
+                    <GraduationCap className="w-6 h-6 mr-2" />
+                    Enroll Now - ₹60,000
                   </Link>
                 </div>
               </div>
-            ))}
-          </div>
+            </div>
+          ))}
         </div>
       </section>
 

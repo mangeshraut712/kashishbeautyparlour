@@ -2,90 +2,115 @@ import { GraduationCap, Clock, Users, Award, CheckCircle } from 'lucide-react'
 
 export const courses = [
   {
-    id: 'makeup-artist',
-    title: 'Professional Makeup Artist',
-    duration: '3 Months',
-    price: '₹25,000',
-    schedule: 'Weekdays & Weekends',
-    description: 'Complete makeup course covering all aspects from basics to advanced techniques.',
-    features: [
-      'Basic makeup techniques',
-      'Advanced makeup application',
-      'Bridal makeup mastery',
-      'Product knowledge training',
-      'Professional tools & equipment',
-      'Hands-on practice sessions',
+    id: 'basic-advanced-beauty',
+    title: 'Basic to Advanced Makeup and Hairstyle & Beauty Course',
+    duration: '6 Months',
+    price: '₹60,000',
+    schedule: '12 PM – 5 PM',
+    description: 'Complete comprehensive beauty training covering basic and advanced makeup, hairstyling, hair treatment, and skin care modules with practical hands-on sessions.',
+    basicSyllabus: [
+      'Threading',
+      'Waxing',
+      'Bleach',
+      'Facial',
+      'Manicure',
+      'Pedicure',
+      'Cleanup'
     ],
-  },
-  {
-    id: 'hair-stylist',
-    title: 'Professional Hair Styling',
-    duration: '2 Months',
-    price: '₹15,000',
-    schedule: 'Weekdays & Weekends',
-    description: 'Learn professional hair cutting, styling, coloring, and treatment techniques.',
-    features: [
-      'Hair cutting & styling basics',
-      'Advanced styling techniques',
-      'Hair coloring & highlighting',
-      'Chemical treatments',
-      'Hair care & treatment',
-      'Professional tools usage',
+    advancedSyllabus: {
+      makeupModule: [
+        'Colour Theory',
+        'Brush Knowledge',
+        'Product Knowledge',
+        'Different Types of Eye Makeup',
+        'Concealer Techniques',
+        'Face Correction',
+        'Types of Base',
+        'Lips Correction',
+        'Base Selection',
+        'Eye Makeup Variation',
+        'Eyebrow Correction',
+        'Types of Eyeliner',
+        'Blusher Technique',
+        'Glitter Application',
+        'Lens Application',
+        'Lashes Application',
+        'Highlights',
+        'Contouring'
+      ],
+      hairModule: [
+        'Sectioning Techniques',
+        'Crimping',
+        'Curls Variety',
+        'Extension Application',
+        'Donut and Puff Application',
+        'Front Hairstyle Variations',
+        'Messy Choti',
+        'Bridal Hairstyles',
+        'South Indian Hairstyles',
+        'Western Hairstyles',
+        'Traditional Khopa and Bun Variations',
+        'Hair Knowledge and Care',
+        'Hair Cuts',
+        'Hair Treatments – Smoothening, Botox, Protein, Keratin',
+        'Hair Colouring – Global, Balayage, Highlight Shades'
+      ],
+      skinModule: [
+        'Skin Knowledge',
+        'Skin Treatments',
+        'Skin Machinery Knowledge',
+        'Hydra Machine Knowledge'
+      ]
+    },
+    demoSessions: [
+      'Party Makeup',
+      'Indo-Western Makeup',
+      'Maharashtrian Bridal Makeup',
+      'Catholic Bridal Makeup',
+      '(Includes full practical training with hands-on sessions)'
     ],
-  },
-  {
-    id: 'beauty-therapist',
-    title: 'Beauty Therapy Course',
-    duration: '4 Months',
-    price: '₹35,000',
-    schedule: 'Weekdays',
-    description: 'Comprehensive beauty therapy training covering facials, massages, and body treatments.',
     features: [
-      'Facial & skin treatments',
-      'Body massage techniques',
-      'Nail care & pedicure',
-      'Waxing & threading',
-      'Chemical peels & exfoliation',
-      'Spa treatments & aromatherapy',
+      'Complete Basic and Advanced Syllabus',
+      'Hands-on Practical Training',
+      'ISO-Certified Certificate',
+      'Professional Demo Sessions',
+      'Career Guidance & Job Assistance',
+      'Small Batch Sizes'
     ],
-  },
-  {
-    id: 'nail-technician',
-    title: 'Nail Technician Course',
-    duration: '1.5 Months',
-    price: '₹12,000',
-    schedule: 'Weekends',
-    description: 'Master nail art, extensions, and professional nail care services.',
-    features: [
-      'Nail anatomy & health',
-      'Nail art techniques',
-      'Gel polish application',
-      'Nail extensions',
-      'French & American manicure',
-      'Client consultation',
+    documentsRequired: [
+      'Xerox copy of Aadhar Card',
+      'PAN Card',
+      'Leaving Certificate (10th / 12th)',
+      '2 Passport-Size Photos'
     ],
-  },
+    paymentOptions: [
+      'GPay',
+      'PhonePe',
+      'Bank Transfer',
+      'Cash'
+    ]
+  }
 ]
 
 export const benefits = [
   {
     icon: Award,
-    title: 'Certified Training',
-    description: 'Get certified with recognized beauty qualifications',
+    title: 'ISO-Certified Certificate',
+    description: 'Get certified with recognized qualifications upon completion',
   },
   {
     icon: Users,
-    title: 'Small Batch Size',
-    description: 'Personalized attention with small batches of students',
+    title: 'Practical Training',
+    description: 'Hands-on sessions with professional tools and guidance',
   },
   {
     icon: Clock,
-    title: 'Flexible Schedule',
-    description: 'Weekend and weekday batches available',
+    title: '6 Months Comprehensive Course',
+    description: 'Complete training from basic to advanced levels',
   },
   {
     icon: CheckCircle,
-    title: 'Job Assistance',
-    description: 'Career guidance and placement assistance provided',
+    title: 'Career Prospects',
+    description: 'Job assistance and entrepreneurship guidance provided',
   },
 ]
