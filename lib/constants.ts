@@ -19,14 +19,14 @@ export const BUSINESS_INFO = {
   },
   
   hours: {
-    weekdays: '10:00 AM - 8:00 PM',
-    weekends: '10:00 AM - 9:00 PM',
-    sunday: '10:00 AM - 7:00 PM',
+    weekdays: '10:00 AM - 10:00 PM',
+    weekends: '10:00 AM - 10:00 PM',
+    sunday: '10:00 AM - 10:00 PM',
   },
   
   social: {
-    instagram: 'https://instagram.com/kashishbeautyparlour',
-    facebook: 'https://facebook.com/kashishbeautyparlour',
+    instagram: 'https://www.instagram.com/kashish_beauty_parlour_nisargr/',
+    facebook: 'https://www.facebook.com/profile.php?id=100064114598364',
     justdial: 'https://www.justdial.com/Pune/Kashish-Beauty-Parlours-And-Training-Center-Near-Devika-Pure-Veg-Behind-Maharaja-Hotel-Thergaon/020PXX20-XX20-160108112320-V8L2_BZDET',
   },
   
