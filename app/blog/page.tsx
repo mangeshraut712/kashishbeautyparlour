@@ -121,12 +121,12 @@ export default function BlogPage() {
       </section>
 
       {/* Newsletter Signup */}
-      <section className="py-20 bg-gradient-to-br from-primary to-accent text-white">
+      <section className="py-20 bg-gradient-to-br from-primary to-accent text-black">
         <div className="container mx-auto px-4 text-center">
           <h2 className="text-3xl md:text-4xl font-heading font-bold mb-6">
             Stay Beauty Ready
           </h2>
-          <p className="text-lg mb-8 max-w-2xl mx-auto opacity-90">
+          <p className="text-lg mb-8 max-w-2xl mx-auto text-black/85">
             Subscribe to our newsletter for the latest beauty tips, trends, and exclusive offers
           </p>
           <div className="max-w-md mx-auto">
@@ -138,7 +138,7 @@ export default function BlogPage() {
               />
               <button
                 type="submit"
-                className="px-6 py-3 bg-white text-primary rounded-full font-semibold hover:bg-gray-100 transition"
+                className="px-6 py-3 bg-yellow-400 text-black hover:bg-yellow-300 rounded-full font-semibold transition border-2 border-yellow-500"
               >
                 Subscribe
               </button>

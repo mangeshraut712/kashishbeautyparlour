@@ -110,7 +110,7 @@ export default function ServicesPage() {
 
                   <Link
                     href="/contact#booking"
-                    className="w-full bg-gradient-to-r from-primary to-primary/90 hover:from-primary/90 hover:to-primary text-white py-3 rounded-xl font-bold transition-all duration-300 flex items-center justify-center shadow-lg hover:shadow-xl border-2 border-primary/20"
+                    className="w-full bg-yellow-400 text-black hover:bg-yellow-300 py-3 rounded-xl font-bold transition-all duration-300 flex items-center justify-center shadow-lg hover:shadow-xl border-2 border-yellow-500"
                   >
                     Book Now
                   </Link>
