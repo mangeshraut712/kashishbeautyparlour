@@ -13,6 +13,10 @@ export const metadata: Metadata = {
   description: 'Professional beauty services and training center in Pune. Bridal makeup, hair styling, facials, spa services and more. Book your appointment today!',
   keywords: 'beauty parlour pune, bridal makeup thergaon, beauty salon dange chowk, beauty training pune, kashish beauty parlour',
   authors: [{ name: 'Kashish Beauty Parlour' }],
+  icons: {
+    icon: '/logo.png',
+    apple: '/logo.png',
+  },
   openGraph: {
     title: 'Kashish Beauty Parlour - Professional Beauty Services in Pune',
     description: 'Transform your look with our expert beauty services. Bridal makeup, hair styling, facials, and professional training courses.',
