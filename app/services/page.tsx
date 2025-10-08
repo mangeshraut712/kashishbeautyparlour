@@ -110,7 +110,7 @@ export default function ServicesPage() {
 
                   <Link
                     href="/contact#booking"
-                    className="w-full bg-primary hover:bg-primary/90 text-white py-3 rounded-xl font-semibold transition flex items-center justify-center"
+                    className="w-full bg-gradient-to-r from-primary to-primary/90 hover:from-primary/90 hover:to-primary text-white py-3 rounded-xl font-bold transition-all duration-300 flex items-center justify-center shadow-lg hover:shadow-xl border-2 border-primary/20"
                   >
                     Book Now
                   </Link>
@@ -132,7 +132,7 @@ export default function ServicesPage() {
           </p>
           <Link
             href="/contact#booking"
-            className="inline-flex items-center justify-center px-8 py-4 bg-white text-primary hover:bg-gray-100 rounded-full font-semibold transition transform hover:scale-105"
+            className="inline-flex items-center justify-center px-8 py-4 bg-white text-primary hover:bg-gray-100 rounded-full font-bold transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl border-2 border-primary"
           >
             Book Appointment
           </Link>

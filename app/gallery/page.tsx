@@ -1,6 +1,7 @@
 'use client';
 
 import type { Metadata } from 'next'
+import Link from 'next/link'
 import { Image as ImageIcon, X, ChevronLeft, ChevronRight } from 'lucide-react'
 import { useState, useEffect } from 'react'
 import { galleryCategories, galleryImages } from '@/lib/data/gallery'
@@ -147,12 +148,12 @@ export default function GalleryPage() {
           <p className="text-lg mb-8 max-w-2xl mx-auto opacity-90">
             Book your appointment and see your own beautiful transformation added to our gallery
           </p>
-          <a
+          <Link
             href="/contact#booking"
-            className="inline-flex items-center justify-center px-8 py-4 bg-white text-primary hover:bg-gray-100 rounded-full font-semibold transition transform hover:scale-105"
+            className="inline-flex items-center justify-center px-8 py-4 bg-white text-primary hover:bg-gray-100 rounded-full font-semibold transition transform hover:scale-105 shadow-lg hover:shadow-xl"
           >
             Book Your Appointment
-          </a>
+          </Link>
         </div>
       </section>
 

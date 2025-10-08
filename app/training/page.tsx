@@ -195,9 +195,9 @@ export default function TrainingPage() {
                 <div className="text-center">
                   <Link
                     href="/contact#booking"
-                    className="inline-flex items-center justify-center px-12 py-4 bg-gradient-to-r from-pink-500 to-purple-600 hover:from-pink-600 hover:to-purple-700 text-white font-semibold rounded-2xl transition transform hover:scale-105 shadow-lg"
+                    className="inline-flex items-center justify-center px-12 py-4 bg-gradient-to-r from-pink-500 to-purple-600 hover:from-pink-600 hover:to-purple-700 text-white font-bold rounded-2xl transition-all duration-300 transform hover:scale-105 shadow-xl hover:shadow-2xl border-2 border-white/30 text-lg"
                   >
-                    <GraduationCap className="w-6 h-6 mr-2" />
+                    <GraduationCap className="w-6 h-6 mr-3" />
                     Enroll Now - ₹60,000
                   </Link>
                 </div>
@@ -255,13 +255,13 @@ export default function TrainingPage() {
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
               href="/contact#booking"
-              className="inline-flex items-center justify-center px-8 py-4 bg-white text-primary hover:bg-gray-100 rounded-full font-semibold transition transform hover:scale-105"
+              className="inline-flex items-center justify-center px-8 py-4 bg-white text-primary hover:bg-gray-100 rounded-full font-bold transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl border-2 border-primary"
             >
               Enroll in Course
             </Link>
             <Link
               href="/contact"
-              className="inline-flex items-center justify-center px-8 py-4 border-2 border-white text-white hover:bg-white hover:text-primary rounded-full font-semibold transition transform hover:scale-105"
+              className="inline-flex items-center justify-center px-8 py-4 border-2 border-white text-white hover:bg-white hover:text-primary rounded-full font-bold transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl"
             >
               Get More Information
             </Link>
