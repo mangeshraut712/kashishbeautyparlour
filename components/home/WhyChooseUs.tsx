@@ -8,7 +8,7 @@ const features = [
   },
   {
     icon: Users,
-    title: '5000+ Happy Clients',
+    title: '10000+ Happy Clients',
     description: 'Trusted by thousands of satisfied customers across Pune',
   },
   {
