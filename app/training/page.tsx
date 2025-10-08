@@ -15,9 +15,6 @@ export default function TrainingPage() {
       <section className="bg-gradient-to-br from-pink-50 to-purple-50 py-20">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center">
-            <h1 className="text-4xl md:text-5xl font-heading font-bold text-gray-900 mb-6">
-              Beauty Training Center
-            </h1>
           </div>
         </div>
       </section>
@@ -188,15 +185,7 @@ export default function TrainingPage() {
                   </div>
                 </div>
 
-                {/* Why Choose Us */}
-                <div className="mb-8">
-                  <h4 className="text-2xl font-semibold text-gray-900 mb-4">✨ Why Choose Us</h4>
-                  <div className="bg-gradient-to-r from-pink-50 to-purple-50 p-6 rounded-lg">
-                    <p className="text-gray-700 text-lg">
-                      At Kashish Beauty Parlour & Training Center, we combine expert mentorship, updated beauty techniques, and professional tools to prepare students for successful salon and freelance careers in the beauty industry.
-                    </p>
-                  </div>
-                </div>
+
 
                 {/* Enroll Button */}
                 <div className="text-center">
