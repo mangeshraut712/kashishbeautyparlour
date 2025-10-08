@@ -59,6 +59,40 @@ export default function Testimonials() {
             </div>
           ))}
         </div>
+
+        {/* Google Reviews Call to Action */}
+        <div className="text-center mt-16">
+          <div className="bg-white p-8 rounded-3xl shadow-lg max-w-md mx-auto">
+            <h3 className="text-2xl font-heading font-bold text-gray-900 mb-4">
+              🌟 Loved Our Service?
+            </h3>
+            <p className="text-gray-600 mb-6 text-lg">
+              Share your experience and help others discover Kashish Beauty Parlour!
+            </p>
+
+            {/* Google Reviews QR Code */}
+            <div className="mb-4">
+              <img
+                src="/images/reviews qr code.jpg"
+                alt="Scan to leave a Google review"
+                className="w-48 h-48 mx-auto rounded-2xl shadow-md hover:shadow-lg transition"
+              />
+            </div>
+
+            <p className="text-sm text-gray-500 mb-4">
+              Scan the QR code to leave your review
+            </p>
+
+            <a
+              href="https://www.google.com/search?q=kashish+beauty+parlour+thergaon+pune&rlz=1C1SQJL_enIN974IN974&oq=kashish+beauty+parlour+thergaon+pune&aqs=chrome..69i57j0i22i30j0i13i30.1717j0j1&sourceid=chrome&ie=UTF-8"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center justify-center px-6 py-3 bg-red-500 hover:bg-red-600 text-white font-semibold rounded-full transition transform hover:scale-105"
+            >
+              Leave a Review ⭐
+            </a>
+          </div>
+        </div>
       </div>
     </section>
   )
