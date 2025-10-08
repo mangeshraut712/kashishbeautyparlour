@@ -249,7 +249,7 @@ export default function AboutPage() {
           </p>
           <Link
             href="/contact#booking"
-            className="inline-flex items-center justify-center px-8 py-4 bg-white text-primary hover:bg-gray-100 rounded-full font-bold transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl border-2 border-primary"
+            className="inline-flex items-center justify-center px-8 py-4 bg-yellow-400 text-black hover:bg-yellow-300 rounded-full font-bold transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl border-2 border-yellow-500"
           >
             Book Your Appointment
           </Link>
