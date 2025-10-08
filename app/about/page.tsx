@@ -32,26 +32,58 @@ export default function AboutPage() {
               <h2 className="text-3xl md:text-4xl font-heading font-bold text-gray-900 mb-6">
                 Our Story
               </h2>
-              <div className="space-y-4 text-gray-600 leading-relaxed">
+              <div className="space-y-6 text-gray-600 leading-relaxed">
+                <div className="border-l-4 border-primary pl-6 py-2">
+                  <p className="text-lg font-medium text-gray-800 italic">
+                    "The journey of <span className="bg-gradient-to-r from-pink-500 to-purple-600 bg-clip-text text-transparent font-bold">Kashish Beauty Parlour</span> & Training Center began in <span className="font-bold text-primary">2012</span>, fueled by the vision and passion of <span className="font-bold text-accent">Meena Raut</span>."
+                  </p>
+                </div>
+
                 <p>
-                  Kashish Beauty Parlour was founded with a simple dream - to make every woman feel 
-                  beautiful, confident, and special. What started as a small beauty parlour has grown 
-                  into one of Pune's most trusted beauty destinations.
+                  What started as a heartfelt <span className="font-semibold text-pink-600">hobby and family venture</span> in Dange Chowk, Pune, quickly blossomed into something much more. In those early days, quality beauty services were a rarity in the area, and Meena recognized a profound need.
                 </p>
-                <p>
-                  With over a decade of experience in the beauty industry, we have served thousands 
-                  of satisfied clients, from bridal makeovers to everyday beauty needs. Our commitment 
-                  to excellence and personalized care sets us apart.
+
+                <div className="bg-pink-50 p-4 rounded-lg border border-pink-100">
+                  <p className="text-gray-700">
+                    With <span className="font-bold text-purple-600">innate talent</span>, <span className="font-bold text-purple-600">unwavering dedication</span>, and <span className="font-bold text-purple-600">relentless hard work</span>, Meena quickly earned a reputation for excellence. Her thirst for knowledge led her to continually refine her skills, pursuing <span className="font-semibold text-accent">advanced training</span> with esteemed professionals like <span className="font-bold">Jawed Habib</span> and <span className="font-bold">international beauticians</span>, and earning a <span className="font-bold text-green-600">Government Certification</span> in various parlour courses. She didn't just learn; she <span className="font-bold text-primary">mastered her craft</span>.
+                  </p>
+                </div>
+
+                <div className="relative">
+                  <div className="absolute -left-4 top-0 text-4xl text-pink-200">❇</div>
+                  <p>
+                    In <span className="font-bold text-primary">2012</span>, our first parlour opened its doors in Dange Chowk—a <span className="font-semibold text-green-600">welcoming, airy space</span> bathed in natural light, adorned with greenery, and filled with fresh air. It was designed to be a <span className="font-bold italic text-blue-600">sanctuary</span>. From the very beginning, our core philosophy has been to provide <span className="font-bold text-primary">exceptional service</span>. Whether it's a perfect haircut, expertly shaped eyebrows, or offering the finest cosmetic products, <span className="font-semibold text-purple-600">every detail is handled with care</span>.
+                  </p>
+                </div>
+
+                <p className="text-lg">
+                  <span className="text-2xl text-pink-400">🌸</span> Meena's expertise naturally extended to <span className="font-bold text-teal-600">teaching</span>. Recognizing the potential in others, she established our <span className="font-bold bg-gradient-to-r from-teal-500 to-cyan-600 bg-clip-text text-transparent">Training Center</span>, becoming a highly regarded professional guide for <span className="font-semibold text-teal-600">aspiring beauticians</span>. We believe in <span className="font-bold text-purple-600">empowering the next generation</span>, sharing not just techniques but also the passion and dedication that define <span className="font-bold text-pink-600">Kashish</span>.
                 </p>
-                <p>
-                  We believe that beauty is not just about appearance - it's about feeling confident 
-                  and comfortable in your own skin. That's why we take time to understand each client's 
-                  unique needs and preferences, ensuring a tailored experience every time.
-                </p>
-                <p>
-                  Beyond beauty services, we're proud to run a professional training center, helping 
-                  aspiring beauticians develop their skills and build successful careers in the beauty industry.
-                </p>
+
+                <div className="bg-gradient-to-r from-purple-50 to-pink-50 p-6 rounded-xl border-2 border-purple-100">
+                  <div className="flex items-center mb-3">
+                    <span className="text-2xl mr-3">✨</span>
+                    <span className="font-bold text-lg text-gray-800">For over a decade</span>
+                  </div>
+                  <p className="text-gray-700 leading-relaxed">
+                    we've had the privilege of serving <span className="font-bold text-pink-600">thousands of satisfied clients</span>, from transformative bridal makeovers to essential everyday beauty needs. Our commitment to <span className="font-semibold text-purple-600">personalized care</span> and <span className="font-semibold text-purple-600">continuous improvement</span> is what sets us apart. We firmly believe that <span className="font-bold italic text-orange-600">beauty is more than skin deep—it's about feeling confident, radiant, and comfortable in your own skin</span>. We take the time to understand your unique preferences, ensuring every visit is a <span className="font-semibold text-green-600">tailored, delightful experience</span>.
+                  </p>
+                </div>
+
+                <div className="text-center py-4">
+                  <p className="text-lg text-gray-700 mb-2">
+                    At <span className="font-bold bg-gradient-to-r from-pink-500 via-purple-500 to-indigo-500 bg-clip-text text-transparent">Kashish</span>, we know that <span className="font-semibold text-green-600">happy clients and happy staff</span> are the foundation of a brighter future.
+                  </p>
+                  <p className="text-base text-gray-600 font-medium">
+                    Your satisfaction isn't just our goal; it's our <span className="font-bold text-orange-500">best advertisement</span>.
+                  </p>
+                </div>
+
+                <div className="bg-white p-6 rounded-lg shadow-md border-l-4 border-primary">
+                  <p className="text-lg font-medium text-center text-gray-800">
+                    We invite you to experience the <span className="font-bold bg-gradient-to-r from-pink-500 to-purple-600 bg-clip-text text-transparent">Kashish difference</span> and become a part of our continuing story of <span className="font-semibold text-pink-500">beauty</span>, <span className="font-semibold text-purple-500">confidence</span>, and <span className="font-semibold text-indigo-500">success</span>.
+                  </p>
+                </div>
               </div>
             </div>
             <div className="relative">

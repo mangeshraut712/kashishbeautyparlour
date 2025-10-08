@@ -2,7 +2,7 @@
 
 import Link from 'next/link'
 import { useState, useEffect } from 'react'
-import { Menu, X, Phone } from 'lucide-react'
+import { Menu, X, Phone, Instagram, Facebook } from 'lucide-react'
 import { NAV_LINKS, BUSINESS_INFO } from '@/lib/constants'
 
 export default function Header() {
@@ -34,12 +34,12 @@ export default function Header() {
             <span>|</span>
             <span>{BUSINESS_INFO.hours.weekdays}</span>
           </div>
-          <div className="flex items-center gap-4">
-            <a href={BUSINESS_INFO.social.instagram} target="_blank" rel="noopener noreferrer" className="hover:text-primary transition">
-              Instagram
+          <div className="flex items-center gap-3">
+            <a href={BUSINESS_INFO.social.instagram} target="_blank" rel="noopener noreferrer" className="w-5 h-5 hover:text-primary transition" aria-label="Instagram">
+              <Instagram className="w-full h-full" />
             </a>
-            <a href={BUSINESS_INFO.social.facebook} target="_blank" rel="noopener noreferrer" className="hover:text-primary transition">
-              Facebook
+            <a href={BUSINESS_INFO.social.facebook} target="_blank" rel="noopener noreferrer" className="w-5 h-5 hover:text-primary transition" aria-label="Facebook">
+              <Facebook className="w-full h-full" />
             </a>
           </div>
         </div>
