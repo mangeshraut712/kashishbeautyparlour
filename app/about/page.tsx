@@ -27,20 +27,13 @@ export default function AboutPage() {
       {/* Our Story */}
       <section className="py-20 bg-white">
         <div className="container mx-auto px-4">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <div>
+          <div className="grid grid-cols-1 xl:grid-cols-3 gap-8">
+            {/* Text Content - Left Side */}
+            <div className="xl:col-span-2">
               <h2 className="text-3xl md:text-4xl font-heading font-bold text-gray-900 mb-6">
                 Our Story
               </h2>
               <div className="space-y-8 text-gray-700 leading-relaxed">
-                <div className="text-center py-6">
-                  <img
-                    src="/images/about-picture.jpeg"
-                    alt="About Kashish Beauty Parlour - Our Story"
-                    className="rounded-2xl shadow-lg max-w-md mx-auto"
-                  />
-                </div>
-
                 <div className="border-l-4 border-primary pl-8 py-4">
                   <blockquote className="text-xl italic font-medium text-gray-800 mb-2">
                     The journey of <span className="bg-gradient-to-r from-pink-500 to-purple-600 bg-clip-text text-transparent font-bold">Kashish Beauty Parlour</span> & Training Center began in <span className="font-bold text-primary">2012</span>, fueled by the vision and passion of <span className="font-bold text-accent">Meena Raut</span>.
@@ -72,15 +65,29 @@ export default function AboutPage() {
                 </p>
               </div>
             </div>
-            <div className="relative">
-              <img
-                src="https://images.unsplash.com/photo-1560066984-138dadb4c035?w=800&h=600&fit=crop"
-                alt="Kashish Beauty Parlour Interior"
-                className="rounded-2xl shadow-2xl"
-              />
-              <div className="absolute -bottom-6 -left-6 bg-primary text-white p-6 rounded-xl shadow-lg">
-                <div className="text-4xl font-bold">10+</div>
-                <div className="text-sm">Years of Excellence</div>
+
+            {/* Images - Right Side */}
+            <div className="xl:col-span-1 space-y-6">
+              {/* Top Image */}
+              <div className="relative">
+                <img
+                  src="/images/about-picture.jpeg"
+                  alt="About Kashish Beauty Parlour - Our Story"
+                  className="rounded-2xl shadow-lg w-full"
+                />
+              </div>
+
+              {/* Bottom Image */}
+              <div className="relative">
+                <img
+                  src="https://images.unsplash.com/photo-1560066984-138dadb4c035?w=800&h=600&fit=crop"
+                  alt="Kashish Beauty Parlour Interior"
+                  className="rounded-2xl shadow-2xl w-full"
+                />
+                <div className="absolute -bottom-6 -left-6 bg-primary text-white p-6 rounded-xl shadow-lg">
+                  <div className="text-4xl font-bold">10+</div>
+                  <div className="text-sm">Years of Excellence</div>
+                </div>
               </div>
             </div>
           </div>
