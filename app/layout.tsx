@@ -43,6 +43,16 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={`${inter.variable} ${playfair.variable}`}>
+      <head>
+        <meta name="description" content="Professional beauty services and training center in Pune. Bridal makeup, hair styling, facials, spa services and more." />
+        <link rel="icon" href="/favicon.ico" type="image/x-icon" />
+        <link rel="icon" href="/favicon.ico" type="image/ico" />
+        <link rel="icon" href="/icon.png" type="image/png" />
+        <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+        <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='45' fill='%23ff69b4' stroke='%23ff1493' stroke-width='5'/><circle cx='35' cy='35' r='5' fill='white'/><circle cx='65' cy='35' r='5' fill='white'/><path d='M 40 55 Q 50 65 60 55' stroke='white' stroke-width='3' fill='none'/></svg>" />
+        <meta name="msapplication-TileImage" content="/favicon.ico" />
+        <meta name="msapplication-config" content="/browserconfig.xml" />
+      </head>
       <body>
         <Header />
         <main className="min-h-screen">
