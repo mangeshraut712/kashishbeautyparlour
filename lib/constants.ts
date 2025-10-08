@@ -32,7 +32,7 @@ export const BUSINESS_INFO = {
   
   maps: {
     embed: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3782.0!2d73.7686!3d18.6140!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bc2b991efb060f3:0x43b57b6b4ece4560!2zS2FzaGlzaCBCZWF1dHkgUGFybG91ciBBbmQgVHJhaW5pbmcgQ2VudGVy!5e0!3m2!1sen!2sin!4v1698',
-    link: 'https://www.google.com/maps/place/Kashish+Beauty+Parlour+And+Training+Center/@18.6139308,73.7686134,21z/data=!4m6!3m5!1s0x3bc2b991efb060f3:0x43b57b6b4ece4560!8m2!3d18.6140134!4d73.7685068!16s%2Fg%2F11f66rbt37',
+    link: 'https://www.google.com/maps/place/Kashish+Beauty+Parlour+And+Training+Center/@18.6139308,73.7686134,21z/data=!4m8!3m7!1s0x3bc2b991efb060f3:0x43b57b6b4ece4560!8m2!3d18.6142502!4d73.7686004!9m1!1b1!16s%2Fg%2F11f66rbt37?hl=en-US&entry=ttu&g_ep=EgoyMDI1MTAwNC4wIKXMDSoASAFQAw%3D%3D',
   },
 }
 

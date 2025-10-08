@@ -89,4 +89,20 @@ export const testimonials: Testimonial[] = [
     rating: 5,
     text: 'Beautiful and intricate henna designs that turned my bridal hand into a work of art! The mehndi artist is incredibly talented with traditional motifs and the henna paste quality is excellent. The cone prepared fresh and the stain was dark and long-lasting. Perfect for my wedding!',
   },
+  {
+    id: 11,
+    name: 'Aaradhya Sharma',
+    service: 'Eyebrow Microblading & Lash Extensions',
+    image: '/images/testimonials/aaradhya-sharma.jpg',
+    rating: 5,
+    text: 'Transformative eyebrow microblading experience! My sparse eyebrows now look full and perfectly shaped. The precision work is exceptional and natural-looking. Combined with lash extensions that open up my eyes amazingly. The aftercare was clear and the results have been flawless for months!',
+  },
+  {
+    id: 12,
+    name: 'Shraddha Iyer',
+    service: 'Hair Straightening & Smoothing',
+    image: '/images/testimonials/shraddha-iyer.jpg',
+    rating: 5,
+    text: 'Professional hair straightening that gave me silky, manageable hair! After years of dealing with curly, unmanageable hair, this treatment has completely changed my routine. The stylist explained the process thoroughly and the results are beyond what I expected. My hair is now straight, smooth, and healthy!',
+  },
 ]
