@@ -13,6 +13,10 @@ Welcome to **Kashish Beauty Parlour** website! This is a modern, fully responsiv
 - [🌐 GitHub to Vercel Deployment](#-github-to-vercel-deployment)
 - [📝 Contact & Support](#-contact--support)
 
+## 🌐 **Live Demo**
+
+🎉 **Visit our live website**: [https://kashishbeautyparlour.vercel.app](https://kashishbeautyparlour.vercel.app)
+
 ## ✨ Features
 
 ### 💄 **Professional Beauty Services**
@@ -112,41 +116,46 @@ npm run dev
 ```
 kashishbeautyparlour/
 ├── 📁 app/                           # Next.js App Router
-│   ├── 📄 layout.tsx                # Root layout
+│   ├── 📄 layout.tsx                # Root layout with analytics
 │   ├── 📄 page.tsx                  # Homepage
-│   ├── 📁 about/                     # About page
-│   ├── 📁 gallery/                   # Enhanced gallery
+│   ├── � globals.css                # Global styles
+│   ├── �� about/                     # About page
+│   ├── 📁 gallery/                   # Interactive gallery with lightbox
 │   ├── 📁 services/                  # Services listing
-│   ├── 📁 contact/                   # Contact form
+│   ├── 📁 contact/                   # Contact form with Firebase
 │   ├── 📁 blog/                      # Blog section
-│   └── 📁 training/                  # Training courses
+│   ├── 📁 training/                  # Training courses
+│   └── 📁 api/contact/               # Firebase contact API
 ├── 📁 components/                    # React components
 │   ├── 📁 home/                       # Homepage sections
-│   │   ├── 🖼️ Hero.tsx               # Hero banner
-│   │   ├── 📋 FeaturedServices.tsx   # Services preview
-│   │   ├── ⭐ Testimonials.tsx        # Customer reviews
-│   │   └── 🎯 WhyChooseUs.tsx        # Business benefits
+│   │   ├── 🖼️ Hero.tsx                # Hero banner
+│   │   ├── 📋 FeaturedServices.tsx    # Services preview
+│   │   ├── ⭐ Testimonials.tsx         # Customer reviews & QR
+│   │   └── 🎯 WhyChooseUs.tsx         # Business benefits
 │   └── 📁 layout/                     # Layout components
-│       ├── 🧭 Header.tsx             # Navigation
-│       ├── 🦶 Footer.tsx             # Site footer
-│       └── 📱 WhatsAppButton.tsx     # Floating WhatsApp
+│       ├── 🧭 Header.tsx              # Mobile-responsive navigation
+│       ├── 🦶 Footer.tsx              # Site footer
+│       └── 📱 WhatsAppButton.tsx      # Floating booking button
 ├── 📁 lib/                           # Utility libraries
-│   ├── 📁 data/                       # Static content
-│   │   ├── 🖼️ gallery.ts             # Gallery images
-│   │   ├── 💅 services.ts            # Service data
-│   │   └── ⭐ testimonials.ts         # Reviews
-│   └── ⚙️ constants.ts               # Configuration
+│   ├── � firebaseAdmin.ts           # Firebase config
+│   ├── �� data/                       # Static content
+│   │   ├── 🖼️ gallery.ts              # Gallery images data
+│   │   ├── 💅 services.ts             # Service data
+│   │   └── ⭐ testimonials.ts          # Reviews
+│   └── ⚙️ constants.ts                # Configuration
 ├── 📁 public/                        # Static assets
-│   ├── 📂 makeup%20look/             # Makeup images (7)
-│   ├── 📂 hairstyle/                 # Hair styling (6)
-│   ├── 📂 before%20after/            # Transformations (2)
-│   ├── 📂 parlour%20inside%20outside/ # Location photos
-│   ├── 📂 videos/                    # Demonstration video
-│   └── 📂 other/                      # Logo & QR codes
-├── 📄 vercel.json                    # Deployment config
-├── 📄 tailwind.config.ts             # Styling config
+│   ├── 📂 makeup%20look/              # Makeup images (7 files)
+│   ├── 📂 hairstyle/                  # Hair styling (6 files)
+│   ├── 📂 before%20after/             # Transformations (2 files)
+│   ├── 📂 parlour%20inside%20outside/  # Location photos
+│   ├── 📂 videos/                     # Demo video
+│   └── 📂 other/                       # Logo, QR codes
+├── 📄 vercel.json                    # Vercel deployment config
+├── 📄 tailwind.config.ts             # Tailwind CSS config
 ├── 📄 next.config.js                 # Next.js config
-└── 📄 package.json                   # Dependencies
+├── 📄 package.json                   # Dependencies
+├── 📄 *.json                         # Firebase service account key
+└── 📄 README.md                       # Project documentation
 ```
 
 ## 🌐 GitHub to Vercel Deployment
@@ -210,7 +219,11 @@ FIREBASE_SERVICE_ACCOUNT_KEY='{"key": "value"}'
 - 📍 **Location**: Thergaon, Pune, Maharashtra
 - 📞 **Phone**: +91 72767 84825
 - 💼 **Hours**: Mon-Sat: 9AM-9PM, Sun: 10AM-6PM
-- 🌐 **Live Website**: [your-vercel-url.vercel.app](https://your-vercel-url.vercel.app)
+- 🌐 **Live Website**: [https://kashishbeautyparlour.vercel.app](https://kashishbeautyparlour.vercel.app)
+- 🖼️ **Gallery**: Interactive photo & video showcase
+- 📱 **Mobile App**: Optimized for phones & tablets
+- 💬 **WhatsApp**: Direct booking at +91 72767 84825
+- ⭐ **Google Reviews**: QR code on testimonials page
 
 ### 🤝 **Contributing**
 ```bash
