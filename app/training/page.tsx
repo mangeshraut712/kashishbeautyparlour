@@ -244,12 +244,12 @@ export default function TrainingPage() {
       </section>
 
       {/* Call to Action */}
-      <section className="py-20 bg-gradient-to-br from-primary to-accent text-white">
+      <section className="py-20 bg-gradient-to-br from-primary to-accent text-black border-t-4 border-white/20">
         <div className="container mx-auto px-4 text-center">
           <h2 className="text-3xl md:text-4xl font-heading font-bold mb-6">
             Start Your Beautiful Career Journey
           </h2>
-          <p className="text-lg mb-8 max-w-2xl mx-auto opacity-90">
+          <p className="text-lg mb-8 max-w-2xl mx-auto text-black/85 font-medium">
             Join thousands of successful beauty professionals who started their career with our training
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">

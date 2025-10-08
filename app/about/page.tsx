@@ -239,12 +239,12 @@ export default function AboutPage() {
       </section>
 
       {/* CTA */}
-      <section className="py-20 bg-gradient-to-br from-primary to-accent text-white">
+      <section className="py-20 bg-gradient-to-br from-primary to-accent text-black border-t-4 border-white/10">
         <div className="container mx-auto px-4 text-center">
           <h2 className="text-3xl md:text-4xl font-heading font-bold mb-6">
             Experience the Kashish Difference
           </h2>
-          <p className="text-lg mb-8 max-w-2xl mx-auto opacity-90">
+          <p className="text-lg mb-8 max-w-2xl mx-auto text-black/85 font-medium">
             Join thousands of satisfied clients who trust us for their beauty needs
           </p>
           <Link

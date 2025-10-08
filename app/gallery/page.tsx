@@ -140,12 +140,12 @@ export default function GalleryPage() {
       </section>
 
       {/* CTA */}
-      <section className="py-20 bg-gradient-to-br from-primary to-accent text-white">
+      <section className="py-20 bg-gradient-to-br from-primary to-accent text-black border-t-4 border-white/20">
         <div className="container mx-auto px-4 text-center">
           <h2 className="text-3xl md:text-4xl font-heading font-bold mb-6">
             Ready for Your Beauty Transformation?
           </h2>
-          <p className="text-lg mb-8 max-w-2xl mx-auto opacity-90">
+          <p className="text-lg mb-8 max-w-2xl mx-auto text-black/85 font-medium">
             Book your appointment and see your own beautiful transformation added to our gallery
           </p>
           <Link
