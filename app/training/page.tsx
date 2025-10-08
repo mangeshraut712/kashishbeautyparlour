@@ -18,45 +18,6 @@ export default function TrainingPage() {
             <h1 className="text-4xl md:text-5xl font-heading font-bold text-gray-900 mb-6">
               Beauty Training Center
             </h1>
-            <p className="text-lg text-gray-600">
-              Learn professional beauty skills from certified experts and build your career in the beauty industry
-            </p>
-          </div>
-        </div>
-      </section>
-
-      {/* Why Choose Our Training */}
-      <section className="py-20 bg-white">
-        <div className="container mx-auto px-4">
-          <div className="text-center max-w-3xl mx-auto mb-16">
-            <h2 className="text-3xl md:text-4xl font-heading font-bold text-gray-900 mb-4">
-              Why Choose Our Training?
-            </h2>
-            <p className="text-gray-600 text-lg">
-              Get trained by industry professionals with practical experience and theoretical knowledge
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {benefits.map((benefit, index) => {
-              const Icon = benefit.icon
-              return (
-                <div
-                  key={index}
-                  className="text-center p-6 rounded-xl hover:bg-gray-50 transition"
-                >
-                  <div className="w-16 h-16 bg-primary/10 rounded-2xl flex items-center justify-center mx-auto mb-4">
-                    <Icon className="w-8 h-8 text-primary" />
-                  </div>
-                  <h3 className="text-xl font-heading font-bold text-gray-900 mb-2">
-                    {benefit.title}
-                  </h3>
-                  <p className="text-gray-600">
-                    {benefit.description}
-                  </p>
-                </div>
-              )
-            })}
           </div>
         </div>
       </section>
@@ -250,6 +211,42 @@ export default function TrainingPage() {
               </div>
             </div>
           ))}
+        </div>
+      </section>
+
+      {/* Why Choose Our Training */}
+      <section className="py-20 bg-white">
+        <div className="container mx-auto px-4">
+          <div className="text-center max-w-3xl mx-auto mb-16">
+            <h2 className="text-3xl md:text-4xl font-heading font-bold text-gray-900 mb-4">
+              Why Choose Our Training?
+            </h2>
+            <p className="text-gray-600 text-lg">
+              Get trained by industry professionals with practical experience and theoretical knowledge
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {benefits.map((benefit, index) => {
+              const Icon = benefit.icon
+              return (
+                <div
+                  key={index}
+                  className="text-center p-6 rounded-xl hover:bg-gray-50 transition"
+                >
+                  <div className="w-16 h-16 bg-primary/10 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                    <Icon className="w-8 h-8 text-primary" />
+                  </div>
+                  <h3 className="text-xl font-heading font-bold text-gray-900 mb-2">
+                    {benefit.title}
+                  </h3>
+                  <p className="text-gray-600">
+                    {benefit.description}
+                  </p>
+                </div>
+              )
+            })}
+          </div>
         </div>
       </section>
 
