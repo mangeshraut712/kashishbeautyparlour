@@ -1,8 +1,6 @@
 import type { Config } from 'tailwindcss'
 
 const config: Config = {
-  // ensure custom classes like `border-border` are always generated
-  safelist: ['border-border'],
 
   content: [
     './pages/**/*.{js,ts,jsx,tsx,mdx}',
