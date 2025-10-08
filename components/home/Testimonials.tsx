@@ -60,19 +60,40 @@ export default function Testimonials() {
           ))}
         </div>
 
-        {/* Google Reviews Link */}
-        <div className="text-center mt-12">
-          <a
-                href={BUSINESS_INFO.maps.link}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 text-primary hover:underline font-semibold"
-          >
-            <Star className="w-5 h-5" />
-            Read more reviews on Google
-          </a>
-        </div>
-      </div>
-    </section>
-  )
-}
+        {/* Google Reviews Section */}
+        <div className="mt-16 text-center">
+          <div className="bg-white rounded-2xl shadow-lg p-8 max-w-md mx-auto">
+            <div className="mb-6">
+              <h3 className="text-2xl font-heading font-bold text-gray-900 mb-2">
+                ✨ Love Our Services?
+              </h3>
+              <p className="text-gray-600">
+                Help us grow by leaving a Google review
+              </p>
+            </div>
+
+            {/* QR Code */}
+            <div className="mb-6">
+              <img
+                src="/images/google-reviews-qr.png"
+                alt="Google Reviews QR Code"
+                className="w-48 h-48 mx-auto rounded-xl shadow-md"
+              />
+            </div>
+
+            {/* Scan Text */}
+            <p className="text-sm text-gray-500 mb-4">
+              📱 Scan QR code to leave a review
+            </p>
+
+            {/* Direct Link */}
+            <a
+              href={BUSINESS_INFO.maps.link}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 bg-primary hover:bg-primary/90 text-white px-6 py-3 rounded-full font-semibold transition"
+            >
+              <Star className="w-5 h-5" />
+              Leave a Google Review
+            </a>
+          </div>
