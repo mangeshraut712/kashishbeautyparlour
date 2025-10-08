@@ -80,7 +80,7 @@ export default function SpecialOffers() {
         <div className="text-center">
           <Link
             href="/contact#booking"
-            className="inline-flex items-center gap-2 px-8 py-4 bg-primary hover:bg-primary/90 text-white rounded-full font-semibold transition transform hover:scale-105"
+            className="inline-flex items-center gap-2 px-8 py-4 bg-yellow-400 text-black hover:bg-yellow-300 rounded-full font-bold transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl border-2 border-yellow-500"
           >
             <Gift className="w-5 h-5" />
             Book Now & Save

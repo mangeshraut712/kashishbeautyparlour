@@ -57,13 +57,13 @@ export default function Hero() {
             <div className="flex flex-col sm:flex-row gap-4 pt-4">
               <Link
                 href={heroContent.cta.primary.href}
-                className="inline-flex items-center justify-center px-8 py-4 bg-primary hover:bg-primary/90 text-white rounded-full font-semibold transition transform hover:scale-105 shadow-lg"
+                className="inline-flex items-center justify-center px-8 py-4 bg-yellow-400 text-black hover:bg-yellow-300 rounded-full font-bold transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl border-2 border-yellow-500"
               >
                 {heroContent.cta.primary.text}
               </Link>
               <Link
                 href={heroContent.cta.secondary.href}
-                className="inline-flex items-center justify-center px-8 py-4 border-2 border-primary text-primary hover:bg-primary hover:text-white rounded-full font-semibold transition"
+                className="inline-flex items-center justify-center px-8 py-4 bg-yellow-400 text-black hover:bg-yellow-300 rounded-full font-bold transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl border-2 border-yellow-500"
               >
                 {heroContent.cta.secondary.text}
               </Link>

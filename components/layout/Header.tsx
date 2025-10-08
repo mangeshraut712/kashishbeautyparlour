@@ -80,7 +80,7 @@ export default function Header() {
           {/* CTA Button */}
           <Link
             href="/contact#booking"
-            className="hidden md:block bg-primary hover:bg-primary/90 text-white px-6 py-2.5 rounded-full font-medium transition transform hover:scale-105"
+            className="hidden md:block bg-yellow-400 hover:bg-yellow-300 text-black px-6 py-2.5 rounded-full font-bold transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl border-2 border-yellow-500"
           >
             Book Now
           </Link>
@@ -114,7 +114,7 @@ export default function Header() {
                 <Link
                   href="/contact#booking"
                   onClick={() => setIsMenuOpen(false)}
-                  className="block w-full bg-primary text-white px-6 py-3 rounded-full font-medium text-center transition hover:bg-primary/90"
+                  className="block w-full bg-yellow-400 text-black px-6 py-3 rounded-full font-bold text-center transition-all duration-300 hover:bg-yellow-300 shadow-lg hover:shadow-xl border-2 border-yellow-500"
                 >
                   Book Appointment
                 </Link>
