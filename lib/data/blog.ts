@@ -98,7 +98,7 @@ export const blogPostsData = [
     id: 9,
     title: '2024 Nail Art Trends: From Subtle to Daring',
     excerpt: 'Explore the latest nail art trends that are shaping 2024. From minimalist designs to bold, artistic expressions on your fingertips.',
-    image: 'https://images.unsplash.com/photo-1583992999421-b768e8f34c24?w=800&h=500&fit=crop',
+    image: 'https://images.unsplash.com/photo-1616394584738-fc6e612e71b9?w=800&h=500&fit=crop',
     category: 'Nails',
     author: 'Sarah Johnson',
     date: '2024-11-25',
