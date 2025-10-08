@@ -14,8 +14,13 @@ export const metadata: Metadata = {
   keywords: 'beauty parlour pune, bridal makeup thergaon, beauty salon dange chowk, beauty training pune, kashish beauty parlour',
   authors: [{ name: 'Kashish Beauty Parlour' }],
   icons: {
-    icon: '/logo.png',
-    apple: '/logo.png',
+    icon: [
+      { url: '/favicon.ico', sizes: 'any' },
+      { url: '/icon.png', sizes: 'any' },
+      { url: '/favicon-16x16.png', sizes: '16x16', type: 'image/png' },
+      { url: '/favicon-32x32.png', sizes: '32x32', type: 'image/png' },
+    ],
+    apple: '/apple-touch-icon.png',
   },
   openGraph: {
     title: 'Kashish Beauty Parlour - Professional Beauty Services in Pune',
