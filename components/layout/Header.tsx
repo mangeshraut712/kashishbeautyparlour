@@ -49,7 +49,7 @@ export default function Header() {
           {/* Logo */}
           <Link href="/" className="flex items-center gap-3">
             <img
-              src="/logo.png"
+              src="/other/logo.png"
               alt="Kashish Beauty Parlour Logo"
               className="h-12 w-auto"
             />

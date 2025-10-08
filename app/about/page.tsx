@@ -71,7 +71,7 @@ export default function AboutPage() {
               {/* Top Image */}
               <div className="relative">
                 <img
-                  src="/images/about-picture.jpeg"
+                  src="/other/about-picture.jpeg"
                   alt="About Kashish Beauty Parlour - Our Story"
                   className="rounded-2xl shadow-lg w-full"
                 />

@@ -447,7 +447,7 @@ export const services = [
     description: 'Safe cosmetic ear services',
     price: 'On request',
     duration: '30-45 minutes',
-    image: '/images/ear services.png',
+    image: '/other/ear services.png',
     features: ['Safe ear piercing', 'Lobe repairing', 'Professional sterilization', 'Sterling silver jewelry']
   }
 ]

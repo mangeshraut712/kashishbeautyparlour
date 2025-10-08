@@ -73,7 +73,7 @@ export default function Testimonials() {
             {/* Google Reviews QR Code */}
             <div className="mb-4">
               <img
-                src="/images/reviews qr code.jpg"
+                src="/other/reviews qr code.jpg"
                 alt="Scan to leave a Google review"
                 className="w-48 h-48 mx-auto rounded-2xl shadow-md hover:shadow-lg transition"
               />
