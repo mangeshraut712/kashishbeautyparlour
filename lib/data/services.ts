@@ -407,6 +407,38 @@ export const services = [
     features: ['Professional manicure', 'Complete pedicure', 'Nourishing hair spa']
   },
 
+  // Relaxation Packages
+  {
+    id: 'head-massage-relaxation',
+    name: 'Head Massage + Hair Wash (Relaxation)',
+    category: 'Relaxation',
+    description: 'Relaxing scalp massage with shampoo & conditioner',
+    price: '₹299',
+    duration: '45 minutes',
+    image: 'https://images.unsplash.com/photo-1562322140-8baeececf3df?w=600&h=600&fit=crop',
+    features: ['Relaxing scalp massage', 'Professional hair wash', 'Stress relief', 'Aromatherapy']
+  },
+  {
+    id: 'full-body-massage-relaxation',
+    name: 'Full Body Massage (Relaxation)',
+    category: 'Relaxation',
+    description: 'Therapeutic full-body massage for complete relaxation',
+    price: '₹999',
+    duration: '1 hour',
+    image: 'https://images.unsplash.com/photo-1600334089648-b0d9d3028eb2?w=600&h=600&fit=crop',
+    features: ['Full body massage', 'Muscle relaxation', 'Improved circulation', 'Stress relief']
+  },
+  {
+    id: 'full-body-massage-with-steam',
+    name: 'Full Body Massage + Steam Bath',
+    category: 'Relaxation',
+    description: 'Complete relaxation with massage and steam therapy',
+    price: '₹999',
+    duration: '1.5 hours',
+    image: 'https://images.unsplash.com/photo-1600334089648-b0d9d3028eb2?w=600&h=600&fit=crop',
+    features: ['Full body massage', 'Steam therapy', 'Detoxification', 'Aromatherapy']
+  },
+
   // Additional Services
   {
     id: 'ear-lobe-repairing-piercing',
