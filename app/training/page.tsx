@@ -279,31 +279,7 @@ export default function TrainingPage() {
         </div>
       </section>
 
-      {/* Contact Info */}
-      <section className="py-16 bg-white">
-        <div className="container mx-auto px-4 text-center">
-          <h2 className="text-3xl font-heading font-bold text-gray-900 mb-6">
-            Ready to Begin Your Training?
-          </h2>
-          <p className="text-gray-600 mb-8">
-            Contact us today to learn more about our courses and admission process
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a
-              href="tel:+919876543210"
-              className="inline-flex items-center justify-center px-6 py-3 bg-primary text-white rounded-full font-medium hover:bg-primary/90 transition"
-            >
-              Call Now
-            </a>
-            <Link
-              href="/contact"
-              className="inline-flex items-center justify-center px-6 py-3 border border-primary text-primary hover:bg-primary hover:text-white rounded-full font-medium transition"
-            >
-              Send Message
-            </Link>
-          </div>
-        </div>
-      </section>
+
     </div>
   )
 }
