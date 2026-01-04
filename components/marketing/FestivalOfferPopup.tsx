@@ -79,7 +79,7 @@ export default function FestivalOfferPopup() {
 
             return () => clearTimeout(timer)
         }
-    }, [festivalOffers])
+    }, []) // eslint-disable-line react-hooks/exhaustive-deps
 
     const handleClose = () => {
         setIsOpen(false)
