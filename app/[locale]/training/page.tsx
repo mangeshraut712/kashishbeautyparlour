@@ -29,8 +29,9 @@ export default function TrainingPage() {
                   {t('pageTagline')}
                 </span>
               </div>
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-heading font-bold mb-6 text-gray-900">
-                Professional <span className="gold-text-animated">Beauty Academy</span>
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-heading font-bold mb-6">
+                <span className="text-gray-900">Professional </span>
+                <span className="gold-text-hero">Beauty Academy</span>
               </h1>
               <p className="text-lg md:text-xl text-gray-600 max-w-xl mx-auto lg:mx-0 font-medium mb-8">
                 {t('pageDescription')}
@@ -97,7 +98,7 @@ export default function TrainingPage() {
               </span>
             </div>
             <h2 className="text-3xl md:text-5xl font-heading font-bold text-gray-900 mb-4">
-              {t('trainingCourses').split('Courses')[0]}<span className="gold-text-animated">Courses</span>
+              {t('trainingCourses').split('Courses')[0]}<span className="gold-text-hero">Courses</span>
             </h2>
             <p className="text-gray-600 text-lg font-medium">
               {t('coursesDescription')}
@@ -307,7 +308,8 @@ export default function TrainingPage() {
               </span>
             </div>
             <h2 className="text-3xl md:text-5xl font-heading font-bold text-gray-900 mb-4">
-              Professional <span className="gold-text-animated">Expertise</span>
+              <span className="text-gray-900">Professional </span>
+              <span className="gold-text-hero">Expertise</span>
             </h2>
             <p className="text-gray-600 text-lg font-medium">
               {t('trainingBenefits')}
@@ -352,8 +354,9 @@ export default function TrainingPage() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
           >
-            <h2 className="text-3xl md:text-5xl font-heading font-bold mb-6 text-gray-900">
-              Start Your <span className="gold-text-animated">Beautiful Career</span>
+            <h2 className="text-3xl md:text-5xl font-heading font-bold mb-6">
+              <span className="text-gray-900">Start Your </span>
+              <span className="gold-text-hero">Beautiful Career</span>
             </h2>
             <p className="text-lg mb-10 max-w-2xl mx-auto text-gray-600 font-medium">
               {t('joinThousands')}

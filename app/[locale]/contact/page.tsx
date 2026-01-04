@@ -111,9 +111,9 @@ export default function ContactPage() {
                   {t('pageTagline')}
                 </span>
               </div>
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-heading font-bold mb-6 text-gray-900">
-                Let&apos;s Create Your
-                <span className="block mt-2 gold-text-animated">Beautiful Story</span>
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-heading font-bold mb-6">
+                <span className="text-gray-900">Let&apos;s Create Your</span>
+                <span className="block mt-2 gold-text-hero">Beautiful Story</span>
               </h1>
               <p className="text-lg md:text-xl text-gray-600 max-w-xl mx-auto lg:mx-0 font-medium leading-relaxed mb-8">
                 {t('pageDescription')}
@@ -195,7 +195,8 @@ export default function ContactPage() {
                   </span>
                 </div>
                 <h2 className="text-3xl md:text-5xl font-heading font-bold text-gray-900 mb-4">
-                  Reserve Your <span className="gold-text-animated">Transformation</span>
+                  <span className="text-gray-900">Reserve Your </span>
+                  <span className="gold-text-animated">Transformation</span>
                 </h2>
                 <p className="text-gray-500 max-w-2xl mx-auto font-medium">
                   {t('bookingDescription')}
@@ -645,7 +646,8 @@ export default function ContactPage() {
                 </span>
               </div>
               <h2 className="text-3xl md:text-4xl font-heading font-bold text-gray-900 mb-4">
-                Frequently Asked <span className="gold-text">Questions</span>
+                <span className="text-gray-900">Frequently Asked </span>
+                <span className="gold-text-animated">Questions</span>
               </h2>
               <p className="text-gray-500 font-medium">
                 Find answers to common questions about our services

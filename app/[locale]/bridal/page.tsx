@@ -66,8 +66,10 @@ export default function BridalPage() {
                                     {t('pageTagline')}
                                 </span>
                             </div>
-                            <h1 className="text-4xl md:text-5xl lg:text-6xl font-heading font-bold mb-6 text-gray-900">
-                                The Ultimate <span className="gold-text-animated">Bridal</span> Transformation
+                            <h1 className="text-4xl md:text-5xl lg:text-6xl font-heading font-bold mb-6">
+                                <span className="text-gray-900">The Ultimate </span>
+                                <span className="gold-text-hero">Bridal</span>
+                                <span className="text-gray-900"> Transformation</span>
                             </h1>
                             <p className="text-lg md:text-xl text-gray-600 max-w-xl mx-auto lg:mx-0 leading-relaxed font-medium mb-8">
                                 {t('pageDescription')}
@@ -130,7 +132,7 @@ export default function BridalPage() {
                         </motion.div>
                         <h2 className="text-4xl md:text-6xl font-heading font-black text-gray-900 mb-6 leading-tight">
                             {t('chooseYourLook').split('Signature')[0]}<br />
-                            <span className="gold-text-animated italic">Signature Look</span>
+                            <span className="gold-text-hero italic">Signature Look</span>
                         </h2>
                         <p className="text-gray-600 text-lg font-medium">
                             {t('packagesDescription')}
@@ -206,7 +208,7 @@ export default function BridalPage() {
                                 </div>
                                 <h2 className="text-4xl md:text-6xl font-heading font-black text-gray-900 mb-8 leading-tight">
                                     {t('buildExperience').split('Wedding')[0]}<br />
-                                    <span className="gold-text italic">Wedding Experience</span>
+                                    <span className="gold-text-animated italic">Wedding Experience</span>
                                 </h2>
                                 <p className="text-gray-600 text-lg mb-10 leading-relaxed font-medium">
                                     {t('estimatorDescription')}
@@ -255,7 +257,7 @@ export default function BridalPage() {
                             </span>
                         </div>
                         <h2 className="text-3xl md:text-5xl font-heading font-bold text-gray-900 mb-4">
-                            {t('whyBridesChoose').split('Kashish')[0]}<span className="gold-text italic">Choose Kashish</span>
+                            {t('whyBridesChoose').split('Kashish')[0]}<span className="gold-text-animated italic">Choose Kashish</span>
                         </h2>
                     </div>
 

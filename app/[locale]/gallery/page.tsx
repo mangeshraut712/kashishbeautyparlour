@@ -96,8 +96,9 @@ export default function GalleryPage() {
                   {t('pageTagline')}
                 </span>
               </div>
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-heading font-bold mb-6 text-gray-900">
-                Our Visual <span className="gold-text-animated">Gallery</span>
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-heading font-bold mb-6">
+                <span className="text-gray-900">Our Visual </span>
+                <span className="gold-text-hero">Gallery</span>
               </h1>
               <p className="text-lg md:text-xl text-gray-600 max-w-xl mx-auto lg:mx-0 font-medium mb-8">
                 {t('pageDescription')}
@@ -201,31 +202,38 @@ export default function GalleryPage() {
             variants={containerVariants}
             initial="hidden"
             animate="visible"
-            className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6"
+            className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5 md:gap-8"
           >
             {filteredImages.map((image, index) => (
               <motion.div
                 key={image.id}
                 variants={itemVariants}
                 onClick={() => openModal(index)}
-                className="group relative overflow-hidden rounded-[1.5rem] cursor-pointer shadow-[0_10px_40px_rgba(0,0,0,0.05)] border border-gray-100 hover:shadow-[0_20px_60px_rgba(212,175,55,0.15)] hover:border-primary/30 transition-all duration-500"
+                className="group relative overflow-hidden rounded-3xl cursor-pointer bg-white shadow-[0_8px_30px_rgba(0,0,0,0.08)] border border-gray-100/80 hover:shadow-[0_25px_60px_rgba(212,175,55,0.2)] hover:border-primary/40 transition-all duration-500 hover:-translate-y-2"
               >
-                <div className="relative w-full h-80">
+                {/* Image Container with fixed aspect ratio */}
+                <div className="relative w-full aspect-[3/4] overflow-hidden">
                   <Image
                     src={image.src}
                     alt={image.alt}
                     fill
                     className="object-cover transition-transform duration-700 group-hover:scale-110"
-                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                    sizes="(max-width: 768px) 50vw, (max-width: 1200px) 33vw, 25vw"
                   />
+                  {/* Gradient overlay on hover */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                 </div>
-                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col items-center justify-end p-6">
-                  <div className="w-12 h-12 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center mb-4 border border-white/30">
-                    <ImageIcon className="w-5 h-5 text-white" />
+
+                {/* Hover content */}
+                <div className="absolute inset-0 flex flex-col items-center justify-end p-5 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                  <div className="w-14 h-14 bg-white/20 backdrop-blur-md rounded-full flex items-center justify-center mb-4 border border-white/40 shadow-lg">
+                    <ImageIcon className="w-6 h-6 text-white" />
                   </div>
-                  <p className="text-white font-bold text-center">{image.alt}</p>
+                  <p className="text-white font-bold text-center text-sm md:text-base drop-shadow-lg">{image.alt}</p>
                 </div>
-                <div className="absolute top-4 right-4 px-3 py-1 bg-black/80 backdrop-blur-sm rounded-full text-[10px] font-bold uppercase tracking-widest text-primary border border-primary/20">
+
+                {/* Category Badge - Gold background with black text */}
+                <div className="absolute top-4 right-4 px-3 py-1.5 gold-gradient rounded-full text-[10px] font-bold uppercase tracking-wider shadow-lg text-black">
                   {getCategoryTranslation(image.category)}
                 </div>
               </motion.div>
@@ -250,7 +258,8 @@ export default function GalleryPage() {
               </span>
             </div>
             <h2 className="text-4xl md:text-6xl font-heading font-bold text-gray-900 mb-6">
-              Visual <span className="gold-text-animated">Transformations</span>
+              <span className="text-gray-900">Visual </span>
+              <span className="gold-text-hero">Transformations</span>
             </h2>
             <p className="text-gray-600 text-lg md:text-xl font-medium max-w-2xl mx-auto">
               {t('videoDescription')}
@@ -311,7 +320,7 @@ export default function GalleryPage() {
             viewport={{ once: true }}
           >
             <h2 className="text-3xl md:text-5xl font-heading font-bold mb-6 text-gray-900">
-              {t('readyForTransformation').split('Transformation')[0]}<span className="gold-text">Transformation?</span>
+              {t('readyForTransformation').split('Transformation')[0]}<span className="gold-text-animated">Transformation?</span>
             </h2>
             <p className="text-lg mb-10 max-w-2xl mx-auto text-gray-600 font-medium">
               {t('ctaDescription')}

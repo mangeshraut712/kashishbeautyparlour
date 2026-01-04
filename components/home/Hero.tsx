@@ -68,8 +68,11 @@ export default function Hero() {
                 </span>
               </div>
 
-              <h1 className="text-4xl md:text-6xl lg:text-7xl xl:text-8xl font-heading font-bold text-gray-900 leading-[1.05] tracking-tight mt-6">
-                {t('title')}
+              <h1 className="text-4xl md:text-6xl lg:text-7xl xl:text-8xl font-heading font-bold leading-[1.05] tracking-tight mt-6">
+                <span className="text-gray-900">Where </span>
+                <span className="gold-text-hero">Beauty</span>
+                <span className="text-gray-900"> Meets </span>
+                <span className="gold-text-hero">Artistry</span>
               </h1>
 
               <p className="text-base md:text-lg lg:text-xl text-gray-600 max-w-xl mx-auto lg:mx-0 leading-relaxed font-medium mt-6">

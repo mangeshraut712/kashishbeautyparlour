@@ -65,8 +65,9 @@ export default function ServicesPage() {
                   {t('pageTagline')}
                 </span>
               </div>
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-heading font-bold text-gray-900 mb-4">
-                Premium Beauty <span className="gold-text-animated">Services</span>
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-heading font-bold mb-4">
+                <span className="text-gray-900">Premium Beauty </span>
+                <span className="gold-text-hero">Services</span>
               </h1>
               <p className="text-gray-600 text-lg font-medium max-w-xl mx-auto lg:mx-0 mb-8">
                 {t('pageDescription')}

@@ -92,7 +92,7 @@ export default function PWAInstallPrompt() {
                 initial={{ opacity: 0, y: 100 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: 100 }}
-                className="fixed bottom-20 left-4 right-4 md:left-auto md:right-6 md:w-96 z-50"
+                className="fixed bottom-28 right-4 w-[calc(100%-2rem)] max-w-sm md:right-6 md:w-96 z-40"
             >
                 <div className="bg-white rounded-2xl shadow-2xl border border-gray-100 overflow-hidden">
                     <div className="bg-gradient-to-r from-primary to-accent p-4 text-white">

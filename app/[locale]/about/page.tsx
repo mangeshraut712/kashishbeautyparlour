@@ -44,8 +44,9 @@ export default function AboutPage() {
                   {t('pageTagline')}
                 </span>
               </div>
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-heading font-bold mb-6 text-gray-900">
-                {t('pageTitle').split('Kashish')[0]}<span className="gold-text-animated">Kashish</span>
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-heading font-bold mb-6">
+                <span className="text-gray-900">{t('pageTitle').split('Kashish')[0]}</span>
+                <span className="gold-text-hero">Kashish</span>
               </h1>
               <p className="text-lg md:text-xl text-gray-600 max-w-xl mx-auto lg:mx-0 font-medium mb-8">
                 {t('pageSubtitle')}
@@ -114,7 +115,7 @@ export default function AboutPage() {
               </span>
             </div>
             <h2 className="text-3xl md:text-5xl font-heading font-bold text-gray-900 mb-4">
-              {t('journeyTitle').split('Excellence')[0]}<span className="gold-text">Excellence</span>
+              {t('journeyTitle').split('Excellence')[0]}<span className="gold-text-animated">Excellence</span>
             </h2>
           </motion.div>
 
@@ -199,7 +200,7 @@ export default function AboutPage() {
               </span>
             </div>
             <h2 className="text-3xl md:text-5xl font-heading font-bold text-gray-900 mb-4">
-              {t('whatWeStandFor').split('Stand')[0]}<span className="gold-text">Stand For</span>
+              {t('whatWeStandFor').split('Stand')[0]}<span className="gold-text-animated">Stand For</span>
             </h2>
             <p className="text-gray-600 text-lg font-medium">
               {t('valuesDescription')}
@@ -243,7 +244,7 @@ export default function AboutPage() {
               </span>
             </div>
             <h2 className="text-3xl md:text-5xl font-heading font-bold text-gray-900 mb-4">
-              The Kashish <span className="gold-text">{t('kashishDifference').split('Kashish')[1] || 'Difference'}</span>
+              The Kashish <span className="gold-text-animated">{t('kashishDifference').split('Kashish')[1] || 'Difference'}</span>
             </h2>
           </motion.div>
 
@@ -279,7 +280,7 @@ export default function AboutPage() {
             viewport={{ once: true }}
           >
             <h2 className="text-3xl md:text-5xl font-heading font-bold mb-6 text-gray-900">
-              {t('experienceDifference').split('Kashish')[0]}<span className="gold-text">Kashish Difference</span>
+              {t('experienceDifference').split('Kashish')[0]}<span className="gold-text-animated">Kashish Difference</span>
             </h2>
             <p className="text-lg mb-10 max-w-2xl mx-auto text-gray-600 font-medium">
               {t('joinThousands')}
