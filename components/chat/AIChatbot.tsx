@@ -6,7 +6,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { useTranslations } from 'next-intl';
 
 interface Message {
-    role: 'user' | 'model';
+    role: 'user' | 'assistant';
     content: string;
 }
 
@@ -14,11 +14,12 @@ export default function AIChatbot() {
     const [isOpen, setIsOpen] = useState(false);
     const t = useTranslations('Chatbot');
     const [messages, setMessages] = useState<Message[]>([
-        { role: 'model', content: 'Hello! I am your Kashish Beauty assistant. How can I help you today?' },
+        { role: 'assistant', content: '👋 Hello! I\'m your Kashish Beauty assistant. I can help you with:\n\n✨ Beauty Services\n💄 Bridal Packages\n🎓 Training Courses\n📅 Booking Appointments\n💰 Pricing Information\n\nHow can I assist you today?' },
     ]);
     const [input, setInput] = useState('');
     const [isLoading, setIsLoading] = useState(false);
     const [mounted, setMounted] = useState(false);
+    const [suggestions, setSuggestions] = useState<string[]>(['Bridal Packages', 'Beauty Services', 'Training Courses', 'Book Now']);
     const messagesEndRef = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
@@ -33,32 +34,47 @@ export default function AIChatbot() {
         scrollToBottom();
     }, [messages]);
 
-    const handleSubmit = async (e: React.FormEvent) => {
-        e.preventDefault();
-        if (!input.trim() || isLoading) return;
+    const sendMessage = async (messageText: string) => {
+        if (!messageText.trim() || isLoading) return;
 
-        const userMessage = input.trim();
+        const userMessage = messageText.trim();
         setInput('');
         setMessages((prev) => [...prev, { role: 'user', content: userMessage }]);
         setIsLoading(true);
+        setSuggestions([]);
 
         try {
             const res = await fetch('/api/chat', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ messages: [...messages, { role: 'user', content: userMessage }] }),
+                body: JSON.stringify({ message: userMessage }),
             });
 
             const data = await res.json();
-            if (data.content) {
-                setMessages((prev) => [...prev, { role: 'model', content: data.content }]);
+            if (data.response) {
+                setMessages((prev) => [...prev, { role: 'assistant', content: data.response }]);
+                if (data.suggestions && data.suggestions.length > 0) {
+                    setSuggestions(data.suggestions);
+                }
             }
         } catch (error) {
             console.error('Chat error:', error);
-            setMessages((prev) => [...prev, { role: 'model', content: 'Sorry, I encountered an error. Please try again.' }]);
+            setMessages((prev) => [...prev, {
+                role: 'assistant',
+                content: 'Sorry, I encountered an error. Please contact us:\n\n📞 +91 7276784825\n💬 WhatsApp: +917276784825'
+            }]);
         } finally {
             setIsLoading(false);
         }
+    };
+
+    const handleSubmit = async (e: React.FormEvent) => {
+        e.preventDefault();
+        await sendMessage(input);
+    };
+
+    const handleSuggestionClick = async (suggestion: string) => {
+        await sendMessage(suggestion);
     };
 
     // Don't render until mounted to avoid hydration issues
@@ -136,6 +152,24 @@ export default function AIChatbot() {
                             )}
                             <div ref={messagesEndRef} />
                         </div>
+
+                        {/* Suggestion Chips */}
+                        {suggestions.length > 0 && !isLoading && (
+                            <div className="px-6 py-3 bg-white border-t border-gray-100">
+                                <p className="text-xs text-gray-500 font-bold uppercase tracking-wider mb-2">Quick Actions:</p>
+                                <div className="flex flex-wrap gap-2">
+                                    {suggestions.map((suggestion, idx) => (
+                                        <button
+                                            key={idx}
+                                            onClick={() => handleSuggestionClick(suggestion)}
+                                            className="px-3 py-1.5 bg-gradient-to-r from-primary/10 to-amber-500/10 hover:from-primary/20 hover:to-amber-500/20 border border-primary/20 rounded-full text-xs font-bold text-gray-700 transition-all hover:scale-105"
+                                        >
+                                            {suggestion}
+                                        </button>
+                                    ))}
+                                </div>
+                            </div>
+                        )}
 
                         {/* Input */}
                         <div className="p-6 bg-white border-t border-gray-100">
