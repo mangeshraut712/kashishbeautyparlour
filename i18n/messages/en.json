@@ -1,0 +1,455 @@
+{
+    "Common": {
+        "bookNow": "Book Now",
+        "bookAppointment": "Book Appointment",
+        "viewAll": "View All",
+        "learnMore": "Learn More",
+        "getStarted": "Get Started",
+        "callUs": "Call Us",
+        "emailUs": "Email Us",
+        "location": "Location",
+        "workingHours": "Working Hours",
+        "openAllDays": "Open All 7 Days",
+        "privacyPolicy": "Privacy Policy",
+        "termsOfService": "Terms of Service",
+        "includes": "Includes",
+        "enrollNow": "Enroll Now",
+        "sendMessage": "Send Message",
+        "chatOnWhatsApp": "Chat on WhatsApp",
+        "orConnectVia": "Or Connect Via",
+        "followUs": "Follow Us",
+        "paymentOptions": "Payment Options"
+    },
+    "Nav": {
+        "home": "Home",
+        "about": "About",
+        "services": "Services",
+        "bridal": "Bridal",
+        "gallery": "Gallery",
+        "training": "Training",
+        "contact": "Contact",
+        "blog": "Blog"
+    },
+    "Hero": {
+        "tagline": "Pune's Premier Beauty Destination",
+        "title": "Where Beauty Meets Artistry",
+        "description": "Experience premium beauty services at Kashish Beauty Parlour & Training Center. Professional makeup, hair styling, facials, and rejuvenating spa treatments tailored to your unique needs.",
+        "cta": "Book Your Transformation",
+        "secondaryCta": "Explore Services",
+        "scroll": "Scroll",
+        "stats": {
+            "yearsLabel": "Years of Excellence",
+            "clientsLabel": "Happy Clients",
+            "bridesLabel": "Happy Brides",
+            "servicesLabel": "Premium Services"
+        },
+        "floatingCards": {
+            "certified": "Certified",
+            "professional": "Professional Stylists",
+            "personalized": "Personalized",
+            "customized": "Customized Services"
+        }
+    },
+    "FeaturedServices": {
+        "tagline": "Our Expertise",
+        "title": "Premium Beauty Services",
+        "description": "Discover our comprehensive range of professional beauty treatments, each designed to enhance your natural beauty and boost your confidence.",
+        "emiAvailable": "EMI Available",
+        "viewAllServices": "View All Services",
+        "session": "session"
+    },
+    "Services": {
+        "pageTagline": "Expert Craftsmanship",
+        "pageTitle": "Our Services",
+        "pageDescription": "Premium beauty services meticulously tailored to bring out your best self.",
+        "readyToTransform": "Ready to Transform",
+        "yourLook": "Your Look?",
+        "ctaDescription": "Book your appointment today and experience the art of professional beauty services delivered by certified experts.",
+        "categories": {
+            "all": "All",
+            "bridal": "Bridal & Wedding",
+            "hair": "Hair Care",
+            "skin": "Skin Care & Facials",
+            "makeup": "Makeup Services",
+            "spa": "Spa & Wellness",
+            "nails": "Nail Art",
+            "combo": "Combo Packages",
+            "waxing": "Waxing & Threading"
+        }
+    },
+    "About": {
+        "pageTagline": "Our Story",
+        "pageTitle": "About Kashish",
+        "pageSubtitle": "Where beauty meets artistry, and every client becomes part of our family.",
+        "since": "Since 2012",
+        "journeyTitle": "The Journey of Excellence",
+        "journeyP1": "The story of Kashish Beauty Parlour & Training Center began in 2012, born from the vision and passion of Meena Raut. What started as a heartfelt hobby and family venture in Dange Chowk, Pune, quickly blossomed into something truly remarkable. At that time, quality beauty services were scarce in the area, and Meena recognized an opportunity to make a difference.",
+        "journeyP2": "Through innate talent, unwavering dedication, and tireless effort, Meena quickly built a reputation for excellence. Her commitment to continuous learning led her to pursue advanced training with renowned professionals like Jawed Habib and international beauticians. She also earned Government Certifications in various beauty courses. Meena didn't simply learn—she mastered her craft.",
+        "journeyP3": "In 2012, our first parlour opened its doors in Dange Chowk—a welcoming, airy space filled with natural light, lush greenery, and fresh air. It was thoughtfully designed to be a sanctuary for our clients. From day one, our core philosophy has been to deliver exceptional service. Whether it's the perfect haircut, expertly shaped eyebrows, or premium cosmetic products, every detail receives our utmost care and attention.",
+        "journeyP4": "Meena's expertise naturally extended to teaching. Recognizing the potential in aspiring beauticians, she established our Training Center and became a respected mentor in the industry. We are committed to empowering the next generation by sharing not just techniques, but also the passion and dedication that define the Kashish experience.",
+        "journeyP5": "For over a decade, we have had the privilege of serving thousands of satisfied clients—from stunning bridal transformations to everyday beauty essentials. Our dedication to personalized care and continuous improvement sets us apart. We believe that true beauty is more than skin deep: it's about feeling confident, radiant, and comfortable in your own skin. We take the time to understand your unique preferences, ensuring every visit is a tailored and delightful experience.",
+        "journeyP6": "At Kashish, we understand that happy clients and happy staff are the foundation of lasting success. Your satisfaction is not just our goal—it is our greatest advertisement. We warmly invite you to experience the Kashish difference and become part of our continuing story of beauty, confidence, and success.",
+        "quote": "At Kashish, happy clients and happy staff are the foundation of a brighter future. Your satisfaction is not just our goal—it is our greatest advertisement.",
+        "coreValues": "Core Values",
+        "whatWeStandFor": "What We Stand For",
+        "valuesDescription": "The guiding principles that shape everything we do.",
+        "values": {
+            "excellence": "Excellence",
+            "excellenceDesc": "We strive for perfection in every service we provide.",
+            "trust": "Trust",
+            "trustDesc": "Building lasting relationships through honest, reliable service.",
+            "innovation": "Innovation",
+            "innovationDesc": "Staying current with the latest trends and techniques.",
+            "care": "Care",
+            "careDesc": "Treating every client with genuine love and attention."
+        },
+        "whyKashish": "Why Kashish",
+        "kashishDifference": "The Kashish Difference",
+        "whyChooseUs": {
+            "certified": "Certified & Experienced Professionals",
+            "certifiedDesc": "Our team comprises certified beauticians with years of hands-on experience and ongoing training in the latest beauty techniques and industry trends.",
+            "premium": "Premium Quality Products",
+            "premiumDesc": "We exclusively use high-quality, branded products from trusted manufacturers, ensuring the best results and complete safety for your skin and hair.",
+            "hygiene": "Hygiene & Safety First",
+            "hygieneDesc": "We uphold the highest standards of cleanliness with sanitized tools, a spotless environment, and strict safety protocols for your peace of mind.",
+            "personalized": "Personalized Consultation",
+            "personalizedDesc": "Every service begins with a detailed consultation to understand your needs, preferences, and desired outcomes—guaranteeing fully customized results.",
+            "affordable": "Affordable Luxury",
+            "affordableDesc": "We believe everyone deserves to look and feel their best. Our services offer premium quality at accessible prices, making luxury beauty attainable for all."
+        },
+        "experienceDifference": "Experience the Kashish Difference",
+        "joinThousands": "Join thousands of satisfied clients who trust us with their beauty needs."
+    },
+    "Bridal": {
+        "pageTagline": "Bridal Services",
+        "pageTitle": "Your Dream Bridal Look",
+        "pageDescription": "Make your special day even more memorable with our expert bridal makeup services. From traditional elegance to contemporary glamour, we create the perfect look for you.",
+        "bridalCollections": "Bridal Collections 2025",
+        "chooseYourLook": "Choose Your Signature Look",
+        "packagesDescription": "Expertly crafted packages featuring luxury international products for the most important day of your life.",
+        "allInclusive": "All-Inclusive Experience",
+        "mostCoveted": "Most Popular",
+        "bookTrial": "Book Your Trial Session",
+        "packages": {
+            "essential": "Essential Bridal",
+            "premium": "Premium Bridal",
+            "luxury": "Luxury Bridal"
+        },
+        "customEstimator": "Custom Luxury Estimator",
+        "buildExperience": "Build Your Own Wedding Experience",
+        "estimatorDescription": "Select only the services you need for yourself and your family. Our interactive tool provides an instant, transparent estimate.",
+        "flexiblePayment": "Flexible Payment Plans",
+        "flexiblePaymentDesc": "Luxury beauty is now more accessible with 0% EMI options available.",
+        "whyBridesChoose": "Why Brides Choose Kashish",
+        "theKashishStandard": "The Kashish Standard",
+        "happyBrides": "Happy Brides",
+        "trustedByBrides": "Trusted by discerning brides across Pune & Thergaon.",
+        "curatedStyling": "Curated Styling",
+        "curatedDesc": "Personalized looks that celebrate your unique beauty and personality.",
+        "luxuryBrands": "Luxury Brands",
+        "luxuryBrandsDesc": "Only authentic MAC, Huda Beauty, & Charlotte Tilbury products.",
+        "yearsExp": "Years of Experience",
+        "yearsExpDesc": "Over a decade of specializing in Indian bridal excellence."
+    },
+    "Gallery": {
+        "pageTagline": "Our Portfolio",
+        "pageTitle": "Our Gallery",
+        "pageDescription": "Explore our collection of stunning beauty transformations and artistic creations that showcase our expertise.",
+        "videoShowcase": "Video Showcase",
+        "featuredTransformations": "Featured Transformations",
+        "videoDescription": "Watch our professional beauty makeovers come to life.",
+        "hairStylingDemo": "Hair Styling Demonstration",
+        "readyForTransformation": "Ready for Your Transformation?",
+        "ctaDescription": "Book your appointment today and see your own beautiful transformation featured in our gallery.",
+        "categories": {
+            "all": "All",
+            "bridal": "Bridal",
+            "makeup": "Makeup",
+            "hair": "Hair",
+            "bridalWedding": "Bridal & Wedding",
+            "services": "Services",
+            "training": "Training & Academy",
+            "parlour": "Parlour"
+        }
+    },
+    "Training": {
+        "pageTagline": "Professional Training",
+        "pageTitle": "Master the Art of Beauty",
+        "pageDescription": "Transform your passion into a thriving career with expert mentorship, professional equipment, and industry-recognized certifications.",
+        "ourCurriculum": "Our Curriculum",
+        "trainingCourses": "Training Courses",
+        "coursesDescription": "Comprehensive beauty training programs thoughtfully designed for aspiring professionals.",
+        "isoCertified": "ISO-Certified Professional Course",
+        "basicSyllabus": "Basic Syllabus",
+        "advancedSyllabus": "Advanced Syllabus",
+        "handsOnDemo": "Hands-On Demo Sessions",
+        "documentsRequired": "Documents Required",
+        "makeupModule": "Makeup Module",
+        "hairModule": "Hair Module",
+        "skinModule": "Skin Module",
+        "whyUs": "Why Choose Us",
+        "whyChooseTraining": "Why Choose Our Training?",
+        "trainingBenefits": "Learn from industry professionals who combine practical experience with comprehensive theoretical knowledge.",
+        "startCareer": "Start Your Beautiful Career",
+        "joinThousands": "Join the growing community of successful beauty professionals who launched their careers with our training program.",
+        "enrollCourse": "Enroll in Course",
+        "getMoreInfo": "Get More Information"
+    },
+    "Contact": {
+        "pageTagline": "Get In Touch",
+        "pageTitle": "Contact Us",
+        "pageDescription": "Book your appointment, ask questions, or simply say hello. We're here to help you look and feel your best.",
+        "onlineBooking": "Online Booking",
+        "reserveTransformation": "Reserve Your Transformation",
+        "bookingDescription": "Choose your desired service, select your preferred beautician, and pick a convenient time. Receive instant confirmation via WhatsApp.",
+        "whyBookOnline": "Why Book Online?",
+        "preferredBeautician": "Preferred Beautician",
+        "preferredBeauticianDesc": "Select your favorite team member for a personalized experience.",
+        "queueFree": "Queue-Free Service",
+        "queueFreeDesc": "Skip the wait and begin your service exactly at your scheduled time.",
+        "exclusiveOffers": "Exclusive Offers",
+        "exclusiveOffersDesc": "Enjoy a 10% discount on your first online booking.",
+        "supportQueries": "Support & Queries",
+        "supportDescription": "Can't find your preferred slot? Need a group booking? Call us directly—we're happy to help.",
+        "bookYourAppointment": "Book Your Appointment",
+        "formDescription": "Fill in your details, and we'll respond within 24 hours.",
+        "quickResponse": "Quick Response Promise",
+        "quickResponseDesc": "We typically reply within 2 hours during working hours.",
+        "form": {
+            "firstName": "First Name",
+            "lastName": "Last Name",
+            "phone": "Phone Number",
+            "email": "Email Address",
+            "service": "Service Required",
+            "selectService": "Select a service",
+            "preferredDate": "Preferred Date",
+            "message": "Message",
+            "messagePlaceholder": "Tell us about your requirements...",
+            "submit": "Send Message",
+            "sending": "Sending..."
+        },
+        "services": {
+            "bridalMakeup": "Bridal Makeup",
+            "partyMakeup": "Party Makeup",
+            "hairStyling": "Hair Styling",
+            "facial": "Facial Treatment",
+            "nailArt": "Manicure & Pedicure",
+            "spa": "Spa & Massage",
+            "training": "Beauty Training"
+        },
+        "successMessage": "Thank you! Your message has been sent successfully. We'll get back to you shortly.",
+        "errorMessage": "We apologize—there was an error sending your message. Please try again or contact us directly.",
+        "visitStudio": "Visit Our Studio",
+        "welcomeMessage": "We would love to welcome you in person.",
+        "address": "Address",
+        "viewOnMaps": "View on Maps",
+        "callNow": "Call Now",
+        "sendEmail": "Send Email",
+        "studioHours": "Studio Hours"
+    },
+    "Footer": {
+        "tagline": "Stay Beautiful",
+        "description": "Pune's premier destination for bridal makeup, hair styling, and professional beauty training. Transforming dreams into reality since 2012.",
+        "newsletter": {
+            "title": "Get Exclusive Beauty Tips & Offers",
+            "description": "Subscribe to our newsletter for the latest beauty trends, exclusive discounts, and expert tips.",
+            "placeholder": "Enter your email",
+            "button": "Subscribe"
+        },
+        "quickLinks": "Quick Links",
+        "ourServices": "Our Services",
+        "getInTouch": "Get In Touch",
+        "copyright": "All rights reserved."
+    },
+    "SocialProof": {
+        "tagline": "Trusted by Thousands",
+        "title": "Why Clients Love Us",
+        "reviews": "Google Reviews"
+    },
+    "SpecialOffers": {
+        "tagline": "Limited Time",
+        "title": "Special Offers",
+        "description": "Don't miss out on our exclusive deals and seasonal promotions."
+    },
+    "Chatbot": {
+        "title": "Kashish Assistant",
+        "status": "Online Now",
+        "placeholder": "Ask anything...",
+        "poweredBy": "Powered by Kashish AI"
+    },
+    "BookingCalendar": {
+        "title": "Book Appointment",
+        "subtitle": "Select your preferred date and time",
+        "selectService": "Select Service",
+        "chooseServicePlaceholder": "Choose a service...",
+        "selectStaff": "Select Beautician",
+        "selectTime": "Select Time Slot",
+        "yourName": "Your Name",
+        "yourPhone": "Phone Number",
+        "namePlaceholder": "Enter your name",
+        "phonePlaceholder": "Enter 10-digit mobile number",
+        "bookingSummary": "Booking Summary",
+        "summaryLabels": {
+            "service": "Service",
+            "beautician": "Beautician",
+            "date": "Date",
+            "time": "Time"
+        },
+        "buttons": {
+            "continue": "Continue",
+            "back": "Back",
+            "confirm": "Confirm Booking",
+            "booking": "Booking..."
+        },
+        "success": {
+            "title": "Booking Confirmed!",
+            "message": "We'll send you a confirmation on WhatsApp shortly.",
+            "seeYou": "See you soon!"
+        }
+    },
+    "WhyChooseUs": {
+        "tagline": "The Kashish Standards",
+        "title": "Crafting Your",
+        "titleHighlight": "Signature Look",
+        "description": "We believe beauty is an art form. Our salon combines traditional hospitality with modern techniques to ensure you leave feeling revitalized, confident, and radiant.",
+        "topRated": "Top-Rated Salon",
+        "topRatedDesc": "Recognized for excellence in bridal makeup and skincare services.",
+        "features": {
+            "certified": "Certified Professionals",
+            "certifiedDesc": "Expert beauticians with decades of collective experience in luxury beauty care.",
+            "personalized": "Personalized Care",
+            "personalizedDesc": "Every treatment is customized to match your unique skin type and personal style.",
+            "hygiene": "Hygiene & Excellence",
+            "hygieneDesc": "Medical-grade sterilization and premium products ensure your complete safety."
+        }
+    },
+    "ProcessSteps": {
+        "tagline": "How It Works",
+        "title": "Your Beauty Journey",
+        "titleHighlight": "In 4 Simple Steps",
+        "steps": {
+            "book": "Book",
+            "bookTitle": "Book Your Slot",
+            "bookDesc": "Choose your service, select your beautician, and pick your preferred time—online or by phone.",
+            "visit": "Visit",
+            "visitTitle": "Visit Us",
+            "visitDesc": "Arrive at our salon and experience our warm hospitality and relaxing ambiance.",
+            "transform": "Transform",
+            "transformTitle": "Get Transformed",
+            "transformDesc": "Our expert beauticians work their magic to create your desired look with precision and care.",
+            "glow": "Glow",
+            "glowTitle": "Leave Glowing",
+            "glowDesc": "Walk out feeling confident, beautiful, and ready to turn heads wherever you go."
+        }
+    },
+    "InstagramFeed": {
+        "tagline": "Follow Our Journey",
+        "title": "Instagram",
+        "titleHighlight": "@kashishbeautyandtraining",
+        "description": "Stay connected with us for beauty tips, the latest trends, and exclusive behind-the-scenes content.",
+        "followButton": "Follow Us on Instagram",
+        "viewPost": "View Post"
+    },
+    "LocationMap": {
+        "tagline": "Visit Us",
+        "title": "Find Us",
+        "titleHighlight": "Easily",
+        "description": "Conveniently located in Thergaon, Pune, with ample parking and easy access from all major areas.",
+        "address": "Address",
+        "hours": "Opening Hours",
+        "openNow": "Open Now",
+        "closedNow": "Closed",
+        "monToSat": "Mon – Sat",
+        "sunday": "Sunday",
+        "landmarks": "Nearby Landmarks",
+        "transport": "Getting Here",
+        "byBus": "By Bus",
+        "byTrain": "By Train",
+        "byCar": "By Car",
+        "getDirections": "Get Directions"
+    },
+    "Homepage": {
+        "serviceHighlights": {
+            "bridalMakeup": "Bridal Makeup",
+            "hairStyling": "Hair Styling",
+            "facials": "Facials",
+            "spaWellness": "Spa & Wellness",
+            "nailArt": "Nail Art",
+            "skinCare": "Skin Care",
+            "threading": "Threading",
+            "mehendi": "Mehendi"
+        },
+        "trustIndicators": {
+            "rating": "Rating",
+            "happyClients": "Happy Clients",
+            "yearsExperience": "Years of Experience",
+            "services": "Services"
+        },
+        "booking": {
+            "instantReservations": "Instant Reservations",
+            "experienceBeauty": "Experience Beauty",
+            "atYourConvenience": "At Your Convenience",
+            "description": "Select your preferred date, time, and service. We'll confirm your luxury experience via WhatsApp instantly.",
+            "whatsappConfirmation": "WhatsApp Confirmation",
+            "priorityScheduling": "Priority Scheduling",
+            "easyRescheduling": "Easy Rescheduling",
+            "securePayments": "Secure UPI Payments",
+            "callNow": "Call Now",
+            "whatsApp": "WhatsApp",
+            "trustedBy": "Trusted by",
+            "clients": "Clients",
+            "averageRating": "Average Rating on Google",
+            "quickResponse": "Quick Response",
+            "confirmationTime": "Confirmation Within 2 Hours",
+            "topRated": "Top Rated"
+        },
+        "bridal": {
+            "bridalServices": "Bridal Services",
+            "gettingMarried": "Getting Married?",
+            "description": "Book your bridal trial and let us create your dream wedding look.",
+            "features": {
+                "bridalMakeup": "Bridal Makeup",
+                "preBridalCare": "Pre-Bridal Care",
+                "familyPackage": "Family Package",
+                "specialOffers": "Special Offers"
+            },
+            "explorePackages": "Explore Bridal Packages",
+            "enquireNow": "Enquire Now"
+        },
+        "training": {
+            "beautyTraining": "Beauty Training",
+            "startCareer": "Start Your Career in the",
+            "beautyIndustry": "Beauty Industry",
+            "description": "Join our ISO-certified beauty training program and learn from industry experts. We offer comprehensive courses in makeup artistry, hair styling, skincare, and more.",
+            "benefits": {
+                "placement": "100% Job Placement Assistance",
+                "practical": "Hands-On Practical Training",
+                "certification": "Industry-Recognized Certification",
+                "flexible": "Flexible Class Timings"
+            },
+            "isoCertified": "ISO-Certified Training",
+            "professionalCourses": "Professional Courses with Placement",
+            "fullPlacement": "100% Placement",
+            "exploreCourses": "Explore Courses"
+        },
+        "newsletter": {
+            "stayBeautiful": "Stay Beautiful",
+            "getExclusive": "Get Exclusive",
+            "beautyTips": "Beauty Tips",
+            "description": "Subscribe to our newsletter for beauty tips, special offers, and updates on new services.",
+            "placeholder": "Enter your email",
+            "subscribe": "Subscribe",
+            "joinSubscribers": "subscribers • No spam, just beauty!"
+        },
+        "finalCta": {
+            "readyToTransform": "Ready to Transform Your Look?",
+            "description": "Visit us today and experience the finest beauty services in Thergaon, Pune."
+        }
+    },
+    "FloatingActions": {
+        "scrollToTop": "Scroll to Top",
+        "callUs": "Call Us",
+        "whatsApp": "WhatsApp",
+        "book": "Book"
+    }
+}

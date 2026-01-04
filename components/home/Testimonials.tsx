@@ -1,12 +1,12 @@
 'use client'
 
+import Image from 'next/image'
 import { Star } from 'lucide-react'
 import { testimonials } from '@/lib/data/testimonials'
-import { BUSINESS_INFO } from '@/lib/constants'
 
 export default function Testimonials() {
   return (
-    <section className="py-20 bg-gradient-to-br from-purple-50 to-pink-50">
+    <section className="py-20 bg-white border-t border-gray-100">
       <div className="container mx-auto px-4">
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-16">
@@ -17,7 +17,7 @@ export default function Testimonials() {
             What Our Clients Say
           </h2>
           <p className="text-gray-600 text-lg">
-            Don't just take our word for it - hear from our satisfied clients
+            Don&apos;t just take our word for it - hear from our satisfied clients
           </p>
         </div>
 
@@ -37,16 +37,19 @@ export default function Testimonials() {
 
               {/* Testimonial Text */}
               <p className="text-gray-700 mb-6 italic">
-                "{testimonial.text}"
+                &ldquo;{testimonial.text}&rdquo;
               </p>
 
               {/* Client Info */}
               <div className="flex items-center gap-4">
-                <img
-                  src={testimonial.image}
-                  alt={testimonial.name}
-                  className="w-14 h-14 rounded-full object-cover"
-                />
+                <div className="relative w-14 h-14 rounded-full overflow-hidden">
+                  <Image
+                    src={testimonial.image}
+                    alt={testimonial.name}
+                    fill
+                    className="object-cover"
+                  />
+                </div>
                 <div>
                   <div className="font-semibold text-gray-900">
                     {testimonial.name}
@@ -67,16 +70,19 @@ export default function Testimonials() {
               🌟 Loved Our Service?
             </h3>
             <p className="text-gray-600 mb-6 text-lg">
-              Share your experience and help others discover Kashish Beauty Parlour!
+              Share your experience and help others discover Kashish Beauty Parlour And Training Center!
             </p>
 
             {/* Google Reviews QR Code */}
             <div className="mb-4">
-              <img
-                src="/other/reviews qr code.jpg"
-                alt="Scan to leave a Google review"
-                className="w-48 h-48 mx-auto rounded-2xl shadow-md hover:shadow-lg transition"
-              />
+              <div className="relative w-48 h-48 mx-auto rounded-2xl shadow-md hover:shadow-lg transition overflow-hidden">
+                <Image
+                  src="/images/other/reviews qr code.jpg"
+                  alt="Scan to leave a Google review"
+                  fill
+                  className="object-cover"
+                />
+              </div>
             </div>
 
             <p className="text-sm text-gray-500 mb-4">

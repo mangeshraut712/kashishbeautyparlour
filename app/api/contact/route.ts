@@ -1,5 +1,7 @@
 import { NextResponse } from 'next/server'
 import { db, firebaseAdmin } from '@/lib/firebaseAdmin'
+import { logger } from '@/lib/logger'
+import { sendBookingNotification } from '@/lib/notifications'
 
 export async function POST(req: Request) {
   try {
@@ -11,12 +13,24 @@ export async function POST(req: Request) {
     }
 
     // Check if Firebase is properly configured
-    if (!firebaseAdmin.apps.length) {
+    if (!firebaseAdmin.apps.length || !db) {
       // Firebase not configured - provide mock success for local development
-      console.log('Firebase not configured - simulating success for local development')
+      logger.debug('Firebase not configured - simulating success for local development')
 
       // Simulate some processing time
       await new Promise(resolve => setTimeout(resolve, 1000))
+
+      // Send notification (even in mock for testing)
+      try {
+        await sendBookingNotification({
+          to: String(phone),
+          name: String(firstName),
+          service: String(service),
+          date: date ? String(date) : 'Soon',
+        });
+      } catch (notifErr) {
+        logger.error('Failed to send notification independently:', notifErr);
+      }
 
       return NextResponse.json({
         ok: true,
@@ -50,10 +64,27 @@ export async function POST(req: Request) {
       submittedAt: firebaseAdmin.firestore.FieldValue.serverTimestamp(),
     })
 
+    // Send notification
+    try {
+      await sendBookingNotification({
+        to: String(phone),
+        name: String(firstName),
+        service: String(service),
+        date: date ? String(date) : 'Soon',
+      });
+    } catch (notifErr) {
+      logger.error('Failed to send notification independently:', notifErr);
+    }
+
     return NextResponse.json({ ok: true, id: docRef.id }, { status: 201 })
 
-  } catch (err) {
-    console.error('Error saving contact:', err)
-    return NextResponse.json({ error: 'internal_server_error' }, { status: 500 })
+  } catch (err: unknown) {
+    const error = err as Error;
+    logger.error('Error saving contact:', error)
+    return NextResponse.json({
+      error: 'internal_server_error',
+      details: error?.message || String(error),
+      stack: error?.stack
+    }, { status: 500 })
   }
 }

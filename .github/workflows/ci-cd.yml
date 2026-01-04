@@ -1,0 +1,92 @@
+# ===========================================
+# Kashish Beauty Parlour - CI/CD Pipeline
+# ===========================================
+# Runs on: push to main/develop, pull requests
+# Jobs: Quality checks, Build verification
+# Deployment: Handled automatically by Vercel
+# ===========================================
+
+name: CI/CD Pipeline
+
+on:
+  push:
+    branches: [main, develop]
+  pull_request:
+    branches: [main, develop]
+
+# Cancel in-progress runs for the same branch
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+# Workflow-level environment variables
+env:
+  NODE_VERSION: "20"
+
+jobs:
+  # ===========================================
+  # Job 1: Code Quality Checks
+  # ===========================================
+  quality:
+    name: 🔍 Code Quality
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - name: 📥 Checkout code
+        uses: actions/checkout@v4
+
+      - name: 📦 Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: "npm"
+
+      - name: 📚 Install dependencies
+        run: npm ci
+
+      - name: 🔎 Run ESLint
+        run: npm run lint
+
+      - name: 🔷 TypeScript check
+        run: npm run type-check
+
+  # ===========================================
+  # Job 2: Build Verification
+  # ===========================================
+  build:
+    name: 🏗️ Build
+    runs-on: ubuntu-latest
+    needs: quality
+    timeout-minutes: 15
+
+    steps:
+      - name: 📥 Checkout code
+        uses: actions/checkout@v4
+
+      - name: 📦 Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: "npm"
+
+      - name: 📚 Install dependencies
+        run: npm ci
+
+      - name: 🏗️ Build application
+        run: npm run build
+        env:
+          NEXT_PUBLIC_APP_URL: "https://kashishbeautyparlour.com"
+
+      - name: 📤 Upload build artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: nextjs-build
+          path: .next
+          retention-days: 7
+
+# ===========================================
+# Note: Production deployment is handled 
+# automatically by Vercel when pushing to main.
+# Connect your GitHub repo to Vercel for auto-deploy.
+# ===========================================

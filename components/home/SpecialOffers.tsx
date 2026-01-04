@@ -1,91 +1,147 @@
-import Link from 'next/link'
-import { Gift, Percent, Tag } from 'lucide-react'
+'use client'
+
+import { Link } from '@/i18n/routing'
+import { Gift, Percent, Tag, Sparkles } from 'lucide-react'
+import { motion } from 'framer-motion'
 
 const offers = [
   {
     icon: Gift,
     title: 'First Time Special',
     discount: '10% OFF',
-    description: 'Get 10% discount on your first visit',
-    color: 'from-purple-500 to-pink-500',
+    description: 'A special greeting for your first luxury experience at Kashish.',
+    tag: 'Welcome Gift',
   },
   {
     icon: Percent,
-    title: 'Bridal Package',
-    discount: 'Save ₹1500',
-    description: 'Complete bridal package with pre-bridal treatments',
-    color: 'from-primary to-yellow-500',
+    title: 'Royal Bridal',
+    discount: 'SAVE ₹1500',
+    description: 'The ultimate transformation for your most special day.',
+    tag: 'Premium Package',
   },
   {
     icon: Tag,
-    title: 'Refer & Earn',
-    discount: '₹200 Credit',
-    description: 'Refer a friend and both get ₹200 discount',
-    color: 'from-green-500 to-teal-500',
+    title: 'Loyalty Rewards',
+    discount: '₹250 CREDIT',
+    description: 'Refer a friend and enjoy exclusive credits on your next visit.',
+    tag: 'Members Only',
   },
 ]
 
 export default function SpecialOffers() {
   return (
-    <section className="py-20 bg-gray-900 text-white relative overflow-hidden">
-      {/* Background Pattern */}
-      <div className="absolute inset-0 opacity-10">
-        <div className="absolute top-0 left-0 w-96 h-96 bg-primary rounded-full filter blur-3xl"></div>
-        <div className="absolute bottom-0 right-0 w-96 h-96 bg-secondary rounded-full filter blur-3xl"></div>
-      </div>
+    <section className="snap-section py-16 bg-white text-gray-900 relative overflow-hidden">
+      {/* Premium Background Effects */}
+      {/* Background Effects - Removed blurs for solid white theme */}
+      <div className="absolute inset-0 pointer-events-none" />
 
       <div className="container mx-auto px-4 relative z-10">
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-16">
-          <span className="text-primary font-semibold text-sm uppercase tracking-wider">
-            Limited Time Offers
-          </span>
-          <h2 className="text-3xl md:text-4xl font-heading font-bold mt-2 mb-4">
-            Special Deals & Packages
-          </h2>
-          <p className="text-gray-300 text-lg">
-            Don't miss out on our exclusive offers and save on premium beauty services
-          </p>
+        <div className="text-center max-w-3xl mx-auto mb-20">
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            className="inline-flex items-center gap-2 px-4 py-1.5 bg-white rounded-full mb-6 border border-gray-200 shadow-sm"
+          >
+            <Sparkles className="w-4 h-4 text-primary" />
+            <span className="text-primary font-black text-[10px] md:text-xs uppercase tracking-[0.2em]">
+              Exclusive Privileges
+            </span>
+          </motion.div>
+
+          <motion.h2
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-4xl md:text-5xl lg:text-7xl font-heading font-bold text-gray-900 mb-6 leading-tight"
+          >
+            Luxury Deals <br />
+            <span className="gold-text-animated italic">Curated For You</span>
+          </motion.h2>
+
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.1 }}
+            className="text-gray-600 text-lg md:text-xl font-medium max-w-2xl mx-auto"
+          >
+            Experience premium beauty at exceptional value with our seasonal packages and rewards.
+          </motion.p>
         </div>
 
         {/* Offers Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
           {offers.map((offer, index) => {
             const Icon = offer.icon
             return (
-              <div
+              <motion.div
                 key={index}
-                className="relative bg-white/10 backdrop-blur-sm p-8 rounded-2xl border border-white/20 hover:bg-white/15 transition group"
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.1 }}
+                className="group relative bg-white p-10 rounded-[2.5rem] border border-gray-100 hover:border-primary/40 transition-all duration-700 h-full flex flex-col items-center text-center overflow-hidden card-premium shadow-lg hover:shadow-2xl"
               >
-                <div className={`w-16 h-16 bg-gradient-to-br ${offer.color} rounded-2xl flex items-center justify-center mb-4 group-hover:scale-110 transition`}>
-                  <Icon className="w-8 h-8 text-white" />
+                {/* Highlight Shimmer */}
+                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent -translate-x-[100%] group-hover:translate-x-[100%] transition-transform duration-1000" />
+
+                <div className="mb-6 px-4 py-1.5 rounded-full bg-white border border-primary/20 text-[9px] font-black uppercase tracking-[0.2em] text-primary shadow-sm">
+                  {offer.tag}
                 </div>
-                <div className="mb-4">
-                  <div className="text-3xl font-bold text-primary mb-1">
+
+                <div className="w-20 h-20 gold-gradient rounded-3xl flex items-center justify-center mb-8 group-hover:scale-110 transition-transform duration-500 shadow-2xl shadow-primary/20">
+                  <Icon className="w-10 h-10 text-white" />
+                </div>
+
+                <div className="flex-grow space-y-4">
+                  <div className="text-4xl md:text-5xl font-black gold-text-animated mb-2">
                     {offer.discount}
                   </div>
-                  <div className="text-xl font-heading font-semibold mb-2">
+                  <h3 className="text-2xl font-bold text-gray-900 mb-2 font-heading">
                     {offer.title}
-                  </div>
+                  </h3>
+                  <p className="text-gray-600 text-[13px] md:text-sm font-medium leading-relaxed max-w-[220px] mx-auto">
+                    {offer.description}
+                  </p>
                 </div>
-                <p className="text-gray-300">
-                  {offer.description}
-                </p>
-              </div>
+
+                <div className="mt-8 pt-8 border-t border-gray-100 w-full">
+                  <Link
+                    href="/contact#booking"
+                    className="text-xs font-bold uppercase tracking-widest text-primary hover:text-white transition-colors flex items-center justify-center gap-2 group-hover:translate-y-[-2px] transition-transform"
+                  >
+                    Claim Offer
+                    <Gift className="w-3.5 h-3.5" />
+                  </Link>
+                </div>
+              </motion.div>
             )
           })}
         </div>
 
         {/* CTA */}
-        <div className="text-center">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="text-center"
+        >
           <Link
             href="/contact#booking"
-            className="inline-flex items-center gap-2 px-8 py-4 bg-yellow-400 text-black hover:bg-yellow-300 rounded-full font-bold transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl border-2 border-yellow-500"
+            className="group relative inline-flex items-center gap-4 px-12 py-5 gold-gradient text-black rounded-full font-bold transition-all duration-500 transform hover:scale-105 shadow-2xl overflow-hidden btn-premium"
           >
-            <Gift className="w-5 h-5" />
-            Book Now & Save
+            <span className="relative z-10 flex items-center gap-2">
+              <Gift className="w-5 h-5" />
+              Book Your Appointment Now
+            </span>
+            <div className="absolute inset-0 bg-white/20 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000" />
           </Link>
-        </div>
+          <p className="mt-6 text-gray-400 text-xs font-bold uppercase tracking-[0.3em]">
+            Terms & Conditions Apply
+          </p>
+        </motion.div>
       </div>
     </section>
   )

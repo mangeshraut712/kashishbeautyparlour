@@ -1,13 +1,15 @@
+import { BUSINESS_STATS } from '@/lib/constants'
+
 export const heroContent = {
   badge: {
     icon: 'Sparkles',
     text: 'Premium Beauty Services'
   },
   title: 'Where Beauty Meets Artistry',
-  description: 'Experience premium beauty services at Kashish Beauty Parlour. Professional makeup, hair styling, facials, and spa treatments in Pune.',
+  description: 'Experience premium beauty services at Kashish Beauty Parlour And Training Center. Professional makeup, hair styling, facials, and spa treatments in Pune.',
   image: {
-    src: 'https://images.unsplash.com/photo-1516975080664-ed2fc6a32937?w=800&h=600&fit=crop',
-    alt: 'Beautiful bride with professional makeup'
+    src: '/images/staff/Meena.png',
+    alt: 'Meena Raut - Founder & Professional Beautician at Kashish Beauty Parlour'
   },
   cta: {
     primary: {
@@ -23,16 +25,16 @@ export const heroContent = {
 
 export const heroStats = [
   {
-    value: '100+',
-    label: 'Services'
+    value: BUSINESS_STATS.totalServices,
+    label: BUSINESS_STATS.servicesLabel
   },
   {
-    value: '10000+',
-    label: 'Happy Customers'
+    value: BUSINESS_STATS.happyCustomers,
+    label: BUSINESS_STATS.customersLabel
   },
   {
-    value: '10+',
-    label: 'Years Experience'
+    value: BUSINESS_STATS.yearsOfExperience,
+    label: BUSINESS_STATS.yearsLabel
   }
 ]
 

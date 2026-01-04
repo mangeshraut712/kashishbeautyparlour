@@ -1,76 +1,140 @@
-import { Award, Users, Clock, Shield, Heart, Sparkles } from 'lucide-react'
+'use client'
 
-const features = [
-  {
-    icon: Award,
-    title: 'Certified Professionals',
-    description: 'Experienced and certified beauticians with years of expertise',
-  },
-  {
-    icon: Users,
-    title: '10000+ Happy Clients',
-    description: 'Trusted by thousands of satisfied customers across Pune',
-  },
-  {
-    icon: Clock,
-    title: 'Flexible Timings',
-    description: 'Open 7 days a week with convenient appointment slots',
-  },
-  {
-    icon: Shield,
-    title: 'Hygiene & Safety',
-    description: 'Maintaining highest standards of cleanliness and safety',
-  },
-  {
-    icon: Heart,
-    title: 'Personalized Care',
-    description: 'Customized services tailored to your unique needs',
-  },
-  {
-    icon: Sparkles,
-    title: 'Premium Products',
-    description: 'Using only high-quality, branded beauty products',
-  },
-]
+import Image from 'next/image'
+import { Award, Shield, Heart, CheckCircle2 } from 'lucide-react'
+import { motion } from 'framer-motion'
+import { BUSINESS_STATS } from '@/lib/constants'
+import { useTranslations } from 'next-intl'
 
 export default function WhyChooseUs() {
-  return (
-    <section className="py-20 bg-white">
-      <div className="container mx-auto px-4">
-        {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-16">
-          <span className="text-primary font-semibold text-sm uppercase tracking-wider">
-            Why Choose Us
-          </span>
-          <h2 className="text-3xl md:text-4xl font-heading font-bold text-gray-900 mt-2 mb-4">
-            Your Trusted Beauty Partner
-          </h2>
-          <p className="text-gray-600 text-lg">
-            We combine expertise, quality, and care to give you the best beauty experience
-          </p>
-        </div>
+  const t = useTranslations('WhyChooseUs')
 
-        {/* Features Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {features.map((feature, index) => {
-            const Icon = feature.icon
-            return (
-              <div
-                key={index}
-                className="flex flex-col items-center text-center p-6 rounded-xl hover:bg-gray-50 transition group"
-              >
-                <div className="w-16 h-16 bg-primary/10 group-hover:bg-primary rounded-2xl flex items-center justify-center mb-4 transition">
-                  <Icon className="w-8 h-8 text-primary group-hover:text-white transition" />
+  const features = [
+    {
+      icon: Award,
+      title: t('features.certified'),
+      description: t('features.certifiedDesc'),
+    },
+    {
+      icon: Heart,
+      title: t('features.personalized'),
+      description: t('features.personalizedDesc'),
+    },
+    {
+      icon: Shield,
+      title: t('features.hygiene'),
+      description: t('features.hygieneDesc'),
+    },
+  ]
+
+  return (
+    <section className="snap-section py-16 bg-white relative overflow-hidden">
+      {/* Decorative Elements - Simplified for pure white theme */}
+      <div className="absolute inset-0 pointer-events-none" />
+
+      <div className="container mx-auto px-4">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
+          {/* Left Side: Images & Visuals */}
+          <motion.div
+            initial={{ opacity: 0, x: -50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            className="relative"
+          >
+            <div className="grid grid-cols-2 gap-4">
+              <div className="space-y-4 pt-12">
+                <div className="relative rounded-3xl shadow-xl w-full aspect-[3/4] overflow-hidden border border-gray-100 image-zoom-container glow-gold-hover">
+                  <Image
+                    src="/images/makeup-looks/look-5.jpg"
+                    alt="Spa Treatment"
+                    fill
+                    className="object-cover"
+                    sizes="(max-width: 768px) 50vw, 25vw"
+                  />
                 </div>
-                <h3 className="text-xl font-heading font-bold text-gray-900 mb-2">
-                  {feature.title}
-                </h3>
-                <p className="text-gray-600">
-                  {feature.description}
-                </p>
+                <div className="bg-primary p-8 rounded-3xl text-black shadow-xl animate-pulse-glow">
+                  <div className="text-4xl font-bold mb-1">{BUSINESS_STATS.yearsOfExperience}</div>
+                  <div className="text-xs font-bold uppercase tracking-widest opacity-80">{BUSINESS_STATS.yearsLabel}</div>
+                </div>
               </div>
-            )
-          })}
+              <div className="space-y-4">
+                <div className="bg-white p-6 rounded-3xl shadow-lg border border-gray-100">
+                  <div className="flex items-center gap-3 mb-4">
+                    <div className="w-10 h-10 bg-primary/20 rounded-full flex items-center justify-center">
+                      <CheckCircle2 className="w-5 h-5 text-primary" />
+                    </div>
+                    <span className="font-bold text-gray-900 text-sm">{t('topRated')}</span>
+                  </div>
+                  <p className="text-xs text-gray-600 font-medium leading-relaxed">{t('topRatedDesc')}</p>
+                </div>
+                <div className="relative rounded-3xl shadow-xl w-full aspect-[3/5] overflow-hidden border border-gray-100 image-zoom-container glow-gold-hover">
+                  <Image
+                    src="/images/makeup-looks/look-6.jpg"
+                    alt="Makeup Artistry"
+                    fill
+                    className="object-cover"
+                    sizes="(max-width: 768px) 50vw, 25vw"
+                  />
+                </div>
+              </div>
+            </div>
+          </motion.div>
+
+          {/* Right Side: Content */}
+          <div className="space-y-10">
+            <div className="space-y-4">
+              <motion.span
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                viewport={{ once: true }}
+                className="text-primary font-bold text-xs uppercase tracking-[0.3em]"
+              >
+                {t('tagline')}
+              </motion.span>
+              <motion.h2
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                className="text-4xl md:text-5xl font-heading font-bold text-gray-900 leading-tight">
+                {t('title')} <span className="gold-text-animated">{t('titleHighlight')}</span>
+              </motion.h2>
+              <motion.p
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.1 }}
+                className="text-gray-600 text-lg leading-relaxed font-medium">
+                {t('description')}
+              </motion.p>
+            </div>
+
+            <div className="space-y-6">
+              {features.map((feature, index) => {
+                const Icon = feature.icon
+                return (
+                  <motion.div
+                    key={index}
+                    initial={{ opacity: 0, x: 30 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: index * 0.1 }}
+                    className="flex gap-6 p-6 bg-white rounded-3xl border border-gray-100 hover:border-primary/30 hover:shadow-xl transition-all duration-500 group card-premium">
+                    <div className="flex-shrink-0 w-14 h-14 bg-gray-50 group-hover:bg-primary/20 rounded-2xl flex items-center justify-center transition-all duration-500 border border-gray-200">
+                      <Icon className="w-6 h-6 text-primary transition-colors duration-500" />
+                    </div>
+                    <div>
+                      <h3 className="text-xl font-bold text-gray-900 mb-2 group-hover:text-primary transition-colors">
+                        {feature.title}
+                      </h3>
+                      <p className="text-gray-600 text-sm font-medium leading-relaxed">
+                        {feature.description}
+                      </p>
+                    </div>
+                  </motion.div>
+                )
+              })}
+            </div>
+          </div>
         </div>
       </div>
     </section>

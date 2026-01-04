@@ -1,4 +1,4 @@
-import { GraduationCap, Clock, Users, Award, CheckCircle } from 'lucide-react'
+import { Clock, Users, Award, CheckCircle } from 'lucide-react'
 
 export const courses = [
   {
@@ -7,6 +7,7 @@ export const courses = [
     duration: '6 Months',
     price: '₹60,000',
     schedule: '12 PM – 5 PM',
+    image: '/images/services/training-academy.png',
     description: 'Complete comprehensive beauty training covering basic and advanced makeup, hairstyling, hair treatment, and skin care modules with practical hands-on sessions.',
     basicSyllabus: [
       'Threading',

@@ -1,3 +1,5 @@
+import { BUSINESS_STATS } from '@/lib/constants'
+
 // Features data for Why Choose Us section
 export interface Feature {
   icon: string
@@ -13,7 +15,7 @@ export const features: Feature[] = [
   },
   {
     icon: 'Users',
-    title: '10000+ Happy Clients',
+    title: `${BUSINESS_STATS.happyCustomers} Happy Clients`,
     description: 'Trusted by thousands of satisfied customers across Pune',
   },
   {
