@@ -11,7 +11,7 @@ interface Message {
 interface ChatbotResponse {
     message: string
     suggestions?: string[]
-    data?: any
+    data?: Record<string, unknown>
 }
 
 // Comprehensive Knowledge Base
@@ -224,20 +224,20 @@ export class ChatbotEngine {
         } else if (PATTERNS.thanks.test(normalizedMessage)) {
             response = this.getThanksResponse()
         } else if (PATTERNS.bridal.test(normalizedMessage)) {
-            response = this.getBridalInfo(normalizedMessage)
+            response = this.getBridalInfo()
             this.userContext.interestedService = 'bridal'
         } else if (PATTERNS.training.test(normalizedMessage)) {
-            response = this.getTrainingInfo(normalizedMessage)
+            response = this.getTrainingInfo()
         } else if (PATTERNS.booking.test(normalizedMessage)) {
             response = this.getBookingInfo()
             this.userContext.wantsBooking = true
         } else if (PATTERNS.facial.test(normalizedMessage)) {
-            response = this.getFacialInfo(normalizedMessage)
+            response = this.getFacialInfo()
             this.userContext.interestedService = 'facial'
         } else if (PATTERNS.hair.test(normalizedMessage)) {
-            response = this.getHairInfo(normalizedMessage)
+            response = this.getHairInfo()
         } else if (PATTERNS.makeup.test(normalizedMessage)) {
-            response = this.getMakeupInfo(normalizedMessage)
+            response = this.getMakeupInfo()
         } else if (PATTERNS.spa.test(normalizedMessage)) {
             response = this.getSpaInfo()
         } else if (PATTERNS.waxing.test(normalizedMessage)) {
@@ -275,8 +275,7 @@ export class ChatbotEngine {
         }
     }
 
-    private getBridalInfo(message: string): ChatbotResponse {
-        const hasPrice = PATTERNS.price.test(message)
+    private getBridalInfo(): ChatbotResponse {
 
         let msg = `💍 **Bridal Makeup Packages** at Kashish:\n\n`
 
@@ -299,7 +298,7 @@ export class ChatbotEngine {
         }
     }
 
-    private getTrainingInfo(message: string): ChatbotResponse {
+    private getTrainingInfo(): ChatbotResponse {
         let msg = `🎓 **Professional Beauty Training at Kashish**\n\n`
         msg += `We offer ISO-Certified courses with 100% job placement!\n\n`
 
@@ -322,7 +321,7 @@ export class ChatbotEngine {
         }
     }
 
-    private getFacialInfo(message: string): ChatbotResponse {
+    private getFacialInfo(): ChatbotResponse {
         let msg = `✨ **Facial Treatments** - Premium Skin Care\n\n`
 
         KNOWLEDGE_BASE.services.facial.types.forEach(f => {
@@ -339,7 +338,7 @@ export class ChatbotEngine {
         }
     }
 
-    private getHairInfo(message: string): ChatbotResponse {
+    private getHairInfo(): ChatbotResponse {
         let msg = `💇‍♀️ **Hair Services** - Expert Styling\n\n`
 
         KNOWLEDGE_BASE.services.hair.services.forEach(h => {
@@ -359,7 +358,7 @@ export class ChatbotEngine {
         }
     }
 
-    private getMakeupInfo(message: string): ChatbotResponse {
+    private getMakeupInfo(): ChatbotResponse {
         let msg = `💄 **Makeup Services** - Professional Artistry\n\n`
 
         KNOWLEDGE_BASE.services.makeup.types.forEach(m => {
@@ -482,9 +481,9 @@ export class ChatbotEngine {
         const service = this.userContext.interestedService
 
         if (service === 'bridal') {
-            return this.getBridalInfo('price')
+            return this.getBridalInfo()
         } else if (service === 'facial') {
-            return this.getFacialInfo('price')
+            return this.getFacialInfo()
         }
 
         const msg = `💰 **Our Services & Pricing:**\n\n` +
