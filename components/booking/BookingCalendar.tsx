@@ -265,7 +265,7 @@ export default function BookingCalendar({ onBookingComplete }: BookingCalendarPr
                                     onClick={() => setStep(3)}
                                     className="flex-1 py-3 gold-gradient text-black font-bold rounded-xl transition-all shadow-lg"
                                 >
-                                    Continue
+                                    {t('buttons.continue')}
                                 </button>
                             </div>
                         </motion.div>
@@ -323,7 +323,7 @@ export default function BookingCalendar({ onBookingComplete }: BookingCalendarPr
                                     disabled={!selectedTime}
                                     className="flex-1 py-3 gold-gradient text-black font-bold rounded-xl disabled:opacity-50 transition-all shadow-lg"
                                 >
-                                    Continue
+                                    {t('buttons.continue')}
                                 </button>
                             </div>
                         </motion.div>

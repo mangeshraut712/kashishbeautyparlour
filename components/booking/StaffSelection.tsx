@@ -12,7 +12,10 @@ interface StaffSelectionProps {
     serviceType?: string
 }
 
+import { useTranslations } from 'next-intl'
+
 export default function StaffSelection({ selectedStaff, onSelect, serviceType }: StaffSelectionProps) {
+    const t = useTranslations('BookingCalendar.StaffSelection')
     const [showAll, setShowAll] = useState(false)
 
     // Filter staff based on service type if provided
@@ -27,8 +30,8 @@ export default function StaffSelection({ selectedStaff, onSelect, serviceType }:
     return (
         <div className="space-y-6">
             <div className="flex items-center justify-between">
-                <h3 className="font-bold text-gray-900 text-lg">Choose Your Beautician</h3>
-                <span className="text-xs text-gray-500">(Optional)</span>
+                <h3 className="font-bold text-gray-900 text-lg">{t('title')}</h3>
+                <span className="text-xs text-gray-500">{t('optional')}</span>
             </div>
 
             {/* No Preference Option */}
@@ -45,8 +48,8 @@ export default function StaffSelection({ selectedStaff, onSelect, serviceType }:
                     <Heart className="w-6 h-6 text-gray-400" />
                 </div>
                 <div className="text-left">
-                    <p className="font-bold text-gray-900">No Preference</p>
-                    <p className="text-sm text-gray-500">We&apos;ll assign the best available expert</p>
+                    <p className="font-bold text-gray-900">{t('noPreference')}</p>
+                    <p className="text-sm text-gray-500">{t('noPreferenceSub')}</p>
                 </div>
                 {selectedStaff === null && (
                     <CheckCircle className="w-5 h-5 text-primary ml-auto" />
@@ -87,7 +90,7 @@ export default function StaffSelection({ selectedStaff, onSelect, serviceType }:
                                     <p className="font-bold text-gray-900">{staff.name}</p>
                                     {staff.popular && (
                                         <span className="px-2 py-0.5 bg-primary/10 text-primary text-[10px] font-bold rounded-full">
-                                            TOP RATED
+                                            {t('topRated')}
                                         </span>
                                     )}
                                 </div>
@@ -97,7 +100,7 @@ export default function StaffSelection({ selectedStaff, onSelect, serviceType }:
                                         <Star className="w-3 h-3 text-yellow-500 fill-yellow-500" />
                                         <span className="text-xs font-bold text-gray-700">{staff.rating}</span>
                                     </div>
-                                    <span className="text-xs text-gray-400">({staff.reviews} reviews)</span>
+                                    <span className="text-xs text-gray-400">({staff.reviews} {t('reviews')})</span>
                                 </div>
                             </div>
 
@@ -133,7 +136,7 @@ export default function StaffSelection({ selectedStaff, onSelect, serviceType }:
                     onClick={() => setShowAll(!showAll)}
                     className="w-full py-3 text-sm font-bold text-primary hover:underline"
                 >
-                    {showAll ? 'Show Less' : `Show All ${relevantStaff.length} Experts`}
+                    {showAll ? t('showLess') : t('showAll', { count: relevantStaff.length })}
                 </button>
             )}
         </div>

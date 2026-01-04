@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { X, Gift, Percent, Sparkles, Clock, Crown } from 'lucide-react'
+import { useTranslations } from 'next-intl'
 
 /**
  * Festival Offers & First Visit Discount Popup
@@ -21,45 +22,46 @@ interface FestivalOffer {
     forNewCustomers?: boolean
 }
 
-const festivalOffers: FestivalOffer[] = [
-    {
-        id: 'new-customer',
-        title: 'Welcome Offer! 🎉',
-        description: 'First visit special discount on any service',
-        discount: '10% OFF',
-        code: 'WELCOME10',
-        validTill: 'Valid on first visit',
-        icon: <Gift className="w-6 h-6" />,
-        bgColor: 'from-green-500 to-emerald-600',
-        forNewCustomers: true,
-    },
-    {
-        id: 'wedding-season',
-        title: 'Wedding Season Special 💒',
-        description: 'Complete bridal packages at special prices (EMI available for packages above ₹25,000)',
-        discount: '₹5,000 OFF',
-        code: 'SHAADI2025',
-        validTill: 'Valid till March 2025',
-        icon: <Crown className="w-6 h-6" />,
-        bgColor: 'from-pink-500 to-rose-600',
-    },
-    {
-        id: 'weekend-special',
-        title: 'Weekend Glow ✨',
-        description: 'Facial + Hair Spa combo offer',
-        discount: '25% OFF',
-        code: 'WEEKEND25',
-        validTill: 'Sat-Sun only',
-        icon: <Sparkles className="w-6 h-6" />,
-        bgColor: 'from-purple-500 to-indigo-600',
-    },
-]
-
 export default function FestivalOfferPopup() {
+    const t = useTranslations('Marketing.FestivalOfferPopup')
     const [isOpen, setIsOpen] = useState(false)
     const [currentOffer, setCurrentOffer] = useState<FestivalOffer | null>(null)
     const [copied, setCopied] = useState(false)
     const [mounted, setMounted] = useState(false)
+
+    const festivalOffers: FestivalOffer[] = [
+        {
+            id: 'new-customer',
+            title: t('offers.newCustomer.title'),
+            description: t('offers.newCustomer.description'),
+            discount: t('offers.newCustomer.discount'),
+            code: 'WELCOME10',
+            validTill: t('offers.newCustomer.validTill'),
+            icon: <Gift className="w-6 h-6" />,
+            bgColor: 'from-green-500 to-emerald-600',
+            forNewCustomers: true,
+        },
+        {
+            id: 'wedding-season',
+            title: t('offers.weddingSeason.title'),
+            description: t('offers.weddingSeason.description'),
+            discount: t('offers.weddingSeason.discount'),
+            code: 'SHAADI2025',
+            validTill: t('offers.weddingSeason.validTill'),
+            icon: <Crown className="w-6 h-6" />,
+            bgColor: 'from-pink-500 to-rose-600',
+        },
+        {
+            id: 'weekend-glow',
+            title: t('offers.weekendGlow.title'),
+            description: t('offers.weekendGlow.description'),
+            discount: t('offers.weekendGlow.discount'),
+            code: 'WEEKEND25',
+            validTill: t('offers.weekendGlow.validTill'),
+            icon: <Sparkles className="w-6 h-6" />,
+            bgColor: 'from-purple-500 to-indigo-600',
+        },
+    ]
 
     useEffect(() => {
         setMounted(true)
@@ -77,7 +79,7 @@ export default function FestivalOfferPopup() {
 
             return () => clearTimeout(timer)
         }
-    }, [])
+    }, [festivalOffers])
 
     const handleClose = () => {
         setIsOpen(false)
@@ -116,6 +118,7 @@ export default function FestivalOfferPopup() {
                         <button
                             onClick={handleClose}
                             className="absolute top-4 right-4 z-10 w-10 h-10 bg-white/20 hover:bg-white/30 rounded-full flex items-center justify-center transition-colors"
+                            aria-label={t('close')}
                         >
                             <X className="w-5 h-5 text-white" />
                         </button>
@@ -149,7 +152,7 @@ export default function FestivalOfferPopup() {
                             {/* Coupon Code */}
                             {currentOffer.code && (
                                 <div className="mb-6">
-                                    <p className="text-sm text-gray-500 text-center mb-2 font-medium">Use code at checkout</p>
+                                    <p className="text-sm text-gray-500 text-center mb-2 font-medium">{t('useCode')}</p>
                                     <button
                                         onClick={handleCopyCode}
                                         className="w-full py-4 px-6 bg-gray-50 hover:bg-gray-100 rounded-xl transition-colors flex items-center justify-center gap-3 group border border-gray-100"
@@ -158,7 +161,7 @@ export default function FestivalOfferPopup() {
                                             {currentOffer.code}
                                         </code>
                                         <span className={`text-sm font-bold ${copied ? 'text-green-600' : 'text-primary'}`}>
-                                            {copied ? '✓ Copied!' : 'Copy'}
+                                            {copied ? `✓ ${t('copied')}` : t('copy')}
                                         </span>
                                     </button>
                                 </div>
@@ -175,12 +178,12 @@ export default function FestivalOfferPopup() {
                                 onClick={handleClose}
                                 className="w-full py-4 gold-gradient text-black font-bold rounded-xl transition-all hover:shadow-lg hover:shadow-primary/20"
                             >
-                                Book Now & Save
+                                {t('bookNowSave')}
                             </button>
 
                             {/* Other Offers */}
                             <div className="mt-6 pt-6 border-t border-gray-100">
-                                <p className="text-xs text-gray-400 text-center mb-3 font-bold uppercase tracking-widest">More Offers</p>
+                                <p className="text-xs text-gray-400 text-center mb-3 font-bold uppercase tracking-widest">{t('moreOffers')}</p>
                                 <div className="flex justify-center gap-2">
                                     {festivalOffers.map((offer) => (
                                         <button
@@ -188,6 +191,7 @@ export default function FestivalOfferPopup() {
                                             onClick={() => setCurrentOffer(offer)}
                                             className={`w-10 h-10 rounded-full bg-gradient-to-br ${offer.bgColor} flex items-center justify-center transition-transform ${currentOffer.id === offer.id ? 'scale-110 ring-2 ring-offset-2 ring-primary shadow-md' : 'opacity-60 hover:opacity-100'
                                                 }`}
+                                            aria-label={`View ${offer.title}`}
                                         >
                                             <span className="text-white text-lg">
                                                 {offer.id === 'new-customer' ? '🎁' : offer.id === 'wedding-season' ? '💒' : '✨'}

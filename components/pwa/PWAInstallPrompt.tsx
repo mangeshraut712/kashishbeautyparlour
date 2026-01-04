@@ -14,7 +14,10 @@ interface BeforeInstallPromptEvent extends Event {
     userChoice: Promise<{ outcome: 'accepted' | 'dismissed' }>
 }
 
+import { useTranslations } from 'next-intl'
+
 export default function PWAInstallPrompt() {
+    const t = useTranslations('Marketing.PWA')
     const [deferredPrompt, setDeferredPrompt] = useState<BeforeInstallPromptEvent | null>(null)
     const [showPrompt, setShowPrompt] = useState(false)
     const [isInstalled, setIsInstalled] = useState(false)
@@ -22,6 +25,17 @@ export default function PWAInstallPrompt() {
 
     useEffect(() => {
         setMounted(true)
+
+        // Register Service Worker
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/sw.js').then((registration) => {
+                    console.log('SW registered: ', registration);
+                }).catch((registrationError) => {
+                    console.log('SW registration failed: ', registrationError);
+                });
+            });
+        }
 
         // Check if already installed
         if (window.matchMedia('(display-mode: standalone)').matches) {
@@ -88,13 +102,14 @@ export default function PWAInstallPrompt() {
                                     <Smartphone className="w-5 h-5" />
                                 </div>
                                 <div>
-                                    <h3 className="font-bold">Install App</h3>
-                                    <p className="text-xs opacity-80">Get the full experience</p>
+                                    <h3 className="font-bold">{t('title')}</h3>
+                                    <p className="text-xs opacity-80">{t('subtitle')}</p>
                                 </div>
                             </div>
                             <button
                                 onClick={handleDismiss}
                                 className="w-8 h-8 bg-white/20 rounded-full flex items-center justify-center hover:bg-white/30 transition"
+                                aria-label={t('close')}
                             >
                                 <X className="w-4 h-4" />
                             </button>
@@ -103,18 +118,12 @@ export default function PWAInstallPrompt() {
 
                     <div className="p-4">
                         <ul className="space-y-2 mb-4 text-sm text-gray-600">
-                            <li className="flex items-center gap-2">
-                                <Sparkles className="w-4 h-4 text-primary" />
-                                Quick access from home screen
-                            </li>
-                            <li className="flex items-center gap-2">
-                                <Sparkles className="w-4 h-4 text-primary" />
-                                Faster loading &amp; offline access
-                            </li>
-                            <li className="flex items-center gap-2">
-                                <Sparkles className="w-4 h-4 text-primary" />
-                                Exclusive app-only offers
-                            </li>
+                            {[1, 2, 3].map((i) => (
+                                <li key={i} className="flex items-center gap-2">
+                                    <Sparkles className="w-4 h-4 text-primary" />
+                                    {t(`feature${i}`)}
+                                </li>
+                            ))}
                         </ul>
 
                         <button
@@ -122,7 +131,7 @@ export default function PWAInstallPrompt() {
                             className="w-full py-3 gold-gradient text-black font-bold rounded-xl flex items-center justify-center gap-2 transition hover:shadow-lg"
                         >
                             <Download className="w-5 h-5" />
-                            Install Kashish App
+                            {t('installButton')}
                         </button>
                     </div>
                 </div>

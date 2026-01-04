@@ -3,32 +3,35 @@
 import { Link } from '@/i18n/routing'
 import { Gift, Percent, Tag, Sparkles } from 'lucide-react'
 import { motion } from 'framer-motion'
-
-const offers = [
-  {
-    icon: Gift,
-    title: 'First Time Special',
-    discount: '10% OFF',
-    description: 'A special greeting for your first luxury experience at Kashish.',
-    tag: 'Welcome Gift',
-  },
-  {
-    icon: Percent,
-    title: 'Royal Bridal',
-    discount: 'SAVE ₹1500',
-    description: 'The ultimate transformation for your most special day.',
-    tag: 'Premium Package',
-  },
-  {
-    icon: Tag,
-    title: 'Loyalty Rewards',
-    discount: '₹250 CREDIT',
-    description: 'Refer a friend and enjoy exclusive credits on your next visit.',
-    tag: 'Members Only',
-  },
-]
+import { useTranslations } from 'next-intl'
 
 export default function SpecialOffers() {
+  const t = useTranslations('SpecialOffers')
+
+  const offers = [
+    {
+      icon: Gift,
+      title: t('offers.firstTime.title'),
+      discount: t('offers.firstTime.discount'),
+      description: t('offers.firstTime.description'),
+      tag: t('offers.firstTime.tag'),
+    },
+    {
+      icon: Percent,
+      title: t('offers.royalBridal.title'),
+      discount: t('offers.royalBridal.discount'),
+      description: t('offers.royalBridal.description'),
+      tag: t('offers.royalBridal.tag'),
+    },
+    {
+      icon: Tag,
+      title: t('offers.loyaltyRewards.title'),
+      discount: t('offers.loyaltyRewards.discount'),
+      description: t('offers.loyaltyRewards.description'),
+      tag: t('offers.loyaltyRewards.tag'),
+    },
+  ]
+
   return (
     <section className="snap-section py-16 bg-white text-gray-900 relative overflow-hidden">
       {/* Premium Background Effects */}
@@ -46,7 +49,7 @@ export default function SpecialOffers() {
           >
             <Sparkles className="w-4 h-4 text-primary" />
             <span className="text-primary font-black text-[10px] md:text-xs uppercase tracking-[0.2em]">
-              Exclusive Privileges
+              {t('tagline')}
             </span>
           </motion.div>
 
@@ -56,8 +59,8 @@ export default function SpecialOffers() {
             viewport={{ once: true }}
             className="text-4xl md:text-5xl lg:text-7xl font-heading font-bold text-gray-900 mb-6 leading-tight"
           >
-            Luxury Deals <br />
-            <span className="gold-text-animated italic">Curated For You</span>
+            {t('title')} <br />
+            <span className="gold-text-animated italic">{t('tagline')}</span>
           </motion.h2>
 
           <motion.p
@@ -67,7 +70,7 @@ export default function SpecialOffers() {
             transition={{ delay: 0.1 }}
             className="text-gray-600 text-lg md:text-xl font-medium max-w-2xl mx-auto"
           >
-            Experience premium beauty at exceptional value with our seasonal packages and rewards.
+            {t('description')}
           </motion.p>
         </div>
 
@@ -112,7 +115,7 @@ export default function SpecialOffers() {
                     href="/contact#booking"
                     className="text-xs font-bold uppercase tracking-widest text-primary hover:text-white transition-colors flex items-center justify-center gap-2 group-hover:translate-y-[-2px] transition-transform"
                   >
-                    Claim Offer
+                    {t('claimOffer')}
                     <Gift className="w-3.5 h-3.5" />
                   </Link>
                 </div>

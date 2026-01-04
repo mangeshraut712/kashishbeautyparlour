@@ -269,7 +269,68 @@
     "SpecialOffers": {
         "tagline": "Limited Time",
         "title": "Special Offers",
-        "description": "Don't miss out on our exclusive deals and seasonal promotions."
+        "description": "Don't miss out on our exclusive deals and seasonal promotions.",
+        "offers": {
+            "firstTime": {
+                "title": "First Time Special",
+                "discount": "10% OFF",
+                "description": "A special greeting for your first luxury experience at Kashish.",
+                "tag": "Welcome Gift"
+            },
+            "royalBridal": {
+                "title": "Royal Bridal",
+                "discount": "SAVE ₹1500",
+                "description": "The ultimate transformation for your most special day.",
+                "tag": "Premium Package"
+            },
+            "loyaltyRewards": {
+                "title": "Loyalty Rewards",
+                "discount": "₹250 CREDIT",
+                "description": "Refer a friend and enjoy exclusive credits on your next visit.",
+                "tag": "Members Only"
+            }
+        },
+        "claimOffer": "Claim Offer"
+    },
+    "Marketing": {
+        "FestivalOfferPopup": {
+            "close": "Close offer popup",
+            "copy": "Copy",
+            "copied": "Copied!",
+            "bookNowSave": "Book Now & Save",
+            "moreOffers": "More Offers",
+            "useCode": "Use code at checkout",
+            "validTill": "Valid till",
+            "offers": {
+                "newCustomer": {
+                    "title": "Welcome Offer! 🎉",
+                    "description": "First visit special discount on any service",
+                    "discount": "10% OFF",
+                    "validTill": "Valid on first visit"
+                },
+                "weddingSeason": {
+                    "title": "Wedding Season Special 💒",
+                    "description": "Complete bridal packages at special prices (EMI available for packages above ₹25,000)",
+                    "discount": "₹5,000 OFF",
+                    "validTill": "Valid till March 2025"
+                },
+                "weekendGlow": {
+                    "title": "Weekend Glow ✨",
+                    "description": "Facial + Hair Spa combo offer",
+                    "discount": "25% OFF",
+                    "validTill": "Sat-Sun only"
+                }
+            }
+        },
+        "PWA": {
+            "title": "Install App",
+            "subtitle": "Get the full experience",
+            "close": "Close install prompt",
+            "feature1": "Quick access from home screen",
+            "feature2": "Faster loading & offline access",
+            "feature3": "Exclusive app-only offers",
+            "installButton": "Install Kashish App"
+        }
     },
     "Chatbot": {
         "title": "Kashish Assistant",
@@ -305,6 +366,16 @@
             "title": "Booking Confirmed!",
             "message": "We'll send you a confirmation on WhatsApp shortly.",
             "seeYou": "See you soon!"
+        },
+        "StaffSelection": {
+            "title": "Choose Your Beautician",
+            "optional": "(Optional)",
+            "noPreference": "No Preference",
+            "noPreferenceSub": "We'll assign the best available expert",
+            "topRated": "TOP RATED",
+            "reviews": "reviews",
+            "showLess": "Show Less",
+            "showAll": "Show All {count} Experts"
         }
     },
     "WhyChooseUs": {
@@ -401,7 +472,13 @@
             "averageRating": "Average Rating on Google",
             "quickResponse": "Quick Response",
             "confirmationTime": "Confirmation Within 2 Hours",
-            "topRated": "Top Rated"
+            "topRated": "Top Rated",
+            "features": {
+                "whatsapp": "WhatsApp Confirmation",
+                "priority": "Priority Scheduling",
+                "rescheduling": "Easy Rescheduling",
+                "payments": "Secure UPI Payments"
+            }
         },
         "bridal": {
             "bridalServices": "Bridal Services",
