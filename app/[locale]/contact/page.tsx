@@ -68,7 +68,7 @@ export default function ContactPage() {
         phone: formData.get('phone'),
         email: formData.get('email'),
         service: formData.get('service'),
-        date: formData.get('preferredDate'),
+        preferredDate: formData.get('preferredDate'),
         message: formData.get('message'),
         source: 'website_contact_form',
         status: 'new',

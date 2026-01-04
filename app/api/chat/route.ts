@@ -5,7 +5,17 @@ export const runtime = 'edge'
 
 export async function POST(req: NextRequest) {
     try {
-        const { message } = await req.json()
+        let body: Record<string, unknown> | null = null
+        try {
+            body = await req.json()
+        } catch {
+            return NextResponse.json(
+                { error: 'invalid_json' },
+                { status: 400 }
+            )
+        }
+
+        const message = body?.message
 
         if (!message || typeof message !== 'string') {
             return NextResponse.json(

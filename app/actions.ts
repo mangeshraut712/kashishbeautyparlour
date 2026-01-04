@@ -18,6 +18,7 @@ export async function submitContactForm(
     prevState: FormState,
     formData: FormData
 ): Promise<FormState> {
+    const isProd = process.env.NODE_ENV === 'production'
     // Extract form data
     const rawData = {
         firstName: formData.get('firstName'),
@@ -50,6 +51,13 @@ export async function submitContactForm(
     try {
         // Check if database is available
         if (!db) {
+            if (isProd) {
+                logger.error('Firebase not configured in production. Contact submission rejected.')
+                return {
+                    success: false,
+                    message: 'Service unavailable. Please call or WhatsApp us directly.',
+                }
+            }
             // Simulate success for development without Firebase
             logger.debug('Form data received', data)
 
@@ -90,6 +98,7 @@ export async function subscribeNewsletter(
     prevState: FormState,
     formData: FormData
 ): Promise<FormState> {
+    const isProd = process.env.NODE_ENV === 'production'
     const email = formData.get('email')
 
     if (!email || typeof email !== 'string' || !email.includes('@')) {
@@ -101,6 +110,13 @@ export async function subscribeNewsletter(
 
     try {
         if (!db) {
+            if (isProd) {
+                logger.error('Firebase not configured in production. Newsletter subscription rejected.')
+                return {
+                    success: false,
+                    message: 'Service unavailable. Please try again later.',
+                }
+            }
             logger.debug('Newsletter subscription', email)
             await new Promise((resolve) => setTimeout(resolve, 500))
             return {

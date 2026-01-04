@@ -35,13 +35,22 @@ export const useRazorpay = () => {
 
             const order = await res.json();
 
-            if (!order.id) {
-                throw new Error('Failed to create order');
+            if (!res.ok || !order?.id) {
+                throw new Error(order?.error || 'Failed to create order');
             }
 
             // 2. Open Razorpay Checkout
+            const keyId = process.env.NEXT_PUBLIC_RAZORPAY_KEY_ID;
+            if (!keyId) {
+                throw new Error('Razorpay key is missing');
+            }
+
+            if (!window.Razorpay) {
+                throw new Error('Razorpay SDK is not loaded');
+            }
+
             const razorpayOptions = {
-                key: process.env.NEXT_PUBLIC_RAZORPAY_KEY_ID || 'rzp_test_placeholder',
+                key: keyId,
                 amount: order.amount,
                 currency: order.currency,
                 name: options.name,
