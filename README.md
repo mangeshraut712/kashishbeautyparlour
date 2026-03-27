@@ -499,3 +499,20 @@ This project is licensed under the **MIT License** - see the LICENSE file for de
 **Version:** 2.0.0  
 **Last Updated:** January 4, 2026  
 **Status:** ✅ Production Ready
+
+---
+
+<!-- codex:project-diagram:start -->
+
+## Project Diagram
+
+```mermaid
+flowchart LR
+    A["Browser"] --> B["Frontend App"]
+    B --> C["API / Serverless"]
+    C --> D["Deploy"]
+```
+
+_High-level flow of the deployed web experience and supporting services._
+
+<!-- codex:project-diagram:end -->
