@@ -153,7 +153,7 @@ const jsonLd = {
     reviewCount: '650',
   },
   sameAs: [
-    'https://www.instagram.com/kashish_beauty_parlour_nisargr/',
+    'https://www.instagram.com/kashishbeautyandtraining/',
     'https://www.facebook.com/profile.php?id=100064114598364',
   ],
 }

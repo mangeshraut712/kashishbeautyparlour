@@ -22,6 +22,22 @@
   <img src="https://img.shields.io/badge/Firebase-Backend-ffca28?style=flat-square&logo=firebase" alt="Firebase">
 </p>
 
+<p align="center">
+  <a href="https://mangeshraut712.github.io/kashishbeautyparlour/"><strong>Live site</strong></a>
+  &nbsp;·&nbsp;
+  <a href="https://github.com/mangeshraut712/kashishbeautyparlour">Source</a>
+</p>
+
+<p align="center">
+  <img src="docs/screenshots/01-home.png" alt="Kashish Beauty Parlour homepage" width="48%">
+  &nbsp;
+  <img src="docs/screenshots/02-feature.png" alt="Kashish Beauty Parlour services catalog" width="48%">
+</p>
+
+<p align="center">
+  <sub>Homepage&nbsp;&nbsp;·&nbsp;&nbsp;Services</sub>
+</p>
+
 ---
 
 ## 📋 Overview
@@ -33,7 +49,7 @@
 - 🤖 **AI Chatbot** - Google Gemini-powered smart assistant for 24/7 customer support
 - 📅 **Smart Booking** - Interactive calendar-based appointment scheduling
 - 💳 **Secure Payments** - Razorpay & UPI integration with EMI options
-- 🌐 **Multilingual** - Full support for English & Marathi
+- 🌐 **Multilingual** - Full support for English, Hindi & Marathi
 - 📱 **PWA Ready** - Installable progressive web app
 - ⚡ **Lightning Fast** - 95+ Lighthouse performance score
 
@@ -80,7 +96,7 @@
 ### 🌐 Internationalization (i18n)
 
 - **next-intl** powered translations
-- English (EN) & Marathi (MR) support
+- English (EN), Hindi (HI) & Marathi (MR) support
 - URL-based locale routing (`/en/`, `/mr/`)
 - Automatic language detection
 - Easy to add more languages
@@ -123,7 +139,7 @@
 
 ```bash
 # Clone the repository
-git clone https://github.com/yourusername/kashishbeautyparlour.git
+git clone https://github.com/mangeshraut712/kashishbeautyparlour.git
 
 # Navigate to directory
 cd kashishbeautyparlour
@@ -154,7 +170,7 @@ NEXT_PUBLIC_RAZORPAY_KEY_ID=your_razorpay_key_id
 RAZORPAY_KEY_SECRET=your_razorpay_secret
 
 # App URL (Production)
-NEXT_PUBLIC_APP_URL=https://yourdomain.com
+NEXT_PUBLIC_APP_URL=https://mangeshraut712.github.io/kashishbeautyparlour
 
 # Optional: Firebase
 FIREBASE_PROJECT_ID=your_project_id
@@ -289,7 +305,9 @@ kashishbeautyparlour/
 
 ## 🚀 Deployment
 
-### Vercel (Recommended)
+Production is on **GitHub Pages**: [mangeshraut712.github.io/kashishbeautyparlour](https://mangeshraut712.github.io/kashishbeautyparlour/). Vercel remains an optional alternative.
+
+### Vercel
 
 #### Method 1: GitHub Integration
 
@@ -465,7 +483,7 @@ Contributions are welcome! Please follow these steps:
 
 ## 📄 License
 
-This project is licensed under the **MIT License** - see the LICENSE file for details.
+This project is licensed under the **MIT License**. Copyright © 2026 Kashish Beauty Parlour And Training Center.
 
 ---
 
@@ -481,7 +499,7 @@ This project is licensed under the **MIT License** - see the LICENSE file for de
 ---
 
 <p align="center">
-  <strong>Built with ❤️ by Kashish Beauty Parlour Team</strong>
+  <strong>Built with ❤️ by Kashish Beauty Parlour Team · © 2026</strong>
 </p>
 
 <p align="center">
@@ -497,7 +515,7 @@ This project is licensed under the **MIT License** - see the LICENSE file for de
 ---
 
 **Version:** 2.0.0  
-**Last Updated:** January 4, 2026  
+**Last Updated:** September 2026  
 **Status:** ✅ Production Ready
 
 ---
