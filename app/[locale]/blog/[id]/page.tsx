@@ -7,10 +7,14 @@ import { blogPostsData } from '@/lib/data/blog'
 interface PageProps {
   params: Promise<{
     id: string
+    locale: string
   }>
 }
 
-// Use the shared blog data
+export function generateStaticParams() {
+  return blogPostsData.map((post) => ({ id: String(post.id) }))
+}
+
 const blogPosts = blogPostsData
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {

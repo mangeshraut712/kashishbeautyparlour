@@ -1,17 +1,18 @@
 // Service Worker for Kashish Beauty Parlour And Training Center PWA
 // Provides offline support and caching
 
-const CACHE_NAME = 'kashish-v1';
-const STATIC_CACHE = 'kashish-static-v1';
-const DYNAMIC_CACHE = 'kashish-dynamic-v1';
+const BASE_PATH = '/kashishbeautyparlour';
+const CACHE_NAME = 'kashish-v2';
+const STATIC_CACHE = 'kashish-static-v2';
+const DYNAMIC_CACHE = 'kashish-dynamic-v2';
 
 // Assets to cache immediately
 const STATIC_ASSETS = [
-    '/',
-    '/offline.html',
-    '/favicon.ico',
-    '/icon.png',
-    '/apple-touch-icon.png',
+    `${BASE_PATH}/`,
+    `${BASE_PATH}/offline.html`,
+    `${BASE_PATH}/favicon.ico`,
+    `${BASE_PATH}/icon.png`,
+    `${BASE_PATH}/apple-touch-icon.png`,
 ];
 
 // Install event - cache static assets
@@ -49,13 +50,13 @@ self.addEventListener('fetch', (event) => {
     if (request.method !== 'GET') return;
 
     // Skip API routes - always fetch fresh
-    if (url.pathname.startsWith('/api/')) return;
+    if (url.pathname.startsWith(`${BASE_PATH}/api/`) || url.pathname.startsWith('/api/')) return;
 
     // Handle navigation requests
     if (request.mode === 'navigate') {
         event.respondWith(
             fetch(request)
-                .catch(() => caches.match('/offline.html'))
+                .catch(() => caches.match(`${BASE_PATH}/offline.html`))
         );
         return;
     }
@@ -100,11 +101,11 @@ self.addEventListener('push', (event) => {
     const title = data.title || 'Kashish Beauty Parlour And Training Center';
     const options = {
         body: data.body || 'You have a new notification',
-        icon: '/icon.png',
-        badge: '/icon.png',
+        icon: `${BASE_PATH}/icon.png`,
+        badge: `${BASE_PATH}/icon.png`,
         vibrate: [100, 50, 100],
         data: {
-            url: data.url || '/',
+            url: data.url || `${BASE_PATH}/`,
         },
     };
 

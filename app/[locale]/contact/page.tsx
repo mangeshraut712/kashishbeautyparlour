@@ -1,14 +1,14 @@
 'use client';
 
-import { MapPin, Phone, Mail, Clock, Send, User, MessageSquare, Instagram as InstagramIcon, Facebook as FacebookIcon, PhoneCall, Sparkles, ArrowRight, CheckCircle, Heart, Star, Award, Shield, Zap, HelpCircle, ChevronDown } from 'lucide-react'
+import { MapPin, Phone, Mail, Clock, Send, User, MessageSquare, Instagram as InstagramIcon, Facebook as FacebookIcon, PhoneCall, Sparkles, ArrowRight, CheckCircle, Heart, Star, Award, Shield, Zap, HelpCircle, ChevronDown, Users } from 'lucide-react'
+import { useTranslations } from 'next-intl';
+import Image from 'next/image';
 import { BUSINESS_INFO, BUSINESS_STATS } from '@/lib/constants'
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import BookingCalendar from '@/components/booking/BookingCalendar';
 import UPIPayment from '@/components/payment/UPIPayment';
 import { logger } from '@/lib/logger';
-import { useTranslations } from 'next-intl';
-import Image from 'next/image';
 
 // FAQ Data
 const faqs = [
@@ -45,9 +45,6 @@ const quickStats = [
   { icon: Award, value: BUSINESS_STATS.yearsOfExperience, label: 'Years Experience' },
 ];
 
-// Import Users icon
-import { Users } from 'lucide-react';
-
 export default function ContactPage() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
@@ -74,17 +71,13 @@ export default function ContactPage() {
         status: 'new',
       };
 
-      const res = await fetch('/api/contact', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(data),
-      });
-      if (res.ok) {
-        setSubmitStatus('success');
-        (e.target as HTMLFormElement).reset();
-      } else {
-        setSubmitStatus('error');
-      }
+      const phone = String(BUSINESS_INFO.contact.whatsapp).replace(/[^\d]/g, '')
+      const text = encodeURIComponent(
+        `Hello Kashish Beauty Parlour,\n\nName: ${data.firstName} ${data.lastName}\nPhone: ${data.phone}\nEmail: ${data.email}\nService: ${data.service}\nPreferred date: ${data.preferredDate}\n\n${data.message}`
+      )
+      window.open(`https://wa.me/${phone}?text=${text}`, '_blank', 'noopener,noreferrer')
+      setSubmitStatus('success');
+      (e.target as HTMLFormElement).reset();
     } catch (error) {
       setSubmitStatus('error');
       logger.error('Network error during contact submission:', error);

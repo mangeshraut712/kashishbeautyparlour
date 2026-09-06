@@ -3,6 +3,8 @@
 import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Download, X, Smartphone, Sparkles } from 'lucide-react'
+import { useTranslations } from 'next-intl'
+import { withBasePath } from '@/lib/site'
 
 /**
  * PWA Install Prompt - Full implementation
@@ -13,8 +15,6 @@ interface BeforeInstallPromptEvent extends Event {
     prompt: () => Promise<void>
     userChoice: Promise<{ outcome: 'accepted' | 'dismissed' }>
 }
-
-import { useTranslations } from 'next-intl'
 
 export default function PWAInstallPrompt() {
     const t = useTranslations('Marketing.PWA')
@@ -29,7 +29,7 @@ export default function PWAInstallPrompt() {
         // Register Service Worker
         if ('serviceWorker' in navigator) {
             window.addEventListener('load', () => {
-                navigator.serviceWorker.register('/sw.js').then((registration) => {
+                navigator.serviceWorker.register(withBasePath('/sw.js')).then((registration) => {
                     console.log('SW registered: ', registration);
                 }).catch((registrationError) => {
                     console.log('SW registration failed: ', registrationError);

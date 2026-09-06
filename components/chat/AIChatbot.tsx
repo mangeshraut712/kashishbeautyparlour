@@ -4,6 +4,7 @@ import { useState, useRef, useEffect } from 'react';
 import { MessageSquare, Send, Bot, Minimize2, Sparkles } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useTranslations } from 'next-intl';
+import { chatbotEngine } from '@/lib/chatbot-engine';
 
 interface Message {
     role: 'user' | 'assistant';
@@ -44,18 +45,10 @@ export default function AIChatbot() {
         setSuggestions([]);
 
         try {
-            const res = await fetch('/api/chat', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ message: userMessage }),
-            });
-
-            const data = await res.json();
-            if (data.response) {
-                setMessages((prev) => [...prev, { role: 'assistant', content: data.response }]);
-                if (data.suggestions && data.suggestions.length > 0) {
-                    setSuggestions(data.suggestions);
-                }
+            const data = chatbotEngine.chat(userMessage);
+            setMessages((prev) => [...prev, { role: 'assistant', content: data.message }]);
+            if (data.suggestions && data.suggestions.length > 0) {
+                setSuggestions(data.suggestions);
             }
         } catch (error) {
             console.error('Chat error:', error);

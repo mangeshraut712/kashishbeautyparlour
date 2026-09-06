@@ -3,7 +3,8 @@ import Script from 'next/script'
 import { Inter, Playfair_Display } from 'next/font/google'
 import '../globals.css'
 import { NextIntlClientProvider } from 'next-intl';
-import { getMessages } from 'next-intl/server';
+import { getMessages, setRequestLocale } from 'next-intl/server';
+import { notFound } from 'next/navigation';
 import Header from '@/components/layout/Header'
 import Footer from '@/components/layout/Footer'
 import FestivalOfferPopup from '@/components/marketing/FestivalOfferPopup'
@@ -14,6 +15,8 @@ import AIChatbot from '@/components/chat/AIChatbot'
 import FloatingActions from '@/components/home/FloatingActions'
 import { Analytics } from '@vercel/analytics/next'
 import { SpeedInsights } from '@vercel/speed-insights/next'
+import { routing } from '@/i18n/routing'
+import { BASE_PATH, SITE_URL } from '@/lib/site'
 
 // Optimized font loading with display swap
 const inter = Inter({
@@ -40,7 +43,7 @@ export const viewport: Viewport = {
 
 // Comprehensive metadata for SEO
 export const metadata: Metadata = {
-  metadataBase: new URL('https://kashishbeautyparlour.com'),
+  metadataBase: new URL(SITE_URL),
   title: {
     default: 'Kashish Beauty Parlour And Training Center | Premium Beauty Salon in Thergaon, Pune',
     template: '%s | Kashish Beauty Parlour And Training Center',
@@ -58,7 +61,7 @@ export const metadata: Metadata = {
     'spa pune',
     'beauty courses pune',
   ],
-  authors: [{ name: 'Kashish Beauty Parlour And Training Center', url: 'https://kashishbeautyparlour.com' }],
+  authors: [{ name: 'Kashish Beauty Parlour And Training Center', url: SITE_URL }],
   creator: 'Kashish Beauty Parlour And Training Center',
   publisher: 'Kashish Beauty Parlour And Training Center',
   formatDetection: {
@@ -68,23 +71,23 @@ export const metadata: Metadata = {
   },
   icons: {
     icon: [
-      { url: '/favicon.ico', sizes: 'any' },
-      { url: '/icon.png', sizes: '192x192', type: 'image/png' },
+      { url: `${BASE_PATH}/favicon.ico`, sizes: 'any' },
+      { url: `${BASE_PATH}/icon.png`, sizes: '192x192', type: 'image/png' },
     ],
-    apple: '/apple-touch-icon.png',
-    shortcut: '/favicon-16x16.png',
+    apple: `${BASE_PATH}/apple-touch-icon.png`,
+    shortcut: `${BASE_PATH}/favicon-16x16.png`,
   },
-  manifest: '/manifest.json',
+  manifest: `${BASE_PATH}/manifest.json`,
   openGraph: {
     title: 'Kashish Beauty Parlour And Training Center - Premium Beauty Services in Pune',
     description: 'Transform your look with expert beauty services. Bridal makeup, hair styling, facials, spa treatments and professional training courses.',
-    url: 'https://kashishbeautyparlour.com',
+    url: SITE_URL,
     siteName: 'Kashish Beauty Parlour And Training Center',
     locale: 'en_IN',
     type: 'website',
     images: [
       {
-        url: '/images/og-image.jpg',
+        url: `${BASE_PATH}/images/og-image.jpg`,
         width: 1200,
         height: 630,
         alt: 'Kashish Beauty Parlour And Training Center - Premium Beauty Services',
@@ -95,7 +98,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Kashish Beauty Parlour - Premium Beauty Services in Pune',
     description: 'Transform your look with expert beauty services.',
-    images: ['/images/og-image.jpg'],
+    images: [`${BASE_PATH}/images/og-image.jpg`],
   },
   robots: {
     index: true,
@@ -120,7 +123,7 @@ const jsonLd = {
   '@type': 'BeautySalon',
   name: 'Kashish Beauty Parlour And Training Center',
   description: 'Professional beauty services and training center in Pune',
-  url: 'https://kashishbeautyparlour.com',
+  url: SITE_URL,
   telephone: '+91-7276784825',
   email: 'kashishparlour15@gmail.com',
   address: {
@@ -143,7 +146,7 @@ const jsonLd = {
     closes: '22:00',
   },
   priceRange: '₹₹',
-  image: 'https://kashishbeautyparlour.com/images/og-image.jpg',
+  image: `${SITE_URL}/images/og-image.jpg`,
   aggregateRating: {
     '@type': 'AggregateRating',
     ratingValue: '4.8',
@@ -155,6 +158,12 @@ const jsonLd = {
   ],
 }
 
+export function generateStaticParams() {
+  return routing.locales.map((locale) => ({ locale }))
+}
+
+export const dynamicParams = false
+
 export default async function RootLayout({
   children,
   params
@@ -163,6 +172,10 @@ export default async function RootLayout({
   params: Promise<{ locale: string }>;
 }) {
   const { locale } = await params;
+  if (!routing.locales.includes(locale as typeof routing.locales[number])) {
+    notFound();
+  }
+  setRequestLocale(locale);
   const messages = await getMessages();
 
   return (
