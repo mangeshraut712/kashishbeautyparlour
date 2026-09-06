@@ -3,7 +3,7 @@
 # ===========================================
 # Runs on: push to main/develop, pull requests
 # Jobs: Quality checks, Build verification
-# Deployment: Handled automatically by Vercel
+# Deployment: GitHub Pages via .github/workflows/deploy-pages.yml
 # ===========================================
 
 name: CI/CD Pipeline
@@ -76,17 +76,16 @@ jobs:
       - name: 🏗️ Build application
         run: npm run build
         env:
-          NEXT_PUBLIC_APP_URL: "https://kashishbeautyparlour.com"
+          NEXT_PUBLIC_APP_URL: "https://mangeshraut712.github.io/kashishbeautyparlour"
 
       - name: 📤 Upload build artifacts
         uses: actions/upload-artifact@v4
         with:
           name: nextjs-build
-          path: .next
+          path: out
           retention-days: 7
 
 # ===========================================
-# Note: Production deployment is handled 
-# automatically by Vercel when pushing to main.
-# Connect your GitHub repo to Vercel for auto-deploy.
+# Production deployment is GitHub Pages
+# (.github/workflows/deploy-pages.yml).
 # ===========================================

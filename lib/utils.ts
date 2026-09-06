@@ -1,5 +1,6 @@
 import { type ClassValue, clsx } from "clsx"
 import { twMerge } from "tailwind-merge"
+import { SITE_URL } from '@/lib/site'
 
 /**
  * Combines class names with Tailwind merge support
@@ -75,5 +76,5 @@ export function truncate(str: string, length: number): string {
  * Create absolute URL for metadata
  */
 export function absoluteUrl(path: string): string {
-    return `${process.env.NEXT_PUBLIC_APP_URL || 'https://kashishbeautyparlour.com'}${path}`
+    return `${process.env.NEXT_PUBLIC_APP_URL || SITE_URL}${path}`
 }

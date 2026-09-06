@@ -1,7 +1,10 @@
 import { MetadataRoute } from 'next'
+import { SITE_URL } from '@/lib/site'
+
+export const dynamic = 'force-static'
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = 'https://kashishbeautyparlour.com' // Replace with your actual domain
+  const baseUrl = SITE_URL
 
   return [
     {

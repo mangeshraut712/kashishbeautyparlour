@@ -1,5 +1,5 @@
 import { Metadata } from 'next'
-import { getTranslations } from 'next-intl/server'
+import { getTranslations, setRequestLocale } from 'next-intl/server'
 import HomeClient from '@/components/home/HomeClient'
 
 interface Props {
@@ -8,6 +8,7 @@ interface Props {
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale } = await params
+  setRequestLocale(locale)
   const t = await getTranslations({ locale, namespace: 'Hero' })
 
   return {
@@ -37,6 +38,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   }
 }
 
-export default function Home() {
+export default async function Home({ params }: Props) {
+  const { locale } = await params
+  setRequestLocale(locale)
   return <HomeClient />
 }
