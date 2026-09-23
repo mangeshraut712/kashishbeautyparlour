@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server'
-import { db, firebaseAdmin } from '@/lib/firebaseAdmin'
+import { db, FieldValue } from '@/lib/firebaseAdmin'
 import { logger } from '@/lib/logger'
 import { sendBookingNotification } from '@/lib/notifications'
 import { contactFormSchema, validateForm } from '@/lib/validations'
@@ -37,7 +37,7 @@ export async function POST(req: Request) {
     const status = typeof body.status === 'string' && body.status.trim() ? body.status : 'new'
 
     // Check if Firebase is properly configured
-    if (!firebaseAdmin.apps.length || !db) {
+    if (!db) {
       if (process.env.NODE_ENV === 'production') {
         logger.error('Firebase not configured in production. Contact submission rejected.')
         return NextResponse.json({ error: 'service_unavailable' }, { status: 503 })
@@ -90,7 +90,7 @@ export async function POST(req: Request) {
       message: String(message),
       source: String(source) || 'website',
       status: String(status) || 'new',
-      submittedAt: firebaseAdmin.firestore.FieldValue.serverTimestamp(),
+      submittedAt: FieldValue.serverTimestamp(),
     })
 
     // Send notification
