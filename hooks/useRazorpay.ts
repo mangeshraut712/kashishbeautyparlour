@@ -3,9 +3,35 @@
 import { useCallback } from 'react';
 import { logger } from '@/lib/logger';
 
+interface RazorpaySuccessResponse {
+    razorpay_order_id: string;
+    razorpay_payment_id: string;
+    razorpay_signature: string;
+}
+
+interface RazorpayCheckoutOptions {
+    key: string;
+    amount: number;
+    currency: string;
+    name: string;
+    description: string;
+    order_id: string;
+    handler: (response: RazorpaySuccessResponse) => void | Promise<void>;
+    prefill: { name: string; email?: string; contact?: string };
+    theme: { color: string };
+}
+
+interface RazorpayInstance {
+    open: () => void;
+}
+
+interface RazorpayConstructor {
+    new (options: RazorpayCheckoutOptions): RazorpayInstance;
+}
+
 declare global {
     interface Window {
-        Razorpay: any;
+        Razorpay?: RazorpayConstructor;
     }
 }
 
@@ -15,8 +41,8 @@ interface PaymentOptions {
     description: string;
     email?: string;
     phone?: string;
-    onSuccess?: (response: any) => void;
-    onError?: (error: any) => void;
+    onSuccess?: (response: RazorpaySuccessResponse) => void;
+    onError?: (error: unknown) => void;
 }
 
 export const useRazorpay = () => {
@@ -56,7 +82,7 @@ export const useRazorpay = () => {
                 name: options.name,
                 description: options.description,
                 order_id: order.id,
-                handler: async (response: any) => {
+                handler: async (response: RazorpaySuccessResponse) => {
                     // 3. Verify payment on the server
                     const verifyRes = await fetch('/api/payment/verify', {
                         method: 'POST',
