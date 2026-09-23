@@ -1,4 +1,5 @@
-import admin from 'firebase-admin'
+import { cert, getApps, initializeApp, type ServiceAccount } from 'firebase-admin/app'
+import { FieldValue, getFirestore, type Firestore } from 'firebase-admin/firestore'
 import * as fs from 'fs'
 import * as path from 'path'
 import { logger } from './logger'
@@ -8,14 +9,24 @@ import { logger } from './logger'
  * Reads service account key from JSON file or environment variable.
  */
 
-interface ServiceAccountWithProjectId extends admin.ServiceAccount {
+interface ServiceAccountJson extends ServiceAccount {
   project_id?: string
+  client_email?: string
+  private_key?: string
 }
 
-if (!admin.apps.length) {
+function asServiceAccount(raw: ServiceAccountJson): ServiceAccount {
+  return {
+    projectId: raw.projectId || raw.project_id,
+    clientEmail: raw.clientEmail || raw.client_email,
+    privateKey: raw.privateKey || raw.private_key,
+  }
+}
+
+if (!getApps().length) {
   try {
     // Try to load from environment variables first (for production)
-    let serviceAccount: ServiceAccountWithProjectId | null = null
+    let serviceAccount: ServiceAccountJson | null = null
 
     if (process.env.FIREBASE_SERVICE_ACCOUNT_KEY) {
       serviceAccount = JSON.parse(process.env.FIREBASE_SERVICE_ACCOUNT_KEY)
@@ -46,9 +57,10 @@ if (!admin.apps.length) {
     }
 
     if (serviceAccount) {
-      admin.initializeApp({
-        credential: admin.credential.cert(serviceAccount),
-        projectId: serviceAccount.project_id || serviceAccount.projectId || process.env.FIREBASE_PROJECT_ID,
+      const account = asServiceAccount(serviceAccount)
+      initializeApp({
+        credential: cert(account),
+        projectId: account.projectId || process.env.FIREBASE_PROJECT_ID,
         databaseURL: process.env.FIREBASE_DATABASE_URL,
       })
     } else {
@@ -64,13 +76,13 @@ if (!admin.apps.length) {
 }
 
 // Fallback for firestore if initialization failed
-let db: admin.firestore.Firestore | null = null
+let db: Firestore | null = null
 try {
-  if (admin.apps.length) {
-    db = admin.firestore()
+  if (getApps().length) {
+    db = getFirestore()
   }
 } catch {
   db = null
 }
 
-export { admin as firebaseAdmin, db }
+export { FieldValue, db }

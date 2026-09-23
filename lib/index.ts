@@ -33,4 +33,4 @@ export { BUSINESS_INFO, NAV_LINKS } from './constants'
 export { staffMembers, type StaffMember } from './data/staff'
 
 // Firebase (Server-side only)
-export { firebaseAdmin, db } from './firebaseAdmin'
+export { db, FieldValue } from './firebaseAdmin'
