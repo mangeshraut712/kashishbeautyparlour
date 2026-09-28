@@ -28,16 +28,6 @@
   <a href="https://github.com/mangeshraut712/kashishbeautyparlour">Source</a>
 </p>
 
-<p align="center">
-  <img src="docs/screenshots/01-home.png" alt="Kashish Beauty Parlour homepage" width="48%">
-  &nbsp;
-  <img src="docs/screenshots/02-feature.png" alt="Kashish Beauty Parlour services catalog" width="48%">
-</p>
-
-<p align="center">
-  <sub>Homepage&nbsp;&nbsp;·&nbsp;&nbsp;Services</sub>
-</p>
-
 ---
 
 ## 📋 Overview
@@ -52,6 +42,24 @@
 - 🌐 **Multilingual** - Full support for English, Hindi & Marathi
 - 📱 **PWA Ready** - Installable progressive web app
 - ⚡ **Lightning Fast** - 95+ Lighthouse performance score
+
+---
+
+## Screenshots
+
+Framed captures of the live site (current UI).
+
+<div align="center">
+
+<img src="docs/screenshots/01-home.webp" alt="Homepage: book beauty services in Pune" width="720" />
+
+<img src="docs/screenshots/02-services.webp" alt="Services catalog with bridal, hair, and skin treatments" width="720" />
+
+<img src="docs/screenshots/03-gallery.webp" alt="Visual gallery of makeup and parlour work" width="720" />
+
+<img src="docs/screenshots/04-contact.webp" alt="Contact and online booking in Thergaon" width="720" />
+
+</div>
 
 ---
 
