@@ -1,47 +1,26 @@
 import { MetadataRoute } from 'next'
+import { routing } from '@/i18n/routing'
 import { SITE_URL } from '@/lib/site'
 
 export const dynamic = 'force-static'
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = SITE_URL
-
-  return [
-    {
-      url: baseUrl,
-      lastModified: new Date(),
-      changeFrequency: 'daily',
-      priority: 1,
-    },
-    {
-      url: `${baseUrl}/about`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly',
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/services`,
-      lastModified: new Date(),
-      changeFrequency: 'weekly',
-      priority: 0.9,
-    },
-    {
-      url: `${baseUrl}/gallery`,
-      lastModified: new Date(),
-      changeFrequency: 'weekly',
-      priority: 0.7,
-    },
-    {
-      url: `${baseUrl}/training`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly',
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/contact`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly',
-      priority: 0.9,
-    },
+  const pages = [
+    { path: '', changeFrequency: 'daily' as const, priority: 1 },
+    { path: '/about', changeFrequency: 'monthly' as const, priority: 0.8 },
+    { path: '/services', changeFrequency: 'weekly' as const, priority: 0.9 },
+    { path: '/gallery', changeFrequency: 'weekly' as const, priority: 0.7 },
+    { path: '/training', changeFrequency: 'monthly' as const, priority: 0.8 },
+    { path: '/contact', changeFrequency: 'monthly' as const, priority: 0.9 },
   ]
+
+  return routing.locales.flatMap((locale) =>
+    pages.map(({ path, changeFrequency, priority }) => ({
+      url: `${baseUrl}/${locale}${path}`,
+      lastModified: new Date(),
+      changeFrequency,
+      priority,
+    })),
+  )
 }

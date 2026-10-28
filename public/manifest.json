@@ -46,7 +46,7 @@
             "name": "Book Appointment",
             "short_name": "Book",
             "description": "Book a beauty appointment",
-            "url": "/kashishbeautyparlour/contact#booking",
+            "url": "/kashishbeautyparlour/en/contact/#booking",
             "icons": [
                 {
                     "src": "/kashishbeautyparlour/icon-192.png",
@@ -58,7 +58,7 @@
             "name": "View Services",
             "short_name": "Services",
             "description": "Browse our services",
-            "url": "/kashishbeautyparlour/services",
+            "url": "/kashishbeautyparlour/en/services/",
             "icons": [
                 {
                     "src": "/kashishbeautyparlour/icon-192.png",

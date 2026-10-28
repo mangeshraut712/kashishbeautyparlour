@@ -87,7 +87,7 @@ export const metadata: Metadata = {
     type: 'website',
     images: [
       {
-        url: `${BASE_PATH}/images/og-image.jpg`,
+        url: `${SITE_URL}/images/og-image.jpg`,
         width: 1200,
         height: 630,
         alt: 'Kashish Beauty Parlour And Training Center - Premium Beauty Services',
@@ -98,7 +98,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Kashish Beauty Parlour - Premium Beauty Services in Pune',
     description: 'Transform your look with expert beauty services.',
-    images: [`${BASE_PATH}/images/og-image.jpg`],
+    images: [`${SITE_URL}/images/og-image.jpg`],
   },
   robots: {
     index: true,
