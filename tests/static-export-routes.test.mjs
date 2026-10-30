@@ -319,7 +319,7 @@ test('the bridal payment section asks the salon for details instead of advertisi
       /Bridal Collections 2025|ब्राइडल कलेक्शन 2025/,
       `stale bridal-collection year in ${locale} bridal page`,
     )
-    assert.match(bridal, new RegExp(`href="${basePath}/${locale}/contact/"`))
+    assert.ok(bridal.includes(`href="${basePath}/${locale}/contact/"`))
   }
 
   const englishBridal = await readFile(outputFile('en/bridal/index.html'), 'utf8')
