@@ -18,6 +18,7 @@
     "type-check": "tsc --noEmit",
     "test:dependency-lock": "node --test tests/dependency-lock.test.mjs",
     "test:static-export": "node --test tests/static-export-routes.test.mjs",
+    "test:validations": "node --no-warnings --experimental-strip-types --test tests/validations.test.mjs",
     "clean": "rm -rf .next out node_modules/.cache",
     "clean:all": "rm -rf .next out node_modules",
     "deploy:preview": "vercel",
@@ -42,7 +43,7 @@
     "sharp": "^0.35.5",
     "tailwind-merge": "^2.6.0",
     "twilio": "^5.11.1",
-    "zod": "^3.24.4"
+    "zod": "^4.6.7"
   },
   "devDependencies": {
     "@next/bundle-analyzer": "^15.5.7",

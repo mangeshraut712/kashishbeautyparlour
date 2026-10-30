@@ -20,7 +20,7 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 15
     env:
-      NODE_VERSION: "20"
+      NODE_VERSION: "22"
       NEXT_PUBLIC_BASE_PATH: /kashishbeautyparlour
       NEXT_PUBLIC_SITE_URL: https://mangeshraut712.github.io/kashishbeautyparlour
     steps:
@@ -38,6 +38,9 @@ jobs:
 
       - name: Verify dependency lockfile
         run: npm run test:dependency-lock
+
+      - name: Validate form schemas
+        run: npm run test:validations
 
       - name: Build static export
         run: npm run build

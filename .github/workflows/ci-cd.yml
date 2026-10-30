@@ -21,7 +21,7 @@ concurrency:
 
 # Workflow-level environment variables
 env:
-  NODE_VERSION: "20"
+  NODE_VERSION: "22"
 
 permissions:
   contents: read
@@ -53,6 +53,9 @@ jobs:
 
       - name: 🔷 TypeScript check
         run: npm run type-check
+
+      - name: 🧪 Validate form schemas
+        run: npm run test:validations
 
       - name: 🔒 Verify dependency lockfile
         run: npm run test:dependency-lock
