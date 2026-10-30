@@ -10,12 +10,6 @@ function outputFile(path) {
   return new URL(`../${outputDir}/${path}`, import.meta.url)
 }
 
-function escapeRegExp(value) {
-  return value.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
-}
-
-const escapedSiteUrl = escapeRegExp(siteUrl)
-
 test('the static export advertises locale-qualified pages and PWA shortcuts', async () => {
   const [sitemap, manifestSource] = await Promise.all([
     readFile(outputFile('sitemap.xml'), 'utf8'),
@@ -24,11 +18,11 @@ test('the static export advertises locale-qualified pages and PWA shortcuts', as
 
   for (const locale of ['en', 'hi', 'mr']) {
     for (const route of ['', '/about', '/services', '/gallery', '/training', '/contact']) {
-      assert.match(sitemap, new RegExp(`<loc>${escapedSiteUrl}/${locale}${route}</loc>`))
+      assert.ok(sitemap.includes(`<loc>${siteUrl}/${locale}${route}</loc>`))
     }
   }
 
-  assert.doesNotMatch(sitemap, new RegExp(`<loc>${escapedSiteUrl}/about</loc>`))
+  assert.ok(!sitemap.includes(`<loc>${siteUrl}/about</loc>`))
 
   const manifest = JSON.parse(manifestSource)
   assert.deepEqual(
@@ -87,8 +81,8 @@ test('gallery videos retain the GitHub Pages base path', async () => {
     'utf8',
   )
 
-  assert.match(gallery, new RegExp(`poster="${escapeRegExp(`${basePath}/images/`)}`))
-  assert.match(gallery, new RegExp(`src="${escapeRegExp(`${basePath}/videos/`)}`))
+  assert.ok(gallery.includes(`poster="${basePath}/images/`))
+  assert.ok(gallery.includes(`src="${basePath}/videos/`))
 
   if (basePath) {
     assert.doesNotMatch(gallery, /poster="\/images\//)
@@ -150,11 +144,11 @@ test('the sitemap includes every exported visitor route and article', async () =
 
   for (const locale of ['en', 'hi', 'mr']) {
     for (const route of routes) {
-      assert.match(sitemap, new RegExp(`<loc>${siteUrl}/${locale}${route}</loc>`))
+      assert.ok(sitemap.includes(`<loc>${siteUrl}/${locale}${route}</loc>`))
     }
 
     for (const id of articleIds) {
-      assert.match(sitemap, new RegExp(`<loc>${siteUrl}/${locale}/blog/${id}</loc>`))
+      assert.ok(sitemap.includes(`<loc>${siteUrl}/${locale}/blog/${id}</loc>`))
     }
   }
 })
@@ -182,7 +176,7 @@ test('localized static pages use self-referential canonical URLs', async () => {
       const indexPath = `${locale}${route}/index.html`
       const page = await readFile(outputFile(indexPath), 'utf8')
       const canonical = `${siteUrl}/${locale}${route}/`
-      assert.match(page, new RegExp(`rel="canonical" href="${escapeRegExp(canonical)}"`))
+      assert.ok(page.includes(`rel="canonical" href="${canonical}"`))
     }
   }
 })
