@@ -79,7 +79,11 @@ jobs:
       - name: 🏗️ Build application
         run: npm run build
         env:
-          NEXT_PUBLIC_APP_URL: "https://mangeshraut712.github.io/kashishbeautyparlour"
+          NEXT_PUBLIC_BASE_PATH: "/kashishbeautyparlour"
+          NEXT_PUBLIC_SITE_URL: "https://mangeshraut712.github.io/kashishbeautyparlour"
+
+      - name: 🧪 Verify static export routes
+        run: npm run test:static-export
 
       - name: 📤 Upload build artifacts
         uses: actions/upload-artifact@v4
@@ -87,6 +91,37 @@ jobs:
           name: nextjs-build
           path: out
           retention-days: 7
+
+  cloudflare-static:
+    name: ☁️ Cloudflare static build
+    runs-on: ubuntu-latest
+    needs: quality
+    timeout-minutes: 15
+
+    steps:
+      - name: 📥 Checkout code
+        uses: actions/checkout@v4
+
+      - name: 📦 Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: "npm"
+
+      - name: 📚 Install dependencies
+        run: npm ci
+
+      - name: ☁️ Build Cloudflare Pages static export
+        run: npm run build:cloudflare
+        env:
+          CLOUDFLARE_SITE_URL: "https://kashish-cno.pages.dev"
+
+      - name: 🧪 Verify Cloudflare static export routes
+        run: npm run test:static-export
+        env:
+          EXPORT_DIR: out-cloudflare
+          EXPECTED_SITE_URL: "https://kashish-cno.pages.dev"
+          EXPECTED_BASE_PATH: ""
 
 # ===========================================
 # Production deployment is GitHub Pages

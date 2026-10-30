@@ -16,6 +16,7 @@
     "lint:fix": "eslint . --fix",
     "analyze": "ANALYZE=true next build",
     "type-check": "tsc --noEmit",
+    "test:static-export": "node --test tests/static-export-routes.test.mjs",
     "clean": "rm -rf .next out node_modules/.cache",
     "clean:all": "rm -rf .next out node_modules",
     "deploy:preview": "vercel",
