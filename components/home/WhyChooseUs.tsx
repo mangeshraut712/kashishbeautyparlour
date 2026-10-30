@@ -1,20 +1,16 @@
 'use client'
 
 import Image from 'next/image'
-import { Award, Shield, Heart, CheckCircle2 } from 'lucide-react'
+import { Shield, Heart, ExternalLink } from 'lucide-react'
 import { motion } from 'framer-motion'
-import { BUSINESS_STATS } from '@/lib/constants'
+import { BUSINESS_INFO, BUSINESS_STATS } from '@/lib/constants'
 import { useTranslations } from 'next-intl'
 
 export default function WhyChooseUs() {
   const t = useTranslations('WhyChooseUs')
+  const tReviews = useTranslations('ReviewReference')
 
   const features = [
-    {
-      icon: Award,
-      title: t('features.certified'),
-      description: t('features.certifiedDesc'),
-    },
     {
       icon: Heart,
       title: t('features.personalized'),
@@ -59,13 +55,15 @@ export default function WhyChooseUs() {
               </div>
               <div className="space-y-4">
                 <div className="bg-white p-6 rounded-3xl shadow-lg border border-gray-100">
-                  <div className="flex items-center gap-3 mb-4">
-                    <div className="w-10 h-10 bg-primary/20 rounded-full flex items-center justify-center">
-                      <CheckCircle2 className="w-5 h-5 text-primary" />
-                    </div>
-                    <span className="font-bold text-gray-900 text-sm">{t('topRated')}</span>
-                  </div>
-                  <p className="text-xs text-gray-600 font-medium leading-relaxed">{t('topRatedDesc')}</p>
+                  <a
+                    href={BUSINESS_INFO.maps.reviews}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-3 text-sm font-bold text-primary hover:underline"
+                  >
+                    {tReviews('read')}
+                    <ExternalLink className="w-4 h-4" aria-hidden="true" />
+                  </a>
                 </div>
                 <div className="relative rounded-3xl shadow-xl w-full aspect-[3/5] overflow-hidden border border-gray-100 image-zoom-container glow-gold-hover">
                   <Image

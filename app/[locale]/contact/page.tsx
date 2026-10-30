@@ -1,6 +1,6 @@
 'use client';
 
-import { MapPin, Phone, Mail, Clock, Send, User, MessageSquare, Instagram as InstagramIcon, Facebook as FacebookIcon, PhoneCall, Sparkles, ArrowRight, Heart, Star, Award, Shield, Zap, HelpCircle, ChevronDown, Users } from 'lucide-react'
+import { MapPin, Phone, Mail, Clock, Send, User, MessageSquare, Instagram as InstagramIcon, Facebook as FacebookIcon, PhoneCall, Sparkles, ArrowRight, Heart, Award, Shield, Zap, HelpCircle, ChevronDown } from 'lucide-react'
 import { useTranslations } from 'next-intl';
 import Image from 'next/image';
 import { BUSINESS_INFO, BUSINESS_STATS } from '@/lib/constants'
@@ -31,7 +31,7 @@ const faqs = [
   },
   {
     question: "Do you offer beauty training courses?",
-    answer: "Yes, we offer ISO-certified professional beauty training courses including makeup artistry, hair styling, and skin care. Our courses include practical training and job placement assistance."
+    answer: "We offer professional beauty training courses including makeup artistry, hair styling, and skin care. Contact us to discuss the current course options."
   },
   {
     question: "What payment methods do you accept?",
@@ -41,8 +41,6 @@ const faqs = [
 
 // Stats for hero section
 const quickStats = [
-  { icon: Star, value: BUSINESS_STATS.averageRating, label: 'Rating' },
-  { icon: Users, value: BUSINESS_STATS.happyCustomers, label: 'Happy Clients' },
   { icon: Award, value: BUSINESS_STATS.yearsOfExperience, label: 'Years Experience' },
 ];
 
@@ -52,6 +50,7 @@ export default function ContactPage() {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
   const t = useTranslations('Contact');
   const tCommon = useTranslations('Common');
+  const tReviews = useTranslations('ReviewReference');
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -129,6 +128,14 @@ export default function ContactPage() {
                   </motion.div>
                 ))}
               </div>
+              <a
+                href={BUSINESS_INFO.maps.reviews}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex mt-5 text-sm font-bold text-primary hover:underline"
+              >
+                {tReviews('read')}
+              </a>
             </motion.div>
 
             {/* Hero Image */}
@@ -296,7 +303,7 @@ export default function ContactPage() {
                 <div className="grid grid-cols-3 gap-4">
                   {[
                     { icon: Shield, text: 'Safe & Hygienic' },
-                    { icon: Award, text: 'Certified Experts' },
+                    { icon: Award, text: 'Professional Care' },
                     { icon: Heart, text: 'Customer First' },
                   ].map((badge, i) => (
                     <div key={i} className="flex flex-col items-center gap-2 p-4 bg-white rounded-xl text-center border border-gray-100 shadow-sm">

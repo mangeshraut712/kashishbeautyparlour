@@ -73,9 +73,8 @@ export const courses = [
     features: [
       'Complete Basic and Advanced Syllabus',
       'Hands-on Practical Training',
-      'ISO-Certified Certificate',
       'Professional Demo Sessions',
-      'Career Guidance & Job Assistance',
+      'Course Guidance',
       'Small Batch Sizes'
     ],
     documentsRequired: [
@@ -96,8 +95,8 @@ export const courses = [
 export const benefits = [
   {
     icon: Award,
-    title: 'ISO-Certified Certificate',
-    description: 'Get certified with recognized qualifications upon completion',
+    title: 'Course Guidance',
+    description: 'Ask the academy about current course details and completion information',
   },
   {
     icon: Users,
@@ -111,7 +110,7 @@ export const benefits = [
   },
   {
     icon: CheckCircle,
-    title: 'Career Prospects',
-    description: 'Job assistance and entrepreneurship guidance provided',
+    title: 'Enrollment Support',
+    description: 'Contact the academy to discuss current enrollment options',
   },
 ]

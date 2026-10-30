@@ -10,6 +10,22 @@ function outputFile(path) {
   return new URL(`../${outputDir}/${path}`, import.meta.url)
 }
 
+async function exportedHtmlFiles(relativePath = '') {
+  const entries = await readdir(outputFile(relativePath), { withFileTypes: true })
+  const files = await Promise.all(entries.map(async (entry) => {
+    const entryPath = `${relativePath}${relativePath ? '/' : ''}${entry.name}`
+    if (entry.isDirectory()) {
+      return exportedHtmlFiles(entryPath)
+    }
+    if (entry.isFile() && entry.name.endsWith('.html')) {
+      return [[entryPath, await readFile(outputFile(entryPath), 'utf8')]]
+    }
+    return []
+  }))
+
+  return files.flat()
+}
+
 test('the static export advertises locale-qualified pages and PWA shortcuts', async () => {
   const [sitemap, manifestSource] = await Promise.all([
     readFile(outputFile('sitemap.xml'), 'utf8'),
@@ -134,6 +150,20 @@ test('appointment request controls preserve keyboard and localized accessibility
   }
 })
 
+test('the mobile navigation exposes a dialog and supports keyboard dismissal', async () => {
+  const header = await readFile(new URL('../components/layout/Header.tsx', import.meta.url), 'utf8')
+
+  assert.match(header, /aria-expanded=\{isMenuOpen\}/)
+  assert.match(header, /aria-controls="mobile-navigation"/)
+  assert.match(header, /id="mobile-navigation"/)
+  assert.match(header, /role="dialog"/)
+  assert.match(header, /aria-modal="true"/)
+  assert.match(header, /event\.key === 'Escape'/)
+  assert.match(header, /event\.key === 'Tab'/)
+  assert.match(header, /menuPanelRef\.current\?\.querySelectorAll/)
+  assert.match(header, /aria-label="Close menu"/)
+})
+
 test('the sitemap includes every exported visitor route and article', async () => {
   const [sitemap, blogEntries] = await Promise.all([
     readFile(outputFile('sitemap.xml'), 'utf8'),
@@ -201,4 +231,64 @@ test('Cloudflare target configuration has no hard-coded GitHub Pages paths', asy
   assert.doesNotMatch(serviceWorker, /const BASE_PATH = '\/kashishbeautyparlour'/)
   assert.match(offlinePage, /href="\.\/"/)
   assert.equal(typeof scripts['build:cloudflare'], 'string')
+})
+
+test('public review references do not fabricate ratings, counts, or verification', async () => {
+  const [constants, layout, hero, home, contact, socialProof, whyChooseUs, staff, staffProfiles, staffSelection, testimonials, ...messages] = await Promise.all([
+    readFile(new URL('../lib/constants.ts', import.meta.url), 'utf8'),
+    readFile(new URL('../app/[locale]/layout.tsx', import.meta.url), 'utf8'),
+    readFile(new URL('../components/home/Hero.tsx', import.meta.url), 'utf8'),
+    readFile(new URL('../components/home/HomeClient.tsx', import.meta.url), 'utf8'),
+    readFile(new URL('../app/[locale]/contact/page.tsx', import.meta.url), 'utf8'),
+    readFile(new URL('../components/home/SocialProof.tsx', import.meta.url), 'utf8'),
+    readFile(new URL('../components/home/WhyChooseUs.tsx', import.meta.url), 'utf8'),
+    readFile(new URL('../lib/data/staff.ts', import.meta.url), 'utf8'),
+    readFile(new URL('../components/home/StaffProfiles.tsx', import.meta.url), 'utf8'),
+    readFile(new URL('../components/booking/StaffSelection.tsx', import.meta.url), 'utf8'),
+    readFile(new URL('../components/home/Testimonials.tsx', import.meta.url), 'utf8'),
+    ...['en', 'hi', 'mr'].map((locale) =>
+      readFile(new URL(`../i18n/messages/${locale}.json`, import.meta.url), 'utf8'),
+    ),
+  ])
+
+  assert.match(constants, /reviews: 'https:\/\/share\.google\/UsAD81WRbXEeYdxZX'/)
+  assert.doesNotMatch(constants, /averageRating|totalReviews|happyCustomers|happyBrides|studentsTrained/)
+  assert.doesNotMatch(layout, /aggregateRating|ratingValue|reviewCount/)
+
+  for (const source of [hero, home, contact, socialProof, testimonials]) {
+    assert.doesNotMatch(source, /\b(?:4\.8|4\.9|650|480|127|43)\b|Verified via|five-star verified/i)
+    assert.doesNotMatch(source, /BUSINESS_STATS\.(averageRating|totalReviews|happyCustomers|happyBrides|studentsTrained)/)
+  }
+
+  assert.match(socialProof, /BUSINESS_INFO\.maps\.reviews/)
+  assert.doesNotMatch(socialProof, /reviewData|top-rated|testimon/i)
+  for (const source of [hero, home, contact, socialProof, whyChooseUs]) {
+    assert.match(source, /useTranslations\('ReviewReference'\)/)
+  }
+  for (const message of messages) {
+    const parsed = JSON.parse(message)
+    assert.equal(typeof parsed.ReviewReference.read, 'string')
+    assert.equal(typeof parsed.ReviewReference.open, 'string')
+  }
+  assert.doesNotMatch(staff, /certifications|rating|reviews|nextAvailable|popular/)
+  assert.doesNotMatch(staffProfiles, /Top Rated|certif|member\.(rating|reviews|popular)/i)
+  assert.doesNotMatch(staffSelection, /staff\.(rating|reviews|popular|nextAvailable)/)
+  assert.doesNotMatch(testimonials, /testimonials|testimonial\.(rating|text|name|service)/i)
+  await assert.rejects(
+    readFile(new URL('../lib/data/testimonials.ts', import.meta.url), 'utf8'),
+    { code: 'ENOENT' },
+  )
+})
+
+test('exported pages omit unsupported review aggregates and customer totals', async () => {
+  const pages = await exportedHtmlFiles()
+  const forbidden = /aggregateRating|ratingValue|reviewCount|\b(?:4\.8|4\.9|4\.7|650|480|127|43)\b|Verified via|five-star verified|Top Rated|(?:10,000|1,000|1000|100)\+|Jawed Habib Certified|L.Oréal Professional Certified|OPI Certified|Instant Reservations|तुरंत रिजर्वेशन|त्वरित रिझर्व्हेशन|Confirmation Within 2 Hours|2 घंटे में पुष्टि|2 तासांत पुष्टी/i
+
+  assert.ok(pages.length > 0, 'the export should contain static HTML pages')
+  for (const [path, page] of pages) {
+    assert.doesNotMatch(page, forbidden, `unsupported claim in ${path}`)
+  }
+
+  const home = await readFile(outputFile('en/index.html'), 'utf8')
+  assert.match(home, /https:\/\/share\.google\/UsAD81WRbXEeYdxZX/)
 })

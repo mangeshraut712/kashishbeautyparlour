@@ -48,7 +48,7 @@ export const metadata: Metadata = {
     default: 'Kashish Beauty Parlour And Training Center | Premium Beauty Salon in Thergaon, Pune',
     template: '%s | Kashish Beauty Parlour And Training Center',
   },
-  description: 'Experience luxury beauty services at Kashish Beauty Parlour And Training Center. Professional bridal makeup, hair styling, facials, spa services & certified training courses in Pune. Book your transformation today!',
+  description: 'Experience beauty services at Kashish Beauty Parlour And Training Center. Explore bridal makeup, hair styling, facials, spa services, and professional training courses in Pune.',
   keywords: [
     'beauty parlour pune',
     'bridal makeup thergaon',
@@ -147,11 +147,6 @@ const jsonLd = {
   },
   priceRange: '₹₹',
   image: `${SITE_URL}/images/og-image.jpg`,
-  aggregateRating: {
-    '@type': 'AggregateRating',
-    ratingValue: '4.8',
-    reviewCount: '650',
-  },
   sameAs: [
     'https://www.instagram.com/kashishbeautyandtraining/',
     'https://www.facebook.com/profile.php?id=100064114598364',

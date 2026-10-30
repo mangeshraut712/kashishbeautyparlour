@@ -19,7 +19,6 @@ export default function AboutPage() {
   ]
 
   const whyChooseUs = [
-    { titleKey: 'whyChooseUs.certified', descKey: 'whyChooseUs.certifiedDesc' },
     { titleKey: 'whyChooseUs.premium', descKey: 'whyChooseUs.premiumDesc' },
     { titleKey: 'whyChooseUs.hygiene', descKey: 'whyChooseUs.hygieneDesc' },
     { titleKey: 'whyChooseUs.personalized', descKey: 'whyChooseUs.personalizedDesc' },
@@ -147,17 +146,6 @@ export default function AboutPage() {
                   </div>
                 </div>
               </div>
-
-              <div className="grid grid-cols-2 gap-3">
-                <div className="bg-white p-4 rounded-xl shadow-md border border-gray-100 text-center">
-                  <div className="text-2xl font-bold gold-text">{BUSINESS_STATS.happyCustomers}</div>
-                  <div className="text-gray-500 font-medium text-xs">{BUSINESS_STATS.customersLabel}</div>
-                </div>
-                <div className="bg-white p-4 rounded-xl shadow-md border border-gray-100 text-center">
-                  <div className="text-2xl font-bold gold-text">{BUSINESS_STATS.studentsTrained}</div>
-                  <div className="text-gray-500 font-medium text-xs">{BUSINESS_STATS.studentsLabel}</div>
-                </div>
-              </div>
             </motion.div>
 
             {/* Text Content - 2 columns */}
@@ -283,7 +271,7 @@ export default function AboutPage() {
               {t('experienceDifference').split('Kashish')[0]}<span className="gold-text-animated">Kashish Difference</span>
             </h2>
             <p className="text-lg mb-10 max-w-2xl mx-auto text-gray-600 font-medium">
-              {t('joinThousands')}
+              {t('pageSubtitle')}
             </p>
             <Link
               href="/contact#booking"

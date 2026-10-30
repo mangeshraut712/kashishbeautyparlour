@@ -3,7 +3,7 @@
 import { useState } from 'react'
 import Image from 'next/image'
 import { motion } from 'framer-motion'
-import { Star, CheckCircle, Clock, Heart } from 'lucide-react'
+import { CheckCircle, Heart } from 'lucide-react'
 import { staffMembers } from '@/lib/data/staff'
 
 interface StaffSelectionProps {
@@ -78,37 +78,14 @@ export default function StaffSelection({ selectedStaff, onSelect, serviceType }:
                                     height={56}
                                     className={`rounded-full object-cover ${staff.imagePosition || 'object-center'}`}
                                 />
-                                {staff.popular && (
-                                    <div className="absolute -top-1 -right-1 w-5 h-5 gold-gradient rounded-full flex items-center justify-center">
-                                        <Star className="w-3 h-3 text-black fill-black" />
-                                    </div>
-                                )}
                             </div>
 
                             <div className="flex-1 text-left">
-                                <div className="flex items-center gap-2">
-                                    <p className="font-bold text-gray-900">{staff.name}</p>
-                                    {staff.popular && (
-                                        <span className="px-2 py-0.5 bg-primary/10 text-primary text-[10px] font-bold rounded-full">
-                                            {t('topRated')}
-                                        </span>
-                                    )}
-                                </div>
+                                <p className="font-bold text-gray-900">{staff.name}</p>
                                 <p className="text-sm text-gray-500">{staff.role}</p>
-                                <div className="flex items-center gap-3 mt-1">
-                                    <div className="flex items-center gap-1">
-                                        <Star className="w-3 h-3 text-yellow-500 fill-yellow-500" />
-                                        <span className="text-xs font-bold text-gray-700">{staff.rating}</span>
-                                    </div>
-                                    <span className="text-xs text-gray-400">({staff.reviews} {t('reviews')})</span>
-                                </div>
                             </div>
 
                             <div className="text-right">
-                                <div className="flex items-center gap-1 text-xs text-green-600">
-                                    <Clock className="w-3 h-3" />
-                                    <span>{staff.nextAvailable}</span>
-                                </div>
                                 {selectedStaff === staff.id && (
                                     <CheckCircle className="w-5 h-5 text-primary mt-2 ml-auto" />
                                 )}
