@@ -3,6 +3,8 @@ import { Link } from '@/i18n/routing'
 import { ArrowLeft, Calendar, User, Tag } from 'lucide-react'
 import Image from 'next/image'
 import { blogPostsData } from '@/lib/data/blog'
+import ShareButtons from '@/components/social/ShareButtons'
+import { localizedAlternates, localizedOpenGraph } from '@/lib/page-metadata'
 
 interface PageProps {
   params: Promise<{
@@ -28,11 +30,15 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     }
   }
 
+  const articlePath = `/blog/${resolvedParams.id}`
+
   return {
     title: `${post.title} | Kashish Beauty Parlour`,
     description: post.excerpt,
     keywords: post.tags.join(', ') + ', beauty tips, makeup, skincare',
+    alternates: localizedAlternates(resolvedParams.locale, articlePath),
     openGraph: {
+      ...localizedOpenGraph(resolvedParams.locale, articlePath),
       title: post.title,
       description: post.excerpt,
       type: 'article',
@@ -250,19 +256,11 @@ export default async function BlogPost({ params }: PageProps) {
           <h3 className="text-xl font-semibold text-gray-900 mb-4">
             Share this article
           </h3>
-          <div className="flex justify-center gap-4">
-            <button className="flex items-center gap-2 px-4 py-2 border border-gray-300 rounded-full hover:bg-gray-50 transition">
-              📘 Facebook
-            </button>
-            <button className="flex items-center gap-2 px-4 py-2 border border-gray-300 rounded-full hover:bg-gray-50 transition">
-              🐦 Twitter
-            </button>
-            <button className="flex items-center gap-2 px-4 py-2 border border-gray-300 rounded-full hover:bg-gray-50 transition">
-              📷 Instagram
-            </button>
-            <button className="flex items-center gap-2 px-4 py-2 border border-gray-300 rounded-full hover:bg-gray-50 transition">
-              🔗 Copy Link
-            </button>
+          <div className="flex justify-center">
+            <ShareButtons
+              title={post.title}
+              description={post.excerpt}
+            />
           </div>
         </div>
       </section>

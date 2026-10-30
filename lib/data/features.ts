@@ -1,5 +1,3 @@
-import { BUSINESS_STATS } from '@/lib/constants'
-
 // Features data for Why Choose Us section
 export interface Feature {
   icon: string
@@ -10,13 +8,13 @@ export interface Feature {
 export const features: Feature[] = [
   {
     icon: 'Award',
-    title: 'Certified Professionals',
-    description: 'Experienced and certified beauticians with years of expertise',
+    title: 'Thoughtful Care',
+    description: 'A welcoming space for beauty services and appointments',
   },
   {
     icon: 'Users',
-    title: `${BUSINESS_STATS.happyCustomers} Happy Clients`,
-    description: 'Trusted by thousands of satisfied customers across Pune',
+    title: 'Personalized Service',
+    description: 'Discuss the look and service that suit your needs',
   },
   {
     icon: 'Clock',

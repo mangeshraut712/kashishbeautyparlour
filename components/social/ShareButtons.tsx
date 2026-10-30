@@ -31,7 +31,7 @@ export default function ShareButtons({
 
     useEffect(() => {
         setMounted(true)
-        setShareUrl(url || window.location.href)
+        setShareUrl(url ? new URL(url, window.location.origin).href : window.location.href)
     }, [url])
 
     const shareText = `${title}${description ? ` - ${description}` : ''}`

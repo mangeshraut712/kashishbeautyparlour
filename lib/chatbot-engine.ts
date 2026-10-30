@@ -93,24 +93,19 @@ const KNOWLEDGE_BASE = {
                 name: 'Professional Makeup Course',
                 duration: '3 months',
                 fee: '₹45,000',
-                certification: 'ISO-Certified',
                 topics: ['Base makeup', 'Bridal makeup', 'HD makeup', 'Airbrush', 'Contouring'],
-                placement: '100% job assistance'
             },
             {
                 name: 'Hair Styling Course',
                 duration: '2 months',
                 fee: '₹35,000',
                 topics: ['Cutting', 'Coloring', 'Styling', 'Treatments', 'Bridal hair'],
-                placement: '100% job assistance'
             },
             {
                 name: 'Complete Beautician Course',
                 duration: '6 months',
                 fee: '₹80,000',
                 topics: ['Makeup', 'Hair', 'Skin care', 'Nails', 'Spa'],
-                certification: 'Government Certified',
-                placement: '100% job assistance'
             },
             {
                 name: 'Nail Art Course',
@@ -121,10 +116,8 @@ const KNOWLEDGE_BASE = {
         ],
         benefits: [
             'Hands-on practical training',
-            'Industry-recognized certification',
-            '100% job placement assistance',
             'Flexible class timings',
-            'Personal mentorship from Meena Raut (10+ years experience)',
+            'Course guidance from the team',
             'Real client exposure'
         ]
     },
@@ -137,7 +130,7 @@ const KNOWLEDGE_BASE = {
         ],
         whatsapp: BUSINESS_INFO.contact.whatsapp,
         phone: BUSINESS_INFO.contact.phone,
-        confirmation: 'You will receive confirmation within 2 hours during working hours'
+        confirmation: 'The salon will confirm availability directly'
     },
     business: {
         name: BUSINESS_INFO.name,
@@ -146,12 +139,9 @@ const KNOWLEDGE_BASE = {
         hours: BUSINESS_INFO.hours.weekdays,
         openDays: 'Open all 7 days',
         experience: BUSINESS_STATS.yearsOfExperience,
-        happyClients: BUSINESS_STATS.happyCustomers,
-        rating: BUSINESS_STATS.averageRating,
         founder: {
             name: 'Meena Raut',
             experience: '10+ years',
-            certifications: ['Jawed Habib Certified', 'International Makeup Artist', 'Government Certified Trainer'],
             instagram: '@meenaraut150880'
         }
     },
@@ -160,7 +150,6 @@ const KNOWLEDGE_BASE = {
         products: 'We use only premium branded products - MAC, Huda Beauty, Charlotte Tilbury, L\'Oréal Professional',
         hygiene: 'We maintain highest hygiene standards with sanitized tools and equipment',
         payment: 'We accept Cash, UPI (Google Pay, PhonePe, Paytm), Credit/Debit Cards',
-        emi: 'Yes, EMI options available for bridal packages and training courses',
         trial: 'Yes, bridal makeup trials are included in premium packages or ₹2,000 separately',
         cancellation: 'Free cancellation up to 24 hours before appointment',
         groupBooking: 'Yes, we handle group bookings for weddings, parties. Special discounts available'
@@ -265,8 +254,8 @@ export class ChatbotEngine {
 
     private getGreeting(): ChatbotResponse {
         const greetings = [
-            `Hello! 👋 Welcome to Kashish Beauty Parlour & Training Center!\n\nI'm here to help you with:\n✨ Beauty Services (Bridal, Makeup, Facials, Hair)\n📚 Training Courses (Certification Programs)\n📅 Booking Appointments\n\nHow can I assist you today?`,
-            `Namaste! 🙏 Welcome to Kashish - ${BUSINESS_INFO.address.city}'s premier beauty destination!\n\n${BUSINESS_STATS.happyCustomers}+ happy clients trust us. What would you like to know about?`,
+            `Hello! 👋 Welcome to Kashish Beauty Parlour & Training Center!\n\nI'm here to help you with:\n✨ Beauty Services (Bridal, Makeup, Facials, Hair)\n📚 Training Courses\n📅 Appointment Requests\n\nHow can I assist you today?`,
+            `Namaste! 🙏 Welcome to Kashish in ${BUSINESS_INFO.address.city}.\n\nWhat would you like to know about?`,
         ]
 
         return {
@@ -286,10 +275,9 @@ export class ChatbotEngine {
 
         msg += `✨ **Why Choose Us:**\n`
         msg += `• Premium products only (MAC, Huda Beauty, Charlotte Tilbury)\n`
-        msg += `• ${BUSINESS_STATS.happyBrides}+ Happy brides\n`
         msg += `• ${BUSINESS_STATS.yearsOfExperience} of expertise\n`
         msg += `• Pre-bridal treatments available\n`
-        msg += `• EMI options available\n\n`
+        msg += `• Contact the salon to discuss current payment options\n\n`
         msg += `Would you like to book a bridal trial or need more details?`
 
         return {
@@ -300,19 +288,18 @@ export class ChatbotEngine {
 
     private getTrainingInfo(): ChatbotResponse {
         let msg = `🎓 **Professional Beauty Training at Kashish**\n\n`
-        msg += `We offer ISO-Certified courses with 100% job placement!\n\n`
+        msg += `Contact the training center to confirm the current course details.\n\n`
 
         KNOWLEDGE_BASE.training.courses.forEach((course, idx) => {
             msg += `**${idx + 1}. ${course.name}**\n`
             msg += `   • Duration: ${course.duration}\n`
             msg += `   • Fee: ${course.fee}\n`
-            if (course.certification) msg += `   • Certification: ${course.certification}\n`
             msg += `   • Topics: ${course.topics.join(', ')}\n\n`
         })
 
         msg += `✅ **Benefits:**\n`
         KNOWLEDGE_BASE.training.benefits.forEach(b => msg += `• ${b}\n`)
-        msg += `\n👩‍🏫 **Learn from Meena Raut** - 10+ years experience, Jawed Habib Certified\n\n`
+        msg += `\n👩‍🏫 **Learn from the Kashish team**\n\n`
         msg += `Interested in enrolling? I can help you get started!`
 
         return {
@@ -346,10 +333,7 @@ export class ChatbotEngine {
             if (h.duration) msg += `  (${h.duration})\n`
         })
 
-        msg += `\n✂️ **Our Expertise:**\n`
-        msg += `• L'Oréal Professional Certified\n`
-        msg += `• Latest trends & techniques\n`
-        msg += `• Premium products only\n\n`
+        msg += `\n✂️ Ask the salon about current styling options and product preferences.\n\n`
         msg += `Transform your look today!`
 
         return {
@@ -416,8 +400,7 @@ export class ChatbotEngine {
             msg += `\n`
         })
 
-        msg += `\n✨ Custom designs available!\n`
-        msg += `OPI Certified Nail Artist on staff.`
+        msg += `\n✨ Ask the salon about current nail design options.`
 
         return {
             message: msg,
@@ -430,13 +413,12 @@ export class ChatbotEngine {
             `1️⃣ Choose your service\n` +
             `2️⃣ Select date & time\n` +
             `3️⃣ Pick your beautician (optional)\n` +
-            `4️⃣ Confirm booking\n\n` +
+            `4️⃣ Send your request to the salon\n\n` +
             `📱 **Book Now:**\n` +
             `• WhatsApp: ${BUSINESS_INFO.contact.whatsapp}\n` +
             `• Call: +91 ${BUSINESS_INFO.contact.phone}\n` +
             `• Website: Use our online booking calendar\n\n` +
-            `✅ Confirmation within 2 hours!\n` +
-            `💰 10% discount on first online booking!`
+            `The salon will confirm availability directly.`
 
         return {
             message: msg,
@@ -498,7 +480,7 @@ export class ChatbotEngine {
             `• Makeup Course: ₹45,000 (3 months)\n` +
             `• Hair Course: ₹35,000 (2 months)\n` +
             `• Complete Beautician: ₹80,000 (6 months)\n\n` +
-            `💳 EMI options available!\n` +
+            `💳 Contact the salon to discuss current payment options.\n` +
             `Which service interests you?`
 
         return {
@@ -509,21 +491,10 @@ export class ChatbotEngine {
 
     private getAboutInfo(): ChatbotResponse {
         const msg = `🌟 **About Kashish Beauty Parlour**\n\n` +
-            `Since 2012 | ${BUSINESS_INFO.address.city}'s Premier Beauty Destination\n\n` +
+            `${BUSINESS_INFO.address.city} beauty services and training center\n\n` +
             `👑 **Founder:** Meena Raut\n` +
             `• ${KNOWLEDGE_BASE.business.founder.experience} expertise\n` +
-            `• ${KNOWLEDGE_BASE.business.founder.certifications.join('\n• ')}\n\n` +
-            `📊 **Our Journey:**\n` +
-            `⭐ ${BUSINESS_STATS.averageRating}/5 Rating\n` +
-            `👥 ${BUSINESS_STATS.happyCustomers}+ Happy Clients\n` +
-            `💍 ${BUSINESS_STATS.happyBrides}+ Beautiful Brides\n` +
-            `🎓 ${BUSINESS_STATS.studentsTrained}+ Students Trained\n\n` +
-            `🏆 **What Sets Us Apart:**\n` +
-            `✨ Premium branded products only\n` +
-            `✨ Certified professionals\n` +
-            `✨ Personalized consultations\n` +
-            `✨ Hygiene excellence\n` +
-            `✨ Affordable luxury`
+            `\n📍 Contact the salon for current service, training, and appointment information.`
 
         return {
             message: msg,
@@ -553,7 +524,7 @@ export class ChatbotEngine {
         const msg = `I'd love to help you! 😊\n\n` +
             `I can assist you with:\n` +
             `💄 Beauty Services (Bridal, Makeup, Hair, Facials, Spa)\n` +
-            `🎓 Training Courses & Certification\n` +
+            `🎓 Training Courses\n` +
             `📅 Booking Appointments\n` +
             `💰 Pricing Information\n` +
             `📍 Location & Contact Details\n\n` +

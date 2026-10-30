@@ -3,7 +3,6 @@
 import Hero from '@/components/home/Hero'
 import FeaturedServices from '@/components/home/FeaturedServices'
 import WhyChooseUs from '@/components/home/WhyChooseUs'
-import SpecialOffers from '@/components/home/SpecialOffers'
 import BeforeAfterGallery from '@/components/home/BeforeAfterGallery'
 import StaffProfiles from '@/components/home/StaffProfiles'
 import BookingCalendar from '@/components/booking/BookingCalendar'
@@ -15,7 +14,7 @@ import LocationMap from '@/components/home/LocationMap'
 import { Sparkles, ArrowRight, CheckCircle, Phone, MessageSquare, Calendar, Clock, Star, Heart, Award, Users, Shield, Zap, Gift, Crown, Scissors, Palette, Flower2, Gem, Wand2 } from 'lucide-react'
 import { Link } from '@/i18n/routing'
 import { motion } from 'framer-motion'
-import { BUSINESS_STATS, BUSINESS_INFO } from '@/lib/constants'
+import { BUSINESS_INFO } from '@/lib/constants'
 import Image from 'next/image'
 import { useRef } from 'react'
 import { useTranslations } from 'next-intl'
@@ -36,6 +35,7 @@ const Marquee = ({ children, direction = 'left', speed = 20 }: { children: React
 
 export default function HomeClient() {
     const t = useTranslations('Homepage')
+    const tReviews = useTranslations('ReviewReference')
 
     // Ref for parallax effects
     const containerRef = useRef<HTMLDivElement>(null)
@@ -155,18 +155,16 @@ export default function HomeClient() {
                                 </a>
                             </div>
 
-                            <div className="pt-6 border-t border-gray-100 hidden lg:flex items-center gap-6">
-                                <div className="flex -space-x-3">
-                                    {[1, 2, 3, 4].map((i) => (
-                                        <div key={i} className="w-11 h-11 rounded-full bg-gradient-to-br from-primary/30 to-pink-500/30 border-3 border-white flex items-center justify-center shadow-lg">
-                                            <Star className="w-4 h-4 text-primary fill-primary" />
-                                        </div>
-                                    ))}
-                                </div>
-                                <div>
-                                    <p className="text-sm font-bold text-gray-900">{t('booking.trustedBy')} {BUSINESS_STATS.happyCustomers}+ {t('booking.clients')}</p>
-                                    <p className="text-xs text-gray-500">⭐ {BUSINESS_STATS.averageRating} {t('booking.averageRating')}</p>
-                                </div>
+                            <div className="pt-6 border-t border-gray-100 hidden lg:block">
+                                <a
+                                    href={BUSINESS_INFO.maps.reviews}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="inline-flex items-center gap-2 text-sm font-bold text-primary hover:underline"
+                                >
+                                    {tReviews('read')}
+                                    <ArrowRight className="w-4 h-4" aria-hidden="true" />
+                                </a>
                             </div>
                         </motion.div>
 
@@ -201,16 +199,19 @@ export default function HomeClient() {
                             </motion.div>
 
                             {/* Additional Floating Badge */}
-                            <motion.div
+                            <motion.a
+                                href={BUSINESS_INFO.maps.reviews}
+                                target="_blank"
+                                rel="noopener noreferrer"
                                 initial={{ opacity: 0, scale: 0.8 }}
                                 whileInView={{ opacity: 1, scale: 1 }}
                                 viewport={{ once: true }}
                                 transition={{ delay: 1 }}
                                 className="absolute -top-4 -right-4 bg-gradient-to-br from-primary to-amber-500 px-4 py-2 rounded-full shadow-xl hidden lg:flex items-center gap-2"
                             >
-                                <Star className="w-4 h-4 text-white fill-white" />
-                                <span className="text-white font-bold text-sm">{t('booking.topRated')}</span>
-                            </motion.div>
+                                <ArrowRight className="w-4 h-4 text-white" aria-hidden="true" />
+                                <span className="text-white font-bold text-sm">{tReviews('read')}</span>
+                            </motion.a>
                         </motion.div>
                     </div>
                 </div>
@@ -222,9 +223,6 @@ export default function HomeClient() {
 
             {/* Instagram Feed - NEW SECTION */}
             <InstagramFeed />
-
-            {/* Special Offers with Enhanced Design */}
-            <SpecialOffers />
 
             {/* Testimonials / Social Proof */}
             <SocialProof />
@@ -338,8 +336,8 @@ export default function HomeClient() {
                                             <Award className="w-6 h-6 text-white" />
                                         </div>
                                         <div>
-                                            <p className="font-bold text-gray-900 text-sm">{t('training.isoCertified')}</p>
-                                            <p className="text-xs text-gray-500">{t('training.professionalCourses')}</p>
+                                            <p className="font-bold text-gray-900 text-sm">{t('training.beautyTraining')}</p>
+                                            <p className="text-xs text-gray-500">{t('training.exploreCourses')}</p>
                                         </div>
                                     </div>
                                 </div>
@@ -355,7 +353,7 @@ export default function HomeClient() {
                             >
                                 <div className="flex items-center gap-2">
                                     <CheckCircle className="w-5 h-5" />
-                                    <span className="font-bold text-sm">{t('training.fullPlacement')}</span>
+                                    <span className="font-bold text-sm">{t('training.exploreCourses')}</span>
                                 </div>
                             </motion.div>
                         </motion.div>
@@ -382,9 +380,7 @@ export default function HomeClient() {
 
                             <div className="space-y-4 mb-10">
                                 {[
-                                    { text: t('training.benefits.placement'), color: 'text-green-600' },
                                     { text: t('training.benefits.practical'), color: 'text-blue-600' },
-                                    { text: t('training.benefits.certification'), color: 'text-purple-600' },
                                     { text: t('training.benefits.flexible'), color: 'text-amber-600' },
                                 ].map((item, index) => (
                                     <motion.div

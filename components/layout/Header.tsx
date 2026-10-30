@@ -2,7 +2,7 @@
 
 import { Link } from '@/i18n/routing'
 import Image from 'next/image'
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { usePathname } from 'next/navigation'
 import { Menu, X, Phone, ChevronRight, Sparkles } from 'lucide-react'
 import { BUSINESS_INFO } from '@/lib/constants'
@@ -25,6 +25,9 @@ export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [isScrolled, setIsScrolled] = useState(false)
   const [mounted, setMounted] = useState(false)
+  const menuToggleRef = useRef<HTMLButtonElement>(null)
+  const menuCloseButtonRef = useRef<HTMLButtonElement>(null)
+  const menuPanelRef = useRef<HTMLDivElement>(null)
   const pathname = usePathname()
   const t = useTranslations('Nav')
   const tCommon = useTranslations('Common')
@@ -39,6 +42,58 @@ export default function Header() {
     window.addEventListener('scroll', handleScroll)
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
+
+  useEffect(() => {
+    if (!isMenuOpen) return
+
+    menuCloseButtonRef.current?.focus()
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') {
+        event.preventDefault()
+        setIsMenuOpen(false)
+        requestAnimationFrame(() => menuToggleRef.current?.focus())
+        return
+      }
+
+      if (event.key === 'Tab') {
+        const focusableElements = Array.from(
+          menuPanelRef.current?.querySelectorAll<HTMLElement>(
+            'a[href], button:not([disabled]), input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])',
+          ) ?? [],
+        )
+        const firstFocusable = focusableElements[0]
+        const lastFocusable = focusableElements.at(-1)
+
+        if (!firstFocusable || !lastFocusable) {
+          event.preventDefault()
+          return
+        }
+
+        if (!menuPanelRef.current?.contains(document.activeElement)) {
+          event.preventDefault()
+          const focusTarget = event.shiftKey ? lastFocusable : firstFocusable
+          focusTarget.focus()
+          return
+        }
+
+        if (event.shiftKey && document.activeElement === firstFocusable) {
+          event.preventDefault()
+          lastFocusable.focus()
+        } else if (!event.shiftKey && document.activeElement === lastFocusable) {
+          event.preventDefault()
+          firstFocusable.focus()
+        }
+      }
+    }
+
+    window.addEventListener('keydown', handleKeyDown)
+    return () => window.removeEventListener('keydown', handleKeyDown)
+  }, [isMenuOpen])
+
+  const closeMenu = () => {
+    setIsMenuOpen(false)
+    requestAnimationFrame(() => menuToggleRef.current?.focus())
+  }
 
   // Prevent rendering dynamic path-dependent content until mounted
   const currentPath = mounted ? pathname : ''
@@ -125,9 +180,12 @@ export default function Header() {
                 <LanguageSwitcher />
               </div>
               <button
-                onClick={() => setIsMenuOpen(!isMenuOpen)}
+                ref={menuToggleRef}
+                onClick={() => isMenuOpen ? closeMenu() : setIsMenuOpen(true)}
                 className="p-3 rounded-xl text-gray-700 hover:bg-gray-100 transition-all duration-300"
                 aria-label="Toggle menu"
+                aria-expanded={isMenuOpen}
+                aria-controls="mobile-navigation"
               >
                 <motion.div
                   animate={{ rotate: isMenuOpen ? 90 : 0 }}
@@ -150,17 +208,22 @@ export default function Header() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              onClick={() => setIsMenuOpen(false)}
+              onClick={closeMenu}
               className="fixed inset-0 bg-black/40 backdrop-blur-sm z-40 lg:hidden"
             />
 
             {/* Menu Panel */}
             <motion.div
+              ref={menuPanelRef}
               initial={{ x: '100%' }}
               animate={{ x: 0 }}
               exit={{ x: '100%' }}
               transition={{ type: 'spring', damping: 30, stiffness: 300 }}
               className="fixed top-0 right-0 bottom-0 w-[85%] max-w-sm bg-white z-50 lg:hidden shadow-2xl border-l border-gray-100"
+              id="mobile-navigation"
+              role="dialog"
+              aria-modal="true"
+              aria-label="Mobile navigation"
             >
               <div className="flex flex-col h-full">
                 {/* Menu Header */}
@@ -179,8 +242,10 @@ export default function Header() {
                     </div>
                   </div>
                   <button
-                    onClick={() => setIsMenuOpen(false)}
+                    ref={menuCloseButtonRef}
+                    onClick={closeMenu}
                     className="p-2 rounded-xl bg-gray-50 text-gray-600 hover:bg-gray-100 transition-colors"
+                    aria-label="Close menu"
                   >
                     <X className="w-5 h-5" />
                   </button>
@@ -200,7 +265,7 @@ export default function Header() {
                         >
                           <Link
                             href={link.href}
-                            onClick={() => setIsMenuOpen(false)}
+                            onClick={closeMenu}
                             className={`flex items-center justify-between p-4 rounded-2xl font-bold transition-all ${isActive
                               ? 'bg-primary text-black shadow-lg shadow-primary/20'
                               : 'text-gray-700 hover:bg-gray-50 hover:text-gray-900'
@@ -219,7 +284,7 @@ export default function Header() {
                 <div className="p-6 border-t border-gray-100 space-y-3">
                   <Link
                     href="/contact#booking"
-                    onClick={() => setIsMenuOpen(false)}
+                    onClick={closeMenu}
                     className="flex items-center justify-center gap-2 w-full gold-gradient text-black px-6 py-4 rounded-2xl font-bold text-sm uppercase tracking-wider shadow-lg shadow-primary/20"
                   >
                     <Sparkles className="w-4 h-4" />

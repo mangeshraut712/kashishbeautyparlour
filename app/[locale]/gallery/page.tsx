@@ -6,6 +6,7 @@ import { Image as ImageIcon, X, ChevronLeft, ChevronRight, Sparkles, Play, Arrow
 import { useState, useEffect, useCallback } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { galleryCategories, galleryImages, galleryVideos } from '@/lib/data/gallery'
+import { withBasePath } from '@/lib/site'
 import { useTranslations } from 'next-intl'
 
 export default function GalleryPage() {
@@ -283,9 +284,9 @@ export default function GalleryPage() {
                       controls
                       playsInline
                       className="w-full aspect-video object-cover"
-                      poster={video.poster}
+                      poster={withBasePath(video.poster)}
                     >
-                      <source src={video.src} type="video/mp4" />
+                      <source src={withBasePath(video.src)} type="video/mp4" />
                       Your browser does not support the video tag.
                     </video>
                     <div className="absolute top-6 left-6 px-4 py-2 bg-black/40 backdrop-blur-md rounded-full text-white text-xs font-bold border border-white/20 opacity-0 group-hover:opacity-100 transition-opacity">

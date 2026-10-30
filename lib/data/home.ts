@@ -29,10 +29,6 @@ export const heroStats = [
     label: BUSINESS_STATS.servicesLabel
   },
   {
-    value: BUSINESS_STATS.happyCustomers,
-    label: BUSINESS_STATS.customersLabel
-  },
-  {
     value: BUSINESS_STATS.yearsOfExperience,
     label: BUSINESS_STATS.yearsLabel
   }
@@ -40,9 +36,9 @@ export const heroStats = [
 
 export const floatingCards = [
   {
-    icon: 'Award',
-    title: 'Certified',
-    subtitle: 'Professional stylists',
+    icon: 'Sparkles',
+    title: 'Beauty services',
+    subtitle: 'Thoughtful care',
     bgColor: 'bg-primary/20'
   },
   {

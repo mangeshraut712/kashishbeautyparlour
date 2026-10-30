@@ -7,12 +7,18 @@
   "scripts": {
     "dev": "next dev",
     "dev:turbo": "next dev --turbopack",
-    "build": "next build && node scripts/prepare-github-pages.mjs",
+    "build": "npm run build:pages",
+    "build:pages": "next build --webpack && node scripts/prepare-github-pages.mjs",
+    "build:cloudflare": "node scripts/build-cloudflare.mjs",
+    "build:all-hosts": "npm run build:cloudflare && npm run build:pages",
     "start": "npx serve out",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "analyze": "ANALYZE=true next build",
     "type-check": "tsc --noEmit",
+    "test:dependency-lock": "node --test tests/dependency-lock.test.mjs",
+    "test:static-export": "node --test tests/static-export-routes.test.mjs",
+    "test:validations": "node --no-warnings --experimental-strip-types --test tests/validations.test.mjs",
     "clean": "rm -rf .next out node_modules/.cache",
     "clean:all": "rm -rf .next out node_modules",
     "deploy:preview": "vercel",
@@ -28,7 +34,7 @@
     "firebase-admin": "^14.4.0",
     "framer-motion": "^11.18.2",
     "lucide-react": "^0.545.0",
-    "next": "16.4.0",
+    "next": "16.4.1",
     "next-intl": "^4.7.0",
     "next-themes": "^0.4.6",
     "razorpay": "^2.9.6",
@@ -37,7 +43,7 @@
     "sharp": "^0.35.5",
     "tailwind-merge": "^2.6.0",
     "twilio": "^5.11.1",
-    "zod": "^3.24.4"
+    "zod": "^4.6.7"
   },
   "devDependencies": {
     "@next/bundle-analyzer": "^15.5.7",

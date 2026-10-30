@@ -35,7 +35,7 @@ export async function submitContactForm(
 
     if (!validatedFields.success) {
         const errors: Record<string, string> = {}
-        validatedFields.error.issues.forEach((issue: { path: (string | number)[]; message: string }) => {
+        validatedFields.error.issues.forEach((issue) => {
             const path = issue.path.join('.')
             errors[path] = issue.message
         })

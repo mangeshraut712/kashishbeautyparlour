@@ -104,8 +104,8 @@ export default function BridalPage() {
                                         <Star className="w-6 h-6 text-primary fill-primary" />
                                     </div>
                                     <div>
-                                        <p className="text-2xl font-bold text-gray-900">1000+</p>
-                                        <p className="text-sm text-gray-500">Happy Brides</p>
+                                        <p className="text-sm font-bold text-gray-900">Bridal services</p>
+                                        <p className="text-sm text-gray-500">Ask about current options</p>
                                     </div>
                                 </div>
                             </div>
@@ -228,7 +228,7 @@ export default function BridalPage() {
 
                                 <div className="bg-white rounded-[2.5rem] p-1 shadow-2xl overflow-hidden group border border-gray-100">
                                     <div className="p-8">
-                                        <EMICalculator amount={25000} serviceName="Premium Bridal Package" />
+                                        <EMICalculator />
                                     </div>
                                 </div>
                             </motion.div>
@@ -263,7 +263,6 @@ export default function BridalPage() {
 
                     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 lg:gap-12 max-w-6xl mx-auto">
                         {[
-                            { icon: <Star className="w-8 h-8" />, color: 'bg-white', text: 'text-blue-600', title: `${BUSINESS_STATS.happyBrides} ${t('happyBrides')}`, desc: t('trustedByBrides') },
                             { icon: <Heart className="w-8 h-8" />, color: 'bg-white', text: 'text-rose-600', title: t('curatedStyling'), desc: t('curatedDesc') },
                             { icon: <Sparkles className="w-8 h-8" />, color: 'bg-white', text: 'text-primary', title: t('luxuryBrands'), desc: t('luxuryBrandsDesc') },
                             { icon: <Crown className="w-8 h-8" />, color: 'bg-white', text: 'text-amber-600', title: `${BUSINESS_STATS.yearsOfExperience} ${t('yearsExp')}`, desc: t('yearsExpDesc') },

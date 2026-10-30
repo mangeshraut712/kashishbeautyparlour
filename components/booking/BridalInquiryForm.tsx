@@ -2,7 +2,8 @@
 
 import { useState } from 'react'
 import { motion } from 'framer-motion'
-import { Heart, Calendar, Users, Phone, Mail, MapPin, Sparkles, CheckCircle, Star } from 'lucide-react'
+import { Heart, Calendar, Users, Phone, Mail, MapPin, Sparkles, CheckCircle, Star, MessageCircle } from 'lucide-react'
+import { buildWhatsAppLink } from '@/lib/whatsapp'
 
 /**
  * Bridal Inquiry Form - Critical for Indian wedding market
@@ -68,8 +69,7 @@ export default function BridalInquiryForm() {
         specialRequests: '',
         howHeard: '',
     })
-    const [isSubmitting, setIsSubmitting] = useState(false)
-    const [isSubmitted, setIsSubmitted] = useState(false)
+    const [isRequestReady, setIsRequestReady] = useState(false)
 
     const handleServiceToggle = (service: string) => {
         setFormData(prev => ({
@@ -80,18 +80,31 @@ export default function BridalInquiryForm() {
         }))
     }
 
-    const handleSubmit = async (e: React.FormEvent) => {
+    const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault()
-        setIsSubmitting(true)
-
-        // Simulate API call
-        await new Promise(resolve => setTimeout(resolve, 2000))
-
-        setIsSubmitting(false)
-        setIsSubmitted(true)
+        if (!formData.brideName || !formData.phone || !formData.weddingDate || formData.services.length === 0) return
+        setIsRequestReady(true)
     }
 
-    if (isSubmitted) {
+    const bridalRequestHref = buildWhatsAppLink([
+        'Hello Kashish Beauty Parlour,',
+        '',
+        'I would like to request a bridal consultation.',
+        `Bride: ${formData.brideName}`,
+        `Phone: ${formData.phone}`,
+        formData.email ? `Email: ${formData.email}` : '',
+        `Wedding date: ${formData.weddingDate}`,
+        formData.venue ? `Venue: ${formData.venue}` : '',
+        formData.venueType ? `Venue type: ${formData.venueType}` : '',
+        `Services: ${formData.services.join(', ')}`,
+        formData.budget ? `Budget: ${formData.budget}` : '',
+        formData.guestCount ? `Guest count: ${formData.guestCount}` : '',
+        formData.specialRequests ? `Notes: ${formData.specialRequests}` : '',
+        '',
+        'Please confirm availability before booking.',
+    ].filter(Boolean).join('\n'))
+
+    if (isRequestReady) {
         return (
             <motion.div
                 initial={{ opacity: 0, scale: 0.9 }}
@@ -99,17 +112,30 @@ export default function BridalInquiryForm() {
                 className="bg-white rounded-[2rem] p-12 text-center shadow-xl border border-gray-100"
             >
                 <div className="w-24 h-24 bg-gradient-to-br from-primary to-accent rounded-full flex items-center justify-center mx-auto mb-6">
-                    <Heart className="w-12 h-12 text-white fill-white" />
+                    <MessageCircle className="w-12 h-12 text-white" />
                 </div>
                 <h2 className="text-3xl font-heading font-bold text-gray-900 mb-4">
-                    Thank You, Beautiful Bride! 💕
+                    Bridal inquiry ready to send
                 </h2>
                 <p className="text-gray-500 mb-6 max-w-md mx-auto">
-                    We&apos;ve received your bridal inquiry. Our team will contact you within 24 hours to discuss your dream wedding look.
+                    This static site cannot submit bridal inquiries. Open WhatsApp and send the prepared message to request availability.
                 </p>
-                <div className="inline-flex items-center gap-2 px-6 py-3 bg-primary/10 rounded-full text-primary font-bold">
-                    <Sparkles className="w-5 h-5" />
-                    Congratulations on your upcoming wedding!
+                <div className="flex flex-col gap-3 sm:flex-row sm:justify-center">
+                    <a
+                        href={bridalRequestHref}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center justify-center gap-2 px-6 py-3 gold-gradient rounded-full text-black font-bold"
+                    >
+                        Continue on WhatsApp
+                    </a>
+                    <button
+                        type="button"
+                        onClick={() => setIsRequestReady(false)}
+                        className="inline-flex items-center justify-center gap-2 rounded-full border border-gray-200 px-6 py-3 font-bold text-gray-700"
+                    >
+                        Edit inquiry
+                    </button>
                 </div>
             </motion.div>
         )
@@ -141,10 +167,11 @@ export default function BridalInquiryForm() {
                     </h3>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                         <div>
-                            <label className="block text-sm font-bold text-gray-700 mb-2">
+                            <label htmlFor="bridal-name" className="block text-sm font-bold text-gray-700 mb-2">
                                 Bride&apos;s Name *
                             </label>
                             <input
+                                id="bridal-name"
                                 type="text"
                                 required
                                 value={formData.brideName}
@@ -154,11 +181,12 @@ export default function BridalInquiryForm() {
                             />
                         </div>
                         <div>
-                            <label className="block text-sm font-bold text-gray-700 mb-2">
+                            <label htmlFor="bridal-phone" className="block text-sm font-bold text-gray-700 mb-2">
                                 <Phone className="w-4 h-4 inline mr-1" />
                                 Phone Number *
                             </label>
                             <input
+                                id="bridal-phone"
                                 type="tel"
                                 required
                                 value={formData.phone}
@@ -168,11 +196,12 @@ export default function BridalInquiryForm() {
                             />
                         </div>
                         <div>
-                            <label className="block text-sm font-bold text-gray-700 mb-2">
+                            <label htmlFor="bridal-email" className="block text-sm font-bold text-gray-700 mb-2">
                                 <Mail className="w-4 h-4 inline mr-1" />
                                 Email Address
                             </label>
                             <input
+                                id="bridal-email"
                                 type="email"
                                 value={formData.email}
                                 onChange={(e) => setFormData({ ...formData, email: e.target.value })}
@@ -181,11 +210,12 @@ export default function BridalInquiryForm() {
                             />
                         </div>
                         <div>
-                            <label className="block text-sm font-bold text-gray-700 mb-2">
+                            <label htmlFor="bridal-date" className="block text-sm font-bold text-gray-700 mb-2">
                                 <Calendar className="w-4 h-4 inline mr-1" />
                                 Wedding Date *
                             </label>
                             <input
+                                id="bridal-date"
                                 type="date"
                                 required
                                 value={formData.weddingDate}
@@ -204,10 +234,11 @@ export default function BridalInquiryForm() {
                     </h3>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                         <div>
-                            <label className="block text-sm font-bold text-gray-700 mb-2">
+                            <label htmlFor="bridal-venue" className="block text-sm font-bold text-gray-700 mb-2">
                                 Venue Name/Address
                             </label>
                             <input
+                                id="bridal-venue"
                                 type="text"
                                 value={formData.venue}
                                 onChange={(e) => setFormData({ ...formData, venue: e.target.value })}
@@ -216,10 +247,11 @@ export default function BridalInquiryForm() {
                             />
                         </div>
                         <div>
-                            <label className="block text-sm font-bold text-gray-700 mb-2">
+                            <label htmlFor="bridal-venue-type" className="block text-sm font-bold text-gray-700 mb-2">
                                 Venue Type
                             </label>
                             <select
+                                id="bridal-venue-type"
                                 value={formData.venueType}
                                 onChange={(e) => setFormData({ ...formData, venueType: e.target.value })}
                                 className="w-full px-4 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-primary focus:border-transparent"
@@ -245,6 +277,7 @@ export default function BridalInquiryForm() {
                                 key={service}
                                 type="button"
                                 onClick={() => handleServiceToggle(service)}
+                                aria-pressed={formData.services.includes(service)}
                                 className={`p-3 text-left rounded-xl border-2 transition-all text-sm font-medium ${formData.services.includes(service)
                                     ? 'border-primary bg-primary/5 text-black'
                                     : 'border-gray-200 hover:border-gray-300 text-gray-700'
@@ -269,10 +302,11 @@ export default function BridalInquiryForm() {
                     </h3>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                         <div>
-                            <label className="block text-sm font-bold text-gray-700 mb-2">
+                            <label htmlFor="bridal-budget" className="block text-sm font-bold text-gray-700 mb-2">
                                 Budget Range
                             </label>
                             <select
+                                id="bridal-budget"
                                 value={formData.budget}
                                 onChange={(e) => setFormData({ ...formData, budget: e.target.value })}
                                 className="w-full px-4 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-primary focus:border-transparent"
@@ -284,10 +318,11 @@ export default function BridalInquiryForm() {
                             </select>
                         </div>
                         <div>
-                            <label className="block text-sm font-bold text-gray-700 mb-2">
+                            <label htmlFor="bridal-referral-source" className="block text-sm font-bold text-gray-700 mb-2">
                                 How did you hear about us?
                             </label>
                             <select
+                                id="bridal-referral-source"
                                 value={formData.howHeard}
                                 onChange={(e) => setFormData({ ...formData, howHeard: e.target.value })}
                                 className="w-full px-4 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-primary focus:border-transparent"
@@ -307,10 +342,11 @@ export default function BridalInquiryForm() {
 
                 {/* Special Requests */}
                 <div className="mb-8">
-                    <label className="block text-sm font-bold text-gray-700 mb-2">
+                    <label htmlFor="bridal-notes" className="block text-sm font-bold text-gray-700 mb-2">
                         Special Requests / Notes
                     </label>
                     <textarea
+                        id="bridal-notes"
                         value={formData.specialRequests}
                         onChange={(e) => setFormData({ ...formData, specialRequests: e.target.value })}
                         placeholder="Any specific requirements, allergies, makeup preferences, or special requests..."
@@ -322,24 +358,17 @@ export default function BridalInquiryForm() {
                 {/* Submit Button */}
                 <button
                     type="submit"
-                    disabled={isSubmitting || !formData.brideName || !formData.phone || !formData.weddingDate || formData.services.length === 0}
+                    disabled={!formData.brideName || !formData.phone || !formData.weddingDate || formData.services.length === 0}
                     className="w-full py-4 gold-gradient text-black font-bold rounded-xl disabled:opacity-50 disabled:cursor-not-allowed transition-all flex items-center justify-center gap-3 text-lg shadow-lg hover:shadow-xl"
                 >
-                    {isSubmitting ? (
-                        <>
-                            <span className="animate-spin h-5 w-5 border-2 border-black border-t-transparent rounded-full" />
-                            Submitting...
-                        </>
-                    ) : (
-                        <>
-                            <Heart className="w-5 h-5" />
-                            Submit Bridal Inquiry
-                        </>
-                    )}
+                    <>
+                        <MessageCircle className="w-5 h-5" />
+                        Prepare WhatsApp Inquiry
+                    </>
                 </button>
 
                 <p className="text-center text-xs text-gray-400 mt-4">
-                    We respect your privacy and will contact you within 24 hours
+                    Your inquiry is not sent until you send the prepared WhatsApp message.
                 </p>
             </form>
         </motion.div>

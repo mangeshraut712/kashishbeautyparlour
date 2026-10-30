@@ -2,7 +2,7 @@
 
 import Image from 'next/image'
 import { motion } from 'framer-motion'
-import { Star, Award, Heart, Instagram } from 'lucide-react'
+import { Heart, Instagram } from 'lucide-react'
 import { staffMembers } from '@/lib/data/staff'
 
 export default function StaffProfiles() {
@@ -26,7 +26,7 @@ export default function StaffProfiles() {
                         Meet Our <span className="gold-text">Team</span>
                     </h2>
                     <p className="text-gray-600 text-lg font-medium">
-                        Certified professionals dedicated to making you look and feel beautiful
+                        Meet the team members available to discuss your beauty service needs
                     </p>
                 </motion.div>
 
@@ -58,12 +58,6 @@ export default function StaffProfiles() {
                                         {member.experience}
                                     </div>
 
-                                    {/* Popular Badge */}
-                                    {member.popular && (
-                                        <div className="absolute top-4 left-4 px-3 py-1 gold-gradient rounded-full text-xs font-bold text-black">
-                                            ⭐ Top Rated
-                                        </div>
-                                    )}
                                 </div>
 
                                 {/* Info */}
@@ -75,17 +69,8 @@ export default function StaffProfiles() {
                                         {member.role}
                                     </p>
 
-                                    {/* Rating */}
-                                    <div className="flex items-center gap-2 mb-4">
-                                        <div className="flex items-center gap-1">
-                                            <Star className="w-4 h-4 text-yellow-500 fill-yellow-500" />
-                                            <span className="font-bold text-gray-900">{member.rating}</span>
-                                        </div>
-                                        <span className="text-gray-400 text-sm">({member.reviews} reviews)</span>
-                                    </div>
-
                                     {/* Specializations */}
-                                    <div className="flex flex-wrap gap-2 mb-4">
+                                    <div className="flex flex-wrap gap-2 mb-3">
                                         {member.specialization.slice(0, 2).map((spec) => (
                                             <span
                                                 key={spec}
@@ -94,12 +79,6 @@ export default function StaffProfiles() {
                                                 {spec}
                                             </span>
                                         ))}
-                                    </div>
-
-                                    {/* Certifications */}
-                                    <div className="flex items-center gap-2 text-xs text-gray-500 font-medium mb-3">
-                                        <Award className="w-4 h-4 text-primary" />
-                                        {member.certifications[0]}
                                     </div>
 
                                     {/* Social Links */}

@@ -7,12 +7,14 @@ import { useState } from 'react'
 import { motion } from 'framer-motion'
 import { services, serviceCategories } from '@/lib/data/services'
 import ShareButtons from '@/components/social/ShareButtons'
-import { useTranslations } from 'next-intl'
+import { useLocale, useTranslations } from 'next-intl'
+import { withBasePath } from '@/lib/site'
 
 export default function ServicesPage() {
   const [selectedCategory, setSelectedCategory] = useState('All')
   const t = useTranslations('Services')
   const tCommon = useTranslations('Common')
+  const locale = useLocale()
 
   const filteredServices = selectedCategory === 'All'
     ? services
@@ -220,7 +222,7 @@ export default function ServicesPage() {
                     <ShareButtons
                       title={service.name}
                       description={service.description}
-                      url={`${typeof window !== 'undefined' ? window.location.origin : ''}/services#${service.id}`}
+                      url={withBasePath(`/${locale}/services#${service.id}`)}
                     />
                   </div>
                 </div>

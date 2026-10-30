@@ -7,7 +7,6 @@ import { getMessages, setRequestLocale } from 'next-intl/server';
 import { notFound } from 'next/navigation';
 import Header from '@/components/layout/Header'
 import Footer from '@/components/layout/Footer'
-import FestivalOfferPopup from '@/components/marketing/FestivalOfferPopup'
 import ShareButtons from '@/components/social/ShareButtons'
 import PWAInstallPrompt from '@/components/pwa/PWAInstallPrompt'
 import ScrollToTopLeft from '@/components/ui/ScrollToTopLeft'
@@ -48,7 +47,7 @@ export const metadata: Metadata = {
     default: 'Kashish Beauty Parlour And Training Center | Premium Beauty Salon in Thergaon, Pune',
     template: '%s | Kashish Beauty Parlour And Training Center',
   },
-  description: 'Experience luxury beauty services at Kashish Beauty Parlour And Training Center. Professional bridal makeup, hair styling, facials, spa services & certified training courses in Pune. Book your transformation today!',
+  description: 'Experience beauty services at Kashish Beauty Parlour And Training Center. Explore bridal makeup, hair styling, facials, spa services, and professional training courses in Pune.',
   keywords: [
     'beauty parlour pune',
     'bridal makeup thergaon',
@@ -87,7 +86,7 @@ export const metadata: Metadata = {
     type: 'website',
     images: [
       {
-        url: `${BASE_PATH}/images/og-image.jpg`,
+        url: `${SITE_URL}/images/og-image.jpg`,
         width: 1200,
         height: 630,
         alt: 'Kashish Beauty Parlour And Training Center - Premium Beauty Services',
@@ -98,7 +97,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Kashish Beauty Parlour - Premium Beauty Services in Pune',
     description: 'Transform your look with expert beauty services.',
-    images: [`${BASE_PATH}/images/og-image.jpg`],
+    images: [`${SITE_URL}/images/og-image.jpg`],
   },
   robots: {
     index: true,
@@ -110,9 +109,6 @@ export const metadata: Metadata = {
       'max-image-preview': 'large',
       'max-snippet': -1,
     },
-  },
-  verification: {
-    google: 'your-google-verification-code',
   },
   category: 'beauty',
 }
@@ -147,11 +143,6 @@ const jsonLd = {
   },
   priceRange: '₹₹',
   image: `${SITE_URL}/images/og-image.jpg`,
-  aggregateRating: {
-    '@type': 'AggregateRating',
-    ratingValue: '4.8',
-    reviewCount: '650',
-  },
   sameAs: [
     'https://www.instagram.com/kashishbeautyandtraining/',
     'https://www.facebook.com/profile.php?id=100064114598364',
@@ -220,7 +211,6 @@ export default async function RootLayout({
           </main>
 
           <Footer />
-          <FestivalOfferPopup />
           <ScrollToTopLeft />
           <ShareButtons title="Kashish Beauty Parlour And Training Center" variant="floating" />
           <PWAInstallPrompt />

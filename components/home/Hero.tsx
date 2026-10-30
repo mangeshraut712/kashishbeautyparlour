@@ -2,7 +2,7 @@
 
 import { Link } from '@/i18n/routing'
 import Image from 'next/image'
-import { Sparkles, Award, Users, ChevronRight, Play, Star, MapPin, Clock, Phone } from 'lucide-react'
+import { Sparkles, Award, Users, ChevronRight, Play, ExternalLink, MapPin, Clock, Phone } from 'lucide-react'
 import { heroContent } from '@/lib/data/home'
 import { BUSINESS_STATS, BUSINESS_INFO } from '@/lib/constants'
 import { motion } from 'framer-motion'
@@ -17,17 +17,16 @@ const iconMap: Record<string, ReactElement> = {
 
 export default function Hero() {
   const t = useTranslations('Hero')
+  const tReviews = useTranslations('ReviewReference')
 
   // Stats with translation keys
   const heroStats = [
     { value: BUSINESS_STATS.totalServices, labelKey: 'stats.servicesLabel', icon: Sparkles },
-    { value: BUSINESS_STATS.happyCustomers, labelKey: 'stats.clientsLabel', icon: Users },
     { value: BUSINESS_STATS.yearsOfExperience, labelKey: 'stats.yearsLabel', icon: Award },
   ]
 
   // Floating cards with translation keys
   const floatingCards = [
-    { icon: 'Award', titleKey: 'floatingCards.certified', subtitleKey: 'floatingCards.professional' },
     { icon: 'Users', titleKey: 'floatingCards.personalized', subtitleKey: 'floatingCards.customized' },
   ]
 
@@ -163,24 +162,22 @@ export default function Hero() {
                 {/* Sheen Effect */}
                 <div className="absolute -inset-full top-0 block h-full w-1/2 -skew-x-12 bg-gradient-to-r from-transparent to-white opacity-20 group-hover:animate-shine" />
 
-                {/* Rating Badge */}
+                {/* Google review reference */}
                 <motion.div
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 1.2 }}
                   className="absolute bottom-6 left-6 right-6 bg-white/95 backdrop-blur-md p-4 rounded-2xl shadow-xl"
                 >
-                  <div className="flex items-center justify-between">
-                    <div className="flex items-center gap-2">
-                      <div className="flex">
-                        {[1, 2, 3, 4, 5].map((star) => (
-                          <Star key={star} className="w-4 h-4 text-primary fill-primary" />
-                        ))}
-                      </div>
-                      <span className="font-bold text-gray-900">{BUSINESS_STATS.averageRating}</span>
-                    </div>
-                    <span className="text-xs text-gray-500 font-medium">{BUSINESS_STATS.totalReviews}+ Reviews</span>
-                  </div>
+                  <a
+                    href={BUSINESS_INFO.maps.reviews}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center justify-between gap-3 text-sm font-bold text-gray-900 transition-colors hover:text-primary"
+                  >
+                    <span>{tReviews('read')}</span>
+                    <ExternalLink className="w-4 h-4 text-primary" aria-hidden="true" />
+                  </a>
                 </motion.div>
               </div>
 

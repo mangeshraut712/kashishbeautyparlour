@@ -72,8 +72,8 @@ export default function TrainingPage() {
                     <Award className="w-6 h-6 text-primary" />
                   </div>
                   <div>
-                    <p className="text-2xl font-bold text-gray-900">100+</p>
-                    <p className="text-sm text-gray-500">Students Trained</p>
+                    <p className="text-sm font-bold text-gray-900">Training courses</p>
+                    <p className="text-sm text-gray-500">Ask about current course options</p>
                   </div>
                 </div>
               </div>
@@ -132,7 +132,7 @@ export default function TrainingPage() {
                       <h3 className="text-3xl font-heading font-bold mb-2 text-white">
                         {course.title}
                       </h3>
-                      <p className="text-white/80 font-medium">{t('isoCertified')}</p>
+                      <p className="text-white/80 font-medium">{t('coursesDescription')}</p>
                     </div>
                     <div className="flex flex-wrap gap-4">
                       <div className="flex items-center gap-2 bg-white/20 backdrop-blur-md px-4 py-2 rounded-full text-sm font-bold text-white border border-white/20">
@@ -359,7 +359,7 @@ export default function TrainingPage() {
               <span className="gold-text-hero">Beautiful Career</span>
             </h2>
             <p className="text-lg mb-10 max-w-2xl mx-auto text-gray-600 font-medium">
-              {t('joinThousands')}
+              {t('coursesDescription')}
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link
