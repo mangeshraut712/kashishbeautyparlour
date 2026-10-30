@@ -14,6 +14,8 @@ function escapeRegExp(value) {
   return value.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
 }
 
+const escapedSiteUrl = escapeRegExp(siteUrl)
+
 test('the static export advertises locale-qualified pages and PWA shortcuts', async () => {
   const [sitemap, manifestSource] = await Promise.all([
     readFile(outputFile('sitemap.xml'), 'utf8'),
@@ -22,11 +24,11 @@ test('the static export advertises locale-qualified pages and PWA shortcuts', as
 
   for (const locale of ['en', 'hi', 'mr']) {
     for (const route of ['', '/about', '/services', '/gallery', '/training', '/contact']) {
-      assert.match(sitemap, new RegExp(`<loc>${siteUrl}/${locale}${route}</loc>`))
+      assert.match(sitemap, new RegExp(`<loc>${escapedSiteUrl}/${locale}${route}</loc>`))
     }
   }
 
-  assert.doesNotMatch(sitemap, new RegExp(`<loc>${siteUrl}/about</loc>`))
+  assert.doesNotMatch(sitemap, new RegExp(`<loc>${escapedSiteUrl}/about</loc>`))
 
   const manifest = JSON.parse(manifestSource)
   assert.deepEqual(
