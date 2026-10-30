@@ -199,10 +199,10 @@
         "pageTagline": "Get In Touch",
         "pageTitle": "Contact Us",
         "pageDescription": "Book your appointment, ask questions, or simply say hello. We're here to help you look and feel your best.",
-        "onlineBooking": "Online Booking",
-        "reserveTransformation": "Reserve Your Transformation",
-        "bookingDescription": "Choose your desired service, select your preferred beautician, and pick a convenient time. Receive instant confirmation via WhatsApp.",
-        "whyBookOnline": "Why Book Online?",
+        "onlineBooking": "Appointment Request",
+        "reserveTransformation": "Request Your Transformation",
+        "bookingDescription": "Choose your desired service, select your preferred beautician, and pick a convenient time. Send your request on WhatsApp; the team confirms availability there.",
+        "whyBookOnline": "Why Request Online?",
         "preferredBeautician": "Preferred Beautician",
         "preferredBeauticianDesc": "Select your favorite team member for a personalized experience.",
         "queueFree": "Queue-Free Service",
@@ -211,8 +211,8 @@
         "exclusiveOffersDesc": "Enjoy a 10% discount on your first online booking.",
         "supportQueries": "Support & Queries",
         "supportDescription": "Can't find your preferred slot? Need a group booking? Call us directly—we're happy to help.",
-        "bookYourAppointment": "Book Your Appointment",
-        "formDescription": "Fill in your details, and we'll respond within 24 hours.",
+        "bookYourAppointment": "Send an Appointment Request",
+        "formDescription": "Fill in your details to prepare a WhatsApp message for our team.",
         "quickResponse": "Quick Response Promise",
         "quickResponseDesc": "We typically reply within 2 hours during working hours.",
         "form": {
@@ -225,8 +225,8 @@
             "preferredDate": "Preferred Date",
             "message": "Message",
             "messagePlaceholder": "Tell us about your requirements...",
-            "submit": "Send Message",
-            "sending": "Sending..."
+            "submit": "Prepare WhatsApp Message",
+            "sending": "Preparing..."
         },
         "services": {
             "bridalMakeup": "Bridal Makeup",
@@ -237,7 +237,7 @@
             "spa": "Spa & Massage",
             "training": "Beauty Training"
         },
-        "successMessage": "Thank you! Your message has been sent successfully. We'll get back to you shortly.",
+        "whatsAppReadyMessage": "Your WhatsApp message is ready. It has not been sent yet—send it in WhatsApp to contact us.",
         "errorMessage": "We apologize—there was an error sending your message. Please try again or contact us directly.",
         "visitStudio": "Visit Our Studio",
         "welcomeMessage": "We would love to welcome you in person.",
@@ -339,7 +339,7 @@
         "poweredBy": "Powered by Kashish AI"
     },
     "BookingCalendar": {
-        "title": "Book Appointment",
+        "title": "Request an Appointment",
         "subtitle": "Select your preferred date and time",
         "selectService": "Select Service",
         "chooseServicePlaceholder": "Choose a service...",
@@ -349,6 +349,9 @@
         "yourPhone": "Phone Number",
         "namePlaceholder": "Enter your name",
         "phonePlaceholder": "Enter 10-digit mobile number",
+        "staticNotice": "This website cannot reserve a time or confirm availability. Send your request on WhatsApp and the team will confirm it there.",
+        "previousMonth": "Previous month",
+        "nextMonth": "Next month",
         "bookingSummary": "Booking Summary",
         "summaryLabels": {
             "service": "Service",
@@ -359,13 +362,7 @@
         "buttons": {
             "continue": "Continue",
             "back": "Back",
-            "confirm": "Confirm Booking",
-            "booking": "Booking..."
-        },
-        "success": {
-            "title": "Booking Confirmed!",
-            "message": "We'll send you a confirmation on WhatsApp shortly.",
-            "seeYou": "See you soon!"
+            "continueOnWhatsApp": "Send request on WhatsApp"
         },
         "StaffSelection": {
             "title": "Choose Your Beautician",

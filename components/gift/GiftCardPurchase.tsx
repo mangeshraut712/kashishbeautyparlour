@@ -3,6 +3,7 @@
 import { useState } from 'react'
 import { motion } from 'framer-motion'
 import { Gift, Send, Check, Sparkles } from 'lucide-react'
+import { buildWhatsAppLink } from '@/lib/whatsapp'
 
 /**
  * Gift Card Component - Full implementation
@@ -37,38 +38,60 @@ export default function GiftCardPurchase() {
     const [message, setMessage] = useState('')
     const [occasion, setOccasion] = useState('')
     const [step, setStep] = useState(1)
-    const [isSubmitting, setIsSubmitting] = useState(false)
-    const [isComplete, setIsComplete] = useState(false)
+    const [isRequestReady, setIsRequestReady] = useState(false)
 
-    const finalAmount = customAmount ? parseInt(customAmount) : amount
+    const customAmountValue = Number(customAmount)
+    const hasCustomAmount = customAmount.trim() !== ''
+    const isCustomAmountValid = !hasCustomAmount || (Number.isFinite(customAmountValue) && customAmountValue >= 500)
+    const finalAmount = hasCustomAmount && Number.isFinite(customAmountValue) ? customAmountValue : amount
 
-    const handleSubmit = async () => {
-        setIsSubmitting(true)
-        await new Promise(resolve => setTimeout(resolve, 2000))
-        setIsSubmitting(false)
-        setIsComplete(true)
-    }
+    const giftCardRequestHref = buildWhatsAppLink([
+        'Hello Kashish Beauty Parlour,',
+        '',
+        'I would like to request a gift card.',
+        `Value: ₹${finalAmount.toLocaleString('en-IN')}`,
+        `Recipient: ${recipientName}`,
+        `Recipient email: ${recipientEmail}`,
+        `From: ${senderName}`,
+        occasion ? `Occasion: ${occasion}` : '',
+        message ? `Message: ${message}` : '',
+        '',
+        'Please share the available payment and delivery options.',
+    ].filter(Boolean).join('\n'))
 
-    if (isComplete) {
+    if (isRequestReady) {
         return (
             <motion.div
                 initial={{ opacity: 0, scale: 0.9 }}
                 animate={{ opacity: 1, scale: 1 }}
                 className="bg-white rounded-[2rem] p-12 text-center shadow-xl border border-gray-100"
             >
-                <div className="w-24 h-24 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6">
-                    <Check className="w-12 h-12 text-green-600" />
+                <div className="w-24 h-24 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-6">
+                    <Gift className="w-12 h-12 text-primary" />
                 </div>
                 <h2 className="text-3xl font-heading font-bold text-gray-900 mb-4">
-                    Gift Card Sent! 🎉
+                    Gift-card request ready
                 </h2>
                 <p className="text-gray-500 mb-6 max-w-md mx-auto">
-                    Your ₹{finalAmount.toLocaleString('en-IN')} gift card has been sent to {recipientEmail}.
-                    They&apos;ll receive it within a few minutes.
+                    Online checkout and delivery are not available on this site. Open WhatsApp and send the prepared request to ask about payment and delivery options.
                 </p>
-                <div className="inline-flex items-center gap-2 px-6 py-3 bg-primary/10 rounded-full text-primary font-bold">
-                    <Gift className="w-5 h-5" />
-                    Thank you for spreading joy!
+                <div className="flex flex-col gap-3 sm:flex-row sm:justify-center">
+                    <a
+                        href={giftCardRequestHref}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center justify-center gap-2 rounded-full gold-gradient px-6 py-3 font-bold text-black"
+                    >
+                        <Send className="w-5 h-5" />
+                        Continue on WhatsApp
+                    </a>
+                    <button
+                        type="button"
+                        onClick={() => setIsRequestReady(false)}
+                        className="rounded-full border border-gray-200 px-6 py-3 font-bold text-gray-700"
+                    >
+                        Edit request
+                    </button>
                 </div>
             </motion.div>
         )
@@ -120,7 +143,10 @@ export default function GiftCardPurchase() {
                                 {giftCardDesigns.map((design) => (
                                     <button
                                         key={design.id}
+                                        type="button"
                                         onClick={() => setSelectedDesign(design.id)}
+                                        aria-label={design.name}
+                                        aria-pressed={selectedDesign === design.id}
                                         className={`relative aspect-[4/3] rounded-xl overflow-hidden border-2 transition ${selectedDesign === design.id ? 'border-primary ring-2 ring-primary/20' : 'border-gray-200'
                                             }`}
                                     >
@@ -145,7 +171,9 @@ export default function GiftCardPurchase() {
                                 {presetAmounts.map((a) => (
                                     <button
                                         key={a}
+                                        type="button"
                                         onClick={() => { setAmount(a); setCustomAmount(''); }}
+                                        aria-pressed={amount === a && !customAmount}
                                         className={`py-3 rounded-xl font-bold transition ${amount === a && !customAmount
                                             ? 'bg-primary text-black'
                                             : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
@@ -156,9 +184,13 @@ export default function GiftCardPurchase() {
                                 ))}
                             </div>
                             <div className="relative">
+                                <label htmlFor="gift-card-custom-amount" className="sr-only">Custom gift card value</label>
                                 <span className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-500">₹</span>
                                 <input
+                                    id="gift-card-custom-amount"
                                     type="number"
+                                    min={500}
+                                    step={100}
                                     value={customAmount}
                                     onChange={(e) => setCustomAmount(e.target.value)}
                                     placeholder="Custom amount"
@@ -174,7 +206,9 @@ export default function GiftCardPurchase() {
                                 {occasions.map((o) => (
                                     <button
                                         key={o}
+                                        type="button"
                                         onClick={() => setOccasion(occasion === o ? '' : o)}
+                                        aria-pressed={occasion === o}
                                         className={`px-4 py-2 rounded-full text-sm font-medium transition ${occasion === o
                                             ? 'bg-primary text-black'
                                             : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
@@ -187,8 +221,9 @@ export default function GiftCardPurchase() {
                         </div>
 
                         <button
+                            type="button"
                             onClick={() => setStep(2)}
-                            disabled={finalAmount < 500}
+                            disabled={!isCustomAmountValid || finalAmount < 500}
                             className="w-full py-4 gold-gradient text-black font-bold rounded-xl disabled:opacity-50"
                         >
                             Continue
@@ -200,8 +235,9 @@ export default function GiftCardPurchase() {
                 {step === 2 && (
                     <div className="space-y-4">
                         <div>
-                            <label className="block text-sm font-bold text-gray-700 mb-2">Recipient&apos;s Name</label>
+                            <label htmlFor="gift-card-recipient-name" className="block text-sm font-bold text-gray-700 mb-2">Recipient&apos;s Name</label>
                             <input
+                                id="gift-card-recipient-name"
                                 type="text"
                                 value={recipientName}
                                 onChange={(e) => setRecipientName(e.target.value)}
@@ -210,8 +246,9 @@ export default function GiftCardPurchase() {
                             />
                         </div>
                         <div>
-                            <label className="block text-sm font-bold text-gray-700 mb-2">Recipient&apos;s Email</label>
+                            <label htmlFor="gift-card-recipient-email" className="block text-sm font-bold text-gray-700 mb-2">Recipient&apos;s Email</label>
                             <input
+                                id="gift-card-recipient-email"
                                 type="email"
                                 value={recipientEmail}
                                 onChange={(e) => setRecipientEmail(e.target.value)}
@@ -220,8 +257,9 @@ export default function GiftCardPurchase() {
                             />
                         </div>
                         <div>
-                            <label className="block text-sm font-bold text-gray-700 mb-2">Your Name</label>
+                            <label htmlFor="gift-card-sender-name" className="block text-sm font-bold text-gray-700 mb-2">Your Name</label>
                             <input
+                                id="gift-card-sender-name"
                                 type="text"
                                 value={senderName}
                                 onChange={(e) => setSenderName(e.target.value)}
@@ -230,8 +268,9 @@ export default function GiftCardPurchase() {
                             />
                         </div>
                         <div>
-                            <label className="block text-sm font-bold text-gray-700 mb-2">Personal Message (Optional)</label>
+                            <label htmlFor="gift-card-message" className="block text-sm font-bold text-gray-700 mb-2">Personal Message (Optional)</label>
                             <textarea
+                                id="gift-card-message"
                                 value={message}
                                 onChange={(e) => setMessage(e.target.value)}
                                 placeholder="Write a personal message..."
@@ -242,12 +281,14 @@ export default function GiftCardPurchase() {
 
                         <div className="flex gap-3">
                             <button
+                                type="button"
                                 onClick={() => setStep(1)}
                                 className="flex-1 py-3 border border-gray-200 text-gray-700 font-bold rounded-xl hover:bg-gray-50"
                             >
                                 Back
                             </button>
                             <button
+                                type="button"
                                 onClick={() => setStep(3)}
                                 disabled={!recipientName || !recipientEmail || !senderName}
                                 className="flex-1 py-3 gold-gradient text-black font-bold rounded-xl disabled:opacity-50"
@@ -307,34 +348,32 @@ export default function GiftCardPurchase() {
                                 <span className="font-bold">₹{finalAmount.toLocaleString('en-IN')}</span>
                             </div>
                             <div className="flex justify-between">
-                                <span className="text-gray-600">Will be sent to</span>
+                                <span className="text-gray-600">Recipient email</span>
                                 <span className="font-medium">{recipientEmail}</span>
                             </div>
                         </div>
 
+                        <p role="note" className="rounded-xl border border-amber-200 bg-amber-50 px-4 py-3 text-sm font-medium text-amber-950">
+                            No payment is taken and no gift card is delivered from this website.
+                        </p>
+
                         <div className="flex gap-3">
                             <button
+                                type="button"
                                 onClick={() => setStep(2)}
                                 className="flex-1 py-3 border border-gray-200 text-gray-700 font-bold rounded-xl hover:bg-gray-50"
                             >
                                 Back
                             </button>
                             <button
-                                onClick={handleSubmit}
-                                disabled={isSubmitting}
-                                className="flex-1 py-3 gold-gradient text-black font-bold rounded-xl disabled:opacity-50 flex items-center justify-center gap-2"
+                                type="button"
+                                onClick={() => setIsRequestReady(true)}
+                                className="flex-1 py-3 gold-gradient text-black font-bold rounded-xl flex items-center justify-center gap-2"
                             >
-                                {isSubmitting ? (
-                                    <>
-                                        <span className="animate-spin h-5 w-5 border-2 border-black border-t-transparent rounded-full" />
-                                        Processing...
-                                    </>
-                                ) : (
-                                    <>
-                                        <Send className="w-5 h-5" />
-                                        Send Gift Card
-                                    </>
-                                )}
+                                <>
+                                    <Send className="w-5 h-5" />
+                                    Prepare WhatsApp Request
+                                </>
                             </button>
                         </div>
                     </div>

@@ -76,5 +76,5 @@ export function truncate(str: string, length: number): string {
  * Create absolute URL for metadata
  */
 export function absoluteUrl(path: string): string {
-    return `${process.env.NEXT_PUBLIC_APP_URL || SITE_URL}${path}`
+    return `${SITE_URL}${path}`
 }

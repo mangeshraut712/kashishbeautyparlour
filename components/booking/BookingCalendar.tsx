@@ -3,8 +3,9 @@
 import { useState, useEffect, useMemo } from 'react'
 import { useTranslations, useLocale } from 'next-intl'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Calendar, Clock, ChevronLeft, ChevronRight, Check, User, Phone, Sparkles } from 'lucide-react'
+import { Calendar, Clock, ChevronLeft, ChevronRight, Check, User, Phone } from 'lucide-react'
 import { services } from '@/lib/data/services'
+import { buildWhatsAppLink } from '@/lib/whatsapp'
 import StaffSelection from './StaffSelection'
 
 /**
@@ -21,19 +22,7 @@ const timeSlots = [
     '08:00 PM', '08:30 PM', '09:00 PM', '09:30 PM',
 ]
 
-interface BookingCalendarProps {
-    onBookingComplete?: (booking: BookingData) => void
-}
-
-interface BookingData {
-    name: string
-    phone: string
-    service: string
-    date: Date
-    time: string
-}
-
-export default function BookingCalendar({ onBookingComplete }: BookingCalendarProps) {
+export default function BookingCalendar() {
     const [step, setStep] = useState(1)
     const [currentMonth, setCurrentMonth] = useState(new Date())
     const [selectedDate, setSelectedDate] = useState<Date | null>(null)
@@ -41,7 +30,6 @@ export default function BookingCalendar({ onBookingComplete }: BookingCalendarPr
     const [selectedTime, setSelectedTime] = useState<string | null>(null)
     const [selectedService, setSelectedService] = useState<string>('')
     const [formData, setFormData] = useState({ name: '', phone: '' })
-    const [isSubmitting, setIsSubmitting] = useState(false)
     const [isMounted, setIsMounted] = useState(false)
     const t = useTranslations('BookingCalendar')
     const locale = useLocale()
@@ -104,26 +92,21 @@ export default function BookingCalendar({ onBookingComplete }: BookingCalendarPr
         return date < today
     }
 
-    const handleSubmit = async () => {
-        if (!selectedDate || !selectedTime || !selectedService || !formData.name || !formData.phone) return
-
-        setIsSubmitting(true)
-
-        // Simulate API call
-        await new Promise(resolve => setTimeout(resolve, 1500))
-
-        const booking: BookingData = {
-            name: formData.name,
-            phone: formData.phone,
-            service: selectedService,
-            date: selectedDate,
-            time: selectedTime,
-        }
-
-        onBookingComplete?.(booking)
-        setStep(5) // Success step
-        setIsSubmitting(false)
-    }
+    const bookingRequestHref = selectedDate && selectedTime && selectedService && formData.name && formData.phone
+        ? buildWhatsAppLink([
+            'Hello Kashish Beauty Parlour,',
+            '',
+            'I would like to request an appointment.',
+            `Name: ${formData.name}`,
+            `Phone: ${formData.phone}`,
+            `Service: ${selectedService}`,
+            `Preferred date: ${selectedDate.toLocaleDateString('en-IN', { day: 'numeric', month: 'short', year: 'numeric' })}`,
+            `Preferred time: ${selectedTime}`,
+            `Beautician preference: ${selectedStaff || 'First available'}`,
+            '',
+            'Please confirm availability before booking.',
+        ].join('\n'))
+        : null
 
     if (!isMounted) return <div className="min-h-[400px] flex items-center justify-center bg-gray-50 rounded-[2rem] border border-gray-100">
         <div className="animate-spin h-8 w-8 border-4 border-primary border-t-transparent rounded-full" />
@@ -166,8 +149,9 @@ export default function BookingCalendar({ onBookingComplete }: BookingCalendarPr
                             exit={{ opacity: 0, x: -20 }}
                         >
                             <div className="mb-6">
-                                <label className="block text-sm font-bold text-gray-700 mb-2">{t('selectService')}</label>
+                                <label htmlFor="booking-service" className="block text-sm font-bold text-gray-700 mb-2">{t('selectService')}</label>
                                 <select
+                                    id="booking-service"
                                     value={selectedService}
                                     onChange={(e) => setSelectedService(e.target.value)}
                                     className="w-full px-4 py-3 bg-gray-50 border border-gray-200 text-gray-900 rounded-xl focus:ring-2 focus:ring-primary focus:border-transparent transition-all"
@@ -184,7 +168,9 @@ export default function BookingCalendar({ onBookingComplete }: BookingCalendarPr
                             {/* Calendar Header */}
                             <div className="flex items-center justify-between mb-4">
                                 <button
+                                    type="button"
                                     onClick={handlePrevMonth}
+                                    aria-label={t('previousMonth')}
                                     className="p-2 hover:bg-gray-100 text-gray-600 rounded-full transition-colors"
                                 >
                                     <ChevronLeft className="w-5 h-5" />
@@ -193,7 +179,9 @@ export default function BookingCalendar({ onBookingComplete }: BookingCalendarPr
                                     {currentMonth.toLocaleDateString(locale, { month: 'long', year: 'numeric' })}
                                 </h3>
                                 <button
+                                    type="button"
                                     onClick={handleNextMonth}
+                                    aria-label={t('nextMonth')}
                                     className="p-2 hover:bg-gray-100 text-gray-600 rounded-full transition-colors"
                                 >
                                     <ChevronRight className="w-5 h-5" />
@@ -214,8 +202,11 @@ export default function BookingCalendar({ onBookingComplete }: BookingCalendarPr
                                 {days.map((day, index) => (
                                     <button
                                         key={index}
+                                        type="button"
                                         disabled={isDateDisabled(day)}
                                         onClick={() => day && setSelectedDate(day)}
+                                        aria-label={day?.toLocaleDateString(locale, { day: 'numeric', month: 'long', year: 'numeric' })}
+                                        aria-pressed={Boolean(day && selectedDate?.toDateString() === day.toDateString())}
                                         className={`aspect-square flex items-center justify-center text-sm font-medium rounded-lg transition-all ${!day
                                             ? 'invisible'
                                             : isDateDisabled(day)
@@ -231,6 +222,7 @@ export default function BookingCalendar({ onBookingComplete }: BookingCalendarPr
                             </div>
 
                             <button
+                                type="button"
                                 onClick={() => setStep(2)}
                                 disabled={!selectedDate || !selectedService}
                                 className="w-full py-3 gold-gradient text-black font-bold rounded-xl disabled:opacity-50 disabled:cursor-not-allowed transition-all shadow-lg"
@@ -256,12 +248,14 @@ export default function BookingCalendar({ onBookingComplete }: BookingCalendarPr
 
                             <div className="flex gap-3 mt-8">
                                 <button
+                                    type="button"
                                     onClick={() => setStep(1)}
                                     className="flex-1 py-3 border border-gray-200 text-gray-600 font-bold rounded-xl hover:bg-gray-50 transition-all"
                                 >
                                     {t('buttons.back')}
                                 </button>
                                 <button
+                                    type="button"
                                     onClick={() => setStep(3)}
                                     className="flex-1 py-3 gold-gradient text-black font-bold rounded-xl transition-all shadow-lg"
                                 >
@@ -300,7 +294,9 @@ export default function BookingCalendar({ onBookingComplete }: BookingCalendarPr
                                 {timeSlots.map((time) => (
                                     <button
                                         key={time}
+                                        type="button"
                                         onClick={() => setSelectedTime(time)}
+                                        aria-pressed={selectedTime === time}
                                         className={`py-2 px-3 text-sm font-medium rounded-lg transition-all ${selectedTime === time
                                             ? 'bg-primary text-black shadow-lg'
                                             : 'bg-gray-50 text-gray-600 hover:bg-gray-100'
@@ -313,12 +309,14 @@ export default function BookingCalendar({ onBookingComplete }: BookingCalendarPr
 
                             <div className="flex gap-3">
                                 <button
+                                    type="button"
                                     onClick={() => setStep(2)}
                                     className="flex-1 py-3 border border-gray-200 text-gray-600 font-bold rounded-xl hover:bg-gray-50 transition-all"
                                 >
                                     {t('buttons.back')}
                                 </button>
                                 <button
+                                    type="button"
                                     onClick={() => setStep(4)}
                                     disabled={!selectedTime}
                                     className="flex-1 py-3 gold-gradient text-black font-bold rounded-xl disabled:opacity-50 transition-all shadow-lg"
@@ -339,11 +337,12 @@ export default function BookingCalendar({ onBookingComplete }: BookingCalendarPr
                         >
                             <div className="space-y-4 mb-6">
                                 <div>
-                                    <label className="block text-sm font-bold text-gray-700 mb-2">
+                                    <label htmlFor="booking-name" className="block text-sm font-bold text-gray-700 mb-2">
                                         <User className="w-4 h-4 inline mr-2" />
                                         {t('yourName')}
                                     </label>
                                     <input
+                                        id="booking-name"
                                         type="text"
                                         value={formData.name}
                                         onChange={(e) => setFormData({ ...formData, name: e.target.value })}
@@ -352,11 +351,12 @@ export default function BookingCalendar({ onBookingComplete }: BookingCalendarPr
                                     />
                                 </div>
                                 <div>
-                                    <label className="block text-sm font-bold text-gray-700 mb-2">
+                                    <label htmlFor="booking-phone" className="block text-sm font-bold text-gray-700 mb-2">
                                         <Phone className="w-4 h-4 inline mr-2" />
                                         {t('yourPhone')}
                                     </label>
                                     <input
+                                        id="booking-phone"
                                         type="tel"
                                         value={formData.phone}
                                         onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
@@ -397,51 +397,36 @@ export default function BookingCalendar({ onBookingComplete }: BookingCalendarPr
                                 </div>
                             </div>
 
+                            <p role="note" className="mb-4 rounded-xl border border-amber-200 bg-amber-50 px-4 py-3 text-sm font-medium text-amber-950">
+                                {t('staticNotice')}
+                            </p>
+
                             <div className="flex gap-3">
                                 <button
+                                    type="button"
                                     onClick={() => setStep(3)}
                                     className="flex-1 py-3 border border-gray-200 text-gray-600 font-bold rounded-xl hover:bg-gray-50 transition-all"
                                 >
                                     {t('buttons.back')}
                                 </button>
-                                <button
-                                    onClick={handleSubmit}
-                                    disabled={!formData.name || !formData.phone || isSubmitting}
-                                    className="flex-1 py-3 gold-gradient text-black font-bold rounded-xl disabled:opacity-50 transition-all flex items-center justify-center gap-2 shadow-lg"
-                                >
-                                    {isSubmitting ? (
-                                        <>
-                                            <span className="animate-spin h-4 w-4 border-2 border-black border-t-transparent rounded-full" />
-                                            {t('buttons.booking')}
-                                        </>
-                                    ) : (
-                                        t('buttons.confirm')
-                                    )}
-                                </button>
-                            </div>
-                        </motion.div>
-                    )}
-
-                    {/* Step 5: Success */}
-                    {step === 5 && (
-                        <motion.div
-                            key="step5"
-                            initial={{ opacity: 0, scale: 0.9 }}
-                            animate={{ opacity: 1, scale: 1 }}
-                            className="text-center py-8"
-                        >
-                            <div className="w-20 h-20 bg-green-500/10 rounded-full flex items-center justify-center mx-auto mb-6">
-                                <Check className="w-10 h-10 text-green-500" />
-                            </div>
-                            <h3 className="text-2xl font-heading font-bold text-gray-900 mb-2">
-                                {t('success.title')}
-                            </h3>
-                            <p className="text-gray-500 mb-6 font-medium">
-                                {t('success.message')}
-                            </p>
-                            <div className="inline-flex items-center gap-2 px-4 py-2 bg-primary/10 rounded-full text-primary text-sm font-bold">
-                                <Sparkles className="w-4 h-4" />
-                                {t('success.seeYou')}
+                                {bookingRequestHref ? (
+                                    <a
+                                        href={bookingRequestHref}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="flex-1 py-3 gold-gradient text-center text-black font-bold rounded-xl transition-all shadow-lg"
+                                    >
+                                        {t('buttons.continueOnWhatsApp')}
+                                    </a>
+                                ) : (
+                                    <button
+                                        type="button"
+                                        disabled
+                                        className="flex-1 py-3 gold-gradient text-black font-bold rounded-xl opacity-50"
+                                    >
+                                        {t('buttons.continueOnWhatsApp')}
+                                    </button>
+                                )}
                             </div>
                         </motion.div>
                     )}

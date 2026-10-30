@@ -4,6 +4,7 @@ import { ArrowLeft, Calendar, User, Tag } from 'lucide-react'
 import Image from 'next/image'
 import { blogPostsData } from '@/lib/data/blog'
 import ShareButtons from '@/components/social/ShareButtons'
+import { localizedAlternates, localizedOpenGraph } from '@/lib/page-metadata'
 
 interface PageProps {
   params: Promise<{
@@ -29,11 +30,15 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     }
   }
 
+  const articlePath = `/blog/${resolvedParams.id}`
+
   return {
     title: `${post.title} | Kashish Beauty Parlour`,
     description: post.excerpt,
     keywords: post.tags.join(', ') + ', beauty tips, makeup, skincare',
+    alternates: localizedAlternates(resolvedParams.locale, articlePath),
     openGraph: {
+      ...localizedOpenGraph(resolvedParams.locale, articlePath),
       title: post.title,
       description: post.excerpt,
       type: 'article',

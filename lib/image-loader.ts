@@ -6,7 +6,7 @@ export default function imageLoader({ src }: ImageLoaderProps): string {
     src.startsWith('http://') ||
     src.startsWith('https://') ||
     src.startsWith('data:') ||
-    src.startsWith(BASE_PATH)
+    (BASE_PATH && src.startsWith(BASE_PATH))
   ) {
     return src
   }

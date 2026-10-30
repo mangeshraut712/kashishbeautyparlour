@@ -1,6 +1,6 @@
 'use client';
 
-import { MapPin, Phone, Mail, Clock, Send, User, MessageSquare, Instagram as InstagramIcon, Facebook as FacebookIcon, PhoneCall, Sparkles, ArrowRight, CheckCircle, Heart, Star, Award, Shield, Zap, HelpCircle, ChevronDown, Users } from 'lucide-react'
+import { MapPin, Phone, Mail, Clock, Send, User, MessageSquare, Instagram as InstagramIcon, Facebook as FacebookIcon, PhoneCall, Sparkles, ArrowRight, Heart, Star, Award, Shield, Zap, HelpCircle, ChevronDown, Users } from 'lucide-react'
 import { useTranslations } from 'next-intl';
 import Image from 'next/image';
 import { BUSINESS_INFO, BUSINESS_STATS } from '@/lib/constants'
@@ -9,6 +9,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import BookingCalendar from '@/components/booking/BookingCalendar';
 import UPIPayment from '@/components/payment/UPIPayment';
 import { logger } from '@/lib/logger';
+import { buildWhatsAppLink } from '@/lib/whatsapp';
 
 // FAQ Data
 const faqs = [
@@ -18,7 +19,7 @@ const faqs = [
   },
   {
     question: "How do I book an appointment?",
-    answer: "You can book an appointment through our online booking system on this page, call us directly, or send us a message on WhatsApp. We'll confirm your booking within 2 hours during working hours."
+    answer: "Choose your preferred service, date, and time on this page, then send the prepared request on WhatsApp or call us directly. The team will confirm availability before an appointment is booked."
   },
   {
     question: "Do you offer bridal packages?",
@@ -46,16 +47,16 @@ const quickStats = [
 ];
 
 export default function ContactPage() {
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
+  const [submitStatus, setSubmitStatus] = useState<'idle' | 'ready' | 'error'>('idle');
+  const [whatsAppHref, setWhatsAppHref] = useState<string | null>(null);
   const [openFaq, setOpenFaq] = useState<number | null>(null);
   const t = useTranslations('Contact');
   const tCommon = useTranslations('Common');
 
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setIsSubmitting(true);
     setSubmitStatus('idle');
+    setWhatsAppHref(null);
 
     try {
       const formData = new FormData(e.currentTarget);
@@ -71,18 +72,14 @@ export default function ContactPage() {
         status: 'new',
       };
 
-      const phone = String(BUSINESS_INFO.contact.whatsapp).replace(/[^\d]/g, '')
-      const text = encodeURIComponent(
+      const href = buildWhatsAppLink(
         `Hello Kashish Beauty Parlour,\n\nName: ${data.firstName} ${data.lastName}\nPhone: ${data.phone}\nEmail: ${data.email}\nService: ${data.service}\nPreferred date: ${data.preferredDate}\n\n${data.message}`
       )
-      window.open(`https://wa.me/${phone}?text=${text}`, '_blank', 'noopener,noreferrer')
-      setSubmitStatus('success');
-      (e.target as HTMLFormElement).reset();
+      setWhatsAppHref(href)
+      setSubmitStatus('ready');
     } catch (error) {
       setSubmitStatus('error');
       logger.error('Network error during contact submission:', error);
-    } finally {
-      setIsSubmitting(false);
     }
   };
 
@@ -473,25 +470,38 @@ export default function ContactPage() {
 
                   <button
                     type="submit"
-                    disabled={isSubmitting}
-                    className="w-full gold-gradient text-black font-bold py-5 px-6 rounded-xl transition-all duration-500 transform hover:scale-[1.02] shadow-xl hover:shadow-2xl flex items-center justify-center gap-3 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none text-lg group"
+                    className="w-full gold-gradient text-black font-bold py-5 px-6 rounded-xl transition-all duration-500 transform hover:scale-[1.02] shadow-xl hover:shadow-2xl flex items-center justify-center gap-3 text-lg group"
                   >
-                    <Send className={`w-5 h-5 transition-transform group-hover:translate-x-1 ${isSubmitting ? 'animate-pulse' : ''}`} />
-                    {isSubmitting ? t('form.sending') : t('form.submit')}
+                    <Send className="w-5 h-5 transition-transform group-hover:translate-x-1" />
+                    {t('form.submit')}
                   </button>
 
                   <AnimatePresence>
-                    {submitStatus === 'success' && (
+                    {submitStatus === 'ready' && whatsAppHref && (
                       <motion.div
                         initial={{ opacity: 0, y: -10 }}
                         animate={{ opacity: 1, y: 0 }}
                         exit={{ opacity: 0, y: -10 }}
-                        className="p-5 bg-white border border-green-200 rounded-xl flex items-start gap-3 shadow-sm"
+                        role="status"
+                        className="p-5 bg-white border border-amber-200 rounded-xl shadow-sm"
                       >
-                        <CheckCircle className="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" />
-                        <p className="text-green-700 font-medium">
-                          {t('successMessage')}
-                        </p>
+                        <div className="flex items-start gap-3">
+                          <MessageSquare className="w-5 h-5 text-amber-600 flex-shrink-0 mt-0.5" />
+                          <div className="space-y-3">
+                            <p className="text-amber-950 font-medium">
+                              {t('whatsAppReadyMessage')}
+                            </p>
+                            <a
+                              href={whatsAppHref}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="inline-flex items-center gap-2 rounded-lg bg-[#25D366] px-4 py-2 text-sm font-bold text-white"
+                            >
+                              <MessageSquare className="w-4 h-4" />
+                              {tCommon('chatOnWhatsApp')}
+                            </a>
+                          </div>
+                        </div>
                       </motion.div>
                     )}
 

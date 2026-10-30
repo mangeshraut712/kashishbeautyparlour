@@ -1,10 +1,11 @@
 // Service Worker for Kashish Beauty Parlour And Training Center PWA
 // Provides offline support and caching
 
-const BASE_PATH = '/kashishbeautyparlour';
-const CACHE_NAME = 'kashish-v2';
-const STATIC_CACHE = 'kashish-static-v2';
-const DYNAMIC_CACHE = 'kashish-dynamic-v2';
+const scopePath = new URL(self.registration.scope).pathname;
+const BASE_PATH = scopePath === '/' ? '' : scopePath.replace(/\/$/, '');
+const CACHE_NAME = 'kashish-v3';
+const STATIC_CACHE = 'kashish-static-v3';
+const DYNAMIC_CACHE = 'kashish-dynamic-v3';
 
 // Assets to cache immediately
 const STATIC_ASSETS = [
