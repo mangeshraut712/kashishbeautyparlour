@@ -25,10 +25,10 @@ jobs:
       NEXT_PUBLIC_SITE_URL: https://mangeshraut712.github.io/kashishbeautyparlour
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       - name: Setup Node.js
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v5
         with:
           node-version: ${{ env.NODE_VERSION }}
           cache: npm
@@ -49,9 +49,10 @@ jobs:
         run: npm run test:static-export
 
       - name: Upload Pages artifact
-        uses: actions/upload-pages-artifact@v3
+        uses: actions/upload-pages-artifact@v5
         with:
           path: out
+          include-hidden-files: true
 
   deploy:
     name: Deploy
