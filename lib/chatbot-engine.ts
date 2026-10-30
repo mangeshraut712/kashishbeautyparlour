@@ -150,7 +150,6 @@ const KNOWLEDGE_BASE = {
         products: 'We use only premium branded products - MAC, Huda Beauty, Charlotte Tilbury, L\'Oréal Professional',
         hygiene: 'We maintain highest hygiene standards with sanitized tools and equipment',
         payment: 'We accept Cash, UPI (Google Pay, PhonePe, Paytm), Credit/Debit Cards',
-        emi: 'Yes, EMI options available for bridal packages and training courses',
         trial: 'Yes, bridal makeup trials are included in premium packages or ₹2,000 separately',
         cancellation: 'Free cancellation up to 24 hours before appointment',
         groupBooking: 'Yes, we handle group bookings for weddings, parties. Special discounts available'
@@ -278,7 +277,7 @@ export class ChatbotEngine {
         msg += `• Premium products only (MAC, Huda Beauty, Charlotte Tilbury)\n`
         msg += `• ${BUSINESS_STATS.yearsOfExperience} of expertise\n`
         msg += `• Pre-bridal treatments available\n`
-        msg += `• EMI options available\n\n`
+        msg += `• Contact the salon to discuss current payment options\n\n`
         msg += `Would you like to book a bridal trial or need more details?`
 
         return {
@@ -481,7 +480,7 @@ export class ChatbotEngine {
             `• Makeup Course: ₹45,000 (3 months)\n` +
             `• Hair Course: ₹35,000 (2 months)\n` +
             `• Complete Beautician: ₹80,000 (6 months)\n\n` +
-            `💳 EMI options available!\n` +
+            `💳 Contact the salon to discuss current payment options.\n` +
             `Which service interests you?`
 
         return {

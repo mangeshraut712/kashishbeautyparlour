@@ -343,3 +343,15 @@ test('the home page omits unsupported financing badges and expired promotional c
     /EMI Available|EMI उपलब्ध|No Cost EMI|SHAADI2025|WELCOME10|WEEKEND25|Valid till March 2025|मार्च 2025 तक वैध|मार्च 2025 पर्यंत वैध|Book Now & Save|Claim Offer/,
   )
 })
+
+test('contact and chatbot payment guidance does not advertise unsupported EMI availability', async () => {
+  const [contactPage, chatbot] = await Promise.all([
+    readFile(new URL('../app/[locale]/contact/page.tsx', import.meta.url), 'utf8'),
+    readFile(new URL('../lib/chatbot-engine.ts', import.meta.url), 'utf8'),
+  ])
+
+  assert.doesNotMatch(contactPage, /also offer EMI options/i)
+  assert.doesNotMatch(chatbot, /EMI options available/i)
+  assert.match(contactPage, /contact the salon to discuss current payment details/i)
+  assert.match(chatbot, /Contact the salon to discuss current payment options/)
+})

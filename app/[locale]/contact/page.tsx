@@ -35,7 +35,7 @@ const faqs = [
   },
   {
     question: "What payment methods do you accept?",
-    answer: "We accept cash, all major credit/debit cards, UPI payments (Google Pay, PhonePe, Paytm), and bank transfers. For bridal packages, we also offer EMI options."
+    answer: "We accept cash, all major credit/debit cards, UPI payments (Google Pay, PhonePe, Paytm), and bank transfers. For bridal packages, contact the salon to discuss current payment details."
   }
 ];
 
