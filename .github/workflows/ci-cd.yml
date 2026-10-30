@@ -54,6 +54,9 @@ jobs:
       - name: 🔷 TypeScript check
         run: npm run type-check
 
+      - name: 🔒 Verify dependency lockfile
+        run: npm run test:dependency-lock
+
   # ===========================================
   # Job 2: Build Verification
   # ===========================================

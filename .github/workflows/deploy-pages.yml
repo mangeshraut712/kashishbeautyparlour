@@ -36,6 +36,9 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
+      - name: Verify dependency lockfile
+        run: npm run test:dependency-lock
+
       - name: Build static export
         run: npm run build
 
