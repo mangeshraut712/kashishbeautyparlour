@@ -3,7 +3,6 @@
 import Hero from '@/components/home/Hero'
 import FeaturedServices from '@/components/home/FeaturedServices'
 import WhyChooseUs from '@/components/home/WhyChooseUs'
-import SpecialOffers from '@/components/home/SpecialOffers'
 import BeforeAfterGallery from '@/components/home/BeforeAfterGallery'
 import StaffProfiles from '@/components/home/StaffProfiles'
 import BookingCalendar from '@/components/booking/BookingCalendar'
@@ -224,9 +223,6 @@ export default function HomeClient() {
 
             {/* Instagram Feed - NEW SECTION */}
             <InstagramFeed />
-
-            {/* Special Offers with Enhanced Design */}
-            <SpecialOffers />
 
             {/* Testimonials / Social Proof */}
             <SocialProof />

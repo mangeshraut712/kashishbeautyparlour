@@ -7,7 +7,6 @@ import { getMessages, setRequestLocale } from 'next-intl/server';
 import { notFound } from 'next/navigation';
 import Header from '@/components/layout/Header'
 import Footer from '@/components/layout/Footer'
-import FestivalOfferPopup from '@/components/marketing/FestivalOfferPopup'
 import ShareButtons from '@/components/social/ShareButtons'
 import PWAInstallPrompt from '@/components/pwa/PWAInstallPrompt'
 import ScrollToTopLeft from '@/components/ui/ScrollToTopLeft'
@@ -111,9 +110,6 @@ export const metadata: Metadata = {
       'max-snippet': -1,
     },
   },
-  verification: {
-    google: 'your-google-verification-code',
-  },
   category: 'beauty',
 }
 
@@ -215,7 +211,6 @@ export default async function RootLayout({
           </main>
 
           <Footer />
-          <FestivalOfferPopup />
           <ScrollToTopLeft />
           <ShareButtons title="Kashish Beauty Parlour And Training Center" variant="floating" />
           <PWAInstallPrompt />

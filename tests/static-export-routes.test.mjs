@@ -292,3 +292,54 @@ test('exported pages omit unsupported review aggregates and customer totals', as
   const home = await readFile(outputFile('en/index.html'), 'utf8')
   assert.match(home, /https:\/\/share\.google\/UsAD81WRbXEeYdxZX/)
 })
+
+test('the static export does not publish a placeholder Google verification token', async () => {
+  const pages = await exportedHtmlFiles()
+
+  for (const [path, page] of pages) {
+    assert.doesNotMatch(
+      page,
+      /name="google-site-verification" content="your-google-verification-code"/,
+      `placeholder verification metadata in ${path}`,
+    )
+  }
+})
+
+test('the bridal payment section asks the salon for details instead of advertising unverified financing', async () => {
+  for (const locale of ['en', 'hi', 'mr']) {
+    const bridal = await readFile(outputFile(`${locale}/bridal/index.html`), 'utf8')
+
+    assert.doesNotMatch(
+      bridal,
+      /No Cost EMI|Zero Interest|Apply for EMI|HDFC|ICICI|SBI|Axis|Kotak|Bajaj Finserv|0%\s*EMI/i,
+      `unverified financing claim in ${locale} bridal page`,
+    )
+    assert.doesNotMatch(
+      bridal,
+      /Bridal Collections 2025|ब्राइडल कलेक्शन 2025/,
+      `stale bridal-collection year in ${locale} bridal page`,
+    )
+    assert.match(bridal, new RegExp(`href="${basePath}/${locale}/contact/"`))
+  }
+
+  const englishBridal = await readFile(outputFile('en/bridal/index.html'), 'utf8')
+  assert.match(englishBridal, /Payment details/)
+  assert.match(englishBridal, /Request payment details/)
+})
+
+test('the home page omits unsupported financing badges and expired promotional controls', async () => {
+  const [layout, homeClient, featuredServices, home] = await Promise.all([
+    readFile(new URL('../app/[locale]/layout.tsx', import.meta.url), 'utf8'),
+    readFile(new URL('../components/home/HomeClient.tsx', import.meta.url), 'utf8'),
+    readFile(new URL('../components/home/FeaturedServices.tsx', import.meta.url), 'utf8'),
+    readFile(outputFile('en/index.html'), 'utf8'),
+  ])
+
+  assert.doesNotMatch(layout, /FestivalOfferPopup/)
+  assert.doesNotMatch(homeClient, /(?:import\s+SpecialOffers|<SpecialOffers)/)
+  assert.doesNotMatch(featuredServices, /emiAvailable/)
+  assert.doesNotMatch(
+    home,
+    /EMI Available|EMI उपलब्ध|No Cost EMI|SHAADI2025|WELCOME10|WEEKEND25|Valid till March 2025|मार्च 2025 तक वैध|मार्च 2025 पर्यंत वैध|Book Now & Save|Claim Offer/,
+  )
+})

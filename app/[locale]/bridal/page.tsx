@@ -228,7 +228,7 @@ export default function BridalPage() {
 
                                 <div className="bg-white rounded-[2.5rem] p-1 shadow-2xl overflow-hidden group border border-gray-100">
                                     <div className="p-8">
-                                        <EMICalculator amount={25000} serviceName="Premium Bridal Package" />
+                                        <EMICalculator />
                                     </div>
                                 </div>
                             </motion.div>

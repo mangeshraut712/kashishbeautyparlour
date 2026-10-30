@@ -110,11 +110,6 @@ export default function FeaturedServices() {
                     <div className="text-primary font-black text-xl leading-none">
                       {service.price}
                     </div>
-                    {parseInt(service.price.replace(/[^\d]/g, '')) >= 3000 && (
-                      <div className="text-[8px] font-bold text-green-600 bg-green-50 px-1.5 py-0.5 rounded mt-1 inline-block border border-green-100 uppercase tracking-tighter">
-                        {t('emiAvailable')}
-                      </div>
-                    )}
                     <div className="text-gray-400 text-[9px] font-black uppercase tracking-[0.15em] mt-1">
                       {service.duration} session
                     </div>
