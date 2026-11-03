@@ -1,7 +1,7 @@
 {
   "name": "kashish-beauty-parlour",
   "version": "2.0.0",
-  "description": "Website for Kashish Beauty Parlour and Training Center in Thergaon, Pune — booking, services, and training.",
+  "description": "Website for Kashish Beauty Parlour and Training Center in Thergaon, Pune \u2014 booking, services, and training.",
   "private": true,
   "homepage": "https://mangeshraut712.github.io/kashishbeautyparlour/",
   "scripts": {
@@ -67,5 +67,8 @@
     "postcss": "^8.5.23",
     "tailwindcss": "^4.1.14",
     "typescript": "5.9.3"
+  },
+  "overrides": {
+    "minimatch": "9.0.9"
   }
 }
