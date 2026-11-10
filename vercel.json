@@ -6,6 +6,11 @@
   "outputDirectory": "vercel-redirect",
   "redirects": [
     {
+      "source": "/",
+      "destination": "https://mangeshraut712.github.io/kashishbeautyparlour/",
+      "permanent": true
+    },
+    {
       "source": "/:path*",
       "destination": "https://mangeshraut712.github.io/kashishbeautyparlour/:path*",
       "permanent": true
