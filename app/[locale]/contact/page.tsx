@@ -604,6 +604,14 @@ export default function ContactPage() {
                   referrerPolicy="no-referrer-when-downgrade"
                   title="Kashish Beauty Parlour And Training Center Location"
                 ></iframe>
+                <div className="flex flex-wrap gap-4 px-4 py-3 bg-white text-sm font-bold">
+                  <a href={BUSINESS_INFO.maps.link} target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">
+                    Google Maps
+                  </a>
+                  <a href={BUSINESS_INFO.maps.apple} target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">
+                    Apple Maps
+                  </a>
+                </div>
               </div>
 
               {/* Social Media */}

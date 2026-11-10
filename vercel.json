@@ -1,0 +1,19 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "framework": null,
+  "installCommand": "echo 'redirect-only project: no install'",
+  "buildCommand": "mkdir -p vercel-redirect && echo 'Moved to https://mangeshraut712.github.io/kashishbeautyparlour/' > vercel-redirect/index.html",
+  "outputDirectory": "vercel-redirect",
+  "redirects": [
+    {
+      "source": "/",
+      "destination": "https://mangeshraut712.github.io/kashishbeautyparlour/",
+      "permanent": true
+    },
+    {
+      "source": "/:path*",
+      "destination": "https://mangeshraut712.github.io/kashishbeautyparlour/:path*",
+      "permanent": true
+    }
+  ]
+}

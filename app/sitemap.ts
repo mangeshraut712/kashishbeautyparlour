@@ -5,6 +5,7 @@ import { SITE_URL } from '@/lib/site'
 
 export const dynamic = 'force-static'
 
+// trailingSlash: true in next.config.ts, so list the slash form to match canonicals and avoid redirects.
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = SITE_URL
   const pages = [
@@ -22,7 +23,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   const staticPages = routing.locales.flatMap((locale) =>
     pages.map(({ path, changeFrequency, priority }) => ({
-      url: `${baseUrl}/${locale}${path}`,
+      url: `${baseUrl}/${locale}${path}/`,
       lastModified: new Date(),
       changeFrequency,
       priority,
@@ -31,7 +32,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   const articles = routing.locales.flatMap((locale) =>
     blogPostsData.map((post) => ({
-      url: `${baseUrl}/${locale}/blog/${post.id}`,
+      url: `${baseUrl}/${locale}/blog/${post.id}/`,
       lastModified: new Date(post.date),
       changeFrequency: 'monthly' as const,
       priority: 0.6,
