@@ -16,6 +16,7 @@ import { Analytics } from '@vercel/analytics/next'
 import { SpeedInsights } from '@vercel/speed-insights/next'
 import { routing } from '@/i18n/routing'
 import { BASE_PATH, SITE_URL } from '@/lib/site'
+import { BUSINESS_INFO } from '@/lib/constants'
 
 // Optimized font loading with display swap
 const inter = Inter({
@@ -117,24 +118,26 @@ export const metadata: Metadata = {
 const jsonLd = {
   '@context': 'https://schema.org',
   '@type': 'BeautySalon',
-  name: 'Kashish Beauty Parlour And Training Center',
-  description: 'Professional beauty services and training center in Pune',
+  name: BUSINESS_INFO.name,
+  alternateName: 'कशिश ब्युटी पार्लर आणि ट्रेनिंग सेंटर',
+  description: 'Professional beauty services and training center in Thergaon, Pune',
   url: SITE_URL,
   telephone: '+91-7276784825',
-  email: 'kashishparlour15@gmail.com',
+  email: BUSINESS_INFO.contact.email,
   address: {
     '@type': 'PostalAddress',
-    streetAddress: 'Shop No. 5, Gera Imperium Rise, Near Devika Pure Veg, Behind Maharaja Hotel',
-    addressLocality: 'Thergaon',
-    addressRegion: 'Pune',
+    streetAddress: 'Shop No. 5, 1st floor, Nisarg Raj Society, Dange Chowk Rd, near Vaishnavi Maharaja Hotel, Jai Hind nagar, Thergaon',
+    addressLocality: 'Pimpri-Chinchwad',
+    addressRegion: 'Maharashtra',
     postalCode: '411033',
     addressCountry: 'IN',
   },
   geo: {
     '@type': 'GeoCoordinates',
-    latitude: 18.6142502,
-    longitude: 73.7686004,
+    latitude: BUSINESS_INFO.maps.geo.latitude,
+    longitude: BUSINESS_INFO.maps.geo.longitude,
   },
+  hasMap: BUSINESS_INFO.maps.cid,
   openingHoursSpecification: {
     '@type': 'OpeningHoursSpecification',
     dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'],
@@ -144,8 +147,9 @@ const jsonLd = {
   priceRange: '₹₹',
   image: `${SITE_URL}/images/og-image.jpg`,
   sameAs: [
-    'https://www.instagram.com/kashishbeautyandtraining/',
-    'https://www.facebook.com/profile.php?id=100064114598364',
+    BUSINESS_INFO.maps.cid,
+    BUSINESS_INFO.social.instagram,
+    BUSINESS_INFO.social.facebook,
   ],
 }
 

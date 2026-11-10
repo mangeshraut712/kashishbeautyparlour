@@ -68,7 +68,7 @@ export default function LocationMap() {
                     >
                         <div className="relative rounded-3xl overflow-hidden shadow-2xl border border-gray-100 aspect-[16/10]">
                             <iframe
-                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3781.5837477391247!2d73.76860037519753!3d18.614250282504727!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bc2b9e6a6c94b9b%3A0x48a3d73b36c5a05!2sKashish%20Beauty%20Parlour%20And%20Training%20Center!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin"
+                                src={BUSINESS_INFO.maps.embed}
                                 width="100%"
                                 height="100%"
                                 style={{ border: 0 }}
@@ -79,17 +79,29 @@ export default function LocationMap() {
                                 className="absolute inset-0"
                             />
 
-                            {/* Get Directions Button */}
+                            {/* Directions buttons */}
+                            <div className="absolute bottom-4 left-4 right-4 md:bottom-6 md:left-6 md:right-6 flex flex-wrap gap-2 md:gap-3">
                             <a
                                 href={BUSINESS_INFO.maps.link}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="absolute bottom-6 left-6 inline-flex items-center gap-2 px-6 py-3 bg-white shadow-xl rounded-full font-bold text-gray-900 hover:bg-primary hover:text-black transition-all group"
+                                className="inline-flex items-center gap-2 px-5 py-2.5 md:px-6 md:py-3 bg-white shadow-xl rounded-full font-bold text-gray-900 hover:bg-primary hover:text-black transition-all group"
                             >
                                 <Navigation className="w-4 h-4 text-primary group-hover:text-black" />
                                 {t('getDirections')}
                                 <ExternalLink className="w-3 h-3 opacity-50" />
                             </a>
+
+                            <a
+                                href={BUSINESS_INFO.maps.apple}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="inline-flex items-center gap-2 px-5 py-2.5 md:py-3 bg-white shadow-xl rounded-full font-bold text-gray-900 hover:bg-primary hover:text-black transition-all"
+                            >
+                                Apple Maps
+                                <ExternalLink className="w-3 h-3 opacity-50" />
+                            </a>
+                            </div>
                         </div>
                     </motion.div>
 

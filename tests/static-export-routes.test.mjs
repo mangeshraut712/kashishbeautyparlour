@@ -34,11 +34,12 @@ test('the static export advertises locale-qualified pages and PWA shortcuts', as
 
   for (const locale of ['en', 'hi', 'mr']) {
     for (const route of ['', '/about', '/services', '/gallery', '/training', '/contact']) {
-      assert.ok(sitemap.includes(`<loc>${siteUrl}/${locale}${route}</loc>`))
+      assert.ok(sitemap.includes(`<loc>${siteUrl}/${locale}${route}/</loc>`))
     }
   }
 
-  assert.ok(!sitemap.includes(`<loc>${siteUrl}/about</loc>`))
+  assert.ok(!sitemap.includes(`<loc>${siteUrl}/about/</loc>`))
+  assert.ok(!sitemap.includes(`<loc>${siteUrl}/en/about</loc>`), 'sitemap URLs must use the trailing-slash form')
 
   const manifest = JSON.parse(manifestSource)
   assert.deepEqual(
@@ -174,11 +175,11 @@ test('the sitemap includes every exported visitor route and article', async () =
 
   for (const locale of ['en', 'hi', 'mr']) {
     for (const route of routes) {
-      assert.ok(sitemap.includes(`<loc>${siteUrl}/${locale}${route}</loc>`))
+      assert.ok(sitemap.includes(`<loc>${siteUrl}/${locale}${route}/</loc>`))
     }
 
     for (const id of articleIds) {
-      assert.ok(sitemap.includes(`<loc>${siteUrl}/${locale}/blog/${id}</loc>`))
+      assert.ok(sitemap.includes(`<loc>${siteUrl}/${locale}/blog/${id}/</loc>`))
     }
   }
 })
@@ -282,7 +283,8 @@ test('public review references do not fabricate ratings, counts, or verification
 
 test('exported pages omit unsupported review aggregates and customer totals', async () => {
   const pages = await exportedHtmlFiles()
-  const forbidden = /aggregateRating|ratingValue|reviewCount|\b(?:4\.8|4\.9|4\.7|650|480|127|43)\b|Verified via|five-star verified|Top Rated|(?:10,000|1,000|1000|100)\+|Jawed Habib Certified|L.Oréal Professional Certified|OPI Certified|Instant Reservations|तुरंत रिजर्वेशन|त्वरित रिझर्व्हेशन|Confirmation Within 2 Hours|2 घंटे में पुष्टि|2 तासांत पुष्टी/i
+  // (?<![$\w.]) skips React flight-data references such as "$43", which are chunk ids, not claims.
+  const forbidden = /aggregateRating|ratingValue|reviewCount|(?<![$\w.])(?:4\.8|4\.9|4\.7|650|480|127|43)\b|Verified via|five-star verified|Top Rated|(?:10,000|1,000|1000|100)\+|Jawed Habib Certified|L.Oréal Professional Certified|OPI Certified|Instant Reservations|तुरंत रिजर्वेशन|त्वरित रिझर्व्हेशन|Confirmation Within 2 Hours|2 घंटे में पुष्टि|2 तासांत पुष्टी/i
 
   assert.ok(pages.length > 0, 'the export should contain static HTML pages')
   for (const [path, page] of pages) {

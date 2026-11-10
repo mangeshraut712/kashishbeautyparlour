@@ -4,8 +4,8 @@ export const BUSINESS_INFO = {
   description: 'Professional Beauty Parlours And Training Center',
 
   contact: {
-    phone: '7276784825', // Replace with actual number
-    whatsapp: '+917276784825', // Replace with actual number
+    phone: '7276784825',
+    whatsapp: '+917276784825',
     email: 'kashishparlour15@gmail.com',
   },
 
@@ -32,9 +32,16 @@ export const BUSINESS_INFO = {
   },
 
   maps: {
-    embed: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3782.0!2d73.7686!3d18.6140!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bc2b991efb060f3:0x43b57b6b4ece4560!2zS2FzaGlzaCBCZWF1dHkgUGFybG91ciBBbmQgVHJhaW5pbmcgQ2VudGVy!5e0!3m2!1sen!2sin!4v1698',
+    // Google Maps place /g/11f66rbt37 (CID 4878941472139658592). Keyless embed that pins the listing.
+    embed: 'https://www.google.com/maps?cid=4878941472139658592&hl=en&output=embed',
     link: 'https://www.google.com/maps/place/Kashish+Beauty+Parlour+And+Training+Center/@18.6139308,73.7686134,21z/data=!4m8!3m7!1s0x3bc2b991efb060f3:0x43b57b6b4ece4560!8m2!3d18.6142502!4d73.7686004!9m1!1b1!16s%2Fg%2F11f66rbt37?hl=en-US&entry=ttu&g_ep=EgoyMDI1MTAwNC4wIKXMDSoASAFQAw%3D%3D',
     reviews: 'https://share.google/UsAD81WRbXEeYdxZX',
+    // Canonical Google Maps URL for the listing (used in structured data).
+    cid: 'https://maps.google.com/?cid=4878941472139658592',
+    // Apple Maps has no place for the parlour yet; this drops a named pin at the Google coordinates.
+    // Swap for the Apple Maps place link once the business is added in Apple Business Connect.
+    apple: 'https://maps.apple.com/place?coordinate=18.6142502,73.7686004&name=Kashish%20Beauty%20Parlour%20And%20Training%20Center',
+    geo: { latitude: 18.6142502, longitude: 73.7686004 },
   },
 }
 
