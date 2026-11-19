@@ -3,6 +3,7 @@
 import { useState } from 'react'
 import { motion } from 'framer-motion'
 import { Calculator, CheckCircle, Heart, Sparkles, Plus, Minus } from 'lucide-react'
+import { calculateWeddingQuote } from '@/lib/wedding-quote'
 
 /**
  * Wedding Package Calculator - Full interactive implementation
@@ -38,17 +39,8 @@ export default function WeddingPackageCalculator() {
     const basePackage = basePackages.find(p => p.id === selectedPackage)
     const basePrice = basePackage?.basePrice || 0
 
-    const addOnsTotal = selectedAddOns.reduce((total, addOnId) => {
-        if (addOnId === 'family_custom') {
-            return total + (familyCount * 2500)
-        }
-        const addOn = addOns.find(a => a.id === addOnId)
-        return total + (addOn?.price || 0)
-    }, 0)
-
-    const totalPrice = basePrice + addOnsTotal
-    const discount = selectedAddOns.length >= 3 ? Math.round(totalPrice * 0.1) : 0
-    const finalPrice = totalPrice - discount
+    const addOnPrices = selectedAddOns.map(id => addOns.find(a => a.id === id)?.price || 0)
+    const { familyTotal, totalPrice, discount, finalPrice } = calculateWeddingQuote(basePrice, addOnPrices, familyCount)
 
     const toggleAddOn = (id: string) => {
         setSelectedAddOns(prev =>
@@ -190,7 +182,7 @@ export default function WeddingPackageCalculator() {
                         {familyCount > 0 && (
                             <div className="flex justify-between text-sm">
                                 <span className="text-gray-600">Family Members ({familyCount})</span>
-                                <span className="font-medium">₹{(familyCount * 2500).toLocaleString('en-IN')}</span>
+                                <span className="font-medium">₹{familyTotal.toLocaleString('en-IN')}</span>
                             </div>
                         )}
                     </div>

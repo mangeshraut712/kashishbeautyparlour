@@ -19,7 +19,7 @@
     "test:dependency-lock": "node --test tests/dependency-lock.test.mjs",
     "test:static-export": "node --test tests/static-export-routes.test.mjs",
     "test:validations": "node --no-warnings --experimental-strip-types --test tests/validations.test.mjs",
-    "test:logic": "node --no-warnings --experimental-strip-types --test tests/chatbot-patterns.test.mjs",
+    "test:logic": "node --no-warnings --experimental-strip-types --test tests/chatbot-patterns.test.mjs tests/wedding-quote.test.mjs",
     "clean": "rm -rf .next out node_modules/.cache",
     "clean:all": "rm -rf .next out node_modules",
     "deploy:preview": "vercel",
