@@ -4,7 +4,7 @@ import { useState } from 'react'
 import Image from 'next/image'
 import { motion } from 'framer-motion'
 import { CheckCircle, Heart } from 'lucide-react'
-import { staffMembers } from '@/lib/data/staff'
+import { staffForService } from '@/lib/data/staff'
 
 interface StaffSelectionProps {
     selectedStaff: string | null
@@ -18,12 +18,8 @@ export default function StaffSelection({ selectedStaff, onSelect, serviceType }:
     const t = useTranslations('BookingCalendar.StaffSelection')
     const [showAll, setShowAll] = useState(false)
 
-    // Filter staff based on service type if provided
-    const relevantStaff = serviceType
-        ? staffMembers.filter(staff =>
-            staff.specialization.some(s => s.toLowerCase().includes(serviceType.toLowerCase()))
-        )
-        : staffMembers
+    // Filter staff based on the selected service (falls back to all staff)
+    const relevantStaff = staffForService(serviceType)
 
     const displayStaff = showAll ? relevantStaff : relevantStaff.slice(0, 3)
 

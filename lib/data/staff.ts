@@ -53,3 +53,20 @@ export const staffMembers: StaffMember[] = [
         imagePosition: 'object-top',
     },
 ]
+
+/**
+ * Staff whose specialization fits a booked service. Service names are longer
+ * than specializations ("Essential Bridal Makeup" vs "Bridal Makeup"), so match
+ * either way round, and fall back to everyone rather than an empty list.
+ */
+export function staffForService(serviceName?: string): StaffMember[] {
+    const service = serviceName?.trim().toLowerCase()
+    if (!service) return staffMembers
+    const matches = staffMembers.filter(staff =>
+        staff.specialization.some(specialization => {
+            const spec = specialization.toLowerCase()
+            return service.includes(spec) || spec.includes(service)
+        })
+    )
+    return matches.length > 0 ? matches : staffMembers
+}
