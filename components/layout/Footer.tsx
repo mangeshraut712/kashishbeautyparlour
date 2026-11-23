@@ -61,6 +61,13 @@ export default function Footer() {
               {t('description')}
             </p>
 
+            <div className="border-l-2 border-primary/50 pl-4 text-sm">
+              <p className="text-gray-700">{t('mensGrooming')}</p>
+              <a href="https://kohinoorsalon.vercel.app/" className="inline-block py-2 font-semibold text-gray-900 underline underline-offset-4">
+                {t('kohinoorLink')}
+              </a>
+            </div>
+
             {/* Social Links */}
             <div className="flex gap-4">
               <a

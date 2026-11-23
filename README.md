@@ -30,6 +30,8 @@
 
 ---
 
+For men’s haircuts and beard grooming in Pimple Nilakh, visit [The Kohinoor AC Salon](https://kohinoorsalon.vercel.app/). Contact each shop directly for its services and hours.
+
 ## 📋 Overview
 
 **Kashish Beauty Parlour & Training Center** is a production-ready website for Pune's premier beauty salon located in Thergaon. Built with cutting-edge web technologies, it delivers an exceptional user experience with AI-powered customer support, real-time booking, secure payments, and multilingual support.
