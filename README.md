@@ -30,7 +30,7 @@
 
 ---
 
-For men’s haircuts and beard grooming in Pimple Nilakh, visit [The Kohinoor AC Salon](https://kohinoorsalon.vercel.app/). Contact each shop directly for its services and hours.
+For men’s haircuts and beard grooming in Pimple Nilakh, visit [The Kohinoor AC Salon](https://kohinoor-hair-salon.pages.dev/). Contact each shop directly for its services and hours.
 
 ## 📋 Overview
 
