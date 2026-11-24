@@ -66,3 +66,27 @@ test('enrollment validation rejects unsupported experience values', () => {
 
   assert.equal(result.success, false)
 })
+
+test('phone numbers need 10-15 real digits, not just spaces or dashes', () => {
+  for (const phone of ['----------', '          ', '+-- -- -- -- --', '12345 -----']) {
+    assert.equal(contactFormSchema.safeParse({ ...validContact, phone }).success, false, phone)
+    assert.equal(
+      enrollmentSchema.safeParse({
+        fullName: 'Asha Raut',
+        phone,
+        email: 'asha@example.com',
+        course: 'Beauty training',
+        experience: 'none',
+      }).success,
+      false,
+      phone,
+    )
+  }
+  assert.equal(contactFormSchema.safeParse({ ...validContact, phone: '98765-43210' }).success, true)
+})
+
+test('contact names may use Devanagari letters (Marathi/Hindi)', () => {
+  const result = contactFormSchema.safeParse({ ...validContact, firstName: 'आशा', lastName: 'राऊत' })
+  assert.equal(result.success, true)
+  assert.equal(contactFormSchema.safeParse({ ...validContact, firstName: 'A1' }).success, false)
+})

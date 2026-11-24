@@ -13,3 +13,12 @@ test('spa questions are not captured by the hair intent', () => {
 test('hair spa still routes to hair', () => {
   assert.equal(PATTERNS.hair.test('hair spa'), true)
 })
+
+test('greeting only matches whole words, not words that start with "hi"', () => {
+  for (const message of ['highlights price', 'hindi speaking staff', 'heyday offers']) {
+    assert.equal(PATTERNS.greeting.test(message), false, message)
+  }
+  for (const message of ['hi', 'Hi there', 'hello!', 'good morning']) {
+    assert.equal(PATTERNS.greeting.test(message), true, message)
+  }
+})

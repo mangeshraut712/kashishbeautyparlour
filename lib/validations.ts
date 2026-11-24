@@ -5,24 +5,31 @@ import { z } from 'zod'
  * Type-safe validation following 2025 best practices
  */
 
+// A phone number needs 10-15 actual digits; spaces and dashes do not count.
+const hasValidDigitCount = (value: string) => {
+    const digits = value.replace(/\D/g, '').length
+    return digits >= 10 && digits <= 15
+}
+
 // Contact/Booking form validation
 export const contactFormSchema = z.object({
     firstName: z
         .string()
         .min(2, 'First name must be at least 2 characters')
         .max(50, 'First name must be less than 50 characters')
-        .regex(/^[a-zA-Z\s]+$/, 'First name can only contain letters'),
+        .regex(/^[\p{L}\p{M}\s]+$/u, 'First name can only contain letters'),
     lastName: z
         .string()
         .max(50, 'Last name must be less than 50 characters')
-        .regex(/^[a-zA-Z\s]*$/, 'Last name can only contain letters')
+        .regex(/^[\p{L}\p{M}\s]*$/u, 'Last name can only contain letters')
         .optional()
         .or(z.literal('')),
     phone: z
         .string()
         .min(10, 'Phone number must be at least 10 digits')
         .max(15, 'Phone number must be less than 15 digits')
-        .regex(/^[+]?[\d\s-]+$/, 'Please enter a valid phone number'),
+        .regex(/^[+]?[\d\s-]+$/, 'Please enter a valid phone number')
+        .refine(hasValidDigitCount, 'Please enter a valid phone number'),
     email: z
         .string()
         .email('Please enter a valid email address')
@@ -61,7 +68,8 @@ export const enrollmentSchema = z.object({
     phone: z
         .string()
         .min(10, 'Phone number must be at least 10 digits')
-        .regex(/^[+]?[\d\s-]+$/, 'Please enter a valid phone number'),
+        .regex(/^[+]?[\d\s-]+$/, 'Please enter a valid phone number')
+        .refine(hasValidDigitCount, 'Please enter a valid phone number'),
     email: z
         .string()
         .email('Please enter a valid email address'),
