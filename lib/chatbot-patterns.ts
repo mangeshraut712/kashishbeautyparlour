@@ -1,7 +1,7 @@
 // Intent patterns for the offline chatbot. Kept dependency-free so they can be unit tested.
 // Order matters in ChatbotEngine: hair is checked before spa, so spa words must not appear in hair.
 export const PATTERNS = {
-    greeting: /^(hi|hello|hey|namaste|good morning|good evening|good afternoon)/i,
+    greeting: /^(hi|hello|hey|namaste|good morning|good evening|good afternoon)\b/i,
     thanks: /(thank|thanks|thankyou|appreciate)/i,
 
     // Services
