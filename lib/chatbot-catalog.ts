@@ -67,3 +67,29 @@ export function priceHighlightsFrom(catalog: Service[]): Service[] {
         return found
     })
 }
+
+export type TrainingCourseInput = {
+    title: string
+    duration: string
+    price: string
+    schedule?: string
+    features?: string[]
+}
+
+export type ChatCourseQuote = {
+    name: string
+    duration: string
+    price: string
+    schedule: string
+    includes: string[]
+}
+
+export function chatCourseQuotesFrom(catalog: TrainingCourseInput[]): ChatCourseQuote[] {
+    return catalog.map((course) => ({
+        name: course.title,
+        duration: course.duration,
+        price: course.price,
+        schedule: course.schedule ?? '',
+        includes: course.features ?? [],
+    }))
+}

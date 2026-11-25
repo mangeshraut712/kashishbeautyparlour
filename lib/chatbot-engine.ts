@@ -4,9 +4,11 @@
 import { BUSINESS_INFO, BUSINESS_STATS } from './constants'
 import { PATTERNS } from './chatbot-patterns'
 import { services } from './data/services'
-import { chatServiceListsFrom, priceHighlightsFrom } from './chatbot-catalog'
+import { courses } from './data/training'
+import { chatServiceListsFrom, chatCourseQuotesFrom, priceHighlightsFrom } from './chatbot-catalog'
 
 const chatServiceLists = chatServiceListsFrom(services)
+const chatCourses = chatCourseQuotesFrom(courses)
 
 interface Message {
     role: 'user' | 'assistant'
@@ -56,32 +58,7 @@ const KNOWLEDGE_BASE = {
         }
     },
     training: {
-        courses: [
-            {
-                name: 'Professional Makeup Course',
-                duration: '3 months',
-                fee: '₹45,000',
-                topics: ['Base makeup', 'Bridal makeup', 'HD makeup', 'Airbrush', 'Contouring'],
-            },
-            {
-                name: 'Hair Styling Course',
-                duration: '2 months',
-                fee: '₹35,000',
-                topics: ['Cutting', 'Coloring', 'Styling', 'Treatments', 'Bridal hair'],
-            },
-            {
-                name: 'Complete Beautician Course',
-                duration: '6 months',
-                fee: '₹80,000',
-                topics: ['Makeup', 'Hair', 'Skin care', 'Nails', 'Spa'],
-            },
-            {
-                name: 'Nail Art Course',
-                duration: '1 month',
-                fee: '₹15,000',
-                topics: ['Basic to advanced nail art', 'Gel polish', '3D designs']
-            }
-        ],
+        courses: chatCourses,
         benefits: [
             'Hands-on practical training',
             'Flexible class timings',
@@ -229,8 +206,10 @@ export class ChatbotEngine {
         KNOWLEDGE_BASE.training.courses.forEach((course, idx) => {
             msg += `**${idx + 1}. ${course.name}**\n`
             msg += `   • Duration: ${course.duration}\n`
-            msg += `   • Fee: ${course.fee}\n`
-            msg += `   • Topics: ${course.topics.join(', ')}\n\n`
+            msg += `   • Fee: ${course.price}\n`
+            if (course.schedule) msg += `   • Schedule: ${course.schedule}\n`
+            if (course.includes.length) msg += `   • Includes: ${course.includes.join(', ')}\n`
+            msg += `\n`
         })
 
         msg += `✅ **Benefits:**\n`
@@ -422,10 +401,11 @@ export class ChatbotEngine {
         for (const item of priceHighlightsFrom(services)) {
             msg += `• ${item.name}: ${item.price}\n`
         }
-        msg += `\n**Training Courses:**\n` +
-            `• Makeup Course: ₹45,000 (3 months)\n` +
-            `• Hair Course: ₹35,000 (2 months)\n` +
-            `• Complete Beautician: ₹80,000 (6 months)\n\n` +
+        msg += `\n**Training Courses:**\n`
+        for (const course of chatCourses) {
+            msg += `• ${course.name}: ${course.price} (${course.duration})\n`
+        }
+        msg += `\n` +
             `💳 Contact the salon to discuss current payment options.\n` +
             `Which service interests you?`
 
