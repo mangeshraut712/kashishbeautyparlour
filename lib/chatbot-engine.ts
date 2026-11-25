@@ -3,7 +3,10 @@
 
 import { BUSINESS_INFO, BUSINESS_STATS } from './constants'
 import { PATTERNS } from './chatbot-patterns'
-import { chatServiceLists, priceHighlights } from './chatbot-catalog'
+import { services } from './data/services'
+import { chatServiceListsFrom, priceHighlightsFrom } from './chatbot-catalog'
+
+const chatServiceLists = chatServiceListsFrom(services)
 
 interface Message {
     role: 'user' | 'assistant'
@@ -404,7 +407,7 @@ export class ChatbotEngine {
         }
 
         let msg = `💰 **Our Services & Pricing:**\n\n**Popular Services:**\n`
-        for (const item of priceHighlights()) {
+        for (const item of priceHighlightsFrom(services)) {
             msg += `• ${item.name}: ${item.price}\n`
         }
         msg += `\n**Training Courses:**\n` +

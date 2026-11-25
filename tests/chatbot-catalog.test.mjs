@@ -1,10 +1,11 @@
 import assert from 'node:assert/strict'
 import test from 'node:test'
 
-const { chatServiceLists, priceHighlights } = await import(
+const { chatServiceListsFrom, priceHighlightsFrom } = await import(
   new URL('../lib/chatbot-catalog.ts', import.meta.url)
 )
 const { services } = await import(new URL('../lib/data/services.ts', import.meta.url))
+const chatServiceLists = chatServiceListsFrom(services)
 
 function service(id) {
   const found = services.find((item) => item.id === id)
@@ -36,7 +37,7 @@ test('keratin and price highlights match the public catalog', () => {
   assert.equal(hairQuote.price, keratin.price)
   assert.equal(hairQuote.duration, keratin.duration)
 
-  const highlights = priceHighlights()
+  const highlights = priceHighlightsFrom(services)
   assert.equal(highlights.length, 6)
   for (const item of highlights) {
     const catalog = service(item.id)

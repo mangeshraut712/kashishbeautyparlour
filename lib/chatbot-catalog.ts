@@ -1,4 +1,4 @@
-import { services, type Service } from './data/services.ts'
+import type { Service } from './data/services'
 
 export type ChatServiceQuote = {
     name: string
@@ -16,28 +16,30 @@ function quote(service: Service): ChatServiceQuote {
     }
 }
 
-export function quotesInCategory(category: string): ChatServiceQuote[] {
-    return services.filter((item) => item.category === category).map(quote)
+export function quotesInCategory(catalog: Service[], category: string): ChatServiceQuote[] {
+    return catalog.filter((item) => item.category === category).map(quote)
 }
 
-export const chatServiceLists = {
-    bridalPackages: services
-        .filter((item) => item.id.startsWith('bridal-makeup'))
-        .map(quote),
-    makeup: services
-        .filter(
-            (item) =>
-                item.category === 'Bridal & Events' &&
-                !item.id.startsWith('bridal-makeup') &&
-                /makeup|makeover|look|styling/i.test(item.name) &&
-                !/draping|jewelry/i.test(item.name)
-        )
-        .map(quote),
-    facial: quotesInCategory('Facial & Skin'),
-    hair: quotesInCategory('Hair Care'),
-    spa: quotesInCategory('Spa & Wellness'),
-    waxing: quotesInCategory('Waxing & Threading'),
-    nails: quotesInCategory('Nails'),
+export function chatServiceListsFrom(catalog: Service[]) {
+    return {
+        bridalPackages: catalog
+            .filter((item) => item.id.startsWith('bridal-makeup'))
+            .map(quote),
+        makeup: catalog
+            .filter(
+                (item) =>
+                    item.category === 'Bridal & Events' &&
+                    !item.id.startsWith('bridal-makeup') &&
+                    /makeup|makeover|look|styling/i.test(item.name) &&
+                    !/draping|jewelry/i.test(item.name)
+            )
+            .map(quote),
+        facial: quotesInCategory(catalog, 'Facial & Skin'),
+        hair: quotesInCategory(catalog, 'Hair Care'),
+        spa: quotesInCategory(catalog, 'Spa & Wellness'),
+        waxing: quotesInCategory(catalog, 'Waxing & Threading'),
+        nails: quotesInCategory(catalog, 'Nails'),
+    }
 }
 
 export const PRICE_HIGHLIGHT_IDS = [
@@ -49,9 +51,9 @@ export const PRICE_HIGHLIGHT_IDS = [
     'keratin-treatment',
 ] as const
 
-export function priceHighlights(): Service[] {
+export function priceHighlightsFrom(catalog: Service[]): Service[] {
     return PRICE_HIGHLIGHT_IDS.map((id) => {
-        const found = services.find((item) => item.id === id)
+        const found = catalog.find((item) => item.id === id)
         if (!found) {
             throw new Error(`Missing catalog service ${id}`)
         }
