@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict'
 import test from 'node:test'
 
-const { chatServiceListsFrom, priceHighlightsFrom } = await import(
+const { chatServiceListsFrom, priceHighlightsFrom, isFacialTreatment } = await import(
   new URL('../lib/chatbot-catalog.ts', import.meta.url)
 )
 const { services } = await import(new URL('../lib/data/services.ts', import.meta.url))
@@ -44,4 +44,21 @@ test('keratin and price highlights match the public catalog', () => {
     assert.equal(item.price, catalog.price)
     assert.equal(item.name, catalog.name)
   }
+})
+
+test('facial quotes are facials, not bleach, de-tan, or ear piercing', () => {
+  const facialNames = chatServiceLists.facial.map((item) => item.name)
+  assert.ok(facialNames.includes(service('gold-facial').name))
+  assert.ok(facialNames.includes(service('cleanup').name))
+  assert.ok(facialNames.includes(service('whitening-ritual').name))
+  assert.equal(facialNames.includes(service('ear-piercing').name), false)
+  assert.equal(facialNames.includes(service('chale-face-bleach').name), false)
+  assert.equal(facialNames.includes(service('anti-tan').name), false)
+  assert.equal(isFacialTreatment(service('ear-piercing')), false)
+  const skinNames = chatServiceLists.skin.map((item) => item.name)
+  assert.deepEqual(skinNames.sort(), [
+    service('anti-tan').name,
+    service('chale-face-bleach').name,
+    service('ear-piercing').name,
+  ].sort())
 })

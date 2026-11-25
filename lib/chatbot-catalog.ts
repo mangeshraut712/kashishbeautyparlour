@@ -20,7 +20,13 @@ export function quotesInCategory(catalog: Service[], category: string): ChatServ
     return catalog.filter((item) => item.category === category).map(quote)
 }
 
+/** True for facials, cleanups, and facial rituals — not bleach, de-tan, or piercing. */
+export function isFacialTreatment(service: Pick<Service, 'id' | 'name'>): boolean {
+    return /facial|cleanup|ritual/i.test(`${service.id} ${service.name}`)
+}
+
 export function chatServiceListsFrom(catalog: Service[]) {
+    const skin = catalog.filter((item) => item.category === 'Facial & Skin')
     return {
         bridalPackages: catalog
             .filter((item) => item.id.startsWith('bridal-makeup'))
@@ -34,7 +40,8 @@ export function chatServiceListsFrom(catalog: Service[]) {
                     !/draping|jewelry/i.test(item.name)
             )
             .map(quote),
-        facial: quotesInCategory(catalog, 'Facial & Skin'),
+        facial: skin.filter(isFacialTreatment).map(quote),
+        skin: skin.filter((item) => !isFacialTreatment(item)).map(quote),
         hair: quotesInCategory(catalog, 'Hair Care'),
         spa: quotesInCategory(catalog, 'Spa & Wellness'),
         waxing: quotesInCategory(catalog, 'Waxing & Threading'),

@@ -31,7 +31,8 @@ const KNOWLEDGE_BASE = {
         },
         facial: {
             name: 'Facial Treatments',
-            types: chatServiceLists.facial
+            types: chatServiceLists.facial,
+            otherSkin: chatServiceLists.skin,
         },
         hair: {
             name: 'Hair Services',
@@ -253,7 +254,18 @@ export class ChatbotEngine {
             msg += `\n\n`
         })
 
-        msg += `All facials include:\n• Deep cleansing\n• Exfoliation\n• Massage\n• Mask application\n• Moisturization\n\n`
+        const otherSkin = KNOWLEDGE_BASE.services.facial.otherSkin
+        if (otherSkin.length) {
+            msg += `**Other skin services:**\n`
+            otherSkin.forEach(item => {
+                msg += `• **${item.name}** - ${item.price}`
+                if (item.duration) msg += ` (${item.duration})`
+                if (item.includes.length) msg += ` — ${item.includes.join(', ')}`
+                msg += `\n`
+            })
+            msg += `\n`
+        }
+
         msg += `Book now for glowing, radiant skin!`
 
         return {
