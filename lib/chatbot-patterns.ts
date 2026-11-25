@@ -6,7 +6,7 @@ export const PATTERNS = {
 
     // Services
     bridal: /(bridal|bride|wedding|marriage|dulhan)/i,
-    facial: /(facial|cleanup|face|skin care|glow)/i,
+    facial: /(facial|cleanup|face(?!book)|skin care|glow)/i,
     hair: /(hair|haircut|hairstyle|keratin|color|highlight)/i,
     makeup: /(makeup|party makeup|hd makeup|airbrush)/i,
     spa: /(spa|massage|body|wellness|relax)/i,
@@ -17,7 +17,7 @@ export const PATTERNS = {
     training: /(training|course|learn|class|certificate|career|job|beautician)/i,
 
     // Booking
-    booking: /(book|appointment|schedule|reserve|slot)/i,
+    booking: /((?<!face)book|appointment|schedule|reserve|slot)/i,
     availability: /(available|open|timing|time|hours|when)/i,
 
     // Pricing
@@ -27,7 +27,7 @@ export const PATTERNS = {
     location: /(where|location|address|direction|map)/i,
 
     // Contact
-    contact: /(contact|phone|call|whatsapp|number)/i,
+    contact: /(contact|phone|call|whatsapp|number|facebook|instagram)/i,
 
     // About
     about: /(about|who|experience|owner|meena|founder)/i,
