@@ -406,6 +406,7 @@ export class ChatbotEngine {
             `${KNOWLEDGE_BASE.business.openDays}\n\n` +
             `📱 **Follow Us:**\n` +
             `Instagram: @kashishbeautyandtraining\n` +
+            `Facebook: ${BUSINESS_INFO.social.facebook}\n` +
             `Owner: @meenaraut150880`
 
         return {
