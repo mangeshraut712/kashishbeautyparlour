@@ -9,7 +9,7 @@
 </p>
 
 <p align="center">
-  <img src="https://img.shields.io/badge/Next.js-15.5-black?style=for-the-badge&logo=next.js" alt="Next.js">
+  <img src="https://img.shields.io/badge/Next.js-16.4-black?style=for-the-badge&logo=next.js" alt="Next.js">
   <img src="https://img.shields.io/badge/React-19-61dafb?style=for-the-badge&logo=react" alt="React">
   <img src="https://img.shields.io/badge/TypeScript-5.9-3178c6?style=for-the-badge&logo=typescript" alt="TypeScript">
   <img src="https://img.shields.io/badge/Tailwind-4.1-38bdf8?style=for-the-badge&logo=tailwindcss" alt="Tailwind">
@@ -38,7 +38,7 @@ For men’s haircuts and beard grooming in Pimple Nilakh, visit [The Kohinoor AC
 
 ### 🎯 Key Highlights
 
-- 🤖 **AI Chatbot** - Google Gemini-powered smart assistant for 24/7 customer support
+- 🤖 **AI Chatbot** - Built-in rule-based smart assistant for 24/7 customer support
 - 📅 **Smart Booking** - Interactive calendar-based appointment scheduling
 - 💳 **Secure Payments** - Razorpay & UPI integration with EMI options
 - 🌐 **Multilingual** - Full support for English, Hindi & Marathi
@@ -79,7 +79,7 @@ Framed captures of the live site (current UI).
 
 ### 🤖 AI-Powered Chatbot
 
-- Powered by **Google Gemini 2.0 Flash**
+- Powered by a built-in rule-based chatbot engine (no API key required)
 - Context-aware beauty service recommendations
 - Appointment booking assistance
 - Multilingual support (English/Marathi)
@@ -172,8 +172,8 @@ Open [http://localhost:3000](http://localhost:3000) in your browser.
 Create `.env.local` and add these required variables:
 
 ```env
-# AI Chatbot (Required)
-GOOGLE_GEMINI_API_KEY=your_gemini_api_key
+# Google Gemini (Optional, not used by the chatbot)
+# GOOGLE_GEMINI_API_KEY=your_gemini_api_key
 
 # Payments (Required)
 NEXT_PUBLIC_RAZORPAY_KEY_ID=your_razorpay_key_id
@@ -219,7 +219,7 @@ See `.env.example` for the complete list of variables.
 
 | Technology | Version | Purpose |
 |------------|---------|---------|
-| **Next.js** | 15.5.9 | React framework with App Router |
+| **Next.js** | 16.4.6 | React framework with App Router |
 | **React** | 19.2.0 | UI library |
 | **TypeScript** | 5.9.3 | Type-safe development |
 
@@ -235,11 +235,11 @@ See `.env.example` for the complete list of variables.
 
 | Technology | Version | Purpose |
 |------------|---------|---------|
-| **Google Generative AI** | 0.24.1 | Gemini AI chatbot |
+| **Google Generative AI** | 0.24.1 | Gemini SDK (not used by the chatbot) |
 | **Razorpay** | 2.9.6 | Payment processing |
-| **Firebase Admin** | 13.5.0 | Database & storage |
+| **Firebase Admin** | 14.4.0 | Database & storage |
 | **Twilio** | 5.11.1 | SMS & WhatsApp |
-| **Zod** | 3.24.4 | Schema validation |
+| **Zod** | 4.6.7 | Schema validation |
 
 ### Internationalization
 
@@ -254,7 +254,7 @@ See `.env.example` for the complete list of variables.
 |------------|---------|---------|
 | **@vercel/analytics** | 1.5.0 | Web analytics |
 | **@vercel/speed-insights** | 1.2.0 | Performance monitoring |
-| **Sharp** | 0.33.5 | Image optimization |
+| **Sharp** | 0.35.5 | Image optimization |
 
 ---
 
@@ -271,11 +271,13 @@ kashishbeautyparlour/
 │   │   ├── gallery/           # Photo gallery
 │   │   ├── services/          # Services catalog
 │   │   └── training/          # Training courses
-│   ├── api/                   # API routes
-│   │   ├── chat/              # Gemini AI endpoint
-│   │   ├── contact/           # Contact form
-│   │   └── payment/           # Razorpay
 │   └── globals.css            # Global styles
+│
+├── server/                     # Server code
+│   └── api/                   # Route handlers (not mounted under app/)
+│       ├── chat/              # Chatbot endpoint
+│       ├── contact/           # Contact form
+│       └── payment/           # Razorpay
 │
 ├── components/                 # React components
 │   ├── booking/               # Booking system
