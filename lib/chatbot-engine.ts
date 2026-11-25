@@ -3,6 +3,7 @@
 
 import { BUSINESS_INFO, BUSINESS_STATS } from './constants'
 import { PATTERNS } from './chatbot-patterns'
+import { chatServiceLists, priceHighlights } from './chatbot-catalog'
 
 interface Message {
     role: 'user' | 'assistant'
@@ -21,71 +22,33 @@ const KNOWLEDGE_BASE = {
         bridal: {
             name: 'Bridal Makeup',
             description: 'Complete bridal makeup with premium products (MAC, Huda Beauty, Charlotte Tilbury)',
-            packages: [
-                { name: 'Essential Bridal', price: '₹15,000', includes: ['Bridal Makeup', 'Hair Styling', 'Draping'] },
-                { name: 'Premium Bridal', price: '₹25,000', includes: ['HD Makeup', 'Hair Styling', 'Pre-Bridal', 'Trial'] },
-                { name: 'Luxury Bridal', price: '₹40,000', includes: ['Airbrush HD', 'Full Styling', 'Pre-Bridal Sessions', 'Family Makeup'] }
-            ],
+            packages: chatServiceLists.bridalPackages,
             duration: '3-4 hours',
             preBridal: 'We offer pre-bridal packages including facials, cleanups, and skin treatments starting 2 weeks before'
         },
         facial: {
             name: 'Facial Treatments',
-            types: [
-                { name: 'Gold Facial', price: '₹2,500', duration: '60 min', benefits: 'Anti-aging, brightening' },
-                { name: 'Diamond Facial', price: '₹3,000', duration: '75 min', benefits: 'Deep cleansing, glow' },
-                { name: 'Hydra Facial', price: '₹3,500', duration: '60 min', benefits: 'Hydration, pore minimizing' },
-                { name: 'Basic Cleanup', price: '₹800', duration: '45 min', benefits: 'Cleansing, freshness' }
-            ]
+            types: chatServiceLists.facial
         },
         hair: {
             name: 'Hair Services',
-            services: [
-                { name: 'Hair Cut (Women)', price: '₹500-800' },
-                { name: 'Hair Spa', price: '₹1,500', duration: '90 min' },
-                { name: 'Keratin Treatment', price: '₹8,000-12,000', duration: '3-4 hours' },
-                { name: 'Hair Color', price: '₹2,500-5,000' },
-                { name: 'Highlights', price: '₹3,500+' },
-                { name: 'Bridal Hair', price: '₹3,000-5,000' }
-            ]
+            services: chatServiceLists.hair
         },
         makeup: {
             name: 'Makeup Services',
-            types: [
-                { name: 'Party Makeup', price: '₹3,000', duration: '60 min' },
-                { name: 'HD Makeup', price: '₹4,000', duration: '90 min' },
-                { name: 'Airbrush Makeup', price: '₹5,000', duration: '90 min' },
-                { name: 'Engagement Makeup', price: '₹5,000' }
-            ]
+            types: chatServiceLists.makeup
         },
         spa: {
             name: 'Spa & Wellness',
-            treatments: [
-                { name: 'Body Spa', price: '₹3,500', duration: '120 min' },
-                { name: 'Aromatherapy', price: '₹2,500', duration: '90 min' },
-                { name: 'Body Polishing', price: '₹3,000', duration: '90 min' },
-                { name: 'Deep Tissue Massage', price: '₹2,000', duration: '60 min' }
-            ]
+            treatments: chatServiceLists.spa
         },
         waxing: {
             name: 'Waxing & Threading',
-            services: [
-                { name: 'Full Body Wax', price: '₹1,500' },
-                { name: 'Half Arms', price: '₹300' },
-                { name: 'Full Arms', price: '₹500' },
-                { name: 'Full Legs', price: '₹700' },
-                { name: 'Eyebrow Threading', price: '₹50' },
-                { name: 'Upper Lip Threading', price: '₹30' }
-            ]
+            services: chatServiceLists.waxing
         },
         nails: {
             name: 'Nail Art & Care',
-            services: [
-                { name: 'Manicure', price: '₹600', duration: '45 min' },
-                { name: 'Pedicure', price: '₹800', duration: '60 min' },
-                { name: 'Nail Art', price: '₹100-500 per nail' },
-                { name: 'Gel Polish', price: '₹1,500' }
-            ]
+            services: chatServiceLists.nails
         }
     },
     training: {
@@ -151,7 +114,7 @@ const KNOWLEDGE_BASE = {
         products: 'We use only premium branded products - MAC, Huda Beauty, Charlotte Tilbury, L\'Oréal Professional',
         hygiene: 'We maintain highest hygiene standards with sanitized tools and equipment',
         payment: 'We accept Cash, UPI (Google Pay, PhonePe, Paytm), Credit/Debit Cards',
-        trial: 'Yes, bridal makeup trials are included in premium packages or ₹2,000 separately',
+        trial: 'Ask the salon about bridal trial availability and current trial pricing',
         cancellation: 'Free cancellation up to 24 hours before appointment',
         groupBooking: 'Yes, we handle group bookings for weddings, parties. Special discounts available'
     }
@@ -282,7 +245,9 @@ export class ChatbotEngine {
 
         KNOWLEDGE_BASE.services.facial.types.forEach(f => {
             msg += `💎 **${f.name}** - ${f.price}\n`
-            msg += `   ⏱ ${f.duration} | Benefits: ${f.benefits}\n\n`
+            msg += `   ⏱ ${f.duration}`
+            if (f.includes.length) msg += ` | ${f.includes.join(', ')}`
+            msg += `\n\n`
         })
 
         msg += `All facials include:\n• Deep cleansing\n• Exfoliation\n• Massage\n• Mask application\n• Moisturization\n\n`
@@ -438,15 +403,11 @@ export class ChatbotEngine {
             return this.getFacialInfo()
         }
 
-        const msg = `💰 **Our Services & Pricing:**\n\n` +
-            `**Popular Services:**\n` +
-            `• Bridal Makeup: ₹15,000 - ₹40,000\n` +
-            `• Party Makeup: ₹3,000 - ₹5,000\n` +
-            `• Facial: ₹800 - ₹3,500\n` +
-            `• Hair Cut: ₹500 - ₹800\n` +
-            `• Hair Spa: ₹1,500\n` +
-            `• Keratin: ₹8,000 - ₹12,000\n\n` +
-            `**Training Courses:**\n` +
+        let msg = `💰 **Our Services & Pricing:**\n\n**Popular Services:**\n`
+        for (const item of priceHighlights()) {
+            msg += `• ${item.name}: ${item.price}\n`
+        }
+        msg += `\n**Training Courses:**\n` +
             `• Makeup Course: ₹45,000 (3 months)\n` +
             `• Hair Course: ₹35,000 (2 months)\n` +
             `• Complete Beautician: ₹80,000 (6 months)\n\n` +
