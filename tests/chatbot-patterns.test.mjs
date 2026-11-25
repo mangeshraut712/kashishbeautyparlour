@@ -22,3 +22,14 @@ test('greeting only matches whole words, not words that start with "hi"', () => 
     assert.equal(PATTERNS.greeting.test(message), true, message)
   }
 })
+
+test('facebook questions go to contact, not the facial or booking intents', () => {
+  for (const message of ['are you on facebook?', 'facebook page link', 'instagram or facebook']) {
+    assert.equal(PATTERNS.facial.test(message), false, message)
+    assert.equal(PATTERNS.booking.test(message), false, message)
+    assert.equal(PATTERNS.contact.test(message), true, message)
+  }
+  assert.equal(PATTERNS.facial.test('face cleanup price'), true)
+  assert.equal(PATTERNS.booking.test('book a facial'), true)
+  assert.equal(PATTERNS.booking.test('can i rebook my slot'), true)
+})
