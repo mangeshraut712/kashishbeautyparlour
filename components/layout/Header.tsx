@@ -1,11 +1,11 @@
 'use client'
 
-import { Link } from '@/i18n/routing'
+import { Link, usePathname } from '@/i18n/routing'
 import Image from 'next/image'
 import { useState, useEffect, useRef } from 'react'
-import { usePathname } from 'next/navigation'
 import { Menu, X, Phone, ChevronRight, Sparkles } from 'lucide-react'
 import { BUSINESS_INFO } from '@/lib/constants'
+import { isNavActive } from '@/lib/nav'
 import { motion, AnimatePresence } from 'framer-motion'
 import LanguageSwitcher from './LanguageSwitcher'
 import { useTranslations } from 'next-intl'
@@ -142,7 +142,7 @@ export default function Header() {
             {/* Desktop Navigation */}
             <div className="hidden lg:flex items-center rounded-full px-2 py-1.5 bg-gray-50/80 backdrop-blur-md border border-gray-100 transition-all duration-500">
               {NAV_HREFS.map((link) => {
-                const isActive = currentPath === link.href || currentPath.endsWith(link.href)
+                const isActive = isNavActive(currentPath, link.href)
                 return (
                   <Link
                     key={link.href}
@@ -255,7 +255,7 @@ export default function Header() {
                 <div className="flex-1 overflow-y-auto p-6">
                   <ul className="space-y-3">
                     {NAV_HREFS.map((link, index) => {
-                      const isActive = currentPath === link.href || currentPath.endsWith(link.href)
+                      const isActive = isNavActive(currentPath, link.href)
                       return (
                         <motion.li
                           key={link.href}
