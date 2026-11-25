@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict'
 import test from 'node:test'
 
-const { chatServiceListsFrom, priceHighlightsFrom, isFacialTreatment } = await import(
+const { chatServiceListsFrom, priceHighlightsFrom, isFacialTreatment, chatCourseQuotesFrom } = await import(
   new URL('../lib/chatbot-catalog.ts', import.meta.url)
 )
 const { services } = await import(new URL('../lib/data/services.ts', import.meta.url))
@@ -61,4 +61,31 @@ test('facial quotes are facials, not bleach, de-tan, or ear piercing', () => {
     service('chale-face-bleach').name,
     service('ear-piercing').name,
   ].sort())
+})
+
+test('training course quotes match the public academy catalog', async () => {
+  const { readFileSync } = await import('node:fs')
+  const trainingSource = readFileSync(new URL('../lib/data/training.ts', import.meta.url), 'utf8')
+  const engineSource = readFileSync(new URL('../lib/chatbot-engine.ts', import.meta.url), 'utf8')
+  const titleMatch = trainingSource.match(/title: '([^']+)'/)
+  const priceMatch = trainingSource.match(/price: '(₹[^']+)'/)
+  const durationMatch = trainingSource.match(/duration: '([^']+)'/)
+  assert.ok(titleMatch && priceMatch && durationMatch)
+  const quotes = chatCourseQuotesFrom([
+    {
+      title: titleMatch[1],
+      duration: durationMatch[1],
+      price: priceMatch[1],
+      schedule: '12 PM – 5 PM',
+      features: ['Complete Basic and Advanced Syllabus'],
+    },
+  ])
+  assert.equal(quotes.length, 1)
+  assert.equal(quotes[0].price, '₹60,000')
+  assert.equal(quotes[0].duration, '6 Months')
+  assert.match(quotes[0].name, /Basic to Advanced Makeup/)
+  assert.equal(engineSource.includes('₹45,000'), false)
+  assert.equal(engineSource.includes('₹80,000'), false)
+  assert.equal(engineSource.includes("fee: '₹35,000'"), false)
+  assert.match(engineSource, /chatCourseQuotesFrom\(courses\)/)
 })
